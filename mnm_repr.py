@@ -10,7 +10,7 @@ class Entity(Element):
 	def __init__(self, ID, name, version, properties):
 		Element.__init__(self, ID, name)
 		self.version = version
-		self.properties = [x for x in properties]
+		self.properties = set(properties)
 		self.add_cost = None
 		self.remove_cost = None
 		self.detection_cost = None
@@ -41,37 +41,37 @@ class Activity(Element):
 class Growth(Activity):
 	def __init__(self, conditions, ID, name=None):
 		Activity.__init__(self, ID, name)
-		self.required_conditions = [x for x in conditions]
+		self.required_conditions = set(conditions)
 
 class Expression(Activity):
 	def __init__(self, coding_gene, product_conditions, ID, name=None):
 		Activity.__init__(self, ID, name)
 		self.coding_gene = coding_gene
-		self.product_conditions = [x for x in product_conditions]
+		self.product_conditions = set(product_conditions)
 
 class NonEnzymaticReaction(Activity):
 	def __init__(self, substrates, products, ID, name=None):
 		Activity.__init__(self, ID, name)
-		self.substrates = [x for x in substrates]
-		self.products = [x for x in products]
+		self.substrates = set(substrates)
+		self.products = set(products)
 
 class EnzymaticReaction(Activity):
 	def __init__(self, substrates, products, ID, name=None):
 		Activity.__init__(self, ID, name)
-		self.substrates = [x for x in substrates]
-		self.products = [x for x in products]
+		self.substrates = set(substrates)
+		self.products = set(products)
 
 class TransporterNotRequired(Activity):
 	def __init__(self, source_conditions, destination_conditions, ID, name=None):
 		Activity.__init__(self, ID, name)
-		self.source_conditions = [x for x in source_conditions]
-		self.destination_conditions = [x for x in destination_conditions]
+		self.source_conditions = set(source_conditions)
+		self.destination_conditions = set(destination_conditions)
 
 class TransporterRequired(Activity):
 	def __init__(self, source_conditions, destination_conditions, transporter_location, ID, name=None):
 		Activity.__init__(self, ID, name)
-		self.source_conditions = [x for x in source_conditions]
-		self.destination_conditions = [x for x in destination_conditions]
+		self.source_conditions = set(source_conditions)
+		self.destination_conditions = set(destination_conditions)
 		self.transporter_location = transporter_location
 
 
@@ -142,9 +142,9 @@ class Remove(Intervention):
 class Model:
 	def __init__(self, ID, setup_conds, intermediate_activities, termination_conds, status='Active'):
 		self.ID = ID
-		self.setup_conds = [x for x in setup_conds]
-		self.intermediate_activities = [x for x in intermediate_activities]
-		self.termination_conds = [x for x in termination_conds]
+		self.setup_conds = set(setup_conds)
+		self.intermediate_activities = set(intermediate_activities)
+		self.termination_conds = set(termination_conds)
 		self.status = status
 		self.quality = None
 
