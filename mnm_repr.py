@@ -106,7 +106,11 @@ class Medium(Compartment):
 	def __init__(self):
 		pass
 
-class MediumCytosolMembrane(Compartment):
+class CellMembrane(Compartment):
+	def __init__(self):
+		pass
+
+class Cytosol(Compartment):
 	def __init__(self):
 		pass
 
@@ -125,6 +129,49 @@ class MitochOuterMembrane(Compartment):
 class MitochInnerMembrane(Compartment):
 	def __init__(self):
 		pass
+
+class GolgiMembrane(Compartment):
+	def __init__(self):
+		pass
+
+class GolgiApparatus(Compartment):
+	def __init__(self):
+		pass
+
+class Nucleus(Compartment):
+	def __init__(self):
+		pass
+
+class NuclearMembrane(Compartment):
+	def __init__(self):
+		pass
+
+class EndoplasmicReticulum(Compartment):
+	def __init__(self):
+		pass
+
+class ERMembrane(Compartment):
+	def __init__(self):
+		pass
+
+class Vacuole(Compartment):
+	def __init__(self):
+		pass
+
+class VacuolarMembrane(Compartment):
+	def __init__(self):
+		pass
+
+class PeroxisomalMembrane(Compartment):
+	def __init__(self):
+		pass
+
+class Peroxisome(Compartment):
+	def __init__(self):
+		pass
+
+
+
 
 class Intervention:
 	def __init__(self, condition_or_activity):
