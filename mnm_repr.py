@@ -74,6 +74,18 @@ class TransporterRequired(Activity):
 		self.destination_conditions = set(destination_conditions)
 		self.transporter_location = transporter_location
 
+class NotCatalysedComplexFormation():
+	def __init__(self, substrates, products, ID, name=None):
+		Activity.__init__(self, ID, name)
+		self.substrates = set(substrates)
+		self.products = set(products)
+
+class CatalysedComplexFormation():
+	def __init__(self, substrates, products, ID, name=None):
+		Activity.__init__(self, ID, name)
+		self.substrates = set(substrates)
+		self.products = set(products)
+
 
 class Property:
 	def __init__(self, activity):
@@ -110,6 +122,14 @@ class CellMembrane(Compartment):
 	def __init__(self):
 		pass
 
+class CellMembraneOuterSide(Compartment):
+	def __init__(self):
+		pass
+
+class CellMembraneInnerSide(Compartment):
+	def __init__(self):
+		pass
+
 class Cytosol(Compartment):
 	def __init__(self):
 		pass
@@ -126,11 +146,35 @@ class MitochOuterMembrane(Compartment):
 	def __init__(self):
 		pass
 
+class MitochOuterMembraneOuterSide(Compartment):
+	def __init__(self):
+		pass
+
+class MitochOuterMembraneInnerSide(Compartment):
+	def __init__(self):
+		pass
+
 class MitochInnerMembrane(Compartment):
 	def __init__(self):
 		pass
 
+class MitochInnerMembraneOuterSide(Compartment):
+	def __init__(self):
+		pass
+
+class MitochInnerMembraneInnerSide(Compartment):
+	def __init__(self):
+		pass
+
 class GolgiMembrane(Compartment):
+	def __init__(self):
+		pass
+
+class GolgiMembraneOuterSide(Compartment):
+	def __init__(self):
+		pass
+
+class GolgiMembraneInnerSide(Compartment):
 	def __init__(self):
 		pass
 
@@ -146,11 +190,27 @@ class NuclearMembrane(Compartment):
 	def __init__(self):
 		pass
 
+class NuclearMembraneOuterSide(Compartment):
+	def __init__(self):
+		pass
+
+class NuclearMembraneInnerSide(Compartment):
+	def __init__(self):
+		pass
+
 class EndoplasmicReticulum(Compartment):
 	def __init__(self):
 		pass
 
 class ERMembrane(Compartment):
+	def __init__(self):
+		pass
+
+class ERMembraneOuterSide(Compartment):
+	def __init__(self):
+		pass
+
+class ERMembraneInnerSide(Compartment):
 	def __init__(self):
 		pass
 
@@ -162,7 +222,27 @@ class VacuolarMembrane(Compartment):
 	def __init__(self):
 		pass
 
+class VacuolarMembraneMediumSide(Compartment):
+	def __init__(self):
+		pass
+
+class VacuolarMembraneCytosolSide(Compartment):
+	def __init__(self):
+		pass
+
+class VacuolarMembraneInnerSide(Compartment):
+	def __init__(self):
+		pass
+
 class PeroxisomalMembrane(Compartment):
+	def __init__(self):
+		pass
+
+class PeroxisomalMembraneInnerSide(Compartment):
+	def __init__(self):
+		pass
+
+class PeroxisomalMembraneOuterSide(Compartment):
 	def __init__(self):
 		pass
 
