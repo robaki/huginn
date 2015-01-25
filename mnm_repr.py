@@ -10,7 +10,7 @@ class Entity(Element):
 	def __init__(self, ID, name, version, properties):
 		Element.__init__(self, ID, name)
 		self.version = version
-		self.properties = set(properties)
+		self.properties = frozenset(properties)
 		self.add_cost = None
 		self.remove_cost = None
 		self.detection_cost = None
@@ -34,79 +34,66 @@ class Complex(Entity):
 
 
 class Activity(Element):
-	def __init__(self, ID, name):
+	def __init__(self, ID, name, required_conditions, changes):
 		Element.__init__(self, ID, name)
+		self.required_conditions = frozenset(required_conditions)
+		self.changes = frozenset(changes)
 		self.detection_cost = None
+		self.base_reconstruction_cost = None
+		self.add_cost = None
+		self.remove_cost = None
 
 class Growth(Activity):
 	def __init__(self, conditions, ID, name=None):
-		Activity.__init__(self, ID, name)
-		self.required_conditions = set(conditions)
+		Activity.__init__(self, ID, name, required_conditions, changes)
 
 class Expression(Activity):
 	def __init__(self, coding_gene, product_conditions, ID, name=None):
-		Activity.__init__(self, ID, name)
-		self.coding_gene = coding_gene
-		self.product_conditions = set(product_conditions)
+		Activity.__init__(self, ID, name, required_conditions, changes)
 
-class NonEnzymaticReaction(Activity):
+class Reaction(Activity):
 	def __init__(self, substrates, products, ID, name=None):
-		Activity.__init__(self, ID, name)
-		self.substrates = set(substrates)
-		self.products = set(products)
+		Activity.__init__(self, ID, name, required_conditions, changes)
 
-class EnzymaticReaction(Activity):
-	def __init__(self, substrates, products, ID, name=None):
-		Activity.__init__(self, ID, name)
-		self.substrates = set(substrates)
-		self.products = set(products)
-
-class TransporterNotRequired(Activity):
+class Transport(Activity):
 	def __init__(self, source_conditions, destination_conditions, ID, name=None):
-		Activity.__init__(self, ID, name)
-		self.source_conditions = set(source_conditions)
-		self.destination_conditions = set(destination_conditions)
+		Activity.__init__(self, ID, name, required_conditions, changes)
 
-class TransporterRequired(Activity):
-	def __init__(self, source_conditions, destination_conditions, transporter_location, ID, name=None):
-		Activity.__init__(self, ID, name)
-		self.source_conditions = set(source_conditions)
-		self.destination_conditions = set(destination_conditions)
-		self.transporter_location = transporter_location
-
-class NotCatalysedComplexFormation():
+class ComplexFormation(Activity):
 	def __init__(self, substrates, products, ID, name=None):
-		Activity.__init__(self, ID, name)
-		self.substrates = set(substrates)
-		self.products = set(products)
-
-class CatalysedComplexFormation():
-	def __init__(self, substrates, products, ID, name=None):
-		Activity.__init__(self, ID, name)
-		self.substrates = set(substrates)
-		self.products = set(products)
+		Activity.__init__(self, ID, name, required_conditions, changes)
 
 
 class Property:
-	def __init__(self, activity):
-		self.activity = activity
+	def __init__(self):
+		pass
 
 class Catalyses(Property):
 	def __init__(self, activity):
-		Property.__init__(self, activity)
+		Property.__init__(self)
+		self.activity = activity
 
 class Transports(Property):
 	def __init__(self, activity):
-		Property.__init__(self, activity)
+		Property.__init__(self)
+		self.activity = activity
 
 
 class Condition:
 	def __init__(self):
 		pass
 
-class Present(Condition):
+class PresentEntity(Condition):
 	def __init__(self, entity, compartment):
 		self.entity = entity
+		self.compartment = compartment
+
+class PresentCatalyst(Condition):
+	def __init__(self, compartment):
+		self.compartment = compartment
+
+class PresentTransporter(Condition):
+	def __init__(self, compartment):
 		self.compartment = compartment
 
 
@@ -252,7 +239,6 @@ class Peroxisome(Compartment):
 
 
 
-
 class Intervention:
 	def __init__(self, condition_or_activity):
 		self.condition_or_activity = condition_or_activity
@@ -266,12 +252,13 @@ class Remove(Intervention):
 		Intervention.__init__(self, condition_or_activity)
 
 
+
 class Model:
-	def __init__(self, ID, setup_conds, intermediate_activities, termination_conds, status='Active'):
+	def __init__(self, ID, setup_conditions, intermediate_activities, termination_conditions, status='Active'):
 		self.ID = ID
-		self.setup_conds = set(setup_conds)
-		self.intermediate_activities = set(intermediate_activities)
-		self.termination_conds = set(termination_conds)
+		self.setup_conditions = frozenset(setup_conditions)
+		self.intermediate_activities = frozenset(intermediate_activities)
+		self.termination_conditions = frozenset(termination_conditions)
 		self.status = status
 		self.quality = None
 
@@ -282,17 +269,25 @@ class Model:
 	def apply_intervention(self, intervention):
 		if type(intervention) == Add:
 			if isinstance(intervention.condition_or_activity, Condition):
-				self.setup_conds.append(intervention.condition_or_activity)
+				new_set = set(self.setup_conditions)
+				new_set.add(intervention.condition_or_activity)
+				self.setup_conditions = frozenset(new_set)
 			elif isinstance(intervention.condition_or_activity, Activity):
-				self.intermediate_activities.append(intervention.condition_or_activity)
+				new_set = set(self.intermediate_activities)
+				new_set.add(intervention.condition_or_activity)
+				self.intermediate_activities = frozenset(new_set)
 			else:
 				raise TypeError('intervention is neither condition nor activity: %s' % type(intervention.condition_or_activity))
 
 		elif type(intervention) == Remove:
 			if isinstance(intervention.condition_or_activity, Condition):
-				self.setup_conds.remove(intervention.condition_or_activity)
+				new_set = set(self.setup_conditions)
+				new_set.remove(intervention.condition_or_activity)
+				self.setup_conditions = frozenset(new_set)
 			elif isinstance(intervention.condition_or_activity, Activity):
-				self.intermediate_activities.remove(intervention.condition_or_activity)
+				new_set = set(self.intermediate_activities)
+				new_set.remove(intervention.condition_or_activity)
+				self.intermediate_activities = frozenset(new_set)
 			else:
 				raise TypeError('intervention is neither condition nor activity: %s' % type(intervention.condition_or_activity))
 
