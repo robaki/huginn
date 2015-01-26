@@ -260,7 +260,16 @@ class Model:
 		self.intermediate_activities = frozenset(intermediate_activities)
 		self.termination_conditions = frozenset(termination_conditions)
 		self.status = status
+		self.score = None
 		self.quality = None
+		self.ignored_results = frozenset([])
+		self.results_covered = frozenset([])
+
+	def update_ignored_results(self, ignored_results):
+		self.ignored_results = frozenset(ignored_results)
+
+	def update_covered_results(self, results_covered):
+		self.results_covered = frozenset(results_covered)
 
 	def apply_interventions(self, interventions):
 		for intervention in interventions:
