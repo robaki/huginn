@@ -1,15 +1,18 @@
 #! /usr/bin/env python3
 
+import mnm_repr
+import exp_repr
+
 def export_entities(entities):
 	strings = []
 	for ent in entities:
-		if isinstance(ent,Gene):
+		if isinstance(ent, mnm_repr.Gene):
 			strings.append("\ngene(%s,%s)." %(ent.ID, ent.version))
-		elif isinstance(ent,Metabolite):
+		elif isinstance(ent, mnm_repr.Metabolite):
 			strings.append("\nmetabolite(%s,%s)." %(ent.ID, ent.version))
-		elif isinstance(ent,Protein):
+		elif isinstance(ent, mnm_repr.Protein):
 			strings.append("\nprotein(%s,%s)." %(ent.ID, ent.version))
-		elif isinstance(ent,Complex):
+		elif isinstance(ent, mnm_repr.Complex):
 			strings.append("\ncomplex(%s,%s)." %(ent.ID, ent.version))
 		else:
 			raise TypeError("export_entities: entity type not recognised:%s" % type(ent))
@@ -18,10 +21,10 @@ def export_entities(entities):
 			continue
 
 		for prop in ent.properties:
-			if isinstance(prop, Catalyses):
-				strings.append("\ncatalyses(%s,%s,%s)." % (ent.ID, ent.version, prop.activity))
-			elif isinstance(prop, Transports):
-				strings.append("\ntransports(%s,%s,%s)." % (ent.ID, ent.version, prop.activity))
+			if isinstance(prop, mnm_repr.Catalyses):
+				strings.append("\ncatalyses(%s,%s,%s)." % (ent.ID, ent.version, prop.activity.ID))
+			elif isinstance(prop, mnm_repr.Transports):
+				strings.append("\ntransports(%s,%s,%s)." % (ent.ID, ent.version, prop.activity.ID))
 			else:	
 				raise TypeError("export_entities: property type not recognised:%s" % type(prop))
 
@@ -30,7 +33,7 @@ def export_entities(entities):
 
 def export_compartments(compartments):
 	comps = ";".join([comp.ID for comp in compartments])
-	return comps.join(['\ncompartment(', ').'])
+	return [comps.join(['\ncompartment(', ').'])]
 
 
 def export_activities(activities):
@@ -43,57 +46,57 @@ def export_activities(activities):
 def export_activity(activity):
 	strings = []
 	for req in activity.required_conditions:
-		if isinstance(req, PresentEntity):
+		if isinstance(req, mnm_repr.PresentEntity):
 			strings.append('\nsubstrate(%s,%s,%s,%s).' % (req.entity.ID, req.entity.version, req.compartment.ID, activity.ID))
-		elif isinstance(req, PresentCatalyst):		
+		elif isinstance(req, mnm_repr.PresentCatalyst):		
 			strings.append('\nenz_required(%s).' % activity.ID)
 			strings.append('\nenz_compartment(%s,%s).' % (req.compartment.ID, activity.ID))
-		elif isinstance(req, PresentTransporter):
+		elif isinstance(req, mnm_repr.PresentTransporter):
 			strings.append('\ntransp_required(%s).' % activity.ID)
 			strings.append('\ntransp_compartment(%s,%s).' % (req.compartment.ID, activity.ID))
 		else:
-			raise TypeError("export_activity: requirement type not recognised:%s", % type(req))
+			raise TypeError("export_activity: requirement type not recognised:%s" % type(req))
 
-	for prod in activity.products:
-		strings.append('\nproduct(%s,%s,%s,%s).' % (prod.entity.ID, prod.entity.version, prod.compartment.ID, activity.ID))
+	for change in activity.changes:
+		strings.append('\nproduct(%s,%s,%s,%s).' % (change.entity.ID, change.entity.version, change.compartment.ID, activity.ID))
 
 	return strings
 
 
-def export_results(results)
+def export_results(results):
 	strings = []
 	for result in results:
 		ID = result.ID
 		out = result.outcome
-		if isinstance(result, ReconstructionTransporterRequired):
+		if isinstance(result.exp_description.experiment_type, exp_repr.ReconstructionTransporterRequired):
 			act = result.exp_description.experiment_type.transport_activity_id
 			trp = result.exp_description.experiment_type.transporter_id
 			strings.append('\nresult(%s, experiment(transp_reconstruction_exp, %s, %s), %s).' % (ID, act, trp, out))
 
-		elif isinstance(result, ReconstructionEnzReaction):
+		elif isinstance(result.exp_description.experiment_type, exp_repr.ReconstructionEnzReaction):
 			act = result.exp_description.experiment_type.reaction_id
 			enz = result.exp_description.experiment_type.enzyme_id
 			strings.append('\nresult(%s, experiment(enz_reconstruction_exp, %s, %s), %s).' % (ID, act, enz, out))
 
-		elif isinstance(result, ReconstructionActivity):
+		elif isinstance(result.exp_description.experiment_type, exp_repr.ReconstructionActivity):
 			act = result.exp_description.experiment_type.activity_id
 			strings.append('\nresult(%s, experiment(basic_reconstruction_exp, %s), %s).' % (ID, act, out))
 
-		elif isinstance(result, AdamTwoFactorExperiment):
+		elif isinstance(result.exp_description.experiment_type, exp_repr.AdamTwoFactorExperiment):
 			gene = result.exp_description.experiment_type.gene_id
 			met = result.exp_description.experiment_type.metabolite_id
 			strings.append('\nresult(%s, experiment(adam_two_factor_exp, %s, %s), %s).' % (ID, gene, met, out))
 
-		elif isinstance(result, DetectionActivity):
+		elif isinstance(result.exp_description.experiment_type, exp_repr.DetectionActivity):
 			act = result.exp_description.experiment_type.activity_id
 			strings.append('\nresult(%s, experiment(detection_activity_exp, %s), %s).' % (ID, act, out))
 
-		elif isinstance(result, LocalisationEntity):
+		elif isinstance(result.exp_description.experiment_type, exp_repr.LocalisationEntity):
 			ent = result.exp_description.experiment_type.entity_id
 			comp = result.exp_description.experiment_type.compartment_id
 			strings.append('\nresult(%s, experiment(localisation_entity_exp, %s, %s), %s).' % (ID, ent, comp, out))
 
-		elif isinstance(result, DetectionEntity):
+		elif isinstance(result.exp_description.experiment_type, exp_repr.DetectionEntity):
 			ent = result.exp_description.experiment_type.entity_id
 			strings.append('\nresult(%s, experiment(detection_entity_exp, %s), %s).' % (ID, ent, out))
 
@@ -143,6 +146,7 @@ def export_relevancy_results(models_results, base_model):
 			else:
 				strings.append('\nrelevant(%s, %s).' % (res.ID, model.ID))
 				strings.append('\n#example not inconsistent(%s, %s).' % (model.ID, res.ID))
+	return strings
 
 
 def models_rules(self):

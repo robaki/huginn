@@ -17,8 +17,8 @@ class DetectionEntity(ExperimentType):
 		return ((hash(self) == hash(other)) and (type(self) == type(other)))
 
 class LocalisationEntity(ExperimentType):
-	def __init__(self, entity_id):
-		ExperimentType.__init__(self, comp_id)
+	def __init__(self, entity_id, comp_id):
+		ExperimentType.__init__(self)
 		self.entity_id = entity_id
 		self.compartment_id = comp_id
 

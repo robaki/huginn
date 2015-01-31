@@ -4,10 +4,15 @@ import exporter
 
 from archive import RefutedModels
 from archive import RevisedModel
+from copy import copy
+import subprocess
 
 class RevisionModule:
-	def __init__(self, archive):
+	def __init__(self, archive, xhail="/usr/local/xhail-0.5.1/xhail.jar", gringo="/usr/local/xhail-0.5.1/gringo", clasp="/usr/local/xhail-0.5.1/clasp"):
 		self.archive = archive
+		self.xhail = xhail
+		self.gringo = gringo
+		self.clasp = clasp
 
 	def check_consistency(self, model):
 		res_mods = self.prepare_input_results_models(model)
@@ -39,16 +44,16 @@ class RevisionModule:
 		[output.extend(x) for x in all_info] # flattening all_info; strings put into output
 		return output
 
+	def write_and_execute_xhail(self, inpt):
+		with open('./temp/workfile', 'w') as f:
+			for string in inpt:
+				read_data = f.write(string)
+		output_enc = subprocess.check_output(["java", "-jar", self.xhail, "-g", self.gringo, "-c", self.clasp, "-a", "-f", './temp/workfile'])
+		output_dec = output_enc.decode('utf-8')
+		return output_dec
 
 #	def process_output_consistency(self, output):
 #		# is there a model or not
-
-
-	def write_and_execute_xhail(self, inpt):
-		with open('/tmp/workfile', 'w') as f:
-			for string in inpt:
-				read_data = f.write(string)
-
 
 	def make_derivative_models(self, base_model, extracted_results):
 		unique_interventions = set([result.exp_description.interventions for result in extracted_results])
@@ -67,14 +72,15 @@ class RevisionModule:
 		models = {}
 		counter = 0
 		for interv_set in unique_interventions:
-			derived_model = copy(base_model).apply_interventions(interv_set)
+			derived_model = copy(base_model)
+			derived_model.apply_interventions(interv_set)
 			derived_model.ID = 'deriv_%s_%s' % (base_model.ID, counter)
 			models[interv_set] = derived_model
 			counter += 1
 		# model:results association (based on interventions)
 		models_results = {} # model:relevant_results
 		for interv_set in unique_interventions:
-			models_results[models[interv_set]] = [grouped_results[interv_set]]
+			models_results[models[interv_set]] = grouped_results[interv_set]
 
 		return models_results
 
