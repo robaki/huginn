@@ -16,6 +16,13 @@ class Entity(Element):
 		self.detection_cost = None
 		self.localisation_cost = None
 
+	def __hash__(self):
+		return hash((self.ID, self.version))
+
+	def __eq__(self, other):
+		return ((hash(self) == hash(other)) and (type(self) == type(other)))
+
+
 class Gene(Entity):
 	def __init__(self, ID, name=None, version=None, properties=[]):
 		Entity.__init__(self, ID, name, version, properties)
@@ -42,6 +49,12 @@ class Activity(Element):
 		self.base_reconstruction_cost = None
 		self.add_cost = None
 		self.remove_cost = None
+
+	def __hash__(self):
+		return hash((self.required_conditions, self.changes))
+
+	def __eq__(self, other):
+		return ((hash(self) == hash(other)) and (type(self) == type(other)))
 
 class Growth(Activity):
 	def __init__(self, conditions, ID, name=None):
@@ -88,154 +101,180 @@ class PresentEntity(Condition):
 		self.entity = entity
 		self.compartment = compartment
 
+	def __hash__(self):
+		return hash((self.entity, self.compartment))
+
+	def __eq__(self, other):
+		return ((hash(self) == hash(other)) and (type(self) == type(other)))
+
 class PresentCatalyst(Condition):
 	def __init__(self, compartment):
 		self.compartment = compartment
+
+	def __hash__(self):
+		return hash(self.compartment)
+
+	def __eq__(self, other):
+		return ((hash(self) == hash(other)) and (type(self) == type(other)))
 
 class PresentTransporter(Condition):
 	def __init__(self, compartment):
 		self.compartment = compartment
 
+	def __hash__(self):
+		return hash(self.compartment)
+
+	def __eq__(self, other):
+		return ((hash(self) == hash(other)) and (type(self) == type(other)))
+
+
 
 class Compartment:
 	def __init__(self):
-		pass
+		self.ID = None
+
+	def __hash__(self):
+		return hash(self.ID)
+
+	def __eq__(self, other):
+		return ((hash(self) == hash(other)) and (type(self) == type(other)))
+
 
 class Medium(Compartment):
 	def __init__(self):
-		pass
+		self.ID = "c_01"
 
 class CellMembrane(Compartment):
 	def __init__(self):
-		pass
+		self.ID = "c_02"
 
 class CellMembraneOuterSide(Compartment):
 	def __init__(self):
-		pass
+		self.ID = "c_03"
 
 class CellMembraneInnerSide(Compartment):
 	def __init__(self):
-		pass
+		self.ID = "c_04"
 
 class Cytosol(Compartment):
 	def __init__(self):
-		pass
+		self.ID = "c_05"
 
 class Mitochondrium(Compartment):
 	def __init__(self):
-		pass
+		self.ID = "c_06"
 
 class MitochMatrix(Compartment):
 	def __init__(self):
-		pass
+		self.ID = "c_07"
 
 class MitochOuterMembrane(Compartment):
 	def __init__(self):
-		pass
+		self.ID = "c_08"
 
 class MitochOuterMembraneOuterSide(Compartment):
 	def __init__(self):
-		pass
+		self.ID = "c_09"
 
 class MitochOuterMembraneInnerSide(Compartment):
 	def __init__(self):
-		pass
+		self.ID = "c_10"
 
 class MitochInnerMembrane(Compartment):
 	def __init__(self):
-		pass
+		self.ID = "c_11"
 
 class MitochInnerMembraneOuterSide(Compartment):
 	def __init__(self):
-		pass
+		self.ID = "c_12"
 
 class MitochInnerMembraneInnerSide(Compartment):
 	def __init__(self):
-		pass
+		self.ID = "c_13"
 
 class GolgiMembrane(Compartment):
 	def __init__(self):
-		pass
+		self.ID = "c_14"
 
 class GolgiMembraneOuterSide(Compartment):
 	def __init__(self):
-		pass
+		self.ID = "c_15"
 
 class GolgiMembraneInnerSide(Compartment):
 	def __init__(self):
-		pass
+		self.ID = "c_16"
 
 class GolgiApparatus(Compartment):
 	def __init__(self):
-		pass
+		self.ID = "c_17"
 
 class Nucleus(Compartment):
 	def __init__(self):
-		pass
+		self.ID = "c_18"
 
 class NuclearMembrane(Compartment):
 	def __init__(self):
-		pass
+		self.ID = "c_19"
 
 class NuclearMembraneOuterSide(Compartment):
 	def __init__(self):
-		pass
+		self.ID = "c_20"
 
 class NuclearMembraneInnerSide(Compartment):
 	def __init__(self):
-		pass
+		self.ID = "c_21"
 
 class EndoplasmicReticulum(Compartment):
 	def __init__(self):
-		pass
+		self.ID = "c_22"
 
 class ERMembrane(Compartment):
 	def __init__(self):
-		pass
+		self.ID = "c_23"
 
 class ERMembraneOuterSide(Compartment):
 	def __init__(self):
-		pass
+		self.ID = "c_24"
 
 class ERMembraneInnerSide(Compartment):
 	def __init__(self):
-		pass
+		self.ID = "c_25"
 
 class Vacuole(Compartment):
 	def __init__(self):
-		pass
+		self.ID = "c_26"
 
 class VacuolarMembrane(Compartment):
 	def __init__(self):
-		pass
+		self.ID = "c_27"
 
 class VacuolarMembraneMediumSide(Compartment):
 	def __init__(self):
-		pass
+		self.ID = "c_28"
 
 class VacuolarMembraneCytosolSide(Compartment):
 	def __init__(self):
-		pass
+		self.ID = "c_29"
 
 class VacuolarMembraneInnerSide(Compartment):
 	def __init__(self):
-		pass
+		self.ID = "c_30"
 
 class PeroxisomalMembrane(Compartment):
 	def __init__(self):
-		pass
+		self.ID = "c_31"
 
 class PeroxisomalMembraneInnerSide(Compartment):
 	def __init__(self):
-		pass
+		self.ID = "c_32"
 
 class PeroxisomalMembraneOuterSide(Compartment):
 	def __init__(self):
-		pass
+		self.ID = "c_33"
 
 class Peroxisome(Compartment):
 	def __init__(self):
-		pass
+		self.ID = "c_34"
 
 
 
@@ -264,6 +303,19 @@ class Model:
 		self.quality = None
 		self.ignored_results = frozenset([])
 		self.results_covered = frozenset([])
+
+	def __copy__(self):
+		setup = frozenset(list(self.setup_conditions))
+		activ = frozenset(list(self.intermediate_activities))
+		termi = frozenset(list(self.termination_conditions))
+		new_model = Model(None, setup, activ, termi)
+		return new_model
+
+	def __hash__(self):
+		return hash((self.setup_conditions, self.intermediate_activities, self.termination_conditions))
+
+	def __eq__(self, other):
+		return ((hash(self) == hash(other)) and (type(self) == type(other)))
 
 	def update_ignored_results(self, ignored_results):
 		self.ignored_results = frozenset(ignored_results)
