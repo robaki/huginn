@@ -2,8 +2,8 @@
 
 class ExperimentType:
 	def __init__(self):
-		self.cost = None
-		self.ignoring_penalty = None
+		self.ignoring_penalty = 1
+		self.cost = 1
 
 class DetectionEntity(ExperimentType):
 	def __init__(self, entity_id):

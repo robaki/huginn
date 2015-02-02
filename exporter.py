@@ -129,7 +129,7 @@ def export_model_specification(model):
 	return strings
 
 
-def export_termination_conds(base_model):
+def export_termination_conds_revision(base_model):
 	strings = []
 	for cond in base_model.termination_conditions:
 		strings.append('\n#example synthesizable(%s, %s, %s, %s).' % (cond.entity.ID, cond.entity.version, cond.compartment.ID, base_model.ID))
@@ -137,7 +137,24 @@ def export_termination_conds(base_model):
 	return strings
 
 
-def export_relevancy_results(models_results, base_model):
+def export_relevancy_results_revision(models_results):
+	strings = []
+	for model in models_results.keys():
+		for res in models_results[model]:
+			strings.append('\nrelevant(%s, %s).' % (res.ID, model.ID))
+			strings.append('\n#example not inconsistent(%s, %s).' % (model.ID, res.ID))
+	return strings
+
+
+def export_termination_conds_consistency(base_model):
+	strings = []
+	for cond in base_model.termination_conditions:
+		strings.append('\n:- not synthesizable(%s, %s, %s, %s).' % (cond.entity.ID, cond.entity.version, cond.compartment.ID, base_model.ID))
+
+	return strings
+
+
+def export_relevancy_results_consistency(models_results, base_model):
 	strings = []
 	for model in models_results.keys():
 		for res in models_results[model]:
@@ -145,12 +162,39 @@ def export_relevancy_results(models_results, base_model):
 				continue
 			else:
 				strings.append('\nrelevant(%s, %s).' % (res.ID, model.ID))
-				strings.append('\n#example not inconsistent(%s, %s).' % (model.ID, res.ID))
+				strings.append('\n:- inconsistent(%s, %s).' % (model.ID, res.ID))
 	return strings
 
 
-def models_rules(self):
-	strings = ['\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%',
+def export_force_new_model(base_model, external_models):
+	strings = []
+	for model in external_models:
+		# external model specification
+		strings.append('\nexternal_model(%s).' % model.ID)
+		for activity in model.intermediate_activities:
+			strings.append('\nin_model(%s,%s).' % (activity.ID, model.ID))
+		# constraint
+		strings.append('\n#example different(%s, %s).' % (base_model.ID, model.ID))
+	return strings
+
+
+def export_add_activities(activities):
+#	strings = ['\n#modeh add(%s).' % act.ID for act in activities]
+#	for act in activities:
+#		strings.append('\n#modeh add(%s).' % act.ID)
+	return ['\n#modeh add(%s) =%s @1.' % (act.ID, act.add_cost) for act in activities]
+
+
+def export_remove_activities(activities):
+	return ['\n#modeh remove(%s) =%s @1.' % (act.ID, act.remove_cost) for act in activities]
+
+
+def export_ignore_results(results):
+	return ['\n#modeh ignore(%s) =%s @2.' % (result.ID, result.exp_description.experiment_type.ignoring_penalty) for result in results]
+
+
+def models_rules(max_number_activities):
+	return ['\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%',
 	'\n%%%%% model specification rules %%%%%',
 	'\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%',
 	'\nactivity(Activity) :- reaction(Activity).',
@@ -200,7 +244,7 @@ def models_rules(self):
 	'\niteration(1).',
 	'\n',
 	'\niteration(Int+2) :-',
-	'\n	Int < 9,',
+	'\n	Int < %s,' % max_number_activities,
 	'\n	iteration(Int),',
 	'\n	eliminated(Activity, Model, Int+1),',
 	'\n	not eliminated(Activity, Model, Int),',
@@ -289,11 +333,10 @@ def models_rules(self):
 	'\n	in_model(Activity, Model),',
 	'\n	transp_required(Activity),',
 	'\n	not has_transporter(Activity, Model, Int).']
-	return strings
 
 
-def predictions_rules(self):
-	strings = ['\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%',
+def predictions_rules():
+	return ['\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%',
 	'\n%%%%% prediction rules %%%%%',
 	'\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%',
 	'\n',
@@ -487,11 +530,10 @@ def predictions_rules(self):
 	'\n	compartment(Compartment),',
 	'\n	substrate(Entity, Version, Compartment, Activity),',
 	'\n	in_model(Activity, Model).']
-	return strings
 
 
-def interventions_rules(self):
-	strings = ['%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%',
+def interventions_rules():
+	return ['%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%',
 	'\n%%%%%% application of interventions to all models %%%%%%',
 	'\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%',
 	'\n',
@@ -502,10 +544,10 @@ def interventions_rules(self):
 	'\nadded_to_model(ActivityOrCondition, Model) :-',
 	'\n	add(ActivityOrCondition),',
 	'\n	model(Model).']
-	return strings
 
-def inconsistency_rules(self):
-	strings = ['\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%',
+
+def inconsistency_rules():
+	return ['\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%',
 	'\n%%%%%% inconsistency between models and results - for revision %%%%%%',
 	'\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%',
 	'\n',
@@ -520,5 +562,19 @@ def inconsistency_rules(self):
 	'\n	Prediction != Outcome,',
 	'\n	relevant(Result, Model),',
 	'\n	not ignored(Result).']
-	return strings
 
+
+def model_difference_rules():
+	return ['\n different(Model, ExternalModel) :-',
+	'\n	model(Model),',
+	'\n	activity(Activity),',
+	'\n	external_model(ExternalModel),',
+	'\n	in_model(Activity, Model),',
+	'\n	not in_model(Activity, ExternalModel).',
+	'\n',
+	'\ndifferent(Model, ExternalModel) :-',
+	'\n	model(Model),',
+	'\n	activity(Activity),',
+	'\n	external_model(ExternalModel),',
+	'\n	not in_model(Activity, Model),',
+	'\n	in_model(Activity, ExternalModel).']

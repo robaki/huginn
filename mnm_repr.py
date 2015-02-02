@@ -11,10 +11,10 @@ class Entity(Element):
 		Element.__init__(self, ID, name)
 		self.version = version
 		self.properties = frozenset(properties)
-		self.add_cost = None
-		self.remove_cost = None
-		self.detection_cost = None
-		self.localisation_cost = None
+		self.add_cost = 1
+		self.remove_cost = 1
+		self.detection_cost = 1
+		self.localisation_cost = 1
 
 	def __hash__(self):
 		return hash((self.ID, self.version))
@@ -24,19 +24,19 @@ class Entity(Element):
 
 
 class Gene(Entity):
-	def __init__(self, ID, name=None, version=None, properties=[]):
+	def __init__(self, ID, name=None, version='none', properties=[]):
 		Entity.__init__(self, ID, name, version, properties)
 
 class Metabolite(Entity):
-	def __init__(self, ID, name=None, version=None, properties=[]):
+	def __init__(self, ID, name=None, version='none', properties=[]):
 		Entity.__init__(self, ID, name, version, properties)
 
 class Protein(Entity):
-	def __init__(self, ID, name=None, version=None, properties=[]):
+	def __init__(self, ID, name=None, version='none', properties=[]):
 		Entity.__init__(self, ID, name, version, properties)
 
 class Complex(Entity):
-	def __init__(self, ID, name=None, version=None, properties=[]):
+	def __init__(self, ID, name=None, version='none', properties=[]):
 		Entity.__init__(self, ID, name, version, properties)
 
 
@@ -45,10 +45,10 @@ class Activity(Element):
 		Element.__init__(self, ID, name)
 		self.required_conditions = frozenset(required_conditions)
 		self.changes = frozenset(changes)
-		self.detection_cost = None
-		self.base_reconstruction_cost = None
-		self.add_cost = None
-		self.remove_cost = None
+		self.detection_cost = 1
+		self.base_reconstruction_cost = 1
+		self.add_cost = 1
+		self.remove_cost = 1
 
 	def __hash__(self):
 		return hash((self.required_conditions, self.changes))
