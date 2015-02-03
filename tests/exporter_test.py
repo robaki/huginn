@@ -119,8 +119,8 @@ class ExporterTest(unittest.TestCase):
 		res1 = exp_repr.Result('res1', des, None)
 		res2 = exp_repr.Result('res2', des, None)
 		out = exporter.export_ignore_results([res1, res2])
-		self.assertIn('\n#modeh ignore(res1) =1 @2.', out)
-		self.assertIn('\n#modeh ignore(res2) =1 @2.', out)
+		self.assertIn('\n#modeh ignored(res1) =1 @2.', out)
+		self.assertIn('\n#modeh ignored(res2) =1 @2.', out)
 
 
 	def test_export_force_new_model(self):

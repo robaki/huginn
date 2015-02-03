@@ -105,3 +105,7 @@ class NumberNewCoveredMinusIgnored(QualityModule):
 					model.quality = model.score
 					self.archive.record(UpdatedModelQuality(model, model.quality))
 
+
+#
+# analogus modules, but including WEIGHTS! () <- or just modify these...
+#

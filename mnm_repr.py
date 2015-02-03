@@ -301,8 +301,9 @@ class Model:
 		self.status = status
 		self.score = None
 		self.quality = None
-		self.ignored_results = frozenset([])
 		self.results_covered = frozenset([])
+		self.ignored_results = frozenset([])
+
 
 	def __copy__(self):
 		setup = frozenset(list(self.setup_conditions))

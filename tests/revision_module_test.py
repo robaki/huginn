@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 
 import unittest
-from revision_module import RevisionModule, RevC, RevCI, RevCwI, RevCIw, RevCwIw
+from revision_module import RevisionModule, RevC, RevCI
 import mnm_repr
 import exp_repr
 from archive import Archive, AdditionalModels, Results
@@ -135,6 +135,67 @@ class RevisionModuleTest(unittest.TestCase):
 		rev = RevC(arch)
 		out = rev.revise(mod)
 
+		self.assertEqual(out[0], True)
+		self.assertEqual(out[1][mod][0].ID, 'm_0')
+		self.assertEqual(out[1][mod][0].intermediate_activities, frozenset([]))
+		self.assertEqual(arch.working_models[0].intermediate_activities, frozenset([]))
 
 
-#	def RevC revise(model) negative
+	def test_RevC_revise_negative(self):
+		met1 = mnm_repr.Metabolite('met1')
+		met2 = mnm_repr.Metabolite('met2')
+		comp1 = mnm_repr.Medium()
+		cond_subst_1 = mnm_repr.PresentEntity(met1, comp1)
+		cond_subst_2 = mnm_repr.PresentEntity(met2, comp1)
+		a1 = mnm_repr.Activity('act1', None, [], [cond_subst_1, cond_subst_2])
+		a1.remove_cost = None
+		a2 = mnm_repr.Activity('act1', None, [], [cond_subst_1])
+		# model to be revised
+		mod = mnm_repr.Model('m', [], [a1], [])
+		# results
+		des1 = exp_repr.ExperimentDescription(exp_repr.DetectionEntity('met1'), [])
+		des2 = exp_repr.ExperimentDescription(exp_repr.DetectionEntity('met2'), [])
+		res1 = exp_repr.Result('r1', des1, 'false')
+		res2 = exp_repr.Result('r2', des2, 'true')
+		exp1 = exp_repr.Experiment('exp1', [res1])
+		exp2 = exp_repr.Experiment('exp2', [res2])
+		# archive with results and parts for revision
+		arch = Archive()
+		arch.known_results = [exp1, exp2]
+		arch.mnm_activities = [a1, a2]
+		arch.mnm_entities = [met1, met2]
+		arch.mnm_compartments = [comp1]
+
+		rev = RevC(arch)
+		out = rev.revise(mod)
+		self.assertEqual(out, False)
+
+	def test_RevCI_revise_ignoring(self):
+		met1 = mnm_repr.Metabolite('met1')
+		met2 = mnm_repr.Metabolite('met2')
+		comp1 = mnm_repr.Medium()
+		cond_subst_1 = mnm_repr.PresentEntity(met1, comp1)
+		cond_subst_2 = mnm_repr.PresentEntity(met2, comp1)
+		a1 = mnm_repr.Activity('act1', None, [], [cond_subst_1, cond_subst_2])
+		a1.remove_cost = None
+		a2 = mnm_repr.Activity('act1', None, [], [cond_subst_1])
+		# model to be revised
+		mod = mnm_repr.Model('m', [], [a1], [])
+		# results
+		des1 = exp_repr.ExperimentDescription(exp_repr.DetectionEntity('met1'), [])
+		des2 = exp_repr.ExperimentDescription(exp_repr.DetectionEntity('met2'), [])
+		res1 = exp_repr.Result('r1', des1, 'false')
+		res2 = exp_repr.Result('r2', des2, 'true')
+		exp1 = exp_repr.Experiment('exp1', [res1])
+		exp2 = exp_repr.Experiment('exp2', [res2])
+		# archive with results and parts for revision
+		arch = Archive()
+		arch.known_results = [exp1, exp2]
+		arch.mnm_activities = [a1, a2]
+		arch.mnm_entities = [met1, met2]
+		arch.mnm_compartments = [comp1]
+
+		rev = RevCI(arch)
+		out = rev.revise(mod)
+		self.assertEqual(out[0], True)
+		print(out[1][mod][0].ignored_results)

@@ -179,9 +179,6 @@ def export_force_new_model(base_model, external_models):
 
 
 def export_add_activities(activities):
-#	strings = ['\n#modeh add(%s).' % act.ID for act in activities]
-#	for act in activities:
-#		strings.append('\n#modeh add(%s).' % act.ID)
 	return ['\n#modeh add(%s) =%s @1.' % (act.ID, act.add_cost) for act in activities]
 
 
@@ -190,7 +187,7 @@ def export_remove_activities(activities):
 
 
 def export_ignore_results(results):
-	return ['\n#modeh ignore(%s) =%s @2.' % (result.ID, result.exp_description.experiment_type.ignoring_penalty) for result in results]
+	return ['\n#modeh ignored(%s) =%s @2.' % (result.ID, result.exp_description.experiment_type.ignoring_penalty) for result in results]
 
 
 def models_rules(max_number_activities):

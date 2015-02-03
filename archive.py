@@ -30,17 +30,21 @@ class Archive:
 
 		elif isinstance(event, RevisedModel):
 			for model in event.revised_models:
+				model.ID = self.get_new_model_id()
 				self.working_models.append(model)
 
 		elif isinstance(event, AdditionalModels):
 			for model in event.additional_models:
+				model.ID = self.get_new_model_id()
 				self.working_models.append(model)
 
 		elif isinstance(event, UpdatedModelQuality):
 			pass
 
 		elif isinstance(event,  InitialModels):
-			self.working_models.extend(event.models)
+			for model in event.models:
+				model.ID = self.get_new_model_id()
+				self.working_models.append(model)
 
 		elif isinstance(event,  InitialResults):
 			self.known_results.extend(event.experiments)
@@ -82,6 +86,46 @@ class Archive:
 		for res_set in results_sets:
 			results.extend(list(res_set))
 		return results
+
+	def get_matching_element(self, element_id):
+		for element in self.mnm_activities:
+			if element.ID == element_id:
+				return element
+			else:
+				pass
+		for element in self.mnm_entities:
+			if element.ID == element_id:
+				return element
+			else:
+				pass
+		for element in self.mnm_compartments:
+			if element.ID == element_id:
+				return element
+			else:
+				pass
+		raise ValueError("get_matching_element: matching element not found: ID: %s" % element_id)
+
+
+	def get_matching_result(self, res_id):
+		for exp in self.known_results:
+			for res in exp.results:
+				if res.ID == res_id:
+					return res
+				else:
+					pass
+		raise ValueError("get_matching_result: matching element not found: ID: %s" % res_id)
+
+
+	def get_new_model_id(self):
+		return 'm_%s' % len(self.working_models)
+
+	def get_new_exp_id(self):
+		return 'exp_%s' % len(self.known_results)
+
+	def get_new_res_id(self):
+		all_res = [exp.results for exp in self.known_results]
+		all_res = [val for sublist in all_res for val in sublist] # flatten
+		return 'res_%s' % len(all_res)
 
 
 class Event:

@@ -4,9 +4,11 @@ import exporter
 
 from archive import RefutedModels
 from archive import RevisedModel
+import archive
 from copy import copy
 import subprocess
 import mnm_repr
+import re
 
 class RevisionModule:
 	def __init__(self, archive, xhail="/usr/local/xhail-0.5.1/xhail.jar", gringo="/usr/local/xhail-0.5.1/gringo", clasp="/usr/local/xhail-0.5.1/clasp"):
@@ -14,6 +16,24 @@ class RevisionModule:
 		self.xhail = xhail
 		self.gringo = gringo
 		self.clasp = clasp
+
+
+	def test_and_revise_all(self):
+		inconsistent_models = []
+		for model in self.archive.working_models:
+			if not self.check_consistency(model):
+				inconsistent_models.append(model)
+			else:
+				pass
+
+		revision_results = {}
+		for model in inconsistent_models:
+			out = self.revise(model)
+			if out == False: # in this case: there is no consistent model
+				return False # so revision is futile; no need check other models
+			else:
+				revision_results.update(out[1])
+		return revision_results
 
 
 	def check_consistency(self, model):
@@ -137,28 +157,68 @@ class RevisionModule:
 		return models_results
 
 
+	def create_models_and_register(self, base_model, processed_output):# generalise
+		models = []
+		for solution in processed_output.keys():
+			interv_add = [mnm_repr.Add(self.archive.get_matching_element(e_id)) for e_id in processed_output[solution][0]]
+			interv_rem = [mnm_repr.Remove(self.archive.get_matching_element(e_id)) for e_id in processed_output[solution][1]]
+			covered_res = [self.archive.get_matching_result(res_id) for res_id in processed_output[solution][2]]
+			ignored_res = [self.archive.get_matching_result(res_id) for res_id in processed_output[solution][3]]
+
+			new_model = copy(base_model)
+			new_model.apply_interventions(interv_rem)
+			new_model.apply_interventions(interv_add)
+			new_model.results_covered = frozenset(covered_res)
+			new_model.ignored_results = frozenset(ignored_res)
+			models.append(new_model)
+
+		self.archive.record(archive.RevisedModel(base_model, models))
+		return (base_model, models)
+
+
+	def process_output_revision(self, raw_output):# generalise
+		pat_answer = re.compile('Answer.*?\n\n\x1b', re.DOTALL)
+		answers = pat_answer.findall(raw_output)
+
+		pat_add = re.compile('add\(.*?\)')
+		pat_remove = re.compile('remove\(.*?\)')
+		pat_not_incon = re.compile('not inconsistent\(.*?\)')
+		pat_ignored = re.compile('ignored\(.*?\)')
+		output = {}
+		counter = 0
+		for ans in answers:
+			added = set(pat_add.findall(raw_output))
+			added = [ad.strip('add(') for ad in added] # formatting: leaving only id
+			added = [ad.strip(')') for ad in added] # formatting: leaving only id
+			removed = set(pat_remove.findall(raw_output))
+			removed = [rem.strip('remove(') for rem in removed]
+			removed = [rem.strip(')') for rem in removed]
+			covered = set(pat_not_incon.findall(raw_output))
+			covered = [cov.strip('not inconsistent(') for cov in covered]
+			covered = [cov.strip(')') for cov in covered]
+			covered = [cov.split(',')[1] for cov in covered] # removing first argument
+			ignored = set(pat_ignored.findall(raw_output))
+			ignored = [ign.strip('ignored(') for ign in ignored]
+			ignored = [ign.strip(')') for ign in ignored]
+			counter += 1
+			output[counter] = (added, removed, covered, ignored)
+		return output
+
+
+
+
 class RevC(RevisionModule): # minimise changes
 	def __init__(self, archive):
 		RevisionModule.__init__(self, archive)
-
-#	def test_and_revise_all(self):
-#		inconsistent_models = []
-#		for model in self.archive.working_models:
-#			if not self.check_consistency(model):
-#				inconsistent_models.append(model)
-#			else:
-#				pass
-#
-#		for model in inconsistent_models:
-#			self.revise(model)
-
 
 
 	def revise(self, base_model):
 		res_mods = self.prepare_input_results_models_revision(base_model)
 
-		modeh_add_act = exporter.export_add_activities(set(self.archive.mnm_activities) - set(base_model.intermediate_activities))
-		modeh_rem_act = exporter.export_remove_activities(base_model.intermediate_activities)
+		add_act = set([x for x in self.archive.mnm_activities if (x.add_cost != None)]) - set(base_model.intermediate_activities)
+		rem_act = set([x for x in base_model.intermediate_activities if (x.remove_cost != None)])
+		modeh_add_act = exporter.export_add_activities(add_act)
+		modeh_rem_act = exporter.export_remove_activities(rem_act)
 		interventions_rules = exporter.interventions_rules()
 
 		difference_facts = exporter.export_force_new_model(base_model, set(self.archive.working_models) - set([base_model]))
@@ -173,132 +233,49 @@ class RevC(RevisionModule): # minimise changes
 		inpt = [val for sublist in inpt for val in sublist] # flatten
 
 		raw_output = self.write_and_execute_xhail(inpt)
-		outcome = self.process_output_revision(raw_output)
+		processed_output = self.process_output_revision(raw_output)
+		if processed_output == {}:
+			return False
+		else:
+			b_mod, new_mods = self.create_models_and_register(base_model, processed_output)
+			return (True, {b_mod:new_mods})
 
-#		print('\n\n\n')
-#		print(raw_output)
-#		print('\n\n\n')
-	
-#		return outcome
 
-	def process_output_revision(self, raw_output):
-		# not inconsistent(%%%,%%%)
-		# remove(%%%)
-		# add(%%%)
 
 class RevCI(RevisionModule): # minimise changes and ignored
-	def __init__(self, archive, quality_module):
+	def __init__(self, archive):
 		RevisionModule.__init__(self, archive)
-		self.quality_module = quality_module
-
-#	def test_and_revise_all(self):
-#		inconsistent_models = []
-#		for model in self.archive.working_models:
-#			if not self.check_consistency(model):
-#				inconsistent_models.append(model)
-#			else:
-#				pass
-#
-#		for model in inconsistent_models:
-#			self.revise(model)
-#
-#		for model in self.archive.working_models:
-#			self.update_quality(model)
 
 
-#	def check_consistency(self, model):
-		# prepare input consistency
-		# return: T/F
+	def revise(self, base_model):
+		res_mods = self.prepare_input_results_models_revision(base_model)
 
-#	def revise(self, model):
+		add_act = set([x for x in self.archive.mnm_activities if (x.add_cost != None)]) - set(base_model.intermediate_activities)
+		rem_act = set([x for x in base_model.intermediate_activities if (x.remove_cost != None)])
+		modeh_add_act = exporter.export_add_activities(add_act)
+		modeh_rem_act = exporter.export_remove_activities(rem_act)
 
-#	def update_quality(self):
+		results = [exp.results for exp in self.archive.known_results]
+		results = [val for sublist in results for val in sublist] # flatten
+		modeh_ignore = exporter.export_ignore_results(results)###
+		inter_rules = exporter.interventions_rules()
 
+		difference_facts = exporter.export_force_new_model(base_model, set(self.archive.working_models) - set([base_model]))
+		model_difference_rules = exporter.model_difference_rules()
 
+		max_number_activities = self.calculate_max_number_activities(base_model)
+		mod_rules = exporter.models_rules(max_number_activities)
+		pred_rules = exporter.predictions_rules()
+		incons_rules = exporter.inconsistency_rules()
 
-class RevCwI(RevisionModule): # revision minimise changes weighted and ignored
-	def __init__(self, archive, quality_module):
-		RevisionModule.__init__(self, archive)
-		self.quality_module = quality_module
+		inpt = [res_mods, modeh_add_act, modeh_rem_act, modeh_ignore, inter_rules, difference_facts, model_difference_rules, mod_rules, pred_rules, incons_rules]
+		inpt = [val for sublist in inpt for val in sublist] # flatten
 
-#	def test_and_revise_all(self):
-#		inconsistent_models = []
-#		for model in self.archive.working_models:
-#			if not self.check_consistency(model):
-#				inconsistent_models.append(model)
-#			else:
-#				pass
-#
-#		for model in inconsistent_models:
-#			self.revise(model)
-#
-#		for model in self.archive.working_models:
-#			self.update_quality(model)
-#
-#	def check_consistency(self, model):
-#		# prepare input consistency
-#		# return: T/F
-#
-#	def revise(self, model):
-#
-#	def update_quality(self):
-
-
-
-class RevCIw(RevisionModule): # revision minimise changes and ignored weighted
-	def __init__(self, archive, quality_module):
-		RevisionModule.__init__(self, archive)
-		self.quality_module = quality_module
-
-#	def test_and_revise_all(self):
-#		inconsistent_models = []
-#		for model in self.archive.working_models:
-#			if not self.check_consistency(model):
-#				inconsistent_models.append(model)
-#			else:
-#				pass
-#
-#		for model in inconsistent_models:
-#			self.revise(model)
-#
-#		for model in self.archive.working_models:
-#			self.update_quality(model)
-#
-#	def check_consistency(self, model):
-#		# prepare input consistency
-#		# return: T/F
-#
-#	def revise(self, model):
-#
-#	def update_quality(self):
-
-
-
-class RevCwIw(RevisionModule): # revision minimise changes weighted and ignored weighted
-	def __init__(self, archive, quality_module):
-		RevisionModule.__init__(self, archive)
-		self.quality_module = quality_module
-
-#	def test_and_revise_all(self):
-#		inconsistent_models = []
-#		for model in self.archive.working_models:
-#			if not self.check_consistency(model):
-#				inconsistent_models.append(model)
-#			else:
-#				pass
-#
-#		for model in inconsistent_models:
-#			self.revise(model)
-#
-#		for model in self.archive.working_models:
-#			self.update_quality(model)
-#
-#	def check_consistency(self, model):
-#		# prepare input consistency
-#		# return: T/F
-#
-#	def revise(self, model):
-#
-#	def update_quality(self):
-
+		raw_output = self.write_and_execute_xhail(inpt)
+		processed_output = self.process_output_revision(raw_output)
+		if processed_output == {}:
+			return False
+		else:
+			b_mod, new_mods = self.create_models_and_register(base_model, processed_output)
+			return (True, {b_mod:new_mods})
 

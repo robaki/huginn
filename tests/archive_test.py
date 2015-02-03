@@ -4,6 +4,7 @@ import unittest
 from archive import Archive
 import archive
 import exp_repr
+import mnm_repr
 
 class ArchiveTest(unittest.TestCase):
 	def setUp(self):
@@ -30,16 +31,16 @@ class ArchiveTest(unittest.TestCase):
 		self.assertNotIn(mod, self.archive.working_models)
 
 	def test_record_RevisedModel(self):
-		old = 'mod_old'
-		new = 'mod_new'
+		old = mnm_repr.Model(None, [1], [], [])
+		new = mnm_repr.Model(None, [2], [], [])
 		event = archive.RevisedModel(old, [new])
 		self.archive.record(event)
 		self.assertIn(event, self.archive.development_history)
 		self.assertIn(new, self.archive.working_models)
 
 	def test_record_AdditionalModels(self):
-		mod1 = 'mod1'
-		mod2 = 'mod2'
+		mod1 = mnm_repr.Model(None, [1], [], [])
+		mod2 = mnm_repr.Model(None, [2], [], [])
 		event = archive.AdditionalModels([mod1,mod2])
 		self.archive.record(event)
 		self.assertIn(event, self.archive.development_history)
@@ -52,8 +53,8 @@ class ArchiveTest(unittest.TestCase):
 		self.assertIn(event, self.archive.development_history)
 
 	def test_record_InitialModels(self):
-		mod1 = 'mod1'
-		mod2 = 'mod2'
+		mod1 = mnm_repr.Model(None, [1], [], [])
+		mod2 = mnm_repr.Model(None, [2], [], [])
 		event = archive.InitialModels([mod1, mod2])
 		self.archive.record(event)
 		self.assertIn(event, self.archive.development_history)
