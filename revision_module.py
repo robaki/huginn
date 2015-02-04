@@ -157,7 +157,7 @@ class RevisionModule:
 		return models_results
 
 
-	def create_models_and_register(self, base_model, processed_output):# generalise
+	def create_models_and_register(self, base_model, processed_output):
 		models = []
 		for solution in processed_output.keys():
 			interv_add = [mnm_repr.Add(self.archive.get_matching_element(e_id)) for e_id in processed_output[solution][0]]
@@ -176,7 +176,7 @@ class RevisionModule:
 		return (base_model, models)
 
 
-	def process_output_revision(self, raw_output):# generalise
+	def process_output_revision(self, raw_output):
 		pat_answer = re.compile('Answer.*?\n\n\x1b', re.DOTALL)
 		answers = pat_answer.findall(raw_output)
 
@@ -198,13 +198,12 @@ class RevisionModule:
 			covered = [cov.strip(')') for cov in covered]
 			covered = [cov.split(',')[1] for cov in covered] # removing first argument
 			ignored = set(pat_ignored.findall(raw_output))
-			ignored = [ign.strip('ignored(') for ign in ignored]
+			ignored = [ign.split('ignored(')[1] for ign in ignored] # using split not strip; strip matchech chars not string: overzelous
 			ignored = [ign.strip(')') for ign in ignored]
 			counter += 1
 			output[counter] = (added, removed, covered, ignored)
+
 		return output
-
-
 
 
 class RevC(RevisionModule): # minimise changes
