@@ -256,7 +256,7 @@ class RevCI(RevisionModule): # minimise changes and ignored
 
 		results = [exp.results for exp in self.archive.known_results]
 		results = [val for sublist in results for val in sublist] # flatten
-		modeh_ignore = exporter.export_ignore_results(results)###
+		modeh_ignore = exporter.export_ignore_results(results)# added ignoring!!!
 		inter_rules = exporter.interventions_rules()
 
 		difference_facts = exporter.export_force_new_model(base_model, set(self.archive.working_models) - set([base_model]))

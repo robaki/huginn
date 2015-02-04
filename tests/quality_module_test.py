@@ -3,16 +3,17 @@
 import unittest
 from archive import Archive, Results, AdditionalModels
 from mnm_repr import Model
-from exp_repr import Result, Experiment
+from exp_repr import Result, Experiment, ExperimentDescription, DetectionEntity
 from quality_module import NumberAllCovered, NumberAllCoveredMinusIgnored, NumberNewCovered, NumberNewCoveredMinusIgnored
 
 class QualityModuleTest(unittest.TestCase):
 	def setUp(self):
 		self.archive = Archive()
-		res1 = Result('res1', None, None)
-		res2 = Result('res2', None, None)
-		res3 = Result('res3', None, None)
-		res4 = Result('res4', None, None)
+		exd = ExperimentDescription(DetectionEntity(None))
+		res1 = Result('res1', exd, None)
+		res2 = Result('res2', exd, None)
+		res3 = Result('res3', exd, None)
+		res4 = Result('res4', exd, None)
 		exp1 = Experiment('exp1', [res1])
 		exp2 = Experiment('exp2', [res2])
 		exp3 = Experiment('exp3', [res3])

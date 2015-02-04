@@ -3,6 +3,7 @@
 class ExperimentType:
 	def __init__(self):
 		self.ignoring_penalty = 1
+		self.covering_reward = 1
 		self.cost = 1
 
 class DetectionEntity(ExperimentType):
