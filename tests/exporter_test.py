@@ -4,6 +4,7 @@ import unittest
 import exporter
 import mnm_repr
 import exp_repr
+from exp_cost_model import CostModel
 
 class ExporterTest(unittest.TestCase):
 	def test_export_entities_alone(self):
@@ -136,3 +137,125 @@ class ExporterTest(unittest.TestCase):
 		self.assertIn('\nin_model(act2,m3).', out)
 		self.assertIn('\n#example different(m1, m2).', out)
 		self.assertIn('\n#example different(m1, m3).', out)
+
+
+	def test_export_experiment_specification_elements(self):
+		# prepare the cost model
+		g1 = mnm_repr.Gene('g1')
+		p1 = mnm_repr.Protein('p1')
+		met1 = mnm_repr.Metabolite('met1')
+		met2 = mnm_repr.Metabolite('met2')
+		cplx1 = mnm_repr.Complex('cplx1')
+		cytosol = mnm_repr.Cytosol()
+
+		cond1 = mnm_repr.PresentEntity(met1, cytosol)
+		cond2 = mnm_repr.PresentEntity(met2, cytosol)
+		cond3 = mnm_repr.PresentEntity(p1, cytosol)
+		cond4 = mnm_repr.PresentEntity(cplx1, cytosol)
+
+		growth = mnm_repr.Growth('growth', [cond2])
+		r1 = mnm_repr.Reaction('r1', [cond1], [cond2])
+		r2 = mnm_repr.Reaction('r2', [cond3], [cond4])
+
+		entities = [g1, p1, met1, met2, cplx1]
+		compartments = [cytosol]
+		activities = [growth, r1, r2]
+		setup_conds = [cond1, cond3]
+		model = CostModel(entities, compartments, activities, setup_conds)
+		model.set_all_basic_costs_to_1()
+		model.calculate_derived_costs(activities)
+		# test
+		out = exporter.export_experiment_specification_elements(model)
+		self.assertEqual(len(out.keys()), 57)
+		self.assertNotIn(None, out.values())
+
+
+	def test_modeh_replacement(self):
+		# prepare the cost model
+		g1 = mnm_repr.Gene('g1')
+		p1 = mnm_repr.Protein('p1')
+		met1 = mnm_repr.Metabolite('met1')
+		met2 = mnm_repr.Metabolite('met2')
+		cplx1 = mnm_repr.Complex('cplx1')
+		cytosol = mnm_repr.Cytosol()
+
+		cond1 = mnm_repr.PresentEntity(met1, cytosol)
+		cond2 = mnm_repr.PresentEntity(met2, cytosol)
+		cond3 = mnm_repr.PresentEntity(p1, cytosol)
+		cond4 = mnm_repr.PresentEntity(cplx1, cytosol)
+
+		growth = mnm_repr.Growth('growth', [cond2])
+		r1 = mnm_repr.Reaction('r1', [cond1], [cond2])
+		r2 = mnm_repr.Reaction('r2', [cond3], [cond4])
+
+		entities = [g1, p1, met1, met2, cplx1]
+		compartments = [cytosol]
+		activities = [growth, r1, r2]
+		setup_conds = [cond1, cond3]
+		model = CostModel(entities, compartments, activities, setup_conds)
+		model.set_all_basic_costs_to_1()
+		model.calculate_derived_costs(activities)
+		# test
+		out = exporter.modeh_replacement(model)
+		self.assertIsInstance(out, str)
+
+
+	def test_models_nr_and_probabilities(self):
+		m1 = mnm_repr.Model('m1', [1], [], [])
+		m2 = mnm_repr.Model('m2', [2], [], [])
+		m1.quality = 5
+		m2.quality = 10
+		out = exporter.models_nr_and_probabilities([m1, m2])
+		self.assertEqual(['\nnr(0,m1).', '\nprobability(5, m1).', '\nnr(1,m2).', '\nprobability(10, m2).'], out)
+
+
+	def test_cost_rules(self):
+		# prepare the cost model
+		g1 = mnm_repr.Gene('g1')
+		p1 = mnm_repr.Protein('p1')
+		met1 = mnm_repr.Metabolite('met1')
+		met2 = mnm_repr.Metabolite('met2')
+		cplx1 = mnm_repr.Complex('cplx1')
+		cytosol = mnm_repr.Cytosol()
+
+		cond1 = mnm_repr.PresentEntity(met1, cytosol)
+		cond2 = mnm_repr.PresentEntity(met2, cytosol)
+		cond3 = mnm_repr.PresentEntity(p1, cytosol)
+		cond4 = mnm_repr.PresentEntity(cplx1, cytosol)
+
+		growth = mnm_repr.Growth('growth', [cond2])
+		r1 = mnm_repr.Reaction('r1', [cond1], [cond2])
+		r2 = mnm_repr.Reaction('r2', [cond3], [cond4])
+
+		entities = [g1, p1, met1, met2, cplx1]
+		compartments = [cytosol]
+		activities = [growth, r1, r2]
+		setup_conds = [cond1, cond3]
+		model = CostModel(entities, compartments, activities, setup_conds)
+		model.set_all_basic_costs_to_1()
+		model.calculate_derived_costs(activities)
+		# test
+		out = exporter.cost_rules(model)
+#		self.assertIn('\ncost(1, 0) :- add(setup_present(met1, none, c_01)).', out)
+		self.assertEqual(len(out), 57)
+
+	def test_constant_for_calculating_score(self):
+		out = exporter.constant_for_calculating_score(20)
+		self.assertEqual(out, '\n#const n = 20.')
+
+
+	def test_ban_experiment(self):
+		comp = mnm_repr.Medium()
+		ent1 = mnm_repr.Metabolite('m1')
+		cond1 = mnm_repr.PresentEntity(ent1, comp)
+		inter1 = mnm_repr.Add(cond1)
+		ent2 = mnm_repr.Metabolite('m2')
+		cond2 = mnm_repr.PresentEntity(ent2, comp)
+		inter2 = mnm_repr.Remove(cond2)
+		exp_description = exp_repr.ExperimentDescription(exp_repr.DetectionEntity('ent1'), [inter1, inter2])
+		out = exporter.ban_experiment(exp_description)
+#		print([out])
+		self.assertIn('\n:- designed(experiment(detection_entity_exp, ent1))', out)
+		self.assertIn(',remove(setup_present(m2, none, c_01))', out)
+		self.assertIn(',add(setup_present(m1, none, c_01))', out)
+

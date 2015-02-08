@@ -3,6 +3,7 @@
 import mnm_repr
 import exp_repr
 
+
 def export_entities(entities):
 	strings = []
 	for ent in entities:
@@ -575,3 +576,246 @@ def model_difference_rules():
 	'\n	external_model(ExternalModel),',
 	'\n	not in_model(Activity, Model),',
 	'\n	in_model(Activity, ExternalModel).']
+
+
+#
+# additional stuff for experiment design:
+#
+
+def export_models_exp_design(models):
+	strings = []
+	# model().
+	joined_models = ';'.join([x.ID for x in models])
+	strings.append(joined_models.join(['\nmodel(', ').']))
+	# specification:
+	for model in models_results.keys():
+		strings.extend(export_model_specification(model))
+
+	return strings
+
+
+def modeh_replacement(cost_model):
+	exp_spec_elements = [e for e in export_experiment_specification_elements(cost_model).keys()]
+	joined_elements = ','.join(exp_spec_elements)
+	return joined_elements.join(['\n0{', '}%s.' % len(exp_spec_elements)])
+
+
+def models_nr_and_probabilities(models):
+	out = []
+	counter = 0
+	for model in models:
+		out.append('\nnr(%s,%s).' % (counter, model.ID))
+		out.append('\nprobability(%s, %s).' % (model.quality, model.ID))
+		counter += 1
+	return out
+
+
+def cost_rules(cost_model):
+	output = []
+	cost_dict = export_experiment_specification_elements(cost_model)
+	counter = 0
+	for element in cost_dict.keys():
+		output.append(''.join(['\ncost(%s, %s) :- ' % (cost_dict[element], counter), element, '.']))
+		counter += 1
+	return output
+
+
+def ban_experiment(expDescription):
+	exp_info = []
+	# dealing with experiment types
+	if isinstance(expDescription.experiment_type, exp_repr.DetectionEntity):
+		exp_info.append('\n:- designed(experiment(detection_entity_exp, %s))' % expDescription.experiment_type.entity_id)
+	elif isinstance(expDescription.experiment_type, exp_repr.LocalisationEntity):
+		tpl = (expDescription.experiment_type.entity_id, expDescription.experiment_type.compartment_id)
+		exp_info.append('\n:- designed(experiment(localisation_entity_exp, %s, %s))' % tpl)
+	elif isinstance(expDescription.experiment_type, exp_repr.DetectionActivity):
+		exp_info.append('\n:- designed(experiment(detection_activity_exp, %s))' % expDescription.experiment_type.activity_id)
+	elif isinstance(expDescription.experiment_type, exp_repr.AdamTwoFactorExperiment):
+		tpl = (expDescription.experiment_type.gene_id, expDescription.experiment_type.metabolite_id)
+		exp_info.append('\n:- designed(experiment(adam_two_factor_exp, %s, %s))' % tpl)
+	elif isinstance(expDescription.experiment_type, exp_repr.ReconstructionActivity):
+		exp_info.append('\n:- designed(experiment(basic_reconstruction_exp, %s))' % expDescription.experiment_type.activity_id)
+	elif isinstance(expDescription.experiment_type, exp_repr.ReconstructionEnzReaction):
+		tpl = (expDescription.experiment_type.reaction_id, expDescription.experiment_type.enzyme_id)
+		exp_info.append('\n:- designed(experiment(enz_reconstruction_exp, %s, %s))' % tpl)
+	elif isinstance(expDescription.experiment_type, exp_repr.ReconstructionTransporterRequired):
+		tpl = (expDescription.experiment_type.transport_activity_id, expDescription.experiment_type.transporter_id)
+		exp_info.append('\n:- designed(experiment(transp_reconstruction_exp, %s, %s))' % tpl)
+	else:
+		raise TypeError("ban_experiment: exp description type not recognised: %s" % expDescription)
+
+	# dealing with interventions:
+	for inter in expDescription.interventions:
+		if isinstance(inter, mnm_repr.Add):
+			tpl = (inter.condition_or_activity.entity.ID, inter.condition_or_activity.entity.version, inter.condition_or_activity.compartment.ID)
+			exp_info.append('add(setup_present(%s, %s, %s))' % tpl)
+		elif isinstance(inter, mnm_repr.Remove):
+			tpl = (inter.condition_or_activity.entity.ID, inter.condition_or_activity.entity.version, inter.condition_or_activity.compartment.ID)
+			exp_info.append('remove(setup_present(%s, %s, %s))' % tpl)
+		else:
+			raise TypeError("ban_experiment: intervention type not recognised: %s" % inter)
+	# formatting:
+	st = ','.join(exp_info)
+	return ''.join([st, '.'])
+
+
+def export_experiment_specification_elements(cost_model):
+	output = {}
+
+	for element in cost_model.types.keys():
+		if element == exp_repr.DetectionEntity:
+			output['design_type(detection_entity_exp)'] = cost_model.types[element]
+		elif element == exp_repr.AdamTwoFactorExperiment:
+			output['design_type(adam_two_factor_exp)'] = cost_model.types[element]
+		elif element == exp_repr.ReconstructionActivity:
+			output['design_type(basic_reconstruction_exp)'] = cost_model.types[element]
+		elif element == exp_repr.ReconstructionEnzReaction:
+			output['design_type(enz_reconstruction_exp)'] = cost_model.types[element]
+		elif element == exp_repr.ReconstructionTransporterRequired:
+			output['design_type(transp_reconstruction_exp)'] = cost_model.types[element]
+		elif element == exp_repr.LocalisationEntity:
+			output['design_type(localisation_entity_exp)'] = cost_model.types[element]
+		elif element == exp_repr.DetectionActivity:
+			output['design_type(detection_activity_exp)'] = cost_model.types[element]
+		else:
+			raise TypeError("export_experiment_specification_elements: type not recognised: %s" % element)
+
+	for element in cost_model.design_compartment.keys():
+		output['design_compartment(%s)' % element] = cost_model.design_compartment[element]
+
+	for element in cost_model.design_deletable.keys():
+		output['design_deletable(%s)' % element.ID] = cost_model.design_deletable[element]
+
+	for element in cost_model.design_available.keys():
+		output['design_available(%s)' % element.ID] = cost_model.design_available[element]
+
+	for element in cost_model.design_activity_rec.keys():
+		output['design_activity_rec(%s)' % element.ID] = cost_model.design_activity_rec[element]
+
+	for element in cost_model.design_activity_det.keys():
+		output['design_activity_det(%s)' % element.ID] = cost_model.design_activity_det[element]
+
+	for element in cost_model.design_entity_loc.keys():
+		output['design_entity_loc(%s)' % element.ID] = cost_model.design_entity_loc[element]
+
+	for element in cost_model.design_entity_det.keys():
+		output['design_entity_det(%s)' % element.ID] = cost_model.design_entity_det[element]
+
+	for element in cost_model.intervention_add.keys():
+		tup = (element.condition_or_activity.entity.ID, element.condition_or_activity.entity.version, element.condition_or_activity.compartment.ID)
+		output['add(setup_present(%s, %s, %s))' % tup] = cost_model.intervention_add[element]
+
+	for element in cost_model.intervention_remove.keys():
+		tup = (element.condition_or_activity.entity.ID, element.condition_or_activity.entity.version, element.condition_or_activity.compartment.ID)
+		output['remove(setup_present(%s, %s, %s))' % tup] = cost_model.intervention_remove[element]
+
+	return output
+
+
+
+def constant_for_calculating_score(Int):
+	return '\n#const n = %s.' % Int
+
+
+def design_constraints_basic():
+	return ['\ndesigned :- designed(experiment(adam_two_factor_exp, Gene, Metabolite)), gene(Gene, Ver), metabolite(Metabolite, Ver).',
+	'\ndesigned :- designed(experiment(transp_reconstruction_exp, Activity, Entity)), activity(Activity), entity(Entity, Ver).',
+	'\ndesigned :- designed(experiment(enz_reconstruction_exp, Activity, Entity)), activity(Activity), entity(Entity, Ver).',
+	'\ndesigned :- designed(experiment(basic_reconstruction_exp, Activity)), activity(Activity).',
+	'\ndesigned :- designed(experiment(detection_activity_exp, Activity)), activity(Activity).',
+	'\ndesigned :- designed(experiment(localisation_entity_exp, Entity, Compartment)), entity(Entity, Ver), compartment(Compartment).',
+	'\ndesigned :- designed(experiment(detection_entity_exp, Entity)), entity(Entity, Ver).',
+	'\n',
+	'\n:- not designed.', # design at lest one exp
+	'\n',
+	'\n:- designed(Experiment1), designed(Experiment2), Experiment1 != Experiment2.', # design no more than one exp
+	'\n',
+	'\nhas_true_model :- predicts(Model, Experiment, true), model(Model), designed(Experiment).', # designed exp must make at least
+	'\nhas_false_model :- predicts(Model, Experiment, false), model(Model), designed(Experiment).',# one model false and one true
+	'\n:- not has_true_model.',
+	'\n:- not has_false_model.',
+	'\n',
+	'\n:- designed(experiment(adam_two_factor_exp, Gene, Metabolite)), add(Whatever), remove(Whatever).'] # no interventions for adam-style exps
+
+
+def cost_minimisation_rules():
+	return ['\ntotal_cost(TCost) :- TCost = #sum[cost(Cost, Nr)=Cost].',
+	'\n#minimize[total_cost(TCost) = TCost@1].']
+
+
+def experiment_design_rules():
+	return ['\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%',
+	'\n%%%%%% rules for exp design %%%%%%',
+	'\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%',
+	'\n',
+	'\ndesigned(experiment(adam_two_factor_exp, Gene, Metabolite)) :-',
+	'\n	design_type(adam_two_factor_exp),',
+	'\n	design_deletable(Gene),',
+	'\n	design_available(Metabolite).',
+	'\n',
+	'\ndesigned(experiment(transp_reconstruction_exp, Activity, Entity)) :-',
+	'\n	design_type(transp_reconstruction_exp),',
+	'\n	design_transport_rec(Activity),',
+	'\n	design_available(Entity).',
+	'\n',
+	'\ndesigned(experiment(enz_reconstruction_exp, Activity, Entity)) :-',
+	'\n	design_type(enz_reconstruction_exp),',
+	'\n	design_activity_rec(Activity),',
+	'\n	design_available(Entity).',
+	'\n',
+	'\ndesigned(experiment(basic_reconstruction_exp, Activity)) :-',
+	'\n	design_type(basic_reconstruction_exp),',
+	'\n	design_activity_rec(Activity).',
+	'\n',
+	'\ndesigned(experiment(detection_activity_exp, Activity)) :-',
+	'\n	design_type(detection_activity_exp),',
+	'\n	design_activity_det(Activity).',
+	'\n',
+	'\ndesigned(experiment(localisation_entity_exp, Entity, Compartment)) :-',
+	'\n	design_type(localisation_entity_exp),',
+	'\n	design_entity_loc(Entity),',
+	'\n	design_compartment(Compartment).',
+	'\n',
+	'\ndesigned(experiment(detection_entity_exp, Entity)) :-',
+	'\n	design_type(detection_entity_exp),',
+	'\n	design_entity_det(Entity).']
+
+
+def hide_show_statements():
+	return ['\n#hide.',
+	'\n#show design_type/1.',
+	'\n#show design_activity_det/1.',
+	'\n#show add/1.',
+	'\n#show remove/1.']
+
+
+def basic_exp_design_rules(): # NOT NEEDED: advanced is more general and covers this one too
+	return ['\nexp_score(0,1,0,0) :- indifferent(Model, Experiment), designed(Experiment), model(Model), nr(0,Model).',
+	'\nexp_score(0,0,1,0) :- predicts(Model, Experiment, true), designed(Experiment), model(Model), nr(0,Model).',
+	'\nexp_score(0,0,0,1) :- predicts(Model, Experiment, false), designed(Experiment), model(Model), nr(0,Model).',
+	'\n',
+	'\nexp_score(I,Ind+1,Tr,Fa) :- exp_score(I-1, Ind, Tr, Fa), indifferent(Model, Experiment), designed(Experiment), model(Model), nr(I, Model).',
+	'\nexp_score(I,Ind,Tr+1,Fa) :- exp_score(I-1, Ind, Tr, Fa), predicts(Model, Experiment, true), designed(Experiment), model(Model), nr(I, Model).',
+	'\nexp_score(I,Ind,Tr,Fa+1) :- exp_score(I-1, Ind, Tr, Fa), predicts(Model, Experiment, false), designed(Experiment), model(Model), nr(I, Model).',
+	'\n',
+	'\nexp_score(I) :- exp_score(I,Ind,Tr,Fa).',
+	'\n',
+	'\nfinal_score(I,Ind,Tr,Fa) :- exp_score(I,Ind,Tr,Fa), not exp_score(I+1).',
+	'\n',
+	'\nfinal_score(|Tr*10-n| + |Fa*10-n| + Ind*10) :- final_score(I,Ind,Tr,Fa).']
+
+
+def advanced_exp_design_rules():
+	return ['exp_score(0,Prb,0,0) :- indifferent(Model, Experiment), designed(Experiment), model(Model), nr(0,Model), probability(Prb, Model).',
+	'\nexp_score(0,0,Prb,0) :- predicts(Model, Experiment, true), designed(Experiment), model(Model), nr(0,Model), probability(Prb, Model).',
+	'\nexp_score(0,0,0,Prb) :- predicts(Model, Experiment, false), designed(Experiment), model(Model), nr(0,Model), probability(Prb, Model).',
+	'\n',
+	'\nexp_score(I,Ind+Prb,Tr,Fa) :- exp_score(I-1, Ind, Tr, Fa), indifferent(Model, Experiment), designed(Experiment), model(Model), nr(I, Model), probability(Prb, Model).',
+	'\nexp_score(I,Ind,Tr+Prb,Fa) :- exp_score(I-1, Ind, Tr, Fa), predicts(Model, Experiment, true), designed(Experiment), model(Model), nr(I, Model), probability(Prb, Model).',
+	'\nexp_score(I,Ind,Tr,Fa+Prb) :- exp_score(I-1, Ind, Tr, Fa), predicts(Model, Experiment, false), designed(Experiment), model(Model), nr(I, Model), probability(Prb, Model).',
+	'\n',
+	'\nexp_score(I) :- exp_score(I,Ind,Tr,Fa).',
+	'\n',
+	'\nfinal_score(I,Ind,Tr,Fa) :- exp_score(I,Ind,Tr,Fa), not exp_score(I+1).',
+	'\n',
+	'\nfinal_score(|Tr*10-n| + |Fa*10-n| + Ind*10) :- final_score(I,Ind,Tr,Fa).']

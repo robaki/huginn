@@ -50,6 +50,15 @@ class Activity(Element):
 		self.add_cost = 1
 		self.remove_cost = 1
 
+	def check_if_is_product(self, ent):
+		return ent in [con.entity for con in self.changes if isinstance(con, PresentEntity)]
+
+	def return_substrates(self):
+		return [con.entity for con in self.required_conditions if isinstance(con, PresentEntity)]
+
+	def return_products(self):
+		return [con.entity for con in self.changes if isinstance(con, PresentEntity)]
+
 	def __hash__(self):
 		return hash((self.required_conditions, self.changes))
 
@@ -57,23 +66,23 @@ class Activity(Element):
 		return ((hash(self) == hash(other)) and (type(self) == type(other)))
 
 class Growth(Activity):
-	def __init__(self, conditions, ID, name=None):
-		Activity.__init__(self, ID, name, required_conditions, changes)
+	def __init__(self, ID, required_conditions, name=None):
+		Activity.__init__(self, ID, name, required_conditions, [])
 
 class Expression(Activity):
-	def __init__(self, coding_gene, product_conditions, ID, name=None):
+	def __init__(self, ID, required_conditions, changes, name=None):
 		Activity.__init__(self, ID, name, required_conditions, changes)
 
 class Reaction(Activity):
-	def __init__(self, substrates, products, ID, name=None):
+	def __init__(self, ID, required_conditions, changes, name=None):
 		Activity.__init__(self, ID, name, required_conditions, changes)
 
 class Transport(Activity):
-	def __init__(self, source_conditions, destination_conditions, ID, name=None):
+	def __init__(self, ID, required_conditions, changes, name=None):
 		Activity.__init__(self, ID, name, required_conditions, changes)
 
 class ComplexFormation(Activity):
-	def __init__(self, substrates, products, ID, name=None):
+	def __init__(self, ID, required_conditions, changes, name=None):
 		Activity.__init__(self, ID, name, required_conditions, changes)
 
 
@@ -300,7 +309,7 @@ class Model:
 		self.termination_conditions = frozenset(termination_conditions)
 		self.status = status
 		self.score = None
-		self.quality = None
+		self.quality = 1
 		self.results_covered = frozenset([])
 		self.ignored_results = frozenset([])
 

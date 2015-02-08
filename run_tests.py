@@ -6,14 +6,16 @@ from tests import archive_test
 from tests import quality_module_test
 from tests import exporter_test
 from tests import revision_module_test
+from tests import cost_model_test
 
 suite_1 = unittest.TestLoader().loadTestsFromTestCase(mnm_repr_test.ModelTest)
 suite_2 = unittest.TestLoader().loadTestsFromTestCase(archive_test.ArchiveTest)
 suite_3 = unittest.TestLoader().loadTestsFromTestCase(quality_module_test.QualityModuleTest)
 suite_4 = unittest.TestLoader().loadTestsFromTestCase(exporter_test.ExporterTest)
 suite_5 = unittest.TestLoader().loadTestsFromTestCase(revision_module_test.RevisionModuleTest)
+suite_6 = unittest.TestLoader().loadTestsFromTestCase(cost_model_test.CostModelTest)
 
-suits = [suite_1, suite_2, suite_3, suite_4, suite_5]
+suits = [suite_1, suite_2, suite_3, suite_4, suite_5, suite_6]
 
 for suite in suits:
 	print('\n\n')
