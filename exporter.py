@@ -40,6 +40,20 @@ def export_compartments(compartments):
 def export_activities(activities):
 	strings = []
 	for act in activities:
+		if isinstance(act, mnm_repr.Growth):
+			strings.append('\ngrowth(%s).' % act.ID)
+		elif isinstance(act, mnm_repr.Expression):
+			strings.append('\nexpression(%s).' % act.ID)
+		elif isinstance(act, mnm_repr.Reaction):
+			strings.append('\nreaction(%s).' % act.ID)
+		elif isinstance(act, mnm_repr.Transport):
+			strings.append('\ntransport(%s).' % act.ID)
+		elif isinstance(act, mnm_repr.ComplexFormation):
+			strings.append('\ncomplex_formation(%s).' % act.ID)
+		else:
+			raise TypeError("export_activities: activity type not recognised: %s" % act)
+
+	for act in activities:
 		strings.extend(export_activity(act))
 	return strings
 
@@ -588,7 +602,7 @@ def export_models_exp_design(models):
 	joined_models = ';'.join([x.ID for x in models])
 	strings.append(joined_models.join(['\nmodel(', ').']))
 	# specification:
-	for model in models_results.keys():
+	for model in models:
 		strings.extend(export_model_specification(model))
 
 	return strings
@@ -714,11 +728,11 @@ def export_experiment_specification_elements(cost_model):
 
 
 def constant_for_calculating_score(Int):
-	return '\n#const n = %s.' % Int
+	return '\n\n#const n = %s.' % Int
 
 
 def design_constraints_basic():
-	return ['\ndesigned :- designed(experiment(adam_two_factor_exp, Gene, Metabolite)), gene(Gene, Ver), metabolite(Metabolite, Ver).',
+	return ['\n\ndesigned :- designed(experiment(adam_two_factor_exp, Gene, Metabolite)), gene(Gene, Ver), metabolite(Metabolite, Ver).',
 	'\ndesigned :- designed(experiment(transp_reconstruction_exp, Activity, Entity)), activity(Activity), entity(Entity, Ver).',
 	'\ndesigned :- designed(experiment(enz_reconstruction_exp, Activity, Entity)), activity(Activity), entity(Entity, Ver).',
 	'\ndesigned :- designed(experiment(basic_reconstruction_exp, Activity)), activity(Activity).',
@@ -735,16 +749,17 @@ def design_constraints_basic():
 	'\n:- not has_true_model.',
 	'\n:- not has_false_model.',
 	'\n',
-	'\n:- designed(experiment(adam_two_factor_exp, Gene, Metabolite)), add(Whatever), remove(Whatever).'] # no interventions for adam-style exps
+	'\n:- designed(experiment(adam_two_factor_exp, Gene, Metabolite)), add(Whatever).',
+	'\n:- designed(experiment(adam_two_factor_exp, Gene, Metabolite)), remove(Whatever).'] # no interventions for adam-style exps
 
 
 def cost_minimisation_rules():
-	return ['\ntotal_cost(TCost) :- TCost = #sum[cost(Cost, Nr)=Cost].',
+	return ['\n\ntotal_cost(TCost) :- TCost = #sum[cost(Cost, Nr)=Cost].',
 	'\n#minimize[total_cost(TCost) = TCost@1].']
 
 
 def experiment_design_rules():
-	return ['\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%',
+	return ['\n\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%',
 	'\n%%%%%% rules for exp design %%%%%%',
 	'\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%',
 	'\n',
@@ -755,7 +770,7 @@ def experiment_design_rules():
 	'\n',
 	'\ndesigned(experiment(transp_reconstruction_exp, Activity, Entity)) :-',
 	'\n	design_type(transp_reconstruction_exp),',
-	'\n	design_transport_rec(Activity),',
+	'\n	design_activity_rec(Activity),',
 	'\n	design_available(Entity).',
 	'\n',
 	'\ndesigned(experiment(enz_reconstruction_exp, Activity, Entity)) :-',
@@ -790,7 +805,7 @@ def hide_show_statements():
 
 
 def basic_exp_design_rules(): # NOT NEEDED: advanced is more general and covers this one too
-	return ['\nexp_score(0,1,0,0) :- indifferent(Model, Experiment), designed(Experiment), model(Model), nr(0,Model).',
+	return ['\n\nexp_score(0,1,0,0) :- indifferent(Model, Experiment), designed(Experiment), model(Model), nr(0,Model).',
 	'\nexp_score(0,0,1,0) :- predicts(Model, Experiment, true), designed(Experiment), model(Model), nr(0,Model).',
 	'\nexp_score(0,0,0,1) :- predicts(Model, Experiment, false), designed(Experiment), model(Model), nr(0,Model).',
 	'\n',
@@ -806,7 +821,7 @@ def basic_exp_design_rules(): # NOT NEEDED: advanced is more general and covers 
 
 
 def advanced_exp_design_rules():
-	return ['exp_score(0,Prb,0,0) :- indifferent(Model, Experiment), designed(Experiment), model(Model), nr(0,Model), probability(Prb, Model).',
+	return ['\n\nexp_score(0,Prb,0,0) :- indifferent(Model, Experiment), designed(Experiment), model(Model), nr(0,Model), probability(Prb, Model).',
 	'\nexp_score(0,0,Prb,0) :- predicts(Model, Experiment, true), designed(Experiment), model(Model), nr(0,Model), probability(Prb, Model).',
 	'\nexp_score(0,0,0,Prb) :- predicts(Model, Experiment, false), designed(Experiment), model(Model), nr(0,Model), probability(Prb, Model).',
 	'\n',
@@ -818,4 +833,5 @@ def advanced_exp_design_rules():
 	'\n',
 	'\nfinal_score(I,Ind,Tr,Fa) :- exp_score(I,Ind,Tr,Fa), not exp_score(I+1).',
 	'\n',
-	'\nfinal_score(|Tr*10-n| + |Fa*10-n| + Ind*10) :- final_score(I,Ind,Tr,Fa).']
+	'\nfinal_score(|Tr*10-n| + |Fa*10-n| + Ind*10) :- final_score(I,Ind,Tr,Fa).'
+	'\n#minimize[final_score(Score) = Score@2].']

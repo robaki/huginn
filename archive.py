@@ -10,7 +10,7 @@ class Archive:
 		self.mnm_compartments = [] # to keep track of mnm elements; info for exp design
 		self.mnm_entities = [] # to keep track of mnm elements
 		self.mnm_activities = [] # to keep track of mnm elements; info for revision and exp design
-		self.allowed_exp_types = [] # info for exp design
+#		self.allowed_exp_types = [] # info for exp design
 		self.start_time = time()
 
 

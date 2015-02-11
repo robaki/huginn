@@ -2,12 +2,13 @@
 
 import exporter
 import random
+import subprocess
 
 class ExperimentModule:
 	# module for experiment design. Method relies on splitting sum of models' probabilities (qualities) in half.
 	# If no model quality modules is used, then model quality = 1 and is constant throught development time.
 	# In that case the algorithm just splits set of working models in half.
-	def __init__(self, archive, cost_model=None, use_costs=False):
+	def __init__(self, archive, cost_model, use_costs=False):
 		self.archive = archive
 		self.cost_model = cost_model
 		self.use_costs = use_costs
@@ -19,8 +20,9 @@ class ExperimentModule:
 
 
 	def design_experiments(self):
-		exp_input = self.prepare_input_for_exp_design
+		exp_input = self.prepare_input_for_exp_design()
 		out = self.write_and_execute_gringo_clasp(exp_input)
+
 #		experiments = self.process_output(out)
 #		return experiments
 
@@ -35,10 +37,13 @@ class ExperimentModule:
 	def write_and_execute_gringo_clasp(self, exp_input):
 		# try remove the file
 		with open('./temp/workfile_gringo_clasp', 'w') as f:
-			for string in inpt:
+			for string in exp_input:
 				read_data = f.write(string)
 		# could suppress there warnig messages later on
-		output_enc = subprocess.check_output(['gringo', './temp/workfile_gringo_clasp', '|', 'clasp', '-n', '0'])
+		gringo = subprocess.Popen(['gringo', './temp/workfile_gringo_clasp'], stdout=subprocess.PIPE)
+		clasp = subprocess.Popen(['clasp', '-n', '0'], stdin=gringo.stdout, stdout=subprocess.PIPE)
+		gringo.stdout.close()
+		output_enc = clasp.communicate()[0]
 		output_dec = output_enc.decode('utf-8')
 		return output_dec
 
@@ -51,7 +56,7 @@ class ExperimentModule:
 		exported.extend(exporter.export_activities(self.archive.mnm_activities))
 		exported.extend(exporter.export_models_exp_design(self.archive.working_models)) # export models info
 		exported.extend(exporter.models_nr_and_probabilities(self.archive.working_models)) # + probabilities and numbers
-		exported.extend(append.modeh_replacement(self.cost_model)) # export design elements (modeh eqiv)
+		exported.append(exporter.modeh_replacement(self.cost_model)) # export design elements (modeh eqiv)
 		exported.extend(exporter.design_constraints_basic()) # export rules forcing and restricting exp design
 		for exp in self.archive.known_results:
 			exp_descriptions = [res.exp_description for res in exp.results]
@@ -67,10 +72,10 @@ class ExperimentModule:
 		exported.extend(exporter.experiment_design_rules()) # export design rules
 		exported.extend(exporter.interventions_rules())
 		exported.extend(exporter.predictions_rules())
-		numbers_of_activities = [mod.intermediate_activities for mod in self.archive.working_models]
-		exported.extend(models_rules(max(numbers_of_activities)))) # export modelling and prediction rules ASSUMES NO ACTIVITIES WILL BE ADDed
+		activities = [len(mod.intermediate_activities) for mod in self.archive.working_models]
+		exported.extend(exporter.models_rules(max(activities))) # export modelling and prediction rules ASSUMES NO ACTIVITIES WILL BE ADDed
 		return exported
 
 
 	def calculate_constant_for_scores(self):
-		return (sum([mod.quality for mod in self.archive.working_models])*10)/2
+		return int((sum([mod.quality for mod in self.archive.working_models])*10)/2)
