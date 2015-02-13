@@ -87,14 +87,14 @@ class Archive:
 			results.extend(list(res_set))
 		return results
 
-	def get_matching_element(self, element_id):
+	def get_matching_element(self, element_id, element_version=None):
 		for element in self.mnm_activities:
 			if element.ID == element_id:
 				return element
 			else:
 				pass
 		for element in self.mnm_entities:
-			if element.ID == element_id:
+			if ((element.ID == element_id) and (element.version == element_version)):
 				return element
 			else:
 				pass

@@ -4,6 +4,10 @@ import exporter
 import random
 import subprocess
 
+from exp_repr import DetectionEntity, LocalisationEntity, DetectionActivity, AdamTwoFactorExperiment, ReconstructionActivity, ReconstructionEnzReaction, ReconstructionTransporterRequired, ExperimentDescription
+
+from mnm_repr import PresentEntity, Add, Remove
+
 class ExperimentModule:
 	# module for experiment design. Method relies on splitting sum of models' probabilities (qualities) in half.
 	# If no model quality modules is used, then model quality = 1 and is constant throught development time.
@@ -22,16 +26,8 @@ class ExperimentModule:
 	def design_experiments(self):
 		exp_input = self.prepare_input_for_exp_design()
 		out = self.write_and_execute_gringo_clasp(exp_input)
-
-#		experiments = self.process_output(out)
-#		return experiments
-
-
-	def process_output(self, output):
-		# extract each model/answer
-		# produce experiment based on an answer
-		pass
-
+		experiments = self.process_output(out)
+		return experiments
 
 
 	def write_and_execute_gringo_clasp(self, exp_input):
@@ -79,3 +75,176 @@ class ExperimentModule:
 
 	def calculate_constant_for_scores(self):
 		return int((sum([mod.quality for mod in self.archive.working_models])*10)/2)
+
+#
+#
+#
+
+	def process_output(self, out):
+		experiments = []
+		# check if program was satisfiable
+		if 'UNSATISFIABLE' in out:
+			return False
+		# find optimum info:
+		strings = out.split('\n')
+		strings.remove('')
+		# find answers:
+		answers = self.get_answers(strings)
+		# process answers:
+		for ans in answers:
+			components = ans.split(' ')
+			exp_type = self.get_expType(components)
+			# decide what to do next based on the type
+			if exp_type == 'design_type(adam_two_factor_exp)':
+				expT = self.process_exp_type_adam_two_factor(components)
+			elif exp_type == 'design_type(transp_reconstruction_exp)':
+				expT = self.process_exp_type_transp_reconstruction(components)
+			elif exp_type == 'design_type(enz_reconstruction_exp)':
+				expT = self.process_exp_type_enz_reconstruction(components)
+			elif exp_type == 'design_type(basic_reconstruction_exp)':
+				expT = self.process_exp_type_basic_reconstruction(components)
+			elif exp_type == 'design_type(detection_activity_exp)':
+				expT = self.process_exp_type_detection_activity(components)
+			elif exp_type == 'design_type(localisation_entity_exp)':
+				expT = self.process_exp_type_localisation_entity(components)
+			elif exp_type == 'design_type(detection_entity_exp)':
+				expT = self.process_exp_type_detection_entity(components)
+			else:
+				raise ValueError('process_output: design_type(...) not recognised: %s' % exp_type)
+
+			interventions = self.get_interventions(components)
+			# if not all components of an answer were used: sth went wrong in design phase or processing
+			if len(components) > 0:
+				raise ValueError("process_output: not all components used: %s" % components)
+			experiments.append(ExperimentDescription(expT, interventions))
+		return experiments
+
+
+	def get_answers(self, strings):
+		answers = []
+		optimum = [st.split('Optimization : ')[1] for st in strings if st.startswith('Optimization : ')][0]
+		for st in strings:
+			if not st.startswith('Answer: '):
+				continue
+			optimization = strings[strings.index(st) + 2].split('Optimization: ')[1] # get two after 'answer'
+			if optimization == optimum:
+				answers.append(strings[strings.index(st) + 1]) # get one after 'answer'
+			else:
+				pass
+		return answers
+
+
+	def get_expType(self, components):
+		exp_type = [st for st in components if st.startswith('design_type(')]
+		if len(exp_type) > 1:
+			raise ValueError('process_output: more than one design_type statement')
+		# remove 'used' info
+		components.remove(exp_type[0])
+		#
+		return exp_type[0]
+
+
+	def process_exp_type_adam_two_factor(self, components):
+		gene = [st for st in components if st.startswith('design_deletable(')]
+		if len(gene) > 1:
+			raise ValueError('process_output: more than one element of the same kind statement %s' % gene)
+		gene_id = gene[0].split('design_deletable(')[1].split(')')[0]
+		metab = [st for st in components if st.startswith('design_available(')]
+		if len(metab) > 1:
+			raise ValueError('process_output: more than one element of the same kind statement %s' % metab)
+		metab_id = metab[0].split('design_available(')[1].split(')')[0]
+		components.remove(gene[0])
+		components.remove(metab[0])
+		return AdamTwoFactorExperiment(gene_id, metab_id)
+
+
+	def process_exp_type_transp_reconstruction(self, components):
+		act = [st for st in components if st.startswith('design_activity_rec(')]
+		if len(act) > 1:
+			raise ValueError('process_output: more than one element of the same kind statement %s' % act)
+		act_id = act[0].split('design_activity_rec(')[1].split(')')[0]
+		ent = [st for st in components if st.startswith('design_available(')]
+		if len(ent) > 1:
+			raise ValueError('process_output: more than one element of the same kind statement %s' % ent)
+		ent_id = ent[0].split('design_available(')[1].split(')')[0]
+		components.remove(act[0])
+		components.remove(ent[0])
+		return ReconstructionTransporterRequired(act_id, ent_id)
+
+
+	def process_exp_type_enz_reconstruction(self, components):
+		act = [st for st in components if st.startswith('design_activity_rec(')]
+		if len(act) > 1:
+			raise ValueError('process_output: more than one element of the same kind statement %s' % act)
+		act_id = act[0].split('design_activity_rec(')[1].split(')')[0]
+		ent = [st for st in components if st.startswith('design_available(')]
+		if len(ent) > 1:
+			raise ValueError('process_output: more than one element of the same kind statement %s' % ent)
+		ent_id =  ent[0].split('design_available(')[1].split(')')[0]
+		components.remove(act[0])
+		components.remove(ent[0])
+		return ReconstructionEnzReaction(act_id, ent_id)
+
+
+	def process_exp_type_basic_reconstruction(self, components):
+		act = [st for st in components if st.startswith('design_activity_rec(')]
+		if len(act) > 1:
+			raise ValueError('process_output: more than one element of the same kind statement %s' % act)
+		act_id = act[0].split('design_activity_rec(')[1].split(')')[0]
+		components.remove(act[0])
+		return ReconstructionActivity(act_id)
+
+
+	def process_exp_type_detection_activity(self, components):
+		act = [st for st in components if st.startswith('design_activity_det(')]
+		if len(act) > 1:
+			raise ValueError('process_output: more than one element of the same kind statement %s' % act)
+		act_id = act[0].split('design_activity_det(')[1].split(')')[0]
+		components.remove(act[0])
+		return DetectionActivity(act_id)
+
+
+	def process_exp_type_localisation_entity(self, components):
+		ent = [st for st in components if st.startswith('design_entity_loc(')]
+		if len(ent) > 1:
+			raise ValueError('process_output: more than one element of the same kind statement %s' % ent)
+		ent_id = ent[0].split('design_entity_loc(')[1].split(')')[0]
+		comp = [st for st in components if st.startswith('design_compartment(')]
+		if len(comp) > 1:
+			raise ValueError('process_output: more than one element of the same kind statement %s' % comp)
+		comp_id = comp[0].split('design_compartment(')[1].split(')')[0]
+		components.remove(ent[0])
+		components.remove(comp[0])
+		return LocalisationEntity(ent_id, comp_id )
+
+
+	def process_exp_type_detection_entity(self, components):
+		ent = [st for st in components if st.startswith('design_entity_det(')]
+		if len(ent) > 1:
+			raise ValueError('process_output: more than one element of the same kind statement %s' % ent)
+		ent_id = ent[0].split('design_entity_det(')[1].split(')')[0]
+		components.remove(ent[0])
+		return DetectionEntity(ent_id)
+
+
+	def get_interventions(self, components):
+		interventions = []
+		add = [st for st in components if st.startswith('add(')]
+		remove = [st for st in components if st.startswith('remove(')]
+		for st in add:
+			splitted = st.split('add(setup_present(')[1].split(')')[0].split(',')
+			entity = self.archive.get_matching_element(splitted[0], splitted[1])
+			compartment = self.archive.get_matching_element(splitted[2])
+			interventions.append(Add(PresentEntity(entity, compartment)))
+		for st in remove:
+			splitted = st.split('remove(setup_present(')[1].split(')')[0].split(',')
+			entity = self.archive.get_matching_element(splitted[0], splitted[1])
+			compartment = self.archive.get_matching_element(splitted[2])
+			interventions.append(Remove(PresentEntity(entity, compartment)))
+		# removing used stuff from components
+		[components.remove(st) for st in add]
+		[components.remove(st) for st in remove]
+		return interventions
+
+
+#	def make more realistic experiment

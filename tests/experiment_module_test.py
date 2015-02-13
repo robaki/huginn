@@ -2,10 +2,12 @@
 
 import unittest
 from experiment_module import ExperimentModule
-from mnm_repr import Gene, Metabolite, Protein, Complex, Growth, Reaction, PresentEntity, Cytosol, Add, Remove, Medium, CellMembrane, Model
+from mnm_repr import Gene, Metabolite, Protein, Complex, Growth, Reaction, PresentEntity, Cytosol, Add, Remove, Medium, CellMembrane, Model, Add, Remove
 import exp_repr
 from archive import Archive
 from exp_cost_model import CostModel
+from exp_repr import DetectionEntity, LocalisationEntity, DetectionActivity, AdamTwoFactorExperiment, ReconstructionActivity, ReconstructionEnzReaction, ReconstructionTransporterRequired, ExperimentDescription
+
 
 class ExperimentModuleTest(unittest.TestCase):
 	def setUp(self):
@@ -62,15 +64,89 @@ class ExperimentModuleTest(unittest.TestCase):
 
 
 	def test_design_experiments_nocost(self): # cost=False
-		self.exp_module.design_experiments()
+		exps = self.exp_module.design_experiments()
+		self.assertEqual(exps[0].experiment_type.activity_id, 'growth')
+		self.assertIsInstance(exps[0].experiment_type, DetectionActivity)
+		self.assertEqual(exps[0].interventions, frozenset([]))
 
 
 	def test_design_experiments_cost(self): # cost=True
 		self.exp_module.use_costs = True
-		self.exp_module.design_experiments()
+		exps = self.exp_module.design_experiments()
+		self.assertEqual(exps[0].experiment_type.activity_id, 'growth')
+		self.assertIsInstance(exps[0].experiment_type, DetectionActivity)
+		self.assertEqual(exps[0].interventions, frozenset([]))
 
-#	def test_(self):
 #
-#	def test_(self):
+# processing output:
 #
-#	def test_(self):
+
+#	def test_process_output(self):
+#		process_output(out)  need some input with interventions
+
+
+	def test_get_answers(self):
+		strings = ['clasp version 3.0.3', 'Reading from stdin', 'Solving...',
+		'Answer: 1', 'design_type(detection_activity_exp) design_activity_det(growth)',
+		'Optimization: 0', 'OPTIMUM FOUND', 'Models       : 1     ',
+		'  Optimum    : yes', 'Optimization : 0', 'Calls        : 1',
+		'Time         : 0.020s (Solving: 0.00s 1st Model: 0.00s Unsat: 0.00s)',
+		'CPU Time     : 0.010s']
+		ans = self.exp_module.get_answers(strings)
+		self.assertEqual('design_type(detection_activity_exp) design_activity_det(growth)', ans[0])
+
+
+	def test_get_expType(self):
+		components = ['design_type(detection_activity_exp)', 'design_activity_det(growth)']
+		ty = self.exp_module.get_expType(components)
+		self.assertEqual('design_type(detection_activity_exp)', ty)
+
+
+	def test_process_exp_type_adam_two_factor(self):
+		components = ['design_deletable(g_1)', 'design_available(met_1)']
+		extype = self.exp_module.process_exp_type_adam_two_factor(components)
+		self.assertEqual(AdamTwoFactorExperiment('g_1', 'met_1'), extype)
+
+
+	def test_process_exp_type_transp_reconstruction(self):
+		components = ['design_activity_rec(trp1)', 'design_available(transporter1)']
+		extype = self.exp_module.process_exp_type_transp_reconstruction(components)
+		self.assertEqual(ReconstructionTransporterRequired('trp1', 'transporter1'), extype)
+
+
+	def test_process_exp_type_enz_reconstruction(self):
+		components = ['design_activity_rec(r1)', 'design_available(enz1)']
+		extype = self.exp_module.process_exp_type_enz_reconstruction(components)
+		self.assertEqual(ReconstructionEnzReaction('r1', 'enz1'), extype)
+
+
+	def test_process_exp_type_basic_reconstruction(self):
+		components = ['design_activity_rec(r1)']
+		extype = self.exp_module.process_exp_type_basic_reconstruction(components)
+		self.assertEqual(ReconstructionActivity('r1'), extype)
+
+
+	def test_process_exp_type_detection_activity(self):
+		components = ['design_activity_det(growth)']
+		extype = self.exp_module.process_exp_type_detection_activity(components)
+		self.assertEqual(DetectionActivity('growth'), extype)
+
+
+	def test_process_exp_type_localisation_entity(self):
+		components = ['design_entity_loc(met_1)', 'design_compartment(c_01)']
+		extype = self.exp_module.process_exp_type_localisation_entity(components)
+		self.assertEqual(LocalisationEntity('met_1', 'c_01'), extype)
+
+
+	def test_process_exp_type_detection_entity(self):
+		components = ['design_entity_det(met_1)']
+		extype = self.exp_module.process_exp_type_detection_entity(components)
+		self.assertEqual(DetectionEntity('met_1'), extype)
+
+
+	def test_get_interventions(self):
+		components = ['add(setup_present(met1,none,c_05))', 'remove(setup_present(met2,none,c_05))']
+		interventions = self.exp_module.get_interventions(components)
+		eval_info = [(x.condition_or_activity.entity.ID, x.condition_or_activity.compartment.ID) for x in interventions]
+		self.assertIn(('met1', 'c_05'), eval_info)
+		self.assertIn(('met2', 'c_05'), eval_info)

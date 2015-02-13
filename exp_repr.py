@@ -70,7 +70,7 @@ class ReconstructionEnzReaction(ExperimentType):
 		self.enzyme_id = enzyme_id
 
 	def __hash__(self):
-		return hash(self.reaction_id, self.enzyme_id)
+		return hash((self.reaction_id, self.enzyme_id))
 
 	def __eq__(self, other):
 		return ((hash(self) == hash(other)) and (type(self) == type(other)))
