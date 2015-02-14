@@ -3,6 +3,8 @@
 import mnm_repr
 import exp_repr
 
+from exp_repr import DetectionEntity, LocalisationEntity, DetectionActivity, AdamTwoFactorExperiment
+
 
 def export_entities(entities):
 	strings = []
@@ -804,20 +806,20 @@ def hide_show_statements():
 	'\n#show remove/1.']
 
 
-def basic_exp_design_rules(): # NOT NEEDED: advanced is more general and covers this one too
-	return ['\n\nexp_score(0,1,0,0) :- indifferent(Model, Experiment), designed(Experiment), model(Model), nr(0,Model).',
-	'\nexp_score(0,0,1,0) :- predicts(Model, Experiment, true), designed(Experiment), model(Model), nr(0,Model).',
-	'\nexp_score(0,0,0,1) :- predicts(Model, Experiment, false), designed(Experiment), model(Model), nr(0,Model).',
-	'\n',
-	'\nexp_score(I,Ind+1,Tr,Fa) :- exp_score(I-1, Ind, Tr, Fa), indifferent(Model, Experiment), designed(Experiment), model(Model), nr(I, Model).',
-	'\nexp_score(I,Ind,Tr+1,Fa) :- exp_score(I-1, Ind, Tr, Fa), predicts(Model, Experiment, true), designed(Experiment), model(Model), nr(I, Model).',
-	'\nexp_score(I,Ind,Tr,Fa+1) :- exp_score(I-1, Ind, Tr, Fa), predicts(Model, Experiment, false), designed(Experiment), model(Model), nr(I, Model).',
-	'\n',
-	'\nexp_score(I) :- exp_score(I,Ind,Tr,Fa).',
-	'\n',
-	'\nfinal_score(I,Ind,Tr,Fa) :- exp_score(I,Ind,Tr,Fa), not exp_score(I+1).',
-	'\n',
-	'\nfinal_score(|Tr*10-n| + |Fa*10-n| + Ind*10) :- final_score(I,Ind,Tr,Fa).']
+#def basic_exp_design_rules():  #NOT NEEDED: advanced is more general and covers this one too
+#	return ['\n\nexp_score(0,1,0,0) :- indifferent(Model, Experiment), designed(Experiment), model(Model), nr(0,Model).',
+#	'\nexp_score(0,0,1,0) :- predicts(Model, Experiment, true), designed(Experiment), model(Model), nr(0,Model).',
+#	'\nexp_score(0,0,0,1) :- predicts(Model, Experiment, false), designed(Experiment), model(Model), nr(0,Model).',
+#	'\n',
+#	'\nexp_score(I,Ind+1,Tr,Fa) :- exp_score(I-1, Ind, Tr, Fa), indifferent(Model, Experiment), designed(Experiment), model(Model), nr(I, Model).',
+#	'\nexp_score(I,Ind,Tr+1,Fa) :- exp_score(I-1, Ind, Tr, Fa), predicts(Model, Experiment, true), designed(Experiment), model(Model), nr(I, Model).',
+#	'\nexp_score(I,Ind,Tr,Fa+1) :- exp_score(I-1, Ind, Tr, Fa), predicts(Model, Experiment, false), designed(Experiment), model(Model), nr(I, Model).',
+#	'\n',
+#	'\nexp_score(I) :- exp_score(I,Ind,Tr,Fa).',
+#	'\n',
+#	'\nfinal_score(I,Ind,Tr,Fa) :- exp_score(I,Ind,Tr,Fa), not exp_score(I+1).',
+#	'\n',
+#	'\nfinal_score(|Tr*10-n| + |Fa*10-n| + Ind*10) :- final_score(I,Ind,Tr,Fa).']
 
 
 def advanced_exp_design_rules():
@@ -835,3 +837,19 @@ def advanced_exp_design_rules():
 	'\n',
 	'\nfinal_score(|Tr*10-n| + |Fa*10-n| + Ind*10) :- final_score(I,Ind,Tr,Fa).'
 	'\n#minimize[final_score(Score) = Score@2].']
+
+#
+# predictions
+#
+
+def export_display_for_oracle(expDescription):
+	if isinstance(expDescription.experiment_type, DetectionEntity) or isinstance(expDescription.experiment_type, LocalisationEntity):
+		return ['\n#hide.', '\n#show synthesizable/4.', '\n#show initially_present/4.']
+	elif isinstance(expDescription.experiment_type, DetectionActivity):
+		return ['\n#hide.', '\n#show active/2.']
+	elif isinstance(expDescription.experiment_type, AdamTwoFactorExperiment):
+		return ['\n#hide.', '\n#show predicts/3.'].extend(predictions_rules())
+	else:
+		raise TypeError("export_display_for_oracle: exp type not recognised: %" % expDescription.experiment_type)
+
+
