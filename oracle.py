@@ -26,7 +26,15 @@ class Oracle:
 		self.all_act = all_act
 
 
-	def execute_in_vitro_exps(self, expD):
+	def execute_exp(self, expD):
+		tp = expD.experiment_type
+		if isinstance(tp, DetectionEntity) or isinstance(tp, LocalisationEntity) or isinstance(tp, DetectionActivity) or isinstance(tp, AdamTwoFactorExperiment):
+			return self.execute_in_vivo(expD)
+		else:
+			return self.execute_in_vitro_exp(expD)
+
+
+	def execute_in_vitro_exp(self, expD):
 		if isinstance(expD.experiment_type, ReconstructionActivity):
 			act_ids = [a.ID for a in self.activities]
 			if (expD.experiment_type.activity_id in act_ids):
@@ -58,7 +66,7 @@ class Oracle:
 				return Result(None, expD, True)
 
 		else:
-			raise TypeError("execute_in_vitro_exps: experiment type not recognised: %s" % expD.experiment_type)
+			raise TypeError("execute_in_vitro_exp: experiment type not recognised: %s" % expD.experiment_type)
 
 
 	def execute_in_vivo(self, expD):

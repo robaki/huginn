@@ -47,7 +47,7 @@ class OracleTest(unittest.TestCase):
 		r1 = Reaction('r1', [cond1], [cond2])
 		self.oracle = Oracle([], [r1], None, [], [], [])
 		expD = ExperimentDescription(ReconstructionActivity('r1'), [])
-		out = self.oracle.execute_in_vitro_exps(expD)
+		out = self.oracle.execute_in_vitro_exp(expD)
 		self.assertEqual(out.outcome, True)
 
 
@@ -62,7 +62,7 @@ class OracleTest(unittest.TestCase):
 		enz = Protein('p1', properties=[Catalyses(r1)])
 		self.oracle = Oracle([enz], [r1], None, [], [], [])
 		expD = ExperimentDescription(ReconstructionEnzReaction('r1', 'p1'), [])
-		out = self.oracle.execute_in_vitro_exps(expD)
+		out = self.oracle.execute_in_vitro_exp(expD)
 		self.assertEqual(out.outcome, True)
 
 
@@ -77,7 +77,7 @@ class OracleTest(unittest.TestCase):
 		transp = Protein('p1', properties=[Transports(r1)])
 		self.oracle = Oracle([transp], [r1], None, [], [], [])
 		expD = ExperimentDescription(ReconstructionTransporterRequired('r1', 'p1'), [])
-		out = self.oracle.execute_in_vitro_exps(expD)
+		out = self.oracle.execute_in_vitro_exp(expD)
 		self.assertEqual(out.outcome, True)
 
 

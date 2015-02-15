@@ -16,8 +16,8 @@ product(cplx1,none,c_05,r2).
 model(copied_m0).
 added_to_model(setup_present(met1,none,c_05),copied_m0).
 added_to_model(setup_present(p1,none,c_05),copied_m0).
-added_to_model(growth,copied_m0).
 added_to_model(r1,copied_m0).
+added_to_model(growth,copied_m0).
 #hide.
 #show active/2.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
