@@ -83,7 +83,47 @@ class OracleTest(unittest.TestCase):
 
 	def test_in_vivo(self):
 		expD = ExperimentDescription(DetectionActivity('r1'), [])
-		self.oracle.execute_in_vivo(expD)
+		res = self.oracle.execute_in_vivo(expD)
+		self.assertEqual(res.outcome, True)
 
 
+	def test_process_output_ent_detection_1(self):
+		expD = ExperimentDescription(DetectionEntity('met1'), [])
+		out = 'Answer: 1\nsynthesizable(met1,ver,c_05,m0)'
+		res = self.oracle.process_output(out, expD)
+		self.assertEqual(res.outcome, True)
 
+
+	def test_process_output_localisation_ent_1(self):
+		expD = ExperimentDescription(LocalisationEntity('met1', 'c_05'), [])
+		out = 'Answer: 1\nsynthesizable(met1,ver,c_05,m0)'
+		res = self.oracle.process_output(out, expD)
+		self.assertEqual(res.outcome, True)
+
+
+	def test_process_output_ent_detection_2(self):
+		expD = ExperimentDescription(DetectionEntity('met1'), [])
+		out = 'Answer: 1\ninitially_present(met1,ver,c_05,m0)'
+		res = self.oracle.process_output(out, expD)
+		self.assertEqual(res.outcome, True)
+
+
+	def test_process_output_localisation_ent_2(self):
+		expD = ExperimentDescription(LocalisationEntity('met1', 'c_05'), [])
+		out = 'Answer: 1\ninitially_present(met1,ver,c_05,m0)'
+		res = self.oracle.process_output(out, expD)
+		self.assertEqual(res.outcome, True)
+
+
+	def test_process_output_act_detection(self):
+		expD = ExperimentDescription(DetectionActivity('r1'), [])
+		out = 'Answer: 1\nactive(r1,m0)'
+		res = self.oracle.process_output(out, expD)
+		self.assertEqual(res.outcome, True)
+
+
+	def test_process_output_adam_two_factor(self):
+		expD = ExperimentDescription(AdamTwoFactorExperiment('g1', 'met1'), [])
+		out = 'Answer: 1\npredicts(m0,experiment(adam_two_factor_exp,g1,met1),true'
+		res = self.oracle.process_output(out, expD)
+		self.assertEqual(res.outcome, True)

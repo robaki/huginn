@@ -64,7 +64,8 @@ class Oracle:
 	def execute_in_vivo(self, expD):
 		inp = self.prepare_input_in_vivo(expD)
 		out = self.write_and_execute(inp)
-#		print(out)
+		res = self.process_output(out, expD)
+		return res
 
 
 	def prepare_input_in_vivo(self, expD):
@@ -97,17 +98,41 @@ class Oracle:
 
 
 	def process_output(self, out, expD):
-		if isinstance(expDescription.experiment_type, DetectionEntity):
-			
-			'synthesizable(,,,)' 'initially_present(,,,)'
-		elif isinstance(expDescription.experiment_type, LocalisationEntity):
-			
-			'synthesizable(,,,)' 'initially_present(,,,)'
-		elif isinstance(expDescription.experiment_type, DetectionActivity):
-			
-			'active(,)'
-		elif isinstance(expDescription.experiment_type, AdamTwoFactorExperiment):
-			
-			'predicts(,)'
+		answer = out.split('\n')
+		try:
+			answer.remove('')
+		except:
+			pass
+		answer = answer[answer.index([st for st in answer if st.startswith('Answer: ')][0])+1] # gets the string after 'Answer: ' string
+
+		if isinstance(expD.experiment_type, DetectionEntity):
+			if (re.search('synthesizable\(%s,' % expD.experiment_type.entity_id, answer) != None):
+				return Result(None, expD, True)
+			elif (re.search('initially_present\(%s,' % expD.experiment_type.entity_id, answer) != None):
+				return Result(None, expD, True)
+			else:
+				return Result(None, expD, False)
+
+		elif isinstance(expD.experiment_type, LocalisationEntity):
+			if (re.search('synthesizable\(%s,.*?,%s,' % (expD.experiment_type.entity_id, expD.experiment_type.compartment_id), answer) != None):
+				return Result(None, expD, True)
+			elif (re.search('initially_present\(%s,.*?,%s,' % (expD.experiment_type.entity_id, expD.experiment_type.compartment_id), answer) != None):
+				return Result(None, expD, True)
+			else:
+				return Result(None, expD, False)
+
+		elif isinstance(expD.experiment_type, DetectionActivity):
+			if (re.search('active\(%s,' % expD.experiment_type.activity_id, answer) != None):
+				return Result(None, expD, True)
+			else:
+				return Result(None, expD, False)
+
+		elif isinstance(expD.experiment_type, AdamTwoFactorExperiment):
+			tpl = (expD.experiment_type.gene_id, expD.experiment_type.metabolite_id)
+			if (re.search('predicts\(.*?,experiment\(adam_two_factor_exp,%s,%s\),true' % tpl, answer) != None):
+				return Result(None, expD, True)
+			else:
+				return Result(None, expD, False)
+
 		else:
 			raise TypeError("oracle process_output: experiment type not recognised: %s" % expD.experiment_type)
