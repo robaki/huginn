@@ -18,7 +18,7 @@ class QualityModule:
 		pass
 
 
-class NumberAllCovered(QualityModule):
+class AllCovered(QualityModule):
 	def __init__(self, archive):
 		QualityModule.__init__(self, archive)
 
@@ -34,7 +34,7 @@ class NumberAllCovered(QualityModule):
 				self.archive.record(UpdatedModelQuality(model, model.quality))
 
 
-class NumberAllCoveredMinusIgnored(QualityModule):
+class AllCoveredMinusIgnored(QualityModule):
 	def __init__(self, archive):
 		QualityModule.__init__(self, archive)
 
@@ -62,7 +62,7 @@ class NumberAllCoveredMinusIgnored(QualityModule):
 					self.archive.record(UpdatedModelQuality(model, model.quality))
 
 
-class NumberNewCovered(QualityModule):
+class NewCovered(QualityModule):
 	def __init__(self, archive):
 		QualityModule.__init__(self, archive)
 
@@ -80,7 +80,7 @@ class NumberNewCovered(QualityModule):
 				self.archive.record(UpdatedModelQuality(model, model.quality))
 
 
-class NumberNewCoveredMinusIgnored(QualityModule):
+class NewCoveredMinusIgnored(QualityModule):
 	def __init__(self, archive):
 		QualityModule.__init__(self, archive)
 
@@ -108,8 +108,3 @@ class NumberNewCoveredMinusIgnored(QualityModule):
 				else:
 					model.quality = model.score
 					self.archive.record(UpdatedModelQuality(model, model.quality))
-
-
-#
-# analogus modules, but including WEIGHTS! () <- or just modify these...
-#

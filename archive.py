@@ -7,11 +7,13 @@ class Archive:
 		self.development_history = []
 		self.working_models = []
 		self.known_results = [] # container for Experiment type objects not Result type
+		self.chosen_experiment_descriptions = [] # list of expDs
+		self.new_result = None # stored here before it's accepted
 		self.mnm_compartments = [] # to keep track of mnm elements; info for exp design
 		self.mnm_entities = [] # to keep track of mnm elements
 		self.mnm_activities = [] # to keep track of mnm elements; info for revision and exp design
-#		self.allowed_exp_types = [] # info for exp design
 		self.start_time = time()
+		self._results_counter = 0
 
 
 	def record(self, event):
@@ -19,9 +21,20 @@ class Archive:
 		self.development_history.append(event)
 
 		if isinstance(event, ChosenExperiment):
+			self.chosen_experiment_descriptions = event.experiment_descriptions
+
+		elif isinstance(event, ExpDesignFail):
 			pass
 
-		elif isinstance(event, Results):
+		elif isinstance(event, NewResults):
+			self.chosen_experiment_descriptions = [] # clearing 
+			event.experiment.ID = self.get_new_exp_id()
+			for res in event.experiment.results:
+				res.ID = self.get_new_res_id()
+			self.new_result = event.experiment
+
+		elif isinstance(event, AcceptedResults):
+			self.new_result = None # clearing 
 			self.known_results.append(event.experiment)
 
 		elif isinstance(event, RefutedModels):
@@ -33,10 +46,16 @@ class Archive:
 				model.ID = self.get_new_model_id()
 				self.working_models.append(model)
 
+		elif isinstance(event, RevisionFail):
+			pass
+
 		elif isinstance(event, AdditionalModels):
 			for model in event.additional_models:
 				model.ID = self.get_new_model_id()
 				self.working_models.append(model)
+
+		elif isinstance(event, AdditModProdFail):
+			pass
 
 		elif isinstance(event, UpdatedModelQuality):
 			pass
@@ -47,6 +66,10 @@ class Archive:
 				self.working_models.append(model)
 
 		elif isinstance(event,  InitialResults):
+			for exp in event.experiments
+				exp.ID = self.get_new_exp_id()
+				for res in event.experiment.results:
+					res.ID = self.get_new_res_id()
 			self.known_results.extend(event.experiments)
 
 		else:
@@ -78,6 +101,7 @@ class Archive:
 		index = self.development_history.index(event)
 		return self.development_history[index+1:]
 
+
 	def get_results_after_model(self, model):
 		event = self.get_model_origin_event(model)
 		events_after = self.get_events_after_event(event)
@@ -86,6 +110,7 @@ class Archive:
 		for res_set in results_sets:
 			results.extend(list(res_set))
 		return results
+
 
 	def get_matching_element(self, element_id, element_version=None):
 		for element in self.mnm_activities:
@@ -123,9 +148,10 @@ class Archive:
 		return 'exp_%s' % len(self.known_results)
 
 	def get_new_res_id(self):
-		all_res = [exp.results for exp in self.known_results]
-		all_res = [val for sublist in all_res for val in sublist] # flatten
-		return 'res_%s' % len(all_res)
+		ID = 'res_%s' % self._results_counter
+		self._results_counter += 1
+		return ID
+
 
 
 class Event:
@@ -143,9 +169,9 @@ class InitialResults(Event): # record them first!
 		self.experiments = exps
 
 class ChosenExperiment(Event): # experiment description
-	def __init__(self, exp):
+	def __init__(self, expDs):
 		Event.__init__(self)
-		self.experiment_description = exp
+		self.experiment_descriptions = expDs
 
 class Results(Event): # full experiment with results
 	def __init__(self, exp):
@@ -173,3 +199,15 @@ class AdditionalModels(Event):
 	def __init__(self, models):
 		Event.__init__(self)
 		self.additional_models = frozenset(models)
+
+class RevisionFail(Event):
+	def __init__(self):
+		pass
+
+class AdditModProdFail(Event):
+	def __init__(self):
+		pass
+
+class ExpDesignFail(Event):
+	def __init__(self):
+		pass

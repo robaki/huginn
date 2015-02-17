@@ -4,7 +4,7 @@ import exporter
 
 from copy import copy
 
-from exp_repr import DetectionEntity, LocalisationEntity, DetectionActivity, AdamTwoFactorExperiment, ReconstructionActivity, ReconstructionEnzReaction, ReconstructionTransporterRequired, Result
+from exp_repr import DetectionEntity, LocalisationEntity, DetectionActivity, AdamTwoFactorExperiment, ReconstructionActivity, ReconstructionEnzReaction, ReconstructionTransporterRequired, Result, Experiment
 
 from mnm_repr import Catalyses, Transports
 
@@ -12,18 +12,28 @@ import subprocess
 
 import re
 
+from archive import NewResults
+
 
 class Oracle:
-	def __init__(self, entities_ref, activities_ref, model_ref, all_ent, all_comp, all_act):
+	def __init__(self, archive, entities_ref, activities_ref, model_ref, all_ent, all_comp, all_act):
 		ent_id_list = [e.ID for e in entities_ref]
 		if len(ent_id_list) != len(set(ent_id_list)):
 			raise ValueError("Oracle __init__: entities list contains more than one version of some entities (at least one)")
+		self.archive = archive
 		self.entities = entities_ref
 		self.activities = activities_ref
 		self.model = model_ref
 		self.all_ent = all_ent
 		self.all_comp = all_comp
 		self.all_act = all_act
+
+
+	def execute_exps(self):
+		ress = []
+		for expD in self.archive.chosen_experiment_descriptions:
+			ress.append(self.execute_exp(expD))
+		self.archive.record(NewResults(Experiment(None, ress)))
 
 
 	def execute_exp(self, expD):

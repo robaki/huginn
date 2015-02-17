@@ -8,19 +8,16 @@ from exp_repr import DetectionEntity, LocalisationEntity, DetectionActivity, Ada
 
 from mnm_repr import PresentEntity, Add, Remove
 
+from archive import ExpDesignFail, ChosenExperiment
+
 class ExperimentModule:
 	# module for experiment design. Method relies on splitting sum of models' probabilities (qualities) in half.
 	# If no model quality modules is used, then model quality = 1 and is constant throught development time.
 	# In that case the algorithm just splits set of working models in half.
-	def __init__(self, archive, cost_model, use_costs=False):
+	def __init__(self, archive, cost_model, use_costs):
 		self.archive = archive
 		self.cost_model = cost_model
 		self.use_costs = use_costs
-
-
-	def get_experiment(self):
-		exps = self.design_experiment()
-		return random.choice(exps)
 
 
 	def design_experiments(self):
@@ -247,4 +244,34 @@ class ExperimentModule:
 		return interventions
 
 
-#	def make more realistic experiment
+# COMMENTED OUT FOR SAFETY REASONS
+#	def make_more_realistic_exp(self, exp):
+#		pass
+
+
+
+class BasicExpModule(ExperimentModule): # USE THIS ONE
+	def __init__(self, archive, cost_model):
+		ExperimentModule.__init__(self, archive, cost_model, use_costs=False)
+
+	def get_experiment(self):
+		exps = self.design_experiment()
+		if exps == False:
+			self.archive.record(ExpDesignFail)
+		else:
+			self.archive.record(ChosenExperiment([random.choice(exps)]))
+#		return [random.choice(exps)]
+
+
+class RealisticExpModule(ExperimentModule):
+	def __init__(self, archive, cost_model):
+		ExperimentModule.__init__(self, archive, cost_model, use_costs=False)
+
+	def get_experiment(self):
+		exps = self.design_experiment()
+		if exps == False:
+			self.archive.record(ExpDesignFail)
+		else:
+			exp = random.choice(exps)
+			self.archive.record(ChosenExperiment(self.make_more_realistic_exp(exp)))
+

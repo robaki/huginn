@@ -4,11 +4,15 @@ import exporter
 
 from archive import RefutedModels
 from archive import RevisedModel
+from archive import RevisionFail
+from archive import AdditionalModels
+from archive import AdditModProdFail
 import archive
 from copy import copy
 import subprocess
 import mnm_repr
 import re
+import random
 
 class RevisionModule:
 	def __init__(self, archive, xhail="/usr/local/xhail-0.5.1/xhail.jar", gringo="/usr/local/xhail-0.5.1/gringo", clasp="/usr/local/xhail-0.5.1/clasp"):
@@ -26,14 +30,21 @@ class RevisionModule:
 			else:
 				pass
 
+		self.archive.record(RefutedModels(inconsistent_models))
+
 		revision_results = {}
 		for model in inconsistent_models:
-			out = self.revise(model)
+			cmodel = copy(model)
+			cmodel.ID = 'base'
+			out = self.revise(cmodel)
 			if out == False: # in this case: there is no consistent model
-				return False # so revision is futile; no need check other models
+				self.archive.record(RevisionFail())
+#				return False # so revision is futile; no need check other models
 			else:
-				revision_results.update(out[1])
-		return revision_results
+				self.archive.record(RevisedModel(out[1][0], out[1][1]))
+#				revision_results.update(out[1])
+#		return revision_results
+
 
 
 	def check_consistency(self, model):
@@ -206,61 +217,40 @@ class RevisionModule:
 		return output
 
 
-class RevC(RevisionModule): # minimise changes
-	def __init__(self, archive):
-		RevisionModule.__init__(self, archive)
+	def get_current_best_model(self): # one of them at least
+		max_quality = max([m.quality for m in self.archive.working_models])
+		return random.choice([m for m in self.archive.working_models if (m.quality == max_quality)])
 
 
-	def revise(self, base_model):
+	def create_random_model(self):
+		numberActToChoose = random.choice(list(range(len(self.archive.mnm_activities)))) # presence of two versions of the same entity will trigger revision anyway
+		activities = [random.sample(self.archive.mnm_activities), numberActToChoose]
+		new_model = copy(self.archive.working_models[0]) # will cause problems if there will be no working models left...
+		new_model.intermediate_activities = activities
+		return new_model
+
+
+	def prepare_input_execute_and_process(self, base_model, ignoring, force_new_model): # pretty much revise
 		res_mods = self.prepare_input_results_models_revision(base_model)
 
 		add_act = set([x for x in self.archive.mnm_activities if (x.add_cost != None)]) - set(base_model.intermediate_activities)
 		rem_act = set([x for x in base_model.intermediate_activities if (x.remove_cost != None)])
 		modeh_add_act = exporter.export_add_activities(add_act)
 		modeh_rem_act = exporter.export_remove_activities(rem_act)
+
+		modeh_ignore = []
+		if ignore:
+			results = [exp.results for exp in self.archive.known_results]
+			results = [val for sublist in results for val in sublist] # flatten
+			modeh_ignore = exporter.export_ignore_results(results)# added ignoring!!!
+
 		interventions_rules = exporter.interventions_rules()
 
-		difference_facts = exporter.export_force_new_model(base_model, set(self.archive.working_models) - set([base_model]))
-		model_difference_rules = exporter.model_difference_rules()
-
-		max_number_activities = self.calculate_max_number_activities(base_model)
-		mod_rules = exporter.models_rules(max_number_activities)
-		pred_rules = exporter.predictions_rules()
-		incons_rules = exporter.inconsistency_rules()
-
-		inpt = [res_mods, modeh_add_act, modeh_rem_act, interventions_rules, difference_facts, model_difference_rules, mod_rules, pred_rules, incons_rules]
-		inpt = [val for sublist in inpt for val in sublist] # flatten
-
-		raw_output = self.write_and_execute_xhail(inpt)
-		processed_output = self.process_output_revision(raw_output)
-		if processed_output == {}:
-			return False
-		else:
-			b_mod, new_mods = self.create_models_and_register(base_model, processed_output)
-			return (True, {b_mod:new_mods})
-
-
-
-class RevCI(RevisionModule): # minimise changes and ignored
-	def __init__(self, archive):
-		RevisionModule.__init__(self, archive)
-
-
-	def revise(self, base_model):
-		res_mods = self.prepare_input_results_models_revision(base_model)
-
-		add_act = set([x for x in self.archive.mnm_activities if (x.add_cost != None)]) - set(base_model.intermediate_activities)
-		rem_act = set([x for x in base_model.intermediate_activities if (x.remove_cost != None)])
-		modeh_add_act = exporter.export_add_activities(add_act)
-		modeh_rem_act = exporter.export_remove_activities(rem_act)
-
-		results = [exp.results for exp in self.archive.known_results]
-		results = [val for sublist in results for val in sublist] # flatten
-		modeh_ignore = exporter.export_ignore_results(results)# added ignoring!!!
-		inter_rules = exporter.interventions_rules()
-
-		difference_facts = exporter.export_force_new_model(base_model, set(self.archive.working_models) - set([base_model]))
-		model_difference_rules = exporter.model_difference_rules()
+		difference_facts = []
+		model_difference_rules = []
+		if force_new_model:
+			difference_facts = exporter.export_force_new_model(base_model, self.archive.working_models)# base model (id) must not be in the working mods
+			model_difference_rules = exporter.model_difference_rules()
 
 		max_number_activities = self.calculate_max_number_activities(base_model)
 		mod_rules = exporter.models_rules(max_number_activities)
@@ -276,5 +266,75 @@ class RevCI(RevisionModule): # minimise changes and ignored
 			return False
 		else:
 			b_mod, new_mods = self.create_models_and_register(base_model, processed_output)
-			return (True, {b_mod:new_mods})
+			return (True, (b_mod, new_mods))
 
+
+
+class RevCAddB(RevisionModule): # rev: minimise changes; additional: revise the best
+	def __init__(self, archive):
+		RevisionModule.__init__(self, archive)
+
+	def revise(self, base_model, force_new_model=False):
+		return self.prepare_input_execute_and_process(False, base_model, force_new_model)
+
+	def produce_additional_models(self):
+		model = self.get_current_best_model()
+		out = self.revise(model, True)
+		if out == False:
+			self.archive.record(AdditModProdFail())
+		else:
+			self.archive.record(AdditionalModels(out[1][1]))
+
+
+class RevCAddR(RevisionModule): # rev: minimise changes; additional: random
+	def __init__(self, archive):
+		RevisionModule.__init__(self, archive)
+
+	def revise(self, base_model, force_new_model=False):
+		return self.prepare_input_execute_and_process(False, base_model, force_new_model)
+
+	def produce_additional_models(self):
+		model = self.create_random_model()
+		if not self.check_consistency(model):
+			out = self.revise(model)
+			if out == False:
+				self.archive.record(AdditModProdFail())
+			else:
+				self.archive.record(AdditionalModels(out[1][1]))
+		else:
+			self.archive.record(AdditionalModels([model]))
+
+
+class RevCIAddB(RevisionModule): # rev: minimise changes and ignored; additional: revise the best
+	def __init__(self, archive):
+		RevisionModule.__init__(self, archive)
+
+	def revise(self, base_model, force_new_model=False):
+		return self.prepare_input_execute_and_process(True, base_model, force_new_model)
+
+	def produce_additional_models(self):
+		model = self.get_current_best_model()
+		out = self.revise(model, True)
+		if out == False:
+			self.archive.record(AdditModProdFail())
+		else:
+			self.archive.record(AdditionalModels(out[1][1]))
+
+
+class RevCIAddR(RevisionModule): # rev: minimise changes and ignored; additional: random
+	def __init__(self, archive):
+		RevisionModule.__init__(self, archive)
+
+	def revise(self, base_model, force_new_model=False):
+		return self.prepare_input_execute_and_process(True, base_model, force_new_model)
+
+	def produce_additional_models(self):
+		model = self.create_random_model()
+		if not self.check_consistency(model):
+			out = self.revise(model)
+			if out == False:
+				self.archive.record(AdditModProdFail())
+			else:
+				self.archive.record(AdditionalModels(out[1][1]))
+		else:
+			self.archive.record(AdditionalModels([model]))
