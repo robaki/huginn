@@ -16,11 +16,11 @@ class ArchiveTest(unittest.TestCase):
 		self.assertIn(event, self.archive.development_history)
 
 	def test_record_Results(self):
-		res = 'res'
-		event = archive.Results(res)
+		res = exp_repr.Experiment('res')
+		event = archive.NewResults(res)
 		self.archive.record(event)
 		self.assertIn(event, self.archive.development_history)
-		self.assertIn(res, self.archive.known_results)
+		self.assertIn(exp_repr.Experiment('exp_0'), self.archive.known_results)
 
 	def test_record_RefutedModels(self):
 		mod = 'mod'
@@ -62,8 +62,8 @@ class ArchiveTest(unittest.TestCase):
 		self.assertIn(mod2, self.archive.working_models)
 
 	def test_record_InitialResults(self):
-		exp1 = 'exp1'
-		exp2 = 'exp2'
+		exp1 = exp_repr.Experiment('exp1')
+		exp2 = exp_repr.Experiment('exp2')
 		event = archive.InitialResults([exp1, exp2])
 		self.archive.record(event)
 		self.assertIn(event, self.archive.development_history)
@@ -80,7 +80,7 @@ class ArchiveTest(unittest.TestCase):
 		exp1 = exp_repr.Experiment('exp1', ['res1'])
 		exp2 = exp_repr.Experiment('exp2', ['res2'])
 		adit = archive.AdditionalModels([mod1, mod2])
-		self.archive.development_history.extend([adit, archive.Results(exp1), archive.Results(exp2)])
+		self.archive.development_history.extend([adit, archive.NewResults(exp1), archive.NewResults(exp2)])
 		origin_event = self.archive.get_model_origin_event(mod1)
 		self.assertEqual(origin_event, adit)
 
@@ -89,8 +89,8 @@ class ArchiveTest(unittest.TestCase):
 		mod2 = 'mod2'
 		exp1 = exp_repr.Experiment('exp1', ['res1'])
 		exp2 = exp_repr.Experiment('exp2', ['res2'])
-		res1 = archive.Results(exp1)
-		res2 = archive.Results(exp2)
+		res1 = archive.NewResults(exp1)
+		res2 = archive.NewResults(exp2)
 		self.archive.development_history.extend([archive.AdditionalModels([mod1, mod2]), res1, res2])
 		origin_event = self.archive.get_model_origin_event(mod1)
 		events = self.archive.get_events_after_event(origin_event)
@@ -102,7 +102,7 @@ class ArchiveTest(unittest.TestCase):
 		mod2 = 'mod2'
 		exp1 = exp_repr.Experiment('exp1', ['res1'])
 		exp2 = exp_repr.Experiment('exp2', ['res2'])
-		self.archive.development_history.extend([archive.AdditionalModels([mod1, mod2]), archive.Results(exp1), archive.Results(exp2)])
+		self.archive.development_history.extend([archive.AdditionalModels([mod1, mod2]), archive.NewResults(exp1), archive.NewResults(exp2)])
 		res = self.archive.get_results_after_model(mod1)
 		self.assertIn('res1', res)
 		self.assertIn('res2', res)

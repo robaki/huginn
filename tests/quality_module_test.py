@@ -1,10 +1,10 @@
 #! /usr/bin/env python3
 
 import unittest
-from archive import Archive, Results, AdditionalModels
+from archive import Archive, NewResults, AdditionalModels
 from mnm_repr import Model
 from exp_repr import Result, Experiment, ExperimentDescription, DetectionEntity
-from quality_module import NumberAllCovered, NumberAllCoveredMinusIgnored, NumberNewCovered, NumberNewCoveredMinusIgnored
+from quality_module import AllCovered, AllCoveredMinusIgnored, NewCovered, NewCoveredMinusIgnored
 
 class QualityModuleTest(unittest.TestCase):
 	def setUp(self):

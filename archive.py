@@ -10,7 +10,7 @@ class Archive:
 		self.chosen_experiment_descriptions = [] # list of expDs
 		self.new_result = None # stored here before it's accepted
 		self.error_flag = False
-		self.rev_add_error_flag = False
+		self.revflag = False
 		self.mnm_compartments = [] # to keep track of mnm elements; info for exp design
 		self.mnm_entities = [] # to keep track of mnm elements
 		self.mnm_activities = [] # to keep track of mnm elements; info for revision and exp design
@@ -34,6 +34,7 @@ class Archive:
 			for res in event.experiment.results:
 				res.ID = self.get_new_res_id()
 			self.new_result = event.experiment
+			self.known_results.append(event.experiment)
 
 		elif isinstance(event, AcceptedResults):
 			self.new_result = None # clearing 
@@ -49,7 +50,7 @@ class Archive:
 				self.working_models.append(model)
 
 		elif isinstance(event, RevisionFail):
-			self.rev_add_error_flag = True
+			self.revflag = True
 
 		elif isinstance(event, RevisedIgnoredUpdate):
 			pass
@@ -63,7 +64,7 @@ class Archive:
 				self.working_models.append(model)
 
 		elif isinstance(event, AdditModProdFail):
-			self.rev_add_error_flag = True
+			self.revflag = True
 
 		elif isinstance(event, UpdatedModelQuality):
 			pass
@@ -74,10 +75,11 @@ class Archive:
 				self.working_models.append(model)
 
 		elif isinstance(event,  InitialResults):
-			for exp in event.experiments
+			for exp in event.experiments:
 				exp.ID = self.get_new_exp_id()
-				for res in event.experiment.results:
-					res.ID = self.get_new_res_id()
+				for exp in event.experiments:
+					for res in exp.results:
+						res.ID = self.get_new_res_id()
 			self.known_results.extend(event.experiments)
 
 		elif isinstance(event,  CheckPointFail):
@@ -116,7 +118,7 @@ class Archive:
 	def get_results_after_model(self, model):
 		event = self.get_model_origin_event(model)
 		events_after = self.get_events_after_event(event)
-		results_sets = [event.experiment.results for event in events_after if isinstance(event, Results)]# doesn't include initial results
+		results_sets = [event.experiment.results for event in events_after if isinstance(event, NewResults)]# doesn't include initial results
 		results = []
 		for res_set in results_sets:
 			results.extend(list(res_set))
@@ -184,7 +186,12 @@ class ChosenExperiment(Event): # experiment description
 		Event.__init__(self)
 		self.experiment_descriptions = expDs
 
-class Results(Event): # full experiment with results
+class NewResults(Event): # full experiment with results
+	def __init__(self, exp):
+		Event.__init__(self)
+		self.experiment = exp
+
+class AcceptedResults(Event):
 	def __init__(self, exp):
 		Event.__init__(self)
 		self.experiment = exp

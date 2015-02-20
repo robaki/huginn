@@ -1,10 +1,10 @@
 #! /usr/bin/env python3
 
 import unittest
-from revision_module import RevisionModule, RevC, RevCI
+from revision_module import RevisionModule, RevCAddB, RevCIAddB
 import mnm_repr
 import exp_repr
-from archive import Archive, AdditionalModels, Results
+from archive import Archive, AdditionalModels, NewResults
 
 
 class RevisionModuleTest(unittest.TestCase):
@@ -44,7 +44,7 @@ class RevisionModuleTest(unittest.TestCase):
 		arch.mnm_entities = [met1, met2]
 		arch.mnm_compartments = [comp1]
 		ev1 = AdditionalModels([base_model])
-		ev2 = Results(exp)
+		ev2 = NewResults(exp)
 		arch.record(ev1)
 		arch.record(ev2)
 
@@ -68,7 +68,7 @@ class RevisionModuleTest(unittest.TestCase):
 		arch.mnm_entities = [met1, met2]
 		arch.mnm_compartments = [comp1]
 		ev1 = AdditionalModels([base_model])
-		ev2 = Results(exp)
+		ev2 = NewResults(exp)
 		arch.record(ev1)
 		arch.record(ev2)
 
@@ -108,7 +108,7 @@ class RevisionModuleTest(unittest.TestCase):
 		self.assertEqual(out, 4)
 
 
-	def test_RevC_revise_positive(self):
+	def test_RevCAddB_revise_positive(self):
 		met1 = mnm_repr.Metabolite('met1')
 		met2 = mnm_repr.Metabolite('met2')
 		comp1 = mnm_repr.Medium()
@@ -132,7 +132,7 @@ class RevisionModuleTest(unittest.TestCase):
 		arch.mnm_entities = [met1, met2]
 		arch.mnm_compartments = [comp1]
 
-		rev = RevC(arch)
+		rev = RevCAddB(arch)
 		out = rev.revise(mod)
 
 		self.assertEqual(out[0], True)
@@ -141,7 +141,7 @@ class RevisionModuleTest(unittest.TestCase):
 		self.assertEqual(arch.working_models[0].intermediate_activities, frozenset([]))
 
 
-	def test_RevC_revise_negative(self):
+	def test_RevCAddB_revise_negative(self):
 		met1 = mnm_repr.Metabolite('met1')
 		met2 = mnm_repr.Metabolite('met2')
 		comp1 = mnm_repr.Medium()
@@ -166,11 +166,11 @@ class RevisionModuleTest(unittest.TestCase):
 		arch.mnm_entities = [met1, met2]
 		arch.mnm_compartments = [comp1]
 
-		rev = RevC(arch)
+		rev = RevCAddB(arch)
 		out = rev.revise(mod)
 		self.assertEqual(out, False)
 
-	def test_RevCI_revise_ignoring(self):
+	def test_RevCIAddB_revise_ignoring(self):
 		met1 = mnm_repr.Metabolite('met1')
 		met2 = mnm_repr.Metabolite('met2')
 		comp1 = mnm_repr.Medium()
@@ -195,7 +195,7 @@ class RevisionModuleTest(unittest.TestCase):
 		arch.mnm_entities = [met1, met2]
 		arch.mnm_compartments = [comp1]
 
-		rev = RevCI(arch)
+		rev = RevCIAddB(arch)
 		out = rev.revise(mod)
 		self.assertEqual(out[0], True)
 		self.assertIn(res2, out[1][mod][0].ignored_results)
