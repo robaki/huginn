@@ -752,8 +752,8 @@ def design_constraints_basic():
 	'\n:- not has_false_model.',
 	'\n',
 	'\n:- designed(experiment(adam_two_factor_exp, Gene, Metabolite)), add(Whatever).',
-	'\n:- designed(experiment(adam_two_factor_exp, Gene, Metabolite)), remove(Whatever).'] # no interventions for adam-style exps
-
+	'\n:- designed(experiment(adam_two_factor_exp, Gene, Metabolite)), remove(Whatever).', # no interventions for adam-style exps
+	'\n:- involved(Entity, Version1, Model), involved(Entity, Version2, Model), Version1 != Version2.'] # only one version of entity in model
 
 def cost_minimisation_rules():
 	return ['\n\ntotal_cost(TCost) :- TCost = #sum[cost(Cost, Nr)=Cost].',

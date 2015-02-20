@@ -2,11 +2,7 @@
 
 import exporter
 
-from archive import RefutedModels
-from archive import RevisedModel
-from archive import RevisionFail
-from archive import AdditionalModels
-from archive import AdditModProdFail
+from archive import RefutedModels, RevisedModel, RevisionFail, AdditionalModels, AdditModProdFail, RevisedIgnoredUpdate
 import archive
 from copy import copy
 import subprocess
@@ -34,14 +30,16 @@ class RevisionModule:
 
 		revision_results = {}
 		for model in inconsistent_models:
-			cmodel = copy(model)
-			cmodel.ID = 'base'
-			out = self.revise(cmodel)
-			if out == False: # in this case: there is no consistent model
+			out = self.revise(model) #(new_mods, updated_base_model)
+			if out == False: # in this case: there is no other consistent model
 				self.archive.record(RevisionFail())
+				break
 #				return False # so revision is futile; no need check other models
 			else:
-				self.archive.record(RevisedModel(out[1][0], out[1][1]))
+				if (out[0] != []): # new_mods
+					self.archive.record(RevisedModel(model, out[0]))
+				if (out[1] == True): # updated_base_model
+					self.archive.record(RevisedIgnoredUpdate(model))
 #				revision_results.update(out[1])
 #		return revision_results
 
@@ -168,23 +166,21 @@ class RevisionModule:
 		return models_results
 
 
-	def create_models_and_register(self, base_model, processed_output):
-		models = []
-		for solution in processed_output.keys():
-			interv_add = [mnm_repr.Add(self.archive.get_matching_element(e_id)) for e_id in processed_output[solution][0]]
-			interv_rem = [mnm_repr.Remove(self.archive.get_matching_element(e_id)) for e_id in processed_output[solution][1]]
-			covered_res = [self.archive.get_matching_result(res_id) for res_id in processed_output[solution][2]]
-			ignored_res = [self.archive.get_matching_result(res_id) for res_id in processed_output[solution][3]]
+	def create_revised_models(self, base_model, solution):
+		interv_add = [mnm_repr.Add(self.archive.get_matching_element(e_id)) for e_id in solution[0]]
+		interv_rem = [mnm_repr.Remove(self.archive.get_matching_element(e_id)) for e_id in solution[1]]
+		covered_res = [self.archive.get_matching_result(res_id) for res_id in solution[2]]
+		ignored_res = [self.archive.get_matching_result(res_id) for res_id in solution[3]]
 
-			new_model = copy(base_model)
-			new_model.apply_interventions(interv_rem)
-			new_model.apply_interventions(interv_add)
-			new_model.results_covered = frozenset(covered_res)
-			new_model.ignored_results = frozenset(ignored_res)
-			models.append(new_model)
+		new_model = copy(base_model)
+		new_model.apply_interventions(interv_rem)
+		new_model.apply_interventions(interv_add)
+		new_model.results_covered = frozenset(covered_res)
+		new_model.ignored_results = frozenset(ignored_res)
 
-		self.archive.record(archive.RevisedModel(base_model, models))
-		return (base_model, models)
+#		models.append(new_model)
+#		self.archive.record(archive.RevisedModel(base_model, models))
+		return new_model
 
 
 	def process_output_revision(self, raw_output):
@@ -195,7 +191,7 @@ class RevisionModule:
 		pat_remove = re.compile('remove\(.*?\)')
 		pat_not_incon = re.compile('not inconsistent\(.*?\)')
 		pat_ignored = re.compile('ignored\(.*?\)')
-		output = {}
+		output = []
 		counter = 0
 		for ans in answers:
 			added = set(pat_add.findall(raw_output))
@@ -212,7 +208,7 @@ class RevisionModule:
 			ignored = [ign.split('ignored(')[1] for ign in ignored] # using split not strip; strip matchech chars not string: overzelous
 			ignored = [ign.strip(')') for ign in ignored]
 			counter += 1
-			output[counter] = (added, removed, covered, ignored)
+			output.append((added, removed, covered, ignored))
 
 		return output
 
@@ -230,11 +226,14 @@ class RevisionModule:
 		return new_model
 
 
-	def prepare_input_execute_and_process(self, base_model, ignoring, force_new_model): # pretty much revise
-		res_mods = self.prepare_input_results_models_revision(base_model)
+	def prepare_input_execute_and_process(self, base_model, ignoring, force_new_model): # pretty much revise; base_model = original one
+		cmodel = copy(base_model)
+		cmodel.ID = 'base'
 
-		add_act = set([x for x in self.archive.mnm_activities if (x.add_cost != None)]) - set(base_model.intermediate_activities)
-		rem_act = set([x for x in base_model.intermediate_activities if (x.remove_cost != None)])
+		res_mods = self.prepare_input_results_models_revision(cmodel)
+
+		add_act = set([x for x in self.archive.mnm_activities if (x.add_cost != None)]) - set(cmodel.intermediate_activities)
+		rem_act = set([x for x in cmodel.intermediate_activities if (x.remove_cost != None)])
 		modeh_add_act = exporter.export_add_activities(add_act)
 		modeh_rem_act = exporter.export_remove_activities(rem_act)
 
@@ -249,10 +248,10 @@ class RevisionModule:
 		difference_facts = []
 		model_difference_rules = []
 		if force_new_model:
-			difference_facts = exporter.export_force_new_model(base_model, self.archive.working_models)# base model (id) must not be in the working mods
+			difference_facts = exporter.export_force_new_model(cmodel, self.archive.working_models)# base model (id) must not be in the working mods
 			model_difference_rules = exporter.model_difference_rules()
 
-		max_number_activities = self.calculate_max_number_activities(base_model)
+		max_number_activities = self.calculate_max_number_activities(cmodel)
 		mod_rules = exporter.models_rules(max_number_activities)
 		pred_rules = exporter.predictions_rules()
 		incons_rules = exporter.inconsistency_rules()
@@ -262,12 +261,28 @@ class RevisionModule:
 
 		raw_output = self.write_and_execute_xhail(inpt)
 		processed_output = self.process_output_revision(raw_output)
-		if processed_output == {}:
+		# decide what to do based on output
+		if processed_output == []: # revision fail
 			return False
-		else:
-			b_mod, new_mods = self.create_models_and_register(base_model, processed_output)
-			return (True, (b_mod, new_mods))
+		
+		updated_base_model = False
+		solutions_for_model_revision = [solution for solution in processed_output if ((solution[0] != []) or (solution[1] != []))]
+		solution_for_ignoring_update = [solution for solution in processed_output if ((solution[0] == []) and (solution[1] == []))]
 
+		new_mods = [self.create_revised_models(cmodel, solution) for solution in solutions_for_model_revision]
+
+		if (solution_for_ignoring_update != []): # update of ignoring results (pick one randomly, they're all optimal)
+			self.update_base_model(base_model, random.choice(solution_for_ignoring_update))
+			updated_base_model = True
+
+		return (new_mods, updated_base_model)
+
+
+	def update_base_model(self, base_model, solution):
+		covered_res = [self.archive.get_matching_result(res_id) for res_id in solution[2]]
+		ignored_res = [self.archive.get_matching_result(res_id) for res_id in solution[3]]
+		self.base_model.update_ignored_results(ignored_res)
+		self.base_model.update_covered_results(covered_res)
 
 
 class RevCAddB(RevisionModule): # rev: minimise changes; additional: revise the best
@@ -275,7 +290,7 @@ class RevCAddB(RevisionModule): # rev: minimise changes; additional: revise the 
 		RevisionModule.__init__(self, archive)
 
 	def revise(self, base_model, force_new_model=False):
-		return self.prepare_input_execute_and_process(False, base_model, force_new_model)
+		return self.prepare_input_execute_and_process(base_model, False, force_new_model)
 
 	def produce_additional_models(self):
 		model = self.get_current_best_model()
@@ -283,7 +298,10 @@ class RevCAddB(RevisionModule): # rev: minimise changes; additional: revise the 
 		if out == False:
 			self.archive.record(AdditModProdFail())
 		else:
-			self.archive.record(AdditionalModels(out[1][1]))
+			self.archive.record(AdditionalModels(out[0]))
+
+		if out[1] == True:
+			raise ValueError('produce_additional_models: revised set of ignored results instead of model itself')
 
 
 class RevCAddR(RevisionModule): # rev: minimise changes; additional: random
@@ -291,7 +309,7 @@ class RevCAddR(RevisionModule): # rev: minimise changes; additional: random
 		RevisionModule.__init__(self, archive)
 
 	def revise(self, base_model, force_new_model=False):
-		return self.prepare_input_execute_and_process(False, base_model, force_new_model)
+		return self.prepare_input_execute_and_process(base_model, False, force_new_model)
 
 	def produce_additional_models(self):
 		model = self.create_random_model()
@@ -300,9 +318,12 @@ class RevCAddR(RevisionModule): # rev: minimise changes; additional: random
 			if out == False:
 				self.archive.record(AdditModProdFail())
 			else:
-				self.archive.record(AdditionalModels(out[1][1]))
+				self.archive.record(AdditionalModels(out[0]))
 		else:
 			self.archive.record(AdditionalModels([model]))
+
+		if out[1] == True:
+			raise ValueError('produce_additional_models: revised set of ignored results instead of model itself')
 
 
 class RevCIAddB(RevisionModule): # rev: minimise changes and ignored; additional: revise the best
@@ -310,7 +331,7 @@ class RevCIAddB(RevisionModule): # rev: minimise changes and ignored; additional
 		RevisionModule.__init__(self, archive)
 
 	def revise(self, base_model, force_new_model=False):
-		return self.prepare_input_execute_and_process(True, base_model, force_new_model)
+		return self.prepare_input_execute_and_process(base_model, True, force_new_model)
 
 	def produce_additional_models(self):
 		model = self.get_current_best_model()
@@ -318,7 +339,10 @@ class RevCIAddB(RevisionModule): # rev: minimise changes and ignored; additional
 		if out == False:
 			self.archive.record(AdditModProdFail())
 		else:
-			self.archive.record(AdditionalModels(out[1][1]))
+			self.archive.record(AdditionalModels(out[0]))
+
+		if out[1] == True:
+			raise ValueError('produce_additional_models: revised set of ignored results instead of model itself')
 
 
 class RevCIAddR(RevisionModule): # rev: minimise changes and ignored; additional: random
@@ -326,15 +350,18 @@ class RevCIAddR(RevisionModule): # rev: minimise changes and ignored; additional
 		RevisionModule.__init__(self, archive)
 
 	def revise(self, base_model, force_new_model=False):
-		return self.prepare_input_execute_and_process(True, base_model, force_new_model)
+		return self.prepare_input_execute_and_process(base_model, True, force_new_model)
 
 	def produce_additional_models(self):
 		model = self.create_random_model()
 		if not self.check_consistency(model):
-			out = self.revise(model)
+			out = self.revise(model, True)
 			if out == False:
 				self.archive.record(AdditModProdFail())
 			else:
-				self.archive.record(AdditionalModels(out[1][1]))
+				self.archive.record(AdditionalModels(out[0]))
 		else:
 			self.archive.record(AdditionalModels([model]))
+
+		if out[1] == True:
+			raise ValueError('produce_additional_models: revised set of ignored results instead of model itself')

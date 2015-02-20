@@ -250,7 +250,7 @@ class ExperimentModule:
 
 
 
-class BasicExpModule(ExperimentModule): # USE THIS ONE
+class BasicExpModuleNoCosts(ExperimentModule): # USE THIS ONE
 	def __init__(self, archive, cost_model):
 		ExperimentModule.__init__(self, archive, cost_model, use_costs=False)
 
@@ -260,18 +260,31 @@ class BasicExpModule(ExperimentModule): # USE THIS ONE
 			self.archive.record(ExpDesignFail)
 		else:
 			self.archive.record(ChosenExperiment([random.choice(exps)]))
-#		return [random.choice(exps)]
 
 
-class RealisticExpModule(ExperimentModule):
+class BasicExpModuleWithCosts(ExperimentModule): # USE THIS ONE
 	def __init__(self, archive, cost_model):
-		ExperimentModule.__init__(self, archive, cost_model, use_costs=False)
+		ExperimentModule.__init__(self, archive, cost_model, use_costs=True)
 
 	def get_experiment(self):
 		exps = self.design_experiment()
 		if exps == False:
 			self.archive.record(ExpDesignFail)
 		else:
-			exp = random.choice(exps)
-			self.archive.record(ChosenExperiment(self.make_more_realistic_exp(exp)))
+			self.archive.record(ChosenExperiment([random.choice(exps)]))
+
+
+
+
+#class RealisticExpModule(ExperimentModule):
+#	def __init__(self, archive, cost_model):
+#		ExperimentModule.__init__(self, archive, cost_model, use_costs=False)
+
+#	def get_experiment(self):
+#		exps = self.design_experiment()
+#		if exps == False:
+#			self.archive.record(ExpDesignFail)
+#		else:
+#			exp = random.choice(exps)
+#			self.archive.record(ChosenExperiment(self.make_more_realistic_exp(exp)))
 

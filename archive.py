@@ -9,6 +9,8 @@ class Archive:
 		self.known_results = [] # container for Experiment type objects not Result type
 		self.chosen_experiment_descriptions = [] # list of expDs
 		self.new_result = None # stored here before it's accepted
+		self.error_flag = False
+		self.rev_add_error_flag = False
 		self.mnm_compartments = [] # to keep track of mnm elements; info for exp design
 		self.mnm_entities = [] # to keep track of mnm elements
 		self.mnm_activities = [] # to keep track of mnm elements; info for revision and exp design
@@ -24,7 +26,7 @@ class Archive:
 			self.chosen_experiment_descriptions = event.experiment_descriptions
 
 		elif isinstance(event, ExpDesignFail):
-			pass
+			self.error_flag = True
 
 		elif isinstance(event, NewResults):
 			self.chosen_experiment_descriptions = [] # clearing 
@@ -47,6 +49,12 @@ class Archive:
 				self.working_models.append(model)
 
 		elif isinstance(event, RevisionFail):
+			self.rev_add_error_flag = True
+
+		elif isinstance(event, RevisedIgnoredUpdate):
+			pass
+
+		elif isinstance(event, CheckPointSuccess):
 			pass
 
 		elif isinstance(event, AdditionalModels):
@@ -55,7 +63,7 @@ class Archive:
 				self.working_models.append(model)
 
 		elif isinstance(event, AdditModProdFail):
-			pass
+			self.rev_add_error_flag = True
 
 		elif isinstance(event, UpdatedModelQuality):
 			pass
@@ -71,6 +79,9 @@ class Archive:
 				for res in event.experiment.results:
 					res.ID = self.get_new_res_id()
 			self.known_results.extend(event.experiments)
+
+		elif isinstance(event,  CheckPointFail):
+			self.error_flag = True
 
 		else:
 			raise(TypeError, "Archive: event's type unknown: %s" % type(event))
@@ -211,3 +222,15 @@ class AdditModProdFail(Event):
 class ExpDesignFail(Event):
 	def __init__(self):
 		pass
+
+class CheckPointFail(Event):
+	def __init__(self, criterion):
+		self.criterion = criterion
+
+class CheckPointSuccess(Event):
+	def __init__(self):
+		pass
+
+class RevisedIgnoredUpdate(Event):
+	def __init__(self, model):
+		self.model = model

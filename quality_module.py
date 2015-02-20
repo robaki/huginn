@@ -11,11 +11,11 @@ class QualityModule:
 			self.calculate_model_score(model)
 		self.calculate_models_quality()
 
-	def calculate_model_score(self, model):
-		pass
+#	def calculate_model_score(self, model):
+#		pass
 
-	def calculate_models_quality(self):
-		pass
+#	def calculate_models_quality(self):
+#		pass
 
 
 class AllCovered(QualityModule):
