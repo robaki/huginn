@@ -56,7 +56,7 @@ class ExperimentModuleTest(unittest.TestCase):
 		self.arch.mnm_activities = self.activities
 
 		# exp module
-		self.exp_module = ExperimentModule(self.arch, self.cost_model)
+		self.exp_module = ExperimentModule(self.arch, self.cost_model, False)
 
 
 	def test_calculate_constant_for_scores(self):

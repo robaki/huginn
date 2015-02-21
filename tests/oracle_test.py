@@ -31,7 +31,7 @@ class OracleTest(unittest.TestCase):
 		self.mod1 = Model('m0', self.setup_conds, [self.growth, self.r1], [])
 		self.mod2 = Model('m1', self.setup_conds, [self.growth, self.r2], [])
 
-		self.oracle = Oracle([], [], self.mod1, self.entities, self.compartments, self.activities)
+		self.oracle = Oracle(None, [], [], self.mod1, self.entities, self.compartments, self.activities)
 
 
 	def tearDown(self):
@@ -45,7 +45,7 @@ class OracleTest(unittest.TestCase):
 		cond1 = PresentEntity(met1, cytosol)
 		cond2 = PresentEntity(met2, cytosol)
 		r1 = Reaction('r1', [cond1], [cond2])
-		self.oracle = Oracle([], [r1], None, [], [], [])
+		self.oracle = Oracle(None, [], [r1], None, [], [], [])
 		expD = ExperimentDescription(ReconstructionActivity('r1'), [])
 		out = self.oracle.execute_in_vitro_exp(expD)
 		self.assertEqual(out.outcome, True)
@@ -60,7 +60,7 @@ class OracleTest(unittest.TestCase):
 		cond_enz = PresentCatalyst(cytosol)
 		r1 = Reaction('r1', [cond1, cond_enz], [cond2])
 		enz = Protein('p1', properties=[Catalyses(r1)])
-		self.oracle = Oracle([enz], [r1], None, [], [], [])
+		self.oracle = Oracle(None, [enz], [r1], None, [], [], [])
 		expD = ExperimentDescription(ReconstructionEnzReaction('r1', 'p1'), [])
 		out = self.oracle.execute_in_vitro_exp(expD)
 		self.assertEqual(out.outcome, True)
@@ -75,7 +75,7 @@ class OracleTest(unittest.TestCase):
 		cond_trp = PresentTransporter(cytosol)
 		r1 = Reaction('r1', [cond1, cond_trp], [cond2])
 		transp = Protein('p1', properties=[Transports(r1)])
-		self.oracle = Oracle([transp], [r1], None, [], [], [])
+		self.oracle = Oracle(None, [transp], [r1], None, [], [], [])
 		expD = ExperimentDescription(ReconstructionTransporterRequired('r1', 'p1'), [])
 		out = self.oracle.execute_in_vitro_exp(expD)
 		self.assertEqual(out.outcome, True)

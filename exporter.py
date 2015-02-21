@@ -53,7 +53,7 @@ def export_activities(activities):
 		elif isinstance(act, mnm_repr.ComplexFormation):
 			strings.append('\ncomplex_formation(%s).' % act.ID)
 		else:
-			raise TypeError("export_activities: activity type not recognised: %s" % act)
+			raise TypeError("export_activities: activity type not recognised: %s" % type(act))
 
 	for act in activities:
 		strings.extend(export_activity(act))

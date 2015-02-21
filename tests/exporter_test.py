@@ -241,7 +241,7 @@ class ExporterTest(unittest.TestCase):
 
 	def test_constant_for_calculating_score(self):
 		out = exporter.constant_for_calculating_score(20)
-		self.assertEqual(out, '\n#const n = 20.')
+		self.assertEqual(out, '\n\n#const n = 20.')
 
 
 	def test_ban_experiment(self):

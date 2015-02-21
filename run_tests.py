@@ -9,6 +9,7 @@ from tests import revision_module_test
 from tests import cost_model_test
 from tests import experiment_module_test
 from tests import oracle_test
+from tests import overseer_test
 
 suite_1 = unittest.TestLoader().loadTestsFromTestCase(mnm_repr_test.ModelTest)
 suite_2 = unittest.TestLoader().loadTestsFromTestCase(archive_test.ArchiveTest)
@@ -18,8 +19,9 @@ suite_5 = unittest.TestLoader().loadTestsFromTestCase(revision_module_test.Revis
 suite_6 = unittest.TestLoader().loadTestsFromTestCase(cost_model_test.CostModelTest)
 suite_7 = unittest.TestLoader().loadTestsFromTestCase(experiment_module_test.ExperimentModuleTest)
 suite_8 = unittest.TestLoader().loadTestsFromTestCase(oracle_test.OracleTest)
+suite_9 = unittest.TestLoader().loadTestsFromTestCase(overseer_test.OverseerTest)
 
-suits = [suite_2] #suite_1, suite_2, suite_3, suite_4, suite_5, suite_6, suite_7, suite_8
+suits = [suite_9] #suite_1, suite_2, suite_3, suite_4, suite_5, suite_6, suite_7, suite_8
 
 for suite in suits:
 	print('\n\n')

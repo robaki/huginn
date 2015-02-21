@@ -11,11 +11,6 @@ class QualityModule:
 			self.calculate_model_score(model)
 		self.calculate_models_quality()
 
-#	def calculate_model_score(self, model):
-#		pass
-
-#	def calculate_models_quality(self):
-#		pass
 
 
 class AllCovered(QualityModule):
@@ -68,8 +63,9 @@ class NewCovered(QualityModule):
 
 	def calculate_model_score(self, model): # number of _new_ results covered
 		new_results = self.archive.get_results_after_model(model)
-		new_covered = set(new_results) & set(model.results_covered)
+		new_covered = (set(new_results) & set(model.results_covered))
 		model.score = sum([r.exp_description.experiment_type.covering_reward for r in new_covered]) #len(new_covered)
+
 
 	def calculate_models_quality(self): # the same as score; checks if needed update
 		for model in self.archive.working_models:

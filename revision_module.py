@@ -238,12 +238,12 @@ class RevisionModule:
 		modeh_rem_act = exporter.export_remove_activities(rem_act)
 
 		modeh_ignore = []
-		if ignore:
+		if ignoring:
 			results = [exp.results for exp in self.archive.known_results]
 			results = [val for sublist in results for val in sublist] # flatten
 			modeh_ignore = exporter.export_ignore_results(results)# added ignoring!!!
 
-		interventions_rules = exporter.interventions_rules()
+		inter_rules = exporter.interventions_rules()
 
 		difference_facts = []
 		model_difference_rules = []
@@ -281,8 +281,8 @@ class RevisionModule:
 	def update_base_model(self, base_model, solution):
 		covered_res = [self.archive.get_matching_result(res_id) for res_id in solution[2]]
 		ignored_res = [self.archive.get_matching_result(res_id) for res_id in solution[3]]
-		self.base_model.update_ignored_results(ignored_res)
-		self.base_model.update_covered_results(covered_res)
+		base_model.update_ignored_results(ignored_res)
+		base_model.update_covered_results(covered_res)
 
 
 class RevCAddB(RevisionModule): # rev: minimise changes; additional: revise the best

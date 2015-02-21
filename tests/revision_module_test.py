@@ -114,8 +114,8 @@ class RevisionModuleTest(unittest.TestCase):
 		comp1 = mnm_repr.Medium()
 		cond_subst_1 = mnm_repr.PresentEntity(met1, comp1)
 		cond_subst_2 = mnm_repr.PresentEntity(met2, comp1)
-		a1 = mnm_repr.Activity('act1', None, [], [cond_subst_1])
-		a2 = mnm_repr.Activity('act1', None, [], [cond_subst_2])
+		a1 = mnm_repr.Reaction('act1', [], [cond_subst_1])
+		a2 = mnm_repr.Reaction('act1', [], [cond_subst_2])
 		# model to be revised
 		mod = mnm_repr.Model('m', [], [a1], [])
 		# results
@@ -135,10 +135,8 @@ class RevisionModuleTest(unittest.TestCase):
 		rev = RevCAddB(arch)
 		out = rev.revise(mod)
 
-		self.assertEqual(out[0], True)
-		self.assertEqual(out[1][mod][0].ID, 'm_0')
-		self.assertEqual(out[1][mod][0].intermediate_activities, frozenset([]))
-		self.assertEqual(arch.working_models[0].intermediate_activities, frozenset([]))
+		self.assertEqual(out[1], False)
+		self.assertEqual(out[0][0].intermediate_activities, frozenset([]))
 
 
 	def test_RevCAddB_revise_negative(self):
@@ -147,9 +145,9 @@ class RevisionModuleTest(unittest.TestCase):
 		comp1 = mnm_repr.Medium()
 		cond_subst_1 = mnm_repr.PresentEntity(met1, comp1)
 		cond_subst_2 = mnm_repr.PresentEntity(met2, comp1)
-		a1 = mnm_repr.Activity('act1', None, [], [cond_subst_1, cond_subst_2])
+		a1 = mnm_repr.Reaction('act1', [], [cond_subst_1, cond_subst_2])
 		a1.remove_cost = None
-		a2 = mnm_repr.Activity('act1', None, [], [cond_subst_1])
+		a2 = mnm_repr.Reaction('act1', [], [cond_subst_1])
 		# model to be revised
 		mod = mnm_repr.Model('m', [], [a1], [])
 		# results
@@ -176,18 +174,18 @@ class RevisionModuleTest(unittest.TestCase):
 		comp1 = mnm_repr.Medium()
 		cond_subst_1 = mnm_repr.PresentEntity(met1, comp1)
 		cond_subst_2 = mnm_repr.PresentEntity(met2, comp1)
-		a1 = mnm_repr.Activity('act1', None, [], [cond_subst_1, cond_subst_2])
+		a1 = mnm_repr.Reaction('act1', [], [cond_subst_1, cond_subst_2])
 		a1.remove_cost = None
-		a2 = mnm_repr.Activity('act1', None, [], [cond_subst_1])
+		a2 = mnm_repr.Reaction('act1', [], [cond_subst_1])
 		# model to be revised
 		mod = mnm_repr.Model('m_0', [], [a1], [])
 		# results
 		des1 = exp_repr.ExperimentDescription(exp_repr.DetectionEntity('met1'), [])
 		des2 = exp_repr.ExperimentDescription(exp_repr.DetectionEntity('met2'), [])
-		res1 = exp_repr.Result('r1', des1, 'false')
-		res2 = exp_repr.Result('r2', des2, 'true')
-		exp1 = exp_repr.Experiment('exp1', [res1])
-		exp2 = exp_repr.Experiment('exp2', [res2])
+		res1 = exp_repr.Result('res_0', des1, 'false')
+		res2 = exp_repr.Result('res_1', des2, 'true')
+		exp1 = exp_repr.Experiment('exp_0', [res1])
+		exp2 = exp_repr.Experiment('exp_1', [res2])
 		# archive with results and parts for revision
 		arch = Archive()
 		arch.known_results = [exp1, exp2]
@@ -197,5 +195,5 @@ class RevisionModuleTest(unittest.TestCase):
 
 		rev = RevCIAddB(arch)
 		out = rev.revise(mod)
-		self.assertEqual(out[0], True)
-		self.assertIn(res2, out[1][mod][0].ignored_results)
+		self.assertEqual(out[0], [])
+		self.assertEqual(out[1], True)

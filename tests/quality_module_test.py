@@ -10,24 +10,24 @@ class QualityModuleTest(unittest.TestCase):
 	def setUp(self):
 		self.archive = Archive()
 		exd = ExperimentDescription(DetectionEntity(None))
-		res1 = Result('res1', exd, None)
-		res2 = Result('res2', exd, None)
-		res3 = Result('res3', exd, None)
-		res4 = Result('res4', exd, None)
-		exp1 = Experiment('exp1', [res1])
-		exp2 = Experiment('exp2', [res2])
-		exp3 = Experiment('exp3', [res3])
-		exp4 = Experiment('exp4', [res4])
-		r1 = Results(exp1)
-		r2 = Results(exp2)
-		r3 = Results(exp3)
-		r4 = Results(exp4)
+		res1 = Result('res_0', exd, None)
+		res2 = Result('res_1', exd, None)
+		res3 = Result('res_2', exd, None)
+		res4 = Result('res_3', exd, None)
+		exp1 = Experiment('exp_0', [res1])
+		exp2 = Experiment('exp_1', [res2])
+		exp3 = Experiment('exp_2', [res3])
+		exp4 = Experiment('exp_3', [res4])
+		r1 = NewResults(exp1)
+		r2 = NewResults(exp2)
+		r3 = NewResults(exp3)
+		r4 = NewResults(exp4)
 
-		self.mod1 = Model('id1', ['m1'], [], [])
+		self.mod1 = Model('m_0', [1], [], [])
 		self.mod1.ignored_results = frozenset([res3])
 		self.mod1.results_covered = frozenset([res1, res4])
 
-		self.mod2 = Model('id2', ['m2'], [], [])
+		self.mod2 = Model('m_1', [2], [], [])
 		self.mod2.ignored_results = frozenset([res3])
 		self.mod2.results_covered = frozenset([res1, res2, res4])
 
@@ -44,26 +44,26 @@ class QualityModuleTest(unittest.TestCase):
 		self.mod1 = None
 		self.mod2 = None
 
-	def test_NumberAllCovered(self):
-		q = NumberAllCovered(self.archive)
+	def test_AllCovered(self):
+		q = AllCovered(self.archive)
 		q.check_and_update_qualities()
 		self.assertEqual(self.mod1.quality, 2)
 		self.assertEqual(self.mod2.quality, 3)
 
-	def test_NumberAllCoveredMinusIgnored(self):
-		q = NumberAllCoveredMinusIgnored(self.archive)
+	def test_AllCoveredMinusIgnored(self):
+		q = AllCoveredMinusIgnored(self.archive)
 		q.check_and_update_qualities()
 		self.assertEqual(self.mod1.quality, 1)
 		self.assertEqual(self.mod2.quality, 2)
 
-	def test_NumberNewCovered(self):
-		q = NumberNewCovered(self.archive)
+	def test_NewCovered(self):
+		q = NewCovered(self.archive)
 		q.check_and_update_qualities()
 		self.assertEqual(self.mod1.quality, 1)
 		self.assertEqual(self.mod2.quality, 2)
 
-	def test_NumberNewCoveredMinusIgnored(self):
-		q = NumberNewCoveredMinusIgnored(self.archive)
+	def test_NewCoveredMinusIgnored(self):
+		q = NewCoveredMinusIgnored(self.archive)
 		q.check_and_update_qualities()
 		self.assertEqual(self.mod1.quality, 1)
 		self.assertEqual(self.mod2.quality, 2)
