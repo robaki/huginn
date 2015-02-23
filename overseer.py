@@ -2,7 +2,7 @@
 
 import pickle
 from time import gmtime
-from archive import CheckPointFail, CheckPointSuccess, RevisedModel, AdditionalModels, AcceptedResults
+from archive import CheckPointFail, CheckPointSuccess, RevisedModel, AdditionalModels, AcceptedResults, NewResults
 from revision_module import RevCIAddB, RevCIAddR, RevCAddB, RevCAddR
 
 class Overseer:
@@ -41,10 +41,11 @@ class Overseer:
 				self.archive.record(CheckPointSuccess())
 			
 		else: # no ignoring
-			if len(self.archive.working_models) >= 1: # one model left
+			if len(self.archive.working_models) <= 1: # one model left
 				self.archive.record(CheckPointFail('no ignoring'))
 			else:
 				self.archive.record(CheckPointSuccess())
+
 
 	def record_result(self):
 		last_event = self.archive.development_history[-1]
@@ -68,7 +69,7 @@ class Overseer:
 
 
 	def was_new_model_produced_since_last_check(self):
-		for event in reverse(self.archive.development_history):
+		for event in self.archive.development_history[::-1]:
 			if (isinstance(event, RevisedModel) or isinstance(event, AdditionalModels)):
 				self.cycles_since_last_new_model = 0
 				return True
@@ -77,6 +78,7 @@ class Overseer:
 				return False
 			else:
 				pass
+		return False # if nothing found
 
 
 	def did_the_best_model_change_since_last_check(self):# checks set: could be best models

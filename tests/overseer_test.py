@@ -3,8 +3,9 @@
 import unittest
 from overseer import Overseer, OverseerWithModQuality, OverseerNoQuality
 
-from archive import Archive
-from revision_module import RevCAddB
+from mnm_repr import Model
+from archive import Archive, CheckPointFail, NewResults, AcceptedResults, AdditionalModels, CheckPointSuccess
+from revision_module import RevCAddB, RevCIAddR
 from experiment_module import BasicExpModuleNoCosts
 from oracle import Oracle
 from quality_module import QualityModule
@@ -43,32 +44,72 @@ class OverseerTest(unittest.TestCase):
 #		self.overseer_qual.stop_development()
 
 
-	def test_do_check_ignoring(self):
-		
+	def test_do_check_ignoring_negative(self):
+		mod = Model('m_0', [], [], [])
+		archive = Archive()
+		archive.working_models.append(mod)
+		rev_mod = RevCIAddR(archive)
+		exp_mod = BasicExpModuleNoCosts(archive, None)
+		oracle = Oracle(archive, [], [], None, [], [], [])
+		qual_mod = QualityModule(archive)
+		overseer = OverseerWithModQuality(archive, rev_mod, exp_mod, oracle, 2, qual_mod, 2)
+		overseer.cycles_since_last_new_model = 5
+		overseer.cycles_since_best_model_changed = 5
+		overseer.current_best_models = set([mod])
+		before = list(overseer.archive.development_history)
+		overseer.do_check()
+		after = overseer.archive.development_history[-1]
+		self.assertEqual(before, [])
+		self.assertIsInstance(after, CheckPointFail)
 
 
-#	def test_do_check_noignoring(self):
+	def test_do_check_noignoring_negative(self):
+		before = list(self.overseer_qual.archive.development_history)
+		self.overseer_qual.do_check()
+		after = self.overseer_qual.archive.development_history[-1]
+		self.assertEqual(before, [])
+		self.assertIsInstance(after, CheckPointFail)
 
 
-
-#	def test_record_result(self):
-
-
-
-#	def test_was_new_model_produced_since_last_check_positive(self):
-
+	def test_record_result_positive(self):
+		self.overseer_qual.archive.development_history.append(NewResults([]))
+		self.overseer_qual.record_result()
+		after = self.overseer_qual.archive.development_history[-1]
+		self.assertIsInstance(after, AcceptedResults)
 
 
-#	def test_was_new_model_produced_since_last_check_negative(self):
+	def test_record_result_error(self):
+		self.overseer_qual.archive.development_history.append(1)
+		self.assertRaises(TypeError, self.overseer_qual.record_result)
 
 
+	def test_was_new_model_produced_since_last_check_positive(self):
+		self.overseer_qual.archive.development_history.append(CheckPointSuccess())
+		self.overseer_qual.archive.development_history.append(AdditionalModels([]))
+		out = self.overseer_qual.was_new_model_produced_since_last_check()
+		self.assertEqual(out, True)
 
-#	def test_did_the_best_model_change_since_last_check_positive(self):
+	def test_was_new_model_produced_since_last_check_negative_one(self):
+		self.overseer_qual.archive.development_history.append(CheckPointSuccess())
+		out = self.overseer_qual.was_new_model_produced_since_last_check()
+		self.assertEqual(out, False)
 
+	def test_was_new_model_produced_since_last_check_negative_two(self):
+		out = self.overseer_qual.was_new_model_produced_since_last_check()
+		self.assertEqual(out, False)
 
+	def test_did_the_best_model_change_since_last_check_positive(self):
+		mod = Model('m_0', [], [], [])
+		self.overseer_qual.archive.working_models.append(mod)
+		out = self.overseer_qual.did_the_best_model_change_since_last_check()
+		self.assertEqual(out, True)
 
-#	def test_did_the_best_model_change_since_last_check_negative(self):
-
+	def test_did_the_best_model_change_since_last_check_negative(self):
+		mod = Model('m_0', [], [], [])
+		self.overseer_qual.archive.working_models.append(mod)
+		self.overseer_qual.current_best_models = set([mod])
+		out = self.overseer_qual.did_the_best_model_change_since_last_check()
+		self.assertEqual(out, False)
 
 
 
