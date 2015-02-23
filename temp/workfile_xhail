@@ -4,8 +4,8 @@ metabolite(met2,none).
 compartment(c_01).
 result(res_0, experiment(detection_entity_exp, met1), true).
 model(m_0).
-added_to_model(setup_present(met2,none,c_01),m_0).
 added_to_model(setup_present(met1,none,c_01),m_0).
+added_to_model(setup_present(met2,none,c_01),m_0).
 relevant(res_0, m_0).
 :- inconsistent(m_0, res_0).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -26,23 +26,26 @@ class RevisionModule:
 			else:
 				pass
 
-		self.archive.record(RefutedModels(inconsistent_models))
-
-		revision_results = {}
+		revision_events = []
+		update_events = []
+		updated_ignoring_models = []
 		for model in inconsistent_models:
 			out = self.revise(model) #(new_mods, updated_base_model)
 			if out == False: # in this case: there is no other consistent model
 				self.archive.record(RevisionFail())
 				break
-#				return False # so revision is futile; no need check other models
 			else:
 				if (out[0] != []): # new_mods
-					self.archive.record(RevisedModel(model, out[0]))
+					revision_events.append(RevisedModel(model, out[0]))
 				if (out[1] == True): # updated_base_model
-					self.archive.record(RevisedIgnoredUpdate(model))
-#				revision_results.update(out[1])
-#		return revision_results
+					update_events.append(RevisedIgnoredUpdate(model))
+					updated_ignoring_models.append(model)
 
+		# record refuted (revision required change in model's structure, not just in set of ignored results)
+		self.archive.record(RefutedModels(list(set(inconsistent_models) - set(updated_ignoring_models))))
+		# record revision/update events
+		for event in revision_events + update_events:
+			self.archive.record(event)
 
 
 	def check_consistency(self, model):
