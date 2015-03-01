@@ -166,7 +166,7 @@ class ExporterTest(unittest.TestCase):
 		model.calculate_derived_costs(activities)
 		# test
 		out = exporter.export_experiment_specification_elements(model)
-		self.assertEqual(len(out.keys()), 57)
+		self.assertEqual(len(out.keys()), 55)
 		self.assertNotIn(None, out.values())
 
 
@@ -237,7 +237,8 @@ class ExporterTest(unittest.TestCase):
 		# test
 		out = exporter.cost_rules(model)
 #		self.assertIn('\ncost(1, 0) :- add(setup_present(met1, none, c_01)).', out)
-		self.assertEqual(len(out), 57)
+#		print(out)
+		self.assertEqual(len(out), 55)
 
 	def test_constant_for_calculating_score(self):
 		out = exporter.constant_for_calculating_score(20)

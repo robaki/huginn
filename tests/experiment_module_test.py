@@ -145,8 +145,15 @@ class ExperimentModuleTest(unittest.TestCase):
 
 
 	def test_get_interventions(self):
-		components = ['add(setup_present(met1,none,c_05))', 'remove(setup_present(met2,none,c_05))']
+		components = ['add(setup_present(met1,none,c_05))', 'remove(setup_present(met2,none,c_05))', 'add(r123)']
 		interventions = self.exp_module.get_interventions(components)
-		eval_info = [(x.condition_or_activity.entity.ID, x.condition_or_activity.compartment.ID) for x in interventions]
+		eval_info = []
+		for inter in interventions:
+			try:
+				eval_info.append((inter.condition_or_activity.entity.ID, inter.condition_or_activity.compartment.ID))
+			except:
+				eval_info.append()
+
 		self.assertIn(('met1', 'c_05'), eval_info)
 		self.assertIn(('met2', 'c_05'), eval_info)
+

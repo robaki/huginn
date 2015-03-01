@@ -226,31 +226,34 @@ class ExperimentModule:
 
 	def get_interventions(self, components):
 		interventions = []
-		add = [st for st in components if st.startswith('add(')]
+		add_setup = [st for st in components if st.startswith('add(setup_')]
+		add_activ = list(set([st for st in components if st.startswith('add')]) - set(add_setup))
 		remove = [st for st in components if st.startswith('remove(')]
-		for st in add:
+		for st in add_setup:
 			splitted = st.split('add(setup_present(')[1].split(')')[0].split(',')
 			entity = self.archive.get_matching_element(splitted[0], splitted[1])
 			compartment = self.archive.get_matching_element(splitted[2])
 			interventions.append(Add(PresentEntity(entity, compartment)))
+		for st in add_activ:
+			splitted = st.split('add(')[1].split(')')[0]
+			activity = self.archive.get_matching_element(splitted)
+			interventions.append(Add(activity))
 		for st in remove:
 			splitted = st.split('remove(setup_present(')[1].split(')')[0].split(',')
 			entity = self.archive.get_matching_element(splitted[0], splitted[1])
 			compartment = self.archive.get_matching_element(splitted[2])
 			interventions.append(Remove(PresentEntity(entity, compartment)))
+
 		# removing used stuff from components
-		[components.remove(st) for st in add]
+		[components.remove(st) for st in add_setup]
+		[components.remove(st) for st in add_activ]
 		[components.remove(st) for st in remove]
 		return interventions
 
 
-# COMMENTED OUT FOR SAFETY REASONS
-#	def make_more_realistic_exp(self, exp):
-#		pass
 
 
-
-class BasicExpModuleNoCosts(ExperimentModule): # USE THIS ONE
+class BasicExpModuleNoCosts(ExperimentModule):
 	def __init__(self, archive, cost_model):
 		ExperimentModule.__init__(self, archive, cost_model, use_costs=False)
 
@@ -262,7 +265,7 @@ class BasicExpModuleNoCosts(ExperimentModule): # USE THIS ONE
 			self.archive.record(ChosenExperiment([random.choice(exps)]))
 
 
-class BasicExpModuleWithCosts(ExperimentModule): # USE THIS ONE
+class BasicExpModuleWithCosts(ExperimentModule):
 	def __init__(self, archive, cost_model):
 		ExperimentModule.__init__(self, archive, cost_model, use_costs=True)
 
@@ -273,18 +276,4 @@ class BasicExpModuleWithCosts(ExperimentModule): # USE THIS ONE
 		else:
 			self.archive.record(ChosenExperiment([random.choice(exps)]))
 
-
-
-
-#class RealisticExpModule(ExperimentModule):
-#	def __init__(self, archive, cost_model):
-#		ExperimentModule.__init__(self, archive, cost_model, use_costs=False)
-
-#	def get_experiment(self):
-#		exps = self.design_experiment()
-#		if exps == False:
-#			self.archive.record(ExpDesignFail)
-#		else:
-#			exp = random.choice(exps)
-#			self.archive.record(ChosenExperiment(self.make_more_realistic_exp(exp)))
 

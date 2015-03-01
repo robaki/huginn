@@ -4,18 +4,17 @@ from exp_repr import DetectionEntity, AdamTwoFactorExperiment, ReconstructionAct
 from exp_repr import LocalisationEntity
 from exp_repr import DetectionActivity
 
-from mnm_repr import CellMembrane, CellMembraneOuterSide, CellMembraneInnerSide, Cytosol, Mitochondrium, MitochMatrix, MitochOuterMembrane, MitochOuterMembraneOuterSide, MitochOuterMembraneInnerSide, MitochInnerMembrane, MitochInnerMembraneOuterSide, MitochInnerMembraneInnerSide, GolgiMembrane, GolgiMembraneOuterSide, GolgiMembraneInnerSide, GolgiApparatus, Nucleus, NuclearMembrane, NuclearMembraneOuterSide, NuclearMembraneInnerSide, EndoplasmicReticulum, ERMembrane, ERMembraneOuterSide, ERMembraneInnerSide, Vacuole, VacuolarMembrane, VacuolarMembraneMediumSide, VacuolarMembraneCytosolSide, VacuolarMembraneInnerSide, PeroxisomalMembrane, PeroxisomalMembraneInnerSide, PeroxisomalMembraneOuterSide, Peroxisome
+from mnm_repr import CellMembrane, CellMembraneOuterSide, CellMembraneInnerSide, Cytosol, Mitochondrium, MitochMatrix, MitochOuterMembrane, MitochOuterMembraneOuterSide, MitochOuterMembraneInnerSide, MitochInnerMembrane, MitochInnerMembraneOuterSide, MitochInnerMembraneInnerSide, GolgiMembrane, GolgiMembraneOuterSide, GolgiMembraneInnerSide, GolgiApparatus, Nucleus, NuclearMembrane, NuclearMembraneOuterSide, NuclearMembraneInnerSide, EndoplasmicReticulum, ERMembrane, ERMembraneOuterSide, ERMembraneInnerSide, Vacuole, VacuolarMembrane, VacuolarMembraneMediumSide, VacuolarMembraneCytosolSide, VacuolarMembraneInnerSide, PeroxisomalMembrane, PeroxisomalMembraneInnerSide, PeroxisomalMembraneOuterSide, Peroxisome, Medium
 
 import mnm_repr
 
 
 class CostModel:
-	def __init__(self, entities, compartments, activities, setup_conds):
-		self.generate_all_possible(entities, compartments, activities, setup_conds)
-		# generate and set all to None, incl. Types
+	def __init__(self, entities, compartments, activities, setup_conds, import_activities=[]):
+		self.generate_all_possible(entities, compartments, activities, setup_conds, import_activities)
 
 
-	def generate_all_possible(self, entities, compartments, activities, setup_conds):
+	def generate_all_possible(self, entities, compartments, activities, setup_conds, import_activities):
 		# exp types:
 		self.types = {DetectionEntity:None, AdamTwoFactorExperiment:None,
 			ReconstructionActivity:None, ReconstructionEnzReaction:None,
@@ -37,13 +36,15 @@ class CostModel:
 		self.design_entity_det = {}
 		self.intervention_add = {}
 		self.intervention_remove = {}
-		# 
+		#
+		for act in import_activities:
+			self.intervention_add[act] = 0
+		#
 		for st in setup_conds:
-			self.intervention_remove[mnm_repr.Remove(st)] = None
+			if (isinstance(st.entity, mnm_repr.Gene) or isinstance(st.compartment, Medium)): # all genes can be removed; metabs can only be removed from medium
+				self.intervention_remove[mnm_repr.Remove(st)] = None
 			if isinstance(st.entity, mnm_repr.Gene):
 				self.design_deletable[st.entity] = None
-			else:
-				pass
 		#
 		for ent in entities:
 			if isinstance(ent, mnm_repr.Gene):
@@ -52,12 +53,14 @@ class CostModel:
 				self.design_available[ent] = None
 				self.design_entity_det[ent] = None
 			if isinstance(ent, mnm_repr.Metabolite):
-				self.intervention_add[mnm_repr.Add(mnm_repr.PresentEntity(ent, mnm_repr.Medium()))] = None
+				self.intervention_add[mnm_repr.Add(mnm_repr.PresentEntity(ent, Medium()))] = None
 			else: # Prot, Cplx
 				self.design_entity_loc[ent] = None
 		#
 		for act in activities:
-			if isinstance(act, mnm_repr.Growth):
+			if act in import_activities:# don't test these additional import reactions: they're only to help with experiments
+				continue
+			elif isinstance(act, mnm_repr.Growth):
 				self.design_activity_det[act] = None
 			else:
 				self.design_activity_rec[act] = None
@@ -194,3 +197,4 @@ class CostModel:
 			self.intervention_add[key] = 1
 		for key in self.intervention_remove.keys():
 			self.intervention_remove[key] = 1
+

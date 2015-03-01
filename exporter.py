@@ -4,7 +4,7 @@ import mnm_repr
 import exp_repr
 
 from exp_repr import DetectionEntity, LocalisationEntity, DetectionActivity, AdamTwoFactorExperiment
-
+from mnm_repr import Activity, Condition
 
 def export_entities(entities):
 	strings = []
@@ -718,8 +718,16 @@ def export_experiment_specification_elements(cost_model):
 		output['design_entity_det(%s)' % element.ID] = cost_model.design_entity_det[element]
 
 	for element in cost_model.intervention_add.keys():
-		tup = (element.condition_or_activity.entity.ID, element.condition_or_activity.entity.version, element.condition_or_activity.compartment.ID)
-		output['add(setup_present(%s, %s, %s))' % tup] = cost_model.intervention_add[element]
+		if isinstance(element.condition_or_activity, Condition):
+			tup = (element.condition_or_activity.entity.ID, element.condition_or_activity.entity.version, element.condition_or_activity.compartment.ID)
+			output['add(setup_present(%s, %s, %s))' % tup] = cost_model.intervention_add[element]
+
+		elif isinstance(element.condition_or_activity, Activity): # import activities for metabolites added to medium
+			output['add(%s)' % element.condition_or_activity.ID] = cost_model.intervention_add[element]
+
+		else:
+			raise TypeError("export_experiment_specification_elements: intervention_add: type not recognised: %s" % element)
+
 
 	for element in cost_model.intervention_remove.keys():
 		tup = (element.condition_or_activity.entity.ID, element.condition_or_activity.entity.version, element.condition_or_activity.compartment.ID)
