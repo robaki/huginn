@@ -165,6 +165,11 @@ class Archive:
 		self._results_counter += 1
 		return ID
 
+	def get_new_ent_id(self):
+		return 'ent_%s' % len(self.mnm_entities)
+
+	def get_new_act_id(self):
+		return 'act_%s' % len(self.mnm_activities)
 
 
 class Event:
@@ -175,6 +180,10 @@ class InitialModels(Event): # record them after initial results!
 	def __init__(self, models):
 		Event.__init__(self)
 		self.models = models
+#		for model in models:
+#			print('event info')
+#			print(type(model.intermediate_activities))
+
 
 class InitialResults(Event): # record them first!
 	def __init__(self, exps):

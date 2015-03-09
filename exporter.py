@@ -126,6 +126,7 @@ def export_results(results):
 def export_models(models_results):
 	strings = []
 	# model().
+	print([x.ID for x in models_results.keys()])
 	joined_models = ';'.join([x.ID for x in models_results.keys()])
 	strings.append(joined_models.join(['\nmodel(', ').']))
 	# specification:

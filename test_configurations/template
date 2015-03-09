@@ -1,0 +1,8 @@
+split = '' # numbers / probabilities
+changes = '' # only_changes / changes_plus_ignored
+stop_criterion = '' # one_model_left / no_new_models_etc
+no_new_models_limit = # 2/4/8
+additional_model_template = '' # best / random
+additional_model_threshold = # 2/4/8
+experiment_costs = # True / False
+penalties_reward = # default / custom

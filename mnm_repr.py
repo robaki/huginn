@@ -285,6 +285,10 @@ class Peroxisome(Compartment):
 	def __init__(self):
 		self.ID = "c_34"
 
+class LipidParticle(Compartment):
+	def __init__(self):
+		self.ID = "c_35"
+
 
 
 class Intervention:
@@ -322,6 +326,11 @@ class Model:
 		return new_model
 
 	def __hash__(self):
+#		print(self.ID)
+#		print(len(self.intermediate_activities))
+#		print(type(self.setup_conditions))
+#		print(type(self.intermediate_activities))
+#		print(type(self.termination_conditions))
 		return hash((self.setup_conditions, self.intermediate_activities, self.termination_conditions))
 
 	def __eq__(self, other):

@@ -1,0 +1,10 @@
+split = 'probabilities' # numbers / probabilities
+revision_optimisation = 'changes_plus_ignored' # only_changes / changes_plus_ignored
+stop_criterion = 'no_new_models_etc' # one_model_left / no_new_models_etc
+no_new_models_limit = 2 # 2/4/8
+quality_criterion = 'new_covered_ignored' # 'no_qualities', 'all_covered', 'all_covered_ignored', 'new_covered', 'new_covered_ignored'
+additional_model_template = 'random' # best / random
+additional_model_threshold = 2 # 2/4/8
+experiment_costs = False # True / False
+experiment_cost_model = '' # path to file with the model; always needed!
+penalties_rewards = 'default' # default

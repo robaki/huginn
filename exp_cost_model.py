@@ -155,7 +155,7 @@ class CostModel:
 
 		# calculating costs for activities: enzymes and transporters not included here; accounted for in design rules.
 		for act in self.design_activity_rec.keys():
-			if isinstance(act, mnm_repr.Growth):
+			if isinstance(act, mnm_repr.Growth) or isinstance(act, mnm_repr.Expression):
 				continue
 			else:
 				substrates_available_costs = [self.design_available[ent] for ent in act.return_substrates()]

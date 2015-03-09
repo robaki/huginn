@@ -122,14 +122,14 @@ class OverseerWithModQuality(Overseer):
 			{'name':'stop_development', 'src':'experiment_ready', 'dst':'stop', 'method':self.stop_development}]
 
 
-	def run(self, threshold_addit_models):
+	def run(self):
 		while not (self.current_state == self.final_state):
 			# if error: stop dev
 			if self.archive.error_flag == True:
 				self.do_transition('stop_development')
 			# if only one transition available, do it
 			elif len(self.available_transitions()) == 1:
-				self.do_transition(self.available_transitions()[0]['method'])
+				self.do_transition(self.available_transitions()[0]['name'])
 			# if number of working models below threshold, then produce some more
 			elif self.cond_1():
 				self.do_transition('produce_additional_models')
@@ -138,6 +138,8 @@ class OverseerWithModQuality(Overseer):
 			# if more than one transitions available but one of them is stop_dev
 			elif len([tr for tr in self.available_transitions() if tr['name'] != 'stop_development']) == 1:
 				self.do_transition([tr for tr in self.available_transitions() if tr['name'] != 'stop_development'][0])
+			elif self.current_state == 'start':
+				self.do_transition('start_development')
 			else:
 				raise ValueError("Overseer: run: none of the specified conditions triggered: current state: %s" % self.current_state)
 
@@ -145,7 +147,7 @@ class OverseerWithModQuality(Overseer):
 	def cond_1(self):
 		if not (self.current_state == 'quality_recalculated'):
 			return False
-		elif not (len(self.archive.working_models) < threshold_addit_models):
+		elif not (len(self.archive.working_models) < self.threshold_addit_models):
 			return False
 		elif not (self.archive.revflag == False):
 			return False
@@ -156,7 +158,7 @@ class OverseerWithModQuality(Overseer):
 	def cond_2(self):
 		if (self.archive.revflag == True):
 			return True
-		elif not (len(self.archive.working_models) >= threshold_addit_models):
+		elif not (len(self.archive.working_models) >= self.threshold_addit_models):
 			return False
 		elif not (self.current_state == 'quality_recalculated'):
 			return False
@@ -184,7 +186,7 @@ class OverseerNoQuality(Overseer):
 			{'name':'stop_development', 'src':'experiment_ready', 'dst':'stop', 'method':self.stop_development}]
 
 
-	def run(self, threshold_addit_models):
+	def run(self):
 		while not (self.current_state == self.final_state):
 			# if error: stop dev
 			if self.archive.error_flag == True:
@@ -211,7 +213,7 @@ class OverseerNoQuality(Overseer):
 	def cond_1(self):
 		if not (self.current_state == 'models_tested_and_revised'):
 			return False
-		elif not (len(self.archive.working_models) < threshold_addit_models):
+		elif not (len(self.archive.working_models) < self.threshold_addit_models):
 			return False
 		elif not (self.archive.revflag == False):
 			return False
@@ -222,7 +224,7 @@ class OverseerNoQuality(Overseer):
 	def cond_2(self):
 		if not (self.current_state == 'produced_additional_models'):
 			return False
-		elif not (len(self.archive.working_models) < threshold_addit_models):
+		elif not (len(self.archive.working_models) < self.threshold_addit_models):
 			return False
 		elif not (self.archive.revflag == False):
 			return False
@@ -233,7 +235,7 @@ class OverseerNoQuality(Overseer):
 	def cond_3(self):
 		if (self.archive.revflag == True):
 			return True
-		elif not (len(self.archive.working_models) >= threshold_addit_models):
+		elif not (len(self.archive.working_models) >= self.threshold_addit_models):
 			return False
 		elif not (self.current_state == 'models_tested_and_revised'):
 			return False
@@ -244,7 +246,7 @@ class OverseerNoQuality(Overseer):
 	def cond_4(self):
 		if (self.archive.revflag == True):
 			return True
-		elif not (len(self.archive.working_models) >= threshold_addit_models):
+		elif not (len(self.archive.working_models) >= self.threshold_addit_models):
 			return False
 		elif not (self.current_state == 'produced_additional_models'):
 			return False

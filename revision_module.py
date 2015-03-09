@@ -198,13 +198,13 @@ class RevisionModule:
 		counter = 0
 		for ans in answers:
 			added = set(pat_add.findall(raw_output))
-			added = [ad.strip('add(') for ad in added] # formatting: leaving only id
+			added = [ad.split('add(')[1] for ad in added] # using split not strip; strip matchech chars not string: overzelous
 			added = [ad.strip(')') for ad in added] # formatting: leaving only id
 			removed = set(pat_remove.findall(raw_output))
-			removed = [rem.strip('remove(') for rem in removed]
+			removed = [rem.split('remove(')[1] for rem in removed]# using split not strip; strip matchech chars not string: overzelous
 			removed = [rem.strip(')') for rem in removed]
 			covered = set(pat_not_incon.findall(raw_output))
-			covered = [cov.strip('not inconsistent(') for cov in covered]
+			covered = [cov.split('not inconsistent(')[1] for cov in covered]# using split not strip; strip matchech chars not string: overzelous
 			covered = [cov.strip(')') for cov in covered]
 			covered = [cov.split(',')[1] for cov in covered] # removing first argument
 			ignored = set(pat_ignored.findall(raw_output))
@@ -223,9 +223,9 @@ class RevisionModule:
 
 	def create_random_model(self):
 		numberActToChoose = random.choice(list(range(len(self.archive.mnm_activities)))) # presence of two versions of the same entity will trigger revision anyway
-		activities = [random.sample(self.archive.mnm_activities), numberActToChoose]
+		activities = random.sample(self.archive.mnm_activities, numberActToChoose)
 		new_model = copy(self.archive.working_models[0]) # will cause problems if there will be no working models left...
-		new_model.intermediate_activities = activities
+		new_model.intermediate_activities = frozenset(activities)
 		return new_model
 
 
