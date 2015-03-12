@@ -30,12 +30,13 @@ class Evaluator:
 
 	def quick_test(self):
 		# test case
-		pkl_file = open('test_cases/case_16', 'rb')
+		pkl_file = open('test_cases/case_7', 'rb')
 		self.test_case = pickle.load(pkl_file)
 		pkl_file.close()
 
 		archive_ = Archive()
 		archive_.mnm_compartments = self.test_case['all_compartments']
+		archive_.model_of_ref = self.test_case['model_of_ref']
 
 		for ent in self.test_case['all_entities']:
 			ent.ID = archive_.get_new_ent_id()
@@ -43,6 +44,10 @@ class Evaluator:
 		for act in self.test_case['all_activities']:
 			act.ID = archive_.get_new_act_id()
 			archive_.mnm_activities.append(act)
+		for act in self.test_case['add_import_activities']:
+			act.ID = archive_.get_new_act_id()
+			archive_.import_activities.append(act)
+		
 		archive_.record(InitialModels(self.test_case['initial_models']))
 
 		quality_m = NewCoveredMinusIgnored(archive_)
@@ -62,7 +67,7 @@ class Evaluator:
 			self.test_case['all_entities'], self.test_case['all_compartments'],
 			self.test_case['all_activities'])
 
-		overseer = OverseerWithModQuality(archive_, revision_m, exp_m, oracle_, 2, quality_m, 2)
+		overseer = OverseerWithModQuality(archive_, revision_m, exp_m, oracle_, 2, quality_m, 8)
 		overseer.run()
 
 

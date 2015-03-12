@@ -92,7 +92,7 @@ class Oracle:
 		copied_model.apply_interventions(expD.interventions)
 		exported_ent = exporter.export_entities(self.all_ent)
 		exported_comp = exporter.export_compartments(self.all_comp)
-		exported_act = exporter.export_activities(self.all_act)
+		exported_act = exporter.export_activities(self.all_act + self.archive.import_activities)
 		exported_model = exporter.export_models_exp_design([copied_model])
 		exported_model_rules = exporter.models_rules(len(copied_model.intermediate_activities))
 		exported_display = exporter.export_display_for_oracle(expD)
@@ -125,32 +125,32 @@ class Oracle:
 
 		if isinstance(expD.experiment_type, DetectionEntity):
 			if (re.search('synthesizable\(%s,' % expD.experiment_type.entity_id, answer) != None):
-				return Result(None, expD, True)
+				return Result(None, expD, 'true')
 			elif (re.search('initially_present\(%s,' % expD.experiment_type.entity_id, answer) != None):
-				return Result(None, expD, True)
+				return Result(None, expD, 'true')
 			else:
-				return Result(None, expD, False)
+				return Result(None, expD, 'false')
 
 		elif isinstance(expD.experiment_type, LocalisationEntity):
 			if (re.search('synthesizable\(%s,.*?,%s,' % (expD.experiment_type.entity_id, expD.experiment_type.compartment_id), answer) != None):
-				return Result(None, expD, True)
+				return Result(None, expD, 'true')
 			elif (re.search('initially_present\(%s,.*?,%s,' % (expD.experiment_type.entity_id, expD.experiment_type.compartment_id), answer) != None):
-				return Result(None, expD, True)
+				return Result(None, expD, 'true')
 			else:
-				return Result(None, expD, False)
+				return Result(None, expD, 'false')
 
 		elif isinstance(expD.experiment_type, DetectionActivity):
 			if (re.search('active\(%s,' % expD.experiment_type.activity_id, answer) != None):
-				return Result(None, expD, True)
+				return Result(None, expD, 'true')
 			else:
-				return Result(None, expD, False)
+				return Result(None, expD, 'false')
 
 		elif isinstance(expD.experiment_type, AdamTwoFactorExperiment):
 			tpl = (expD.experiment_type.gene_id, expD.experiment_type.metabolite_id)
 			if (re.search('predicts\(.*?,experiment\(adam_two_factor_exp,%s,%s\),true' % tpl, answer) != None):
-				return Result(None, expD, True)
+				return Result(None, expD, 'true')
 			else:
-				return Result(None, expD, False)
+				return Result(None, expD, 'false')
 
 		else:
 			raise TypeError("oracle process_output: experiment type not recognised: %s" % expD.experiment_type)

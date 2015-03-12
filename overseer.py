@@ -137,7 +137,7 @@ class OverseerWithModQuality(Overseer):
 				self.do_transition('do_check')
 			# if more than one transitions available but one of them is stop_dev
 			elif len([tr for tr in self.available_transitions() if tr['name'] != 'stop_development']) == 1:
-				self.do_transition([tr for tr in self.available_transitions() if tr['name'] != 'stop_development'][0])
+				self.do_transition([tr['name'] for tr in self.available_transitions() if tr['name'] != 'stop_development'][0])
 			elif self.current_state == 'start':
 				self.do_transition('start_development')
 			else:

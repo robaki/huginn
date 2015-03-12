@@ -14,8 +14,11 @@ class Archive:
 		self.mnm_compartments = [] # to keep track of mnm elements; info for exp design
 		self.mnm_entities = [] # to keep track of mnm elements
 		self.mnm_activities = [] # to keep track of mnm elements; info for revision and exp design
+		self.import_activities = []
 		self.start_time = time()
 		self._results_counter = 0
+		self._models_counter = 0
+		self.model_of_ref = None
 
 
 	def record(self, event):
@@ -141,6 +144,11 @@ class Archive:
 				return element
 			else:
 				pass
+		for element in self.import_activities:
+			if element.ID == element_id:
+				return element
+			else:
+				pass
 		raise ValueError("get_matching_element: matching element not found: ID: %s" % element_id)
 
 
@@ -155,7 +163,9 @@ class Archive:
 
 
 	def get_new_model_id(self):
-		return 'm_%s' % len(self.working_models)
+		ID = 'm_%s' % self._models_counter
+		self._models_counter += 1
+		return ID
 
 	def get_new_exp_id(self):
 		return 'exp_%s' % len(self.known_results)
@@ -169,7 +179,7 @@ class Archive:
 		return 'ent_%s' % len(self.mnm_entities)
 
 	def get_new_act_id(self):
-		return 'act_%s' % len(self.mnm_activities)
+		return 'act_%s' % len(self.mnm_activities + self.import_activities)
 
 
 class Event:
@@ -180,17 +190,14 @@ class InitialModels(Event): # record them after initial results!
 	def __init__(self, models):
 		Event.__init__(self)
 		self.models = models
-#		for model in models:
-#			print('event info')
-#			print(type(model.intermediate_activities))
 
 
-class InitialResults(Event): # record them first!
+class InitialResults(Event): # record them first! # full experiments!
 	def __init__(self, exps):
 		Event.__init__(self)
 		self.experiments = exps
 
-class ChosenExperiment(Event): # experiment description
+class ChosenExperiment(Event): # experiment descriptions
 	def __init__(self, expDs):
 		Event.__init__(self)
 		self.experiment_descriptions = expDs

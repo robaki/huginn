@@ -193,24 +193,24 @@ substrate(ent_12,none,c_18,act_2).
 product(ent_31,none,c_05,act_2).
 substrate(ent_3,none,c_05,act_3).
 substrate(ent_44,none,c_05,act_3).
-product(ent_58,none,c_05,act_3).
 product(ent_29,none,c_05,act_3).
+product(ent_58,none,c_05,act_3).
 substrate(ent_17,none,c_05,act_4).
 substrate(ent_79,none,c_05,act_4).
-product(ent_37,none,c_05,act_4).
 product(ent_52,none,c_05,act_4).
-substrate(ent_37,none,c_05,act_5).
-substrate(ent_46,none,c_05,act_5).
+product(ent_37,none,c_05,act_4).
 substrate(ent_73,none,c_05,act_5).
+substrate(ent_46,none,c_05,act_5).
+substrate(ent_37,none,c_05,act_5).
 product(ent_32,none,c_05,act_5).
 product(ent_39,none,c_05,act_5).
 substrate(ent_68,none,c_18,act_6).
 product(ent_71,none,c_05,act_6).
-substrate(ent_37,none,c_05,act_7).
 substrate(ent_17,none,c_05,act_7).
 substrate(ent_70,none,c_05,act_7).
-product(ent_9,none,c_05,act_7).
+substrate(ent_37,none,c_05,act_7).
 product(ent_66,none,c_05,act_7).
+product(ent_9,none,c_05,act_7).
 substrate(ent_72,none,c_18,act_8).
 product(ent_36,none,c_05,act_8).
 substrate(ent_40,none,c_18,act_9).
@@ -227,38 +227,38 @@ product(ent_45,none,c_05,act_13).
 product(ent_32,none,c_05,act_13).
 substrate(ent_66,none,c_05,act_14).
 substrate(ent_46,none,c_05,act_14).
-product(ent_37,none,c_05,act_14).
-product(ent_70,none,c_05,act_14).
 product(ent_74,none,c_05,act_14).
-substrate(ent_81,none,c_05,act_15).
+product(ent_70,none,c_05,act_14).
+product(ent_37,none,c_05,act_14).
 substrate(ent_39,none,c_05,act_15).
+substrate(ent_81,none,c_05,act_15).
 product(ent_44,none,c_05,act_15).
 substrate(ent_53,none,c_18,act_16).
 product(ent_47,none,c_02,act_16).
 substrate(ent_67,none,c_18,act_17).
 product(ent_41,none,c_05,act_17).
-substrate(ent_9,none,c_05,act_18).
 substrate(ent_66,none,c_05,act_18).
-product(ent_37,none,c_05,act_18).
+substrate(ent_9,none,c_05,act_18).
 product(ent_17,none,c_05,act_18).
 product(ent_70,none,c_05,act_18).
+product(ent_37,none,c_05,act_18).
 substrate(ent_38,none,c_18,act_19).
 product(ent_64,none,c_05,act_19).
 substrate(ent_27,none,c_18,act_20).
 product(ent_77,none,c_05,act_20).
 substrate(ent_2,none,c_18,act_21).
 product(ent_48,none,c_05,act_21).
-substrate(ent_57,none,c_05,act_22).
-substrate(ent_0,none,c_05,act_22).
-substrate(ent_65,none,c_05,act_22).
 substrate(ent_23,none,c_05,act_22).
+substrate(ent_65,none,c_05,act_22).
+substrate(ent_0,none,c_05,act_22).
+substrate(ent_57,none,c_05,act_22).
 substrate(ent_6,none,c_05,act_22).
 substrate(ent_37,none,c_01,act_23).
 substrate(ent_65,none,c_01,act_23).
-product(ent_37,none,c_05,act_23).
 product(ent_65,none,c_05,act_23).
-substrate(ent_37,none,c_05,act_24).
+product(ent_37,none,c_05,act_23).
 substrate(ent_52,none,c_05,act_24).
+substrate(ent_37,none,c_05,act_24).
 product(ent_17,none,c_05,act_24).
 product(ent_79,none,c_05,act_24).
 substrate(ent_49,none,c_18,act_25).
@@ -270,67 +270,67 @@ product(ent_46,none,c_05,act_26).
 substrate(ent_33,none,c_18,act_27).
 product(ent_20,none,c_02,act_27).
 substrate(ent_44,none,c_05,act_28).
-product(ent_81,none,c_05,act_28).
 product(ent_39,none,c_05,act_28).
+product(ent_81,none,c_05,act_28).
 substrate(ent_69,none,c_05,act_29).
 product(ent_69,none,c_01,act_29).
-substrate(ent_46,none,c_05,act_30).
 substrate(ent_35,none,c_05,act_30).
-product(ent_37,none,c_05,act_30).
-product(ent_18,none,c_05,act_30).
+substrate(ent_46,none,c_05,act_30).
 product(ent_74,none,c_05,act_30).
-substrate(ent_14,none,c_05,act_31).
+product(ent_18,none,c_05,act_30).
+product(ent_37,none,c_05,act_30).
 substrate(ent_0,none,c_05,act_31).
+substrate(ent_14,none,c_05,act_31).
 product(ent_23,none,c_05,act_31).
 product(ent_52,none,c_05,act_31).
-substrate(ent_58,none,c_05,act_32).
 substrate(ent_29,none,c_05,act_32).
+substrate(ent_58,none,c_05,act_32).
 product(ent_3,none,c_05,act_32).
 product(ent_44,none,c_05,act_32).
 substrate(ent_13,none,c_05,act_33).
 substrate(ent_22,none,c_05,act_33).
 substrate(ent_39,none,c_05,act_33).
-product(ent_37,none,c_05,act_33).
 product(ent_45,none,c_05,act_33).
 product(ent_59,none,c_05,act_33).
-substrate(ent_14,none,c_05,act_34).
+product(ent_37,none,c_05,act_33).
 substrate(ent_65,none,c_05,act_34).
-product(ent_13,none,c_05,act_34).
+substrate(ent_14,none,c_05,act_34).
 product(ent_23,none,c_05,act_34).
-substrate(ent_37,none,c_05,act_35).
+product(ent_13,none,c_05,act_34).
 substrate(ent_62,none,c_05,act_35).
+substrate(ent_37,none,c_05,act_35).
 product(ent_79,none,c_05,act_35).
 product(ent_52,none,c_05,act_35).
-substrate(ent_37,none,c_05,act_36).
 substrate(ent_9,none,c_05,act_36).
 substrate(ent_73,none,c_05,act_36).
+substrate(ent_37,none,c_05,act_36).
 product(ent_69,none,c_05,act_36).
 product(ent_39,none,c_05,act_36).
+substrate(ent_65,none,c_05,act_37).
 substrate(ent_57,none,c_05,act_37).
 substrate(ent_76,none,c_05,act_37).
-substrate(ent_65,none,c_05,act_37).
+product(ent_30,none,c_05,act_37).
 product(ent_6,none,c_05,act_37).
 product(ent_7,none,c_05,act_37).
-product(ent_30,none,c_05,act_37).
 substrate(ent_69,none,c_05,act_38).
 substrate(ent_39,none,c_05,act_38).
-product(ent_37,none,c_05,act_38).
 product(ent_9,none,c_05,act_38).
 product(ent_73,none,c_05,act_38).
+product(ent_37,none,c_05,act_38).
 substrate(ent_79,none,c_05,act_39).
 substrate(ent_52,none,c_05,act_39).
-product(ent_37,none,c_05,act_39).
 product(ent_62,none,c_05,act_39).
-substrate(ent_13,none,c_05,act_40).
+product(ent_37,none,c_05,act_39).
 substrate(ent_23,none,c_05,act_40).
-product(ent_14,none,c_05,act_40).
+substrate(ent_13,none,c_05,act_40).
 product(ent_65,none,c_05,act_40).
+product(ent_14,none,c_05,act_40).
 substrate(ent_15,none,c_18,act_41).
 product(ent_75,none,c_05,act_41).
 substrate(ent_32,none,c_05,act_42).
 product(ent_32,none,c_01,act_42).
-substrate(ent_22,none,c_05,act_43).
 substrate(ent_9,none,c_05,act_43).
+substrate(ent_22,none,c_05,act_43).
 product(ent_45,none,c_05,act_43).
 product(ent_69,none,c_05,act_43).
 substrate(ent_43,none,c_18,act_44).
@@ -339,91 +339,91 @@ substrate(ent_51,none,c_18,act_45).
 product(ent_54,none,c_05,act_45).
 substrate(ent_69,none,c_01,act_46).
 product(ent_69,none,c_05,act_46).
-substrate(ent_37,none,c_05,act_47).
 substrate(ent_45,none,c_05,act_47).
 substrate(ent_59,none,c_05,act_47).
+substrate(ent_37,none,c_05,act_47).
 product(ent_13,none,c_05,act_47).
 product(ent_22,none,c_05,act_47).
 product(ent_39,none,c_05,act_47).
-substrate(ent_79,none,c_05,act_48).
 substrate(ent_74,none,c_05,act_48).
-product(ent_37,none,c_05,act_48).
+substrate(ent_79,none,c_05,act_48).
 product(ent_13,none,c_05,act_48).
-substrate(ent_37,none,c_05,act_49).
+product(ent_37,none,c_05,act_48).
 substrate(ent_17,none,c_05,act_49).
 substrate(ent_18,none,c_05,act_49).
+substrate(ent_37,none,c_05,act_49).
 product(ent_9,none,c_05,act_49).
 product(ent_35,none,c_05,act_49).
 substrate(ent_42,none,c_18,act_50).
 product(ent_26,none,c_05,act_50).
 substrate(ent_59,none,c_05,act_51).
-product(ent_81,none,c_05,act_51).
 product(ent_39,none,c_05,act_51).
-substrate(ent_37,none,c_05,act_52).
+product(ent_81,none,c_05,act_51).
 substrate(ent_65,none,c_05,act_52).
+substrate(ent_37,none,c_05,act_52).
 product(ent_37,none,c_01,act_52).
 product(ent_65,none,c_01,act_52).
 substrate(ent_8,none,c_18,act_53).
 product(ent_61,none,c_05,act_53).
-substrate(ent_37,none,c_05,act_54).
-substrate(ent_70,none,c_05,act_54).
 substrate(ent_74,none,c_05,act_54).
+substrate(ent_70,none,c_05,act_54).
+substrate(ent_37,none,c_05,act_54).
 product(ent_66,none,c_05,act_54).
 product(ent_46,none,c_05,act_54).
-substrate(ent_81,none,c_05,act_55).
 substrate(ent_39,none,c_05,act_55).
+substrate(ent_81,none,c_05,act_55).
 product(ent_59,none,c_05,act_55).
 substrate(ent_19,none,c_18,act_56).
 product(ent_21,none,c_05,act_56).
-substrate(ent_37,none,c_05,act_57).
-substrate(ent_18,none,c_05,act_57).
 substrate(ent_74,none,c_05,act_57).
-product(ent_46,none,c_05,act_57).
+substrate(ent_18,none,c_05,act_57).
+substrate(ent_37,none,c_05,act_57).
 product(ent_35,none,c_05,act_57).
+product(ent_46,none,c_05,act_57).
 substrate(ent_28,none,c_18,act_58).
 product(ent_34,none,c_05,act_58).
 substrate(ent_32,none,c_05,act_59).
 substrate(ent_39,none,c_05,act_59).
-product(ent_37,none,c_05,act_59).
-product(ent_46,none,c_05,act_59).
 product(ent_73,none,c_05,act_59).
+product(ent_46,none,c_05,act_59).
+product(ent_37,none,c_05,act_59).
 substrate(ent_25,none,c_18,act_60).
 product(ent_4,none,c_02,act_60).
-substrate(ent_37,none,c_05,act_61).
 substrate(ent_13,none,c_05,act_61).
-product(ent_79,none,c_05,act_61).
+substrate(ent_37,none,c_05,act_61).
 product(ent_74,none,c_05,act_61).
+product(ent_79,none,c_05,act_61).
 substrate(ent_9,none,c_05,act_62).
 substrate(ent_35,none,c_05,act_62).
-product(ent_37,none,c_05,act_62).
 product(ent_17,none,c_05,act_62).
 product(ent_18,none,c_05,act_62).
+product(ent_37,none,c_05,act_62).
 substrate(ent_23,none,c_05,act_63).
 substrate(ent_52,none,c_05,act_63).
-product(ent_14,none,c_05,act_63).
 product(ent_0,none,c_05,act_63).
-substrate(ent_37,none,c_05,act_64).
+product(ent_14,none,c_05,act_63).
 substrate(ent_62,none,c_05,act_64).
 substrate(ent_70,none,c_05,act_64).
+substrate(ent_37,none,c_05,act_64).
 product(ent_66,none,c_05,act_64).
 product(ent_44,none,c_05,act_64).
+substrate(ent_30,none,c_05,act_65).
 substrate(ent_6,none,c_05,act_65).
 substrate(ent_7,none,c_05,act_65).
-substrate(ent_30,none,c_05,act_65).
+product(ent_65,none,c_05,act_65).
 product(ent_57,none,c_05,act_65).
 product(ent_76,none,c_05,act_65).
-product(ent_65,none,c_05,act_65).
 substrate(ent_66,none,c_05,act_66).
 substrate(ent_44,none,c_05,act_66).
-product(ent_37,none,c_05,act_66).
 product(ent_62,none,c_05,act_66).
 product(ent_70,none,c_05,act_66).
+product(ent_37,none,c_05,act_66).
 substrate(ent_32,none,c_01,act_67).
 product(ent_32,none,c_05,act_67).
 substrate(ent_45,none,c_05,act_68).
 substrate(ent_69,none,c_05,act_68).
-product(ent_22,none,c_05,act_68).
 product(ent_9,none,c_05,act_68).
+product(ent_22,none,c_05,act_68).
 substrate(ent_0,none,c_01,act_69).
 product(ent_0,none,c_05,act_69).
 substrate(ent_7,none,c_01,act_70).
@@ -492,440 +492,434 @@ substrate(ent_3,none,c_01,act_101).
 product(ent_3,none,c_05,act_101).
 substrate(ent_6,none,c_01,act_102).
 product(ent_6,none,c_05,act_102).
-result(res_0, experiment(detection_entity_exp, ent_17), true).
-result(res_0, experiment(detection_entity_exp, ent_17), true).
-result(res_1, experiment(detection_entity_exp, ent_52), true).
-result(res_1, experiment(detection_entity_exp, ent_52), true).
-result(res_2, experiment(detection_entity_exp, ent_81), true).
-result(res_2, experiment(detection_entity_exp, ent_81), true).
-model(deriv_base_2;deriv_base_0;deriv_base_1;base).
-added_to_model(setup_present(ent_72,none,c_18),deriv_base_2).
-added_to_model(setup_present(ent_76,none,c_05),deriv_base_2).
-added_to_model(setup_present(ent_0,none,c_05),deriv_base_2).
-added_to_model(setup_present(ent_42,none,c_18),deriv_base_2).
-added_to_model(setup_present(ent_8,none,c_18),deriv_base_2).
-added_to_model(setup_present(ent_0,none,c_01),deriv_base_2).
-added_to_model(setup_present(ent_14,none,c_01),deriv_base_2).
-added_to_model(setup_present(ent_67,none,c_18),deriv_base_2).
-added_to_model(setup_present(ent_25,none,c_18),deriv_base_2).
-added_to_model(setup_present(ent_10,none,c_18),deriv_base_2).
-added_to_model(setup_present(ent_27,none,c_18),deriv_base_2).
-added_to_model(setup_present(ent_19,none,c_18),deriv_base_2).
-added_to_model(setup_present(ent_37,none,c_01),deriv_base_2).
-added_to_model(setup_present(ent_49,none,c_18),deriv_base_2).
-added_to_model(setup_present(ent_68,none,c_18),deriv_base_2).
-added_to_model(setup_present(ent_14,none,c_05),deriv_base_2).
-added_to_model(setup_present(ent_18,none,c_05),deriv_base_2).
-added_to_model(setup_present(ent_33,none,c_18),deriv_base_2).
-added_to_model(setup_present(ent_13,none,c_01),deriv_base_2).
-added_to_model(setup_present(ent_40,none,c_18),deriv_base_2).
-added_to_model(setup_present(ent_22,none,c_05),deriv_base_2).
-added_to_model(setup_present(ent_2,none,c_18),deriv_base_2).
-added_to_model(setup_present(ent_65,none,c_01),deriv_base_2).
-added_to_model(setup_present(ent_78,none,c_18),deriv_base_2).
-added_to_model(setup_present(ent_44,none,c_01),deriv_base_2).
-added_to_model(setup_present(ent_38,none,c_18),deriv_base_2).
-added_to_model(setup_present(ent_44,none,c_05),deriv_base_2).
-added_to_model(setup_present(ent_52,none,c_01),deriv_base_2).
-added_to_model(setup_present(ent_3,none,c_05),deriv_base_2).
-added_to_model(setup_present(ent_57,none,c_05),deriv_base_2).
-added_to_model(setup_present(ent_55,none,c_18),deriv_base_2).
-added_to_model(setup_present(ent_30,none,c_01),deriv_base_2).
-added_to_model(act_42,deriv_base_2).
-added_to_model(act_37,deriv_base_2).
-added_to_model(act_75,deriv_base_2).
-added_to_model(act_80,deriv_base_2).
-added_to_model(act_78,deriv_base_2).
-added_to_model(act_13,deriv_base_2).
-added_to_model(act_100,deriv_base_2).
-added_to_model(act_102,deriv_base_2).
-added_to_model(act_70,deriv_base_2).
-added_to_model(act_36,deriv_base_2).
-added_to_model(act_71,deriv_base_2).
-added_to_model(act_33,deriv_base_2).
-added_to_model(act_98,deriv_base_2).
-added_to_model(act_95,deriv_base_2).
-added_to_model(act_31,deriv_base_2).
-added_to_model(act_65,deriv_base_2).
-added_to_model(act_76,deriv_base_2).
-added_to_model(act_93,deriv_base_2).
-added_to_model(act_99,deriv_base_2).
-added_to_model(act_4,deriv_base_2).
-added_to_model(act_97,deriv_base_2).
-added_to_model(act_90,deriv_base_2).
-added_to_model(act_72,deriv_base_2).
-added_to_model(act_3,deriv_base_2).
-added_to_model(act_24,deriv_base_2).
-added_to_model(act_88,deriv_base_2).
-added_to_model(act_34,deriv_base_2).
-added_to_model(act_73,deriv_base_2).
-added_to_model(act_92,deriv_base_2).
-added_to_model(act_94,deriv_base_2).
-added_to_model(act_79,deriv_base_2).
-added_to_model(act_89,deriv_base_2).
-added_to_model(act_86,deriv_base_2).
-added_to_model(act_29,deriv_base_2).
-added_to_model(act_77,deriv_base_2).
-added_to_model(act_81,deriv_base_2).
-added_to_model(act_23,deriv_base_2).
-added_to_model(act_62,deriv_base_2).
-added_to_model(act_40,deriv_base_2).
-added_to_model(act_82,deriv_base_2).
-added_to_model(act_83,deriv_base_2).
-added_to_model(act_43,deriv_base_2).
-added_to_model(act_61,deriv_base_2).
-added_to_model(act_38,deriv_base_2).
-added_to_model(act_57,deriv_base_2).
-added_to_model(act_5,deriv_base_2).
-added_to_model(act_69,deriv_base_2).
-added_to_model(setup_present(ent_72,none,c_18),deriv_base_0).
-added_to_model(setup_present(ent_76,none,c_05),deriv_base_0).
-added_to_model(setup_present(ent_0,none,c_05),deriv_base_0).
-added_to_model(setup_present(ent_42,none,c_18),deriv_base_0).
-added_to_model(setup_present(ent_8,none,c_18),deriv_base_0).
-added_to_model(setup_present(ent_0,none,c_01),deriv_base_0).
-added_to_model(setup_present(ent_39,none,c_01),deriv_base_0).
-added_to_model(setup_present(ent_14,none,c_01),deriv_base_0).
-added_to_model(setup_present(ent_7,none,c_01),deriv_base_0).
-added_to_model(setup_present(ent_67,none,c_18),deriv_base_0).
-added_to_model(setup_present(ent_25,none,c_18),deriv_base_0).
-added_to_model(setup_present(ent_10,none,c_18),deriv_base_0).
-added_to_model(setup_present(ent_27,none,c_18),deriv_base_0).
-added_to_model(setup_present(ent_23,none,c_01),deriv_base_0).
-added_to_model(setup_present(ent_19,none,c_18),deriv_base_0).
-added_to_model(setup_present(ent_45,none,c_01),deriv_base_0).
-added_to_model(setup_present(ent_76,none,c_01),deriv_base_0).
-added_to_model(setup_present(ent_73,none,c_01),deriv_base_0).
-added_to_model(setup_present(ent_37,none,c_01),deriv_base_0).
-added_to_model(setup_present(ent_49,none,c_18),deriv_base_0).
-added_to_model(setup_present(ent_35,none,c_01),deriv_base_0).
-added_to_model(setup_present(ent_68,none,c_18),deriv_base_0).
-added_to_model(setup_present(ent_14,none,c_05),deriv_base_0).
-added_to_model(setup_present(ent_18,none,c_05),deriv_base_0).
-added_to_model(setup_present(ent_33,none,c_18),deriv_base_0).
-added_to_model(setup_present(ent_74,none,c_01),deriv_base_0).
-added_to_model(setup_present(ent_13,none,c_01),deriv_base_0).
-added_to_model(setup_present(ent_40,none,c_18),deriv_base_0).
-added_to_model(setup_present(ent_22,none,c_05),deriv_base_0).
-added_to_model(setup_present(ent_2,none,c_18),deriv_base_0).
-added_to_model(setup_present(ent_9,none,c_01),deriv_base_0).
-added_to_model(setup_present(ent_65,none,c_01),deriv_base_0).
-added_to_model(setup_present(ent_6,none,c_01),deriv_base_0).
-added_to_model(setup_present(ent_46,none,c_01),deriv_base_0).
-added_to_model(setup_present(ent_78,none,c_18),deriv_base_0).
-added_to_model(setup_present(ent_44,none,c_01),deriv_base_0).
-added_to_model(setup_present(ent_18,none,c_01),deriv_base_0).
-added_to_model(setup_present(ent_38,none,c_18),deriv_base_0).
-added_to_model(setup_present(ent_57,none,c_01),deriv_base_0).
-added_to_model(setup_present(ent_44,none,c_05),deriv_base_0).
-added_to_model(setup_present(ent_52,none,c_01),deriv_base_0).
-added_to_model(setup_present(ent_22,none,c_01),deriv_base_0).
-added_to_model(setup_present(ent_3,none,c_05),deriv_base_0).
-added_to_model(setup_present(ent_57,none,c_05),deriv_base_0).
-added_to_model(setup_present(ent_55,none,c_18),deriv_base_0).
-added_to_model(setup_present(ent_81,none,c_01),deriv_base_0).
-added_to_model(setup_present(ent_30,none,c_01),deriv_base_0).
-added_to_model(act_42,deriv_base_0).
-added_to_model(act_37,deriv_base_0).
-added_to_model(act_75,deriv_base_0).
-added_to_model(act_80,deriv_base_0).
-added_to_model(act_78,deriv_base_0).
-added_to_model(act_13,deriv_base_0).
-added_to_model(act_100,deriv_base_0).
-added_to_model(act_70,deriv_base_0).
-added_to_model(act_102,deriv_base_0).
-added_to_model(act_36,deriv_base_0).
-added_to_model(act_71,deriv_base_0).
-added_to_model(act_33,deriv_base_0).
-added_to_model(act_98,deriv_base_0).
-added_to_model(act_95,deriv_base_0).
-added_to_model(act_31,deriv_base_0).
-added_to_model(act_65,deriv_base_0).
-added_to_model(act_93,deriv_base_0).
-added_to_model(act_99,deriv_base_0).
-added_to_model(act_76,deriv_base_0).
-added_to_model(act_4,deriv_base_0).
-added_to_model(act_97,deriv_base_0).
-added_to_model(act_90,deriv_base_0).
-added_to_model(act_72,deriv_base_0).
-added_to_model(act_3,deriv_base_0).
-added_to_model(act_24,deriv_base_0).
-added_to_model(act_88,deriv_base_0).
-added_to_model(act_34,deriv_base_0).
-added_to_model(act_86,deriv_base_0).
-added_to_model(act_73,deriv_base_0).
-added_to_model(act_92,deriv_base_0).
-added_to_model(act_94,deriv_base_0).
-added_to_model(act_89,deriv_base_0).
-added_to_model(act_79,deriv_base_0).
-added_to_model(act_29,deriv_base_0).
-added_to_model(act_77,deriv_base_0).
-added_to_model(act_81,deriv_base_0).
-added_to_model(act_23,deriv_base_0).
-added_to_model(act_62,deriv_base_0).
-added_to_model(act_40,deriv_base_0).
-added_to_model(act_83,deriv_base_0).
-added_to_model(act_43,deriv_base_0).
-added_to_model(act_61,deriv_base_0).
-added_to_model(act_38,deriv_base_0).
-added_to_model(act_57,deriv_base_0).
-added_to_model(act_5,deriv_base_0).
-added_to_model(act_69,deriv_base_0).
-added_to_model(setup_present(ent_72,none,c_18),deriv_base_1).
-added_to_model(setup_present(ent_76,none,c_05),deriv_base_1).
-added_to_model(setup_present(ent_0,none,c_05),deriv_base_1).
-added_to_model(setup_present(ent_42,none,c_18),deriv_base_1).
-added_to_model(setup_present(ent_28,none,c_18),deriv_base_1).
-added_to_model(setup_present(ent_8,none,c_18),deriv_base_1).
-added_to_model(setup_present(ent_39,none,c_01),deriv_base_1).
-added_to_model(setup_present(ent_14,none,c_01),deriv_base_1).
-added_to_model(setup_present(ent_15,none,c_18),deriv_base_1).
-added_to_model(setup_present(ent_7,none,c_01),deriv_base_1).
-added_to_model(setup_present(ent_67,none,c_18),deriv_base_1).
+result(res_0, experiment(detection_entity_exp, ent_66), true).
+result(res_0, experiment(detection_entity_exp, ent_66), true).
+result(res_1, experiment(detection_entity_exp, ent_62), true).
+result(res_1, experiment(detection_entity_exp, ent_62), true).
+result(res_2, experiment(detection_entity_exp, ent_66), true).
+result(res_2, experiment(detection_entity_exp, ent_66), true).
+result(res_3, experiment(detection_entity_exp, ent_17), true).
+result(res_3, experiment(detection_entity_exp, ent_17), true).
+model(deriv_base_1;deriv_base_2;deriv_base_0;base).
+added_to_model(setup_present(ent_23,none,c_01),deriv_base_1).
+added_to_model(setup_present(ent_68,none,c_18),deriv_base_1).
+added_to_model(setup_present(ent_2,none,c_18),deriv_base_1).
+added_to_model(setup_present(ent_57,none,c_01),deriv_base_1).
 added_to_model(setup_present(ent_25,none,c_18),deriv_base_1).
 added_to_model(setup_present(ent_10,none,c_18),deriv_base_1).
-added_to_model(setup_present(ent_27,none,c_18),deriv_base_1).
-added_to_model(setup_present(ent_23,none,c_01),deriv_base_1).
-added_to_model(setup_present(ent_19,none,c_18),deriv_base_1).
-added_to_model(setup_present(ent_45,none,c_01),deriv_base_1).
-added_to_model(setup_present(ent_17,none,c_01),deriv_base_1).
-added_to_model(setup_present(ent_76,none,c_01),deriv_base_1).
-added_to_model(setup_present(ent_73,none,c_01),deriv_base_1).
-added_to_model(setup_present(ent_37,none,c_01),deriv_base_1).
-added_to_model(setup_present(ent_49,none,c_18),deriv_base_1).
-added_to_model(setup_present(ent_35,none,c_01),deriv_base_1).
-added_to_model(setup_present(ent_24,none,c_18),deriv_base_1).
-added_to_model(setup_present(ent_68,none,c_18),deriv_base_1).
-added_to_model(setup_present(ent_14,none,c_05),deriv_base_1).
-added_to_model(setup_present(ent_18,none,c_05),deriv_base_1).
-added_to_model(setup_present(ent_33,none,c_18),deriv_base_1).
-added_to_model(setup_present(ent_74,none,c_01),deriv_base_1).
-added_to_model(setup_present(ent_13,none,c_01),deriv_base_1).
-added_to_model(setup_present(ent_40,none,c_18),deriv_base_1).
-added_to_model(setup_present(ent_51,none,c_18),deriv_base_1).
-added_to_model(setup_present(ent_22,none,c_05),deriv_base_1).
-added_to_model(setup_present(ent_2,none,c_18),deriv_base_1).
-added_to_model(setup_present(ent_9,none,c_01),deriv_base_1).
+added_to_model(setup_present(ent_70,none,c_01),deriv_base_1).
 added_to_model(setup_present(ent_65,none,c_01),deriv_base_1).
-added_to_model(setup_present(ent_6,none,c_01),deriv_base_1).
-added_to_model(setup_present(ent_43,none,c_18),deriv_base_1).
-added_to_model(setup_present(ent_1,none,c_18),deriv_base_1).
-added_to_model(setup_present(ent_12,none,c_18),deriv_base_1).
-added_to_model(setup_present(ent_46,none,c_01),deriv_base_1).
-added_to_model(setup_present(ent_78,none,c_18),deriv_base_1).
-added_to_model(setup_present(ent_44,none,c_01),deriv_base_1).
+added_to_model(setup_present(ent_39,none,c_01),deriv_base_1).
+added_to_model(setup_present(ent_76,none,c_01),deriv_base_1).
+added_to_model(setup_present(ent_72,none,c_18),deriv_base_1).
+added_to_model(setup_present(ent_76,none,c_05),deriv_base_1).
 added_to_model(setup_present(ent_18,none,c_01),deriv_base_1).
+added_to_model(setup_present(ent_37,none,c_01),deriv_base_1).
+added_to_model(setup_present(ent_73,none,c_01),deriv_base_1).
+added_to_model(setup_present(ent_40,none,c_18),deriv_base_1).
 added_to_model(setup_present(ent_38,none,c_18),deriv_base_1).
-added_to_model(setup_present(ent_57,none,c_01),deriv_base_1).
-added_to_model(setup_present(ent_44,none,c_05),deriv_base_1).
-added_to_model(setup_present(ent_22,none,c_01),deriv_base_1).
-added_to_model(setup_present(ent_3,none,c_05),deriv_base_1).
-added_to_model(setup_present(ent_57,none,c_05),deriv_base_1).
+added_to_model(setup_present(ent_42,none,c_18),deriv_base_1).
+added_to_model(setup_present(ent_52,none,c_01),deriv_base_1).
+added_to_model(setup_present(ent_14,none,c_01),deriv_base_1).
+added_to_model(setup_present(ent_13,none,c_01),deriv_base_1).
+added_to_model(setup_present(ent_22,none,c_05),deriv_base_1).
 added_to_model(setup_present(ent_55,none,c_18),deriv_base_1).
-added_to_model(setup_present(ent_53,none,c_18),deriv_base_1).
-added_to_model(setup_present(ent_81,none,c_01),deriv_base_1).
+added_to_model(setup_present(ent_14,none,c_05),deriv_base_1).
+added_to_model(setup_present(ent_66,none,c_01),deriv_base_1).
+added_to_model(setup_present(ent_9,none,c_01),deriv_base_1).
+added_to_model(setup_present(ent_3,none,c_05),deriv_base_1).
+added_to_model(setup_present(ent_44,none,c_05),deriv_base_1).
+added_to_model(setup_present(ent_57,none,c_05),deriv_base_1).
+added_to_model(setup_present(ent_27,none,c_18),deriv_base_1).
+added_to_model(setup_present(ent_62,none,c_01),deriv_base_1).
+added_to_model(setup_present(ent_33,none,c_18),deriv_base_1).
+added_to_model(setup_present(ent_8,none,c_18),deriv_base_1).
+added_to_model(setup_present(ent_74,none,c_01),deriv_base_1).
+added_to_model(setup_present(ent_46,none,c_01),deriv_base_1).
+added_to_model(setup_present(ent_43,none,c_18),deriv_base_1).
+added_to_model(setup_present(ent_44,none,c_01),deriv_base_1).
 added_to_model(setup_present(ent_30,none,c_01),deriv_base_1).
-added_to_model(act_69,deriv_base_1).
-added_to_model(act_42,deriv_base_1).
-added_to_model(act_37,deriv_base_1).
-added_to_model(act_75,deriv_base_1).
-added_to_model(act_78,deriv_base_1).
-added_to_model(act_80,deriv_base_1).
-added_to_model(act_13,deriv_base_1).
-added_to_model(act_100,deriv_base_1).
-added_to_model(act_70,deriv_base_1).
-added_to_model(act_102,deriv_base_1).
-added_to_model(act_36,deriv_base_1).
-added_to_model(act_71,deriv_base_1).
-added_to_model(act_33,deriv_base_1).
-added_to_model(act_95,deriv_base_1).
-added_to_model(act_98,deriv_base_1).
-added_to_model(act_31,deriv_base_1).
-added_to_model(act_65,deriv_base_1).
-added_to_model(act_99,deriv_base_1).
-added_to_model(act_76,deriv_base_1).
-added_to_model(act_93,deriv_base_1).
-added_to_model(act_4,deriv_base_1).
-added_to_model(act_97,deriv_base_1).
-added_to_model(act_72,deriv_base_1).
-added_to_model(act_90,deriv_base_1).
-added_to_model(act_3,deriv_base_1).
-added_to_model(act_24,deriv_base_1).
-added_to_model(act_88,deriv_base_1).
-added_to_model(act_34,deriv_base_1).
-added_to_model(act_86,deriv_base_1).
-added_to_model(act_73,deriv_base_1).
-added_to_model(act_92,deriv_base_1).
-added_to_model(act_89,deriv_base_1).
-added_to_model(act_94,deriv_base_1).
-added_to_model(act_79,deriv_base_1).
-added_to_model(act_29,deriv_base_1).
-added_to_model(act_77,deriv_base_1).
-added_to_model(act_81,deriv_base_1).
-added_to_model(act_23,deriv_base_1).
-added_to_model(act_62,deriv_base_1).
-added_to_model(act_40,deriv_base_1).
-added_to_model(act_83,deriv_base_1).
-added_to_model(act_43,deriv_base_1).
-added_to_model(act_61,deriv_base_1).
-added_to_model(act_38,deriv_base_1).
+added_to_model(setup_present(ent_78,none,c_18),deriv_base_1).
+added_to_model(setup_present(ent_0,none,c_05),deriv_base_1).
+added_to_model(setup_present(ent_6,none,c_01),deriv_base_1).
+added_to_model(setup_present(ent_35,none,c_01),deriv_base_1).
+added_to_model(setup_present(ent_7,none,c_01),deriv_base_1).
+added_to_model(setup_present(ent_22,none,c_01),deriv_base_1).
+added_to_model(setup_present(ent_53,none,c_18),deriv_base_1).
+added_to_model(setup_present(ent_18,none,c_05),deriv_base_1).
 added_to_model(act_57,deriv_base_1).
-added_to_model(act_5,deriv_base_1).
+added_to_model(act_42,deriv_base_1).
+added_to_model(act_97,deriv_base_1).
+added_to_model(act_87,deriv_base_1).
+added_to_model(act_72,deriv_base_1).
+added_to_model(act_38,deriv_base_1).
+added_to_model(act_82,deriv_base_1).
+added_to_model(act_76,deriv_base_1).
+added_to_model(act_70,deriv_base_1).
+added_to_model(act_77,deriv_base_1).
+added_to_model(act_93,deriv_base_1).
+added_to_model(act_81,deriv_base_1).
+added_to_model(act_13,deriv_base_1).
+added_to_model(act_37,deriv_base_1).
+added_to_model(act_43,deriv_base_1).
+added_to_model(act_86,deriv_base_1).
+added_to_model(act_90,deriv_base_1).
+added_to_model(act_83,deriv_base_1).
+added_to_model(act_23,deriv_base_1).
+added_to_model(act_95,deriv_base_1).
+added_to_model(act_80,deriv_base_1).
+added_to_model(act_75,deriv_base_1).
+added_to_model(act_61,deriv_base_1).
 added_to_model(act_84,deriv_base_1).
-added_to_model(setup_present(ent_72,none,c_18),base).
-added_to_model(setup_present(ent_76,none,c_05),base).
-added_to_model(setup_present(ent_0,none,c_05),base).
-added_to_model(setup_present(ent_42,none,c_18),base).
-added_to_model(setup_present(ent_28,none,c_18),base).
-added_to_model(setup_present(ent_8,none,c_18),base).
-added_to_model(setup_present(ent_15,none,c_18),base).
-added_to_model(setup_present(ent_67,none,c_18),base).
+added_to_model(act_92,deriv_base_1).
+added_to_model(act_94,deriv_base_1).
+added_to_model(act_102,deriv_base_1).
+added_to_model(act_100,deriv_base_1).
+added_to_model(act_34,deriv_base_1).
+added_to_model(act_79,deriv_base_1).
+added_to_model(act_99,deriv_base_1).
+added_to_model(act_33,deriv_base_1).
+added_to_model(act_40,deriv_base_1).
+added_to_model(act_36,deriv_base_1).
+added_to_model(act_85,deriv_base_1).
+added_to_model(act_5,deriv_base_1).
+added_to_model(act_98,deriv_base_1).
+added_to_model(act_66,deriv_base_1).
+added_to_model(act_39,deriv_base_1).
+added_to_model(act_29,deriv_base_1).
+added_to_model(act_73,deriv_base_1).
+added_to_model(act_3,deriv_base_1).
+added_to_model(act_54,deriv_base_1).
+added_to_model(act_65,deriv_base_1).
+added_to_model(setup_present(ent_23,none,c_01),deriv_base_2).
+added_to_model(setup_present(ent_68,none,c_18),deriv_base_2).
+added_to_model(setup_present(ent_2,none,c_18),deriv_base_2).
+added_to_model(setup_present(ent_57,none,c_01),deriv_base_2).
+added_to_model(setup_present(ent_25,none,c_18),deriv_base_2).
+added_to_model(setup_present(ent_10,none,c_18),deriv_base_2).
+added_to_model(setup_present(ent_70,none,c_01),deriv_base_2).
+added_to_model(setup_present(ent_65,none,c_01),deriv_base_2).
+added_to_model(setup_present(ent_39,none,c_01),deriv_base_2).
+added_to_model(setup_present(ent_76,none,c_01),deriv_base_2).
+added_to_model(setup_present(ent_72,none,c_18),deriv_base_2).
+added_to_model(setup_present(ent_76,none,c_05),deriv_base_2).
+added_to_model(setup_present(ent_18,none,c_01),deriv_base_2).
+added_to_model(setup_present(ent_79,none,c_01),deriv_base_2).
+added_to_model(setup_present(ent_37,none,c_01),deriv_base_2).
+added_to_model(setup_present(ent_73,none,c_01),deriv_base_2).
+added_to_model(setup_present(ent_40,none,c_18),deriv_base_2).
+added_to_model(setup_present(ent_38,none,c_18),deriv_base_2).
+added_to_model(setup_present(ent_42,none,c_18),deriv_base_2).
+added_to_model(setup_present(ent_52,none,c_01),deriv_base_2).
+added_to_model(setup_present(ent_14,none,c_01),deriv_base_2).
+added_to_model(setup_present(ent_13,none,c_01),deriv_base_2).
+added_to_model(setup_present(ent_22,none,c_05),deriv_base_2).
+added_to_model(setup_present(ent_55,none,c_18),deriv_base_2).
+added_to_model(setup_present(ent_14,none,c_05),deriv_base_2).
+added_to_model(setup_present(ent_9,none,c_01),deriv_base_2).
+added_to_model(setup_present(ent_3,none,c_05),deriv_base_2).
+added_to_model(setup_present(ent_44,none,c_05),deriv_base_2).
+added_to_model(setup_present(ent_57,none,c_05),deriv_base_2).
+added_to_model(setup_present(ent_27,none,c_18),deriv_base_2).
+added_to_model(setup_present(ent_33,none,c_18),deriv_base_2).
+added_to_model(setup_present(ent_8,none,c_18),deriv_base_2).
+added_to_model(setup_present(ent_74,none,c_01),deriv_base_2).
+added_to_model(setup_present(ent_46,none,c_01),deriv_base_2).
+added_to_model(setup_present(ent_43,none,c_18),deriv_base_2).
+added_to_model(setup_present(ent_30,none,c_01),deriv_base_2).
+added_to_model(setup_present(ent_78,none,c_18),deriv_base_2).
+added_to_model(setup_present(ent_0,none,c_05),deriv_base_2).
+added_to_model(setup_present(ent_35,none,c_01),deriv_base_2).
+added_to_model(setup_present(ent_7,none,c_01),deriv_base_2).
+added_to_model(setup_present(ent_22,none,c_01),deriv_base_2).
+added_to_model(setup_present(ent_53,none,c_18),deriv_base_2).
+added_to_model(setup_present(ent_18,none,c_05),deriv_base_2).
+added_to_model(act_57,deriv_base_2).
+added_to_model(act_42,deriv_base_2).
+added_to_model(act_87,deriv_base_2).
+added_to_model(act_82,deriv_base_2).
+added_to_model(act_76,deriv_base_2).
+added_to_model(act_38,deriv_base_2).
+added_to_model(act_77,deriv_base_2).
+added_to_model(act_93,deriv_base_2).
+added_to_model(act_81,deriv_base_2).
+added_to_model(act_70,deriv_base_2).
+added_to_model(act_13,deriv_base_2).
+added_to_model(act_37,deriv_base_2).
+added_to_model(act_43,deriv_base_2).
+added_to_model(act_90,deriv_base_2).
+added_to_model(act_86,deriv_base_2).
+added_to_model(act_23,deriv_base_2).
+added_to_model(act_75,deriv_base_2).
+added_to_model(act_95,deriv_base_2).
+added_to_model(act_80,deriv_base_2).
+added_to_model(act_61,deriv_base_2).
+added_to_model(act_91,deriv_base_2).
+added_to_model(act_92,deriv_base_2).
+added_to_model(act_94,deriv_base_2).
+added_to_model(act_102,deriv_base_2).
+added_to_model(act_79,deriv_base_2).
+added_to_model(act_34,deriv_base_2).
+added_to_model(act_100,deriv_base_2).
+added_to_model(act_99,deriv_base_2).
+added_to_model(act_33,deriv_base_2).
+added_to_model(act_40,deriv_base_2).
+added_to_model(act_36,deriv_base_2).
+added_to_model(act_85,deriv_base_2).
+added_to_model(act_5,deriv_base_2).
+added_to_model(act_98,deriv_base_2).
+added_to_model(act_66,deriv_base_2).
+added_to_model(act_39,deriv_base_2).
+added_to_model(act_29,deriv_base_2).
+added_to_model(act_73,deriv_base_2).
+added_to_model(act_3,deriv_base_2).
+added_to_model(act_54,deriv_base_2).
+added_to_model(act_65,deriv_base_2).
+added_to_model(setup_present(ent_23,none,c_01),deriv_base_0).
+added_to_model(setup_present(ent_68,none,c_18),deriv_base_0).
+added_to_model(setup_present(ent_2,none,c_18),deriv_base_0).
+added_to_model(setup_present(ent_57,none,c_01),deriv_base_0).
+added_to_model(setup_present(ent_25,none,c_18),deriv_base_0).
+added_to_model(setup_present(ent_10,none,c_18),deriv_base_0).
+added_to_model(setup_present(ent_70,none,c_01),deriv_base_0).
+added_to_model(setup_present(ent_65,none,c_01),deriv_base_0).
+added_to_model(setup_present(ent_39,none,c_01),deriv_base_0).
+added_to_model(setup_present(ent_76,none,c_01),deriv_base_0).
+added_to_model(setup_present(ent_72,none,c_18),deriv_base_0).
+added_to_model(setup_present(ent_76,none,c_05),deriv_base_0).
+added_to_model(setup_present(ent_18,none,c_01),deriv_base_0).
+added_to_model(setup_present(ent_37,none,c_01),deriv_base_0).
+added_to_model(setup_present(ent_73,none,c_01),deriv_base_0).
+added_to_model(setup_present(ent_40,none,c_18),deriv_base_0).
+added_to_model(setup_present(ent_38,none,c_18),deriv_base_0).
+added_to_model(setup_present(ent_42,none,c_18),deriv_base_0).
+added_to_model(setup_present(ent_52,none,c_01),deriv_base_0).
+added_to_model(setup_present(ent_14,none,c_01),deriv_base_0).
+added_to_model(setup_present(ent_13,none,c_01),deriv_base_0).
+added_to_model(setup_present(ent_22,none,c_05),deriv_base_0).
+added_to_model(setup_present(ent_55,none,c_18),deriv_base_0).
+added_to_model(setup_present(ent_14,none,c_05),deriv_base_0).
+added_to_model(setup_present(ent_9,none,c_01),deriv_base_0).
+added_to_model(setup_present(ent_3,none,c_05),deriv_base_0).
+added_to_model(setup_present(ent_44,none,c_05),deriv_base_0).
+added_to_model(setup_present(ent_57,none,c_05),deriv_base_0).
+added_to_model(setup_present(ent_27,none,c_18),deriv_base_0).
+added_to_model(setup_present(ent_33,none,c_18),deriv_base_0).
+added_to_model(setup_present(ent_8,none,c_18),deriv_base_0).
+added_to_model(setup_present(ent_74,none,c_01),deriv_base_0).
+added_to_model(setup_present(ent_17,none,c_01),deriv_base_0).
+added_to_model(setup_present(ent_46,none,c_01),deriv_base_0).
+added_to_model(setup_present(ent_43,none,c_18),deriv_base_0).
+added_to_model(setup_present(ent_30,none,c_01),deriv_base_0).
+added_to_model(setup_present(ent_78,none,c_18),deriv_base_0).
+added_to_model(setup_present(ent_0,none,c_05),deriv_base_0).
+added_to_model(setup_present(ent_6,none,c_01),deriv_base_0).
+added_to_model(setup_present(ent_35,none,c_01),deriv_base_0).
+added_to_model(setup_present(ent_7,none,c_01),deriv_base_0).
+added_to_model(setup_present(ent_22,none,c_01),deriv_base_0).
+added_to_model(setup_present(ent_53,none,c_18),deriv_base_0).
+added_to_model(setup_present(ent_18,none,c_05),deriv_base_0).
+added_to_model(act_57,deriv_base_0).
+added_to_model(act_42,deriv_base_0).
+added_to_model(act_87,deriv_base_0).
+added_to_model(act_72,deriv_base_0).
+added_to_model(act_82,deriv_base_0).
+added_to_model(act_38,deriv_base_0).
+added_to_model(act_76,deriv_base_0).
+added_to_model(act_70,deriv_base_0).
+added_to_model(act_77,deriv_base_0).
+added_to_model(act_93,deriv_base_0).
+added_to_model(act_81,deriv_base_0).
+added_to_model(act_13,deriv_base_0).
+added_to_model(act_37,deriv_base_0).
+added_to_model(act_43,deriv_base_0).
+added_to_model(act_86,deriv_base_0).
+added_to_model(act_90,deriv_base_0).
+added_to_model(act_23,deriv_base_0).
+added_to_model(act_95,deriv_base_0).
+added_to_model(act_80,deriv_base_0).
+added_to_model(act_75,deriv_base_0).
+added_to_model(act_61,deriv_base_0).
+added_to_model(act_84,deriv_base_0).
+added_to_model(act_92,deriv_base_0).
+added_to_model(act_94,deriv_base_0).
+added_to_model(act_102,deriv_base_0).
+added_to_model(act_100,deriv_base_0).
+added_to_model(act_34,deriv_base_0).
+added_to_model(act_79,deriv_base_0).
+added_to_model(act_71,deriv_base_0).
+added_to_model(act_99,deriv_base_0).
+added_to_model(act_33,deriv_base_0).
+added_to_model(act_40,deriv_base_0).
+added_to_model(act_36,deriv_base_0).
+added_to_model(act_5,deriv_base_0).
+added_to_model(act_98,deriv_base_0).
+added_to_model(act_66,deriv_base_0).
+added_to_model(act_39,deriv_base_0).
+added_to_model(act_29,deriv_base_0).
+added_to_model(act_73,deriv_base_0).
+added_to_model(act_3,deriv_base_0).
+added_to_model(act_54,deriv_base_0).
+added_to_model(act_65,deriv_base_0).
+added_to_model(setup_present(ent_68,none,c_18),base).
+added_to_model(setup_present(ent_19,none,c_18),base).
+added_to_model(setup_present(ent_2,none,c_18),base).
 added_to_model(setup_present(ent_25,none,c_18),base).
 added_to_model(setup_present(ent_10,none,c_18),base).
-added_to_model(setup_present(ent_27,none,c_18),base).
-added_to_model(setup_present(ent_19,none,c_18),base).
-added_to_model(setup_present(ent_37,none,c_01),base).
-added_to_model(setup_present(ent_49,none,c_18),base).
-added_to_model(setup_present(ent_24,none,c_18),base).
-added_to_model(setup_present(ent_68,none,c_18),base).
-added_to_model(setup_present(ent_14,none,c_05),base).
-added_to_model(setup_present(ent_18,none,c_05),base).
-added_to_model(setup_present(ent_33,none,c_18),base).
-added_to_model(setup_present(ent_40,none,c_18),base).
-added_to_model(setup_present(ent_51,none,c_18),base).
-added_to_model(setup_present(ent_22,none,c_05),base).
-added_to_model(setup_present(ent_2,none,c_18),base).
 added_to_model(setup_present(ent_65,none,c_01),base).
-added_to_model(setup_present(ent_43,none,c_18),base).
-added_to_model(setup_present(ent_1,none,c_18),base).
-added_to_model(setup_present(ent_12,none,c_18),base).
-added_to_model(setup_present(ent_78,none,c_18),base).
+added_to_model(setup_present(ent_72,none,c_18),base).
+added_to_model(setup_present(ent_76,none,c_05),base).
+added_to_model(setup_present(ent_49,none,c_18),base).
+added_to_model(setup_present(ent_37,none,c_01),base).
+added_to_model(setup_present(ent_24,none,c_18),base).
+added_to_model(setup_present(ent_40,none,c_18),base).
 added_to_model(setup_present(ent_38,none,c_18),base).
-added_to_model(setup_present(ent_44,none,c_05),base).
-added_to_model(setup_present(ent_3,none,c_05),base).
-added_to_model(setup_present(ent_57,none,c_05),base).
+added_to_model(setup_present(ent_67,none,c_18),base).
+added_to_model(setup_present(ent_42,none,c_18),base).
+added_to_model(setup_present(ent_22,none,c_05),base).
 added_to_model(setup_present(ent_55,none,c_18),base).
+added_to_model(setup_present(ent_14,none,c_05),base).
+added_to_model(setup_present(ent_3,none,c_05),base).
+added_to_model(setup_present(ent_1,none,c_18),base).
+added_to_model(setup_present(ent_44,none,c_05),base).
+added_to_model(setup_present(ent_57,none,c_05),base).
+added_to_model(setup_present(ent_27,none,c_18),base).
+added_to_model(setup_present(ent_33,none,c_18),base).
+added_to_model(setup_present(ent_8,none,c_18),base).
+added_to_model(setup_present(ent_43,none,c_18),base).
+added_to_model(setup_present(ent_78,none,c_18),base).
+added_to_model(setup_present(ent_0,none,c_05),base).
+added_to_model(setup_present(ent_28,none,c_18),base).
+added_to_model(setup_present(ent_51,none,c_18),base).
+added_to_model(setup_present(ent_15,none,c_18),base).
+added_to_model(setup_present(ent_12,none,c_18),base).
 added_to_model(setup_present(ent_53,none,c_18),base).
+added_to_model(setup_present(ent_18,none,c_05),base).
+added_to_model(act_57,base).
 added_to_model(act_42,base).
-added_to_model(act_43,base).
-added_to_model(act_61,base).
+added_to_model(act_34,base).
+added_to_model(act_5,base).
+added_to_model(act_66,base).
+added_to_model(act_38,base).
+added_to_model(act_39,base).
+added_to_model(act_13,base).
 added_to_model(act_33,base).
 added_to_model(act_37,base).
-added_to_model(act_31,base).
-added_to_model(act_34,base).
-added_to_model(act_65,base).
-added_to_model(act_38,base).
-added_to_model(act_4,base).
-added_to_model(act_29,base).
-added_to_model(act_13,base).
 added_to_model(act_23,base).
-added_to_model(act_62,base).
-added_to_model(act_3,base).
 added_to_model(act_40,base).
-added_to_model(act_57,base).
-added_to_model(act_5,base).
-added_to_model(act_24,base).
 added_to_model(act_36,base).
-#example synthesizable(ent_45, none, c_05, base).
+added_to_model(act_29,base).
+added_to_model(act_3,base).
+added_to_model(act_54,base).
+added_to_model(act_61,base).
+added_to_model(act_65,base).
+added_to_model(act_43,base).
+#example synthesizable(ent_32, none, c_01, base).
+#example synthesizable(ent_30, none, c_05, base).
 #example synthesizable(ent_29, none, c_05, base).
+#example synthesizable(ent_58, none, c_05, base).
+#example synthesizable(ent_45, none, c_05, base).
+#example synthesizable(ent_69, none, c_01, base).
+#example synthesizable(ent_59, none, c_05, base).
+#example synthesizable(ent_35, none, c_05, base).
+#example synthesizable(ent_6, none, c_05, base).
 #example synthesizable(ent_7, none, c_05, base).
 #example synthesizable(ent_73, none, c_05, base).
-#example synthesizable(ent_6, none, c_05, base).
-#example synthesizable(ent_79, none, c_05, base).
-#example synthesizable(ent_35, none, c_05, base).
-#example synthesizable(ent_69, none, c_01, base).
-#example synthesizable(ent_32, none, c_01, base).
-#example synthesizable(ent_58, none, c_05, base).
-#example synthesizable(ent_30, none, c_05, base).
-#example synthesizable(ent_59, none, c_05, base).
 #example synthesizable(ent_23, none, c_05, base).
-relevant(res_2, deriv_base_2).
-#example not inconsistent(deriv_base_2, res_2).
-relevant(res_2, deriv_base_2).
-#example not inconsistent(deriv_base_2, res_2).
-relevant(res_0, deriv_base_0).
-#example not inconsistent(deriv_base_0, res_0).
-relevant(res_0, deriv_base_0).
-#example not inconsistent(deriv_base_0, res_0).
-relevant(res_1, deriv_base_1).
-#example not inconsistent(deriv_base_1, res_1).
-relevant(res_1, deriv_base_1).
-#example not inconsistent(deriv_base_1, res_1).
-#modeh add(act_8) =1 @1.
-#modeh add(act_55) =1 @1.
-#modeh add(act_28) =1 @1.
-#modeh add(act_47) =1 @1.
-#modeh add(act_67) =1 @1.
-#modeh add(act_51) =1 @1.
-#modeh add(act_52) =1 @1.
-#modeh add(act_25) =1 @1.
-#modeh add(act_7) =1 @1.
-#modeh add(act_49) =1 @1.
-#modeh add(act_66) =1 @1.
-#modeh add(act_18) =1 @1.
-#modeh add(act_60) =1 @1.
-#modeh add(act_44) =1 @1.
+#example synthesizable(ent_79, none, c_05, base).
+relevant(res_3, deriv_base_1).
+#example not inconsistent(deriv_base_1, res_3).
+relevant(res_3, deriv_base_1).
+#example not inconsistent(deriv_base_1, res_3).
+relevant(res_0, deriv_base_2).
+#example not inconsistent(deriv_base_2, res_0).
+relevant(res_0, deriv_base_2).
+#example not inconsistent(deriv_base_2, res_0).
+relevant(res_1, deriv_base_0).
+#example not inconsistent(deriv_base_0, res_1).
+relevant(res_1, deriv_base_0).
+#example not inconsistent(deriv_base_0, res_1).
+relevant(res_2, base).
+#example not inconsistent(base, res_2).
+relevant(res_2, base).
+#example not inconsistent(base, res_2).
 #modeh add(act_46) =1 @1.
+#modeh add(act_0) =1 @1.
+#modeh add(act_10) =1 @1.
 #modeh add(act_9) =1 @1.
+#modeh add(act_21) =1 @1.
+#modeh add(act_64) =1 @1.
+#modeh add(act_32) =1 @1.
+#modeh add(act_19) =1 @1.
 #modeh add(act_26) =1 @1.
-#modeh add(act_53) =1 @1.
-#modeh add(act_41) =1 @1.
-#modeh add(act_15) =1 @1.
-#modeh add(act_16) =1 @1.
-#modeh add(act_58) =1 @1.
-#modeh add(act_54) =1 @1.
-#modeh add(act_1) =1 @1.
-#modeh add(act_22) =1 @1.
-#modeh add(act_56) =1 @1.
-#modeh add(act_50) =1 @1.
-#modeh add(act_30) =1 @1.
+#modeh add(act_12) =1 @1.
+#modeh add(act_14) =1 @1.
+#modeh add(act_8) =1 @1.
+#modeh add(act_4) =1 @1.
+#modeh add(act_49) =1 @1.
+#modeh add(act_59) =1 @1.
 #modeh add(act_45) =1 @1.
+#modeh add(act_48) =1 @1.
+#modeh add(act_58) =1 @1.
+#modeh add(act_20) =1 @1.
+#modeh add(act_24) =1 @1.
+#modeh add(act_53) =1 @1.
+#modeh add(act_1) =1 @1.
+#modeh add(act_51) =1 @1.
+#modeh add(act_55) =1 @1.
+#modeh add(act_15) =1 @1.
+#modeh add(act_50) =1 @1.
+#modeh add(act_27) =1 @1.
+#modeh add(act_56) =1 @1.
+#modeh add(act_47) =1 @1.
+#modeh add(act_22) =1 @1.
+#modeh add(act_2) =1 @1.
+#modeh add(act_6) =1 @1.
+#modeh add(act_62) =1 @1.
+#modeh add(act_52) =1 @1.
+#modeh add(act_16) =1 @1.
+#modeh add(act_41) =1 @1.
 #modeh add(act_68) =1 @1.
 #modeh add(act_17) =1 @1.
-#modeh add(act_6) =1 @1.
-#modeh add(act_59) =1 @1.
-#modeh add(act_0) =1 @1.
 #modeh add(act_35) =1 @1.
-#modeh add(act_2) =1 @1.
+#modeh add(act_60) =1 @1.
+#modeh add(act_67) =1 @1.
+#modeh add(act_7) =1 @1.
+#modeh add(act_28) =1 @1.
+#modeh add(act_30) =1 @1.
+#modeh add(act_44) =1 @1.
 #modeh add(act_11) =1 @1.
-#modeh add(act_14) =1 @1.
-#modeh add(act_21) =1 @1.
-#modeh add(act_19) =1 @1.
-#modeh add(act_27) =1 @1.
-#modeh add(act_64) =1 @1.
+#modeh add(act_18) =1 @1.
+#modeh add(act_25) =1 @1.
+#modeh add(act_31) =1 @1.
 #modeh add(act_63) =1 @1.
-#modeh add(act_32) =1 @1.
-#modeh add(act_12) =1 @1.
-#modeh add(act_20) =1 @1.
-#modeh add(act_10) =1 @1.
-#modeh add(act_48) =1 @1.
-#modeh add(act_39) =1 @1.
-#modeh remove(act_36) =1 @1.
-#modeh remove(act_43) =1 @1.
-#modeh remove(act_61) =1 @1.
+#modeh remove(act_57) =1 @1.
+#modeh remove(act_42) =1 @1.
+#modeh remove(act_34) =1 @1.
+#modeh remove(act_5) =1 @1.
+#modeh remove(act_66) =1 @1.
+#modeh remove(act_38) =1 @1.
+#modeh remove(act_39) =1 @1.
+#modeh remove(act_13) =1 @1.
 #modeh remove(act_33) =1 @1.
 #modeh remove(act_37) =1 @1.
-#modeh remove(act_31) =1 @1.
-#modeh remove(act_34) =1 @1.
-#modeh remove(act_65) =1 @1.
-#modeh remove(act_38) =1 @1.
-#modeh remove(act_4) =1 @1.
-#modeh remove(act_29) =1 @1.
-#modeh remove(act_13) =1 @1.
 #modeh remove(act_23) =1 @1.
-#modeh remove(act_62) =1 @1.
-#modeh remove(act_3) =1 @1.
 #modeh remove(act_40) =1 @1.
-#modeh remove(act_57) =1 @1.
-#modeh remove(act_5) =1 @1.
-#modeh remove(act_24) =1 @1.
-#modeh remove(act_42) =1 @1.
+#modeh remove(act_36) =1 @1.
+#modeh remove(act_29) =1 @1.
+#modeh remove(act_3) =1 @1.
+#modeh remove(act_54) =1 @1.
+#modeh remove(act_61) =1 @1.
+#modeh remove(act_65) =1 @1.
+#modeh remove(act_43) =1 @1.
 #modeh ignored(res_0) =1 @2.
 #modeh ignored(res_0) =1 @2.
 #modeh ignored(res_1) =1 @2.
 #modeh ignored(res_1) =1 @2.
 #modeh ignored(res_2) =1 @2.
 #modeh ignored(res_2) =1 @2.
+#modeh ignored(res_3) =1 @2.
+#modeh ignored(res_3) =1 @2.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%% application of interventions to all models %%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

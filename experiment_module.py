@@ -46,7 +46,7 @@ class ExperimentModule:
 		exported.extend(exporter.hide_show_statements()) # export hide/show stuff
 		exported.extend(exporter.export_compartments(self.archive.mnm_compartments))
 		exported.extend(exporter.export_entities(self.archive.mnm_entities))
-		exported.extend(exporter.export_activities(self.archive.mnm_activities))
+		exported.extend(exporter.export_activities(self.archive.mnm_activities + self.archive.import_activities))
 		exported.extend(exporter.export_models_exp_design(self.archive.working_models)) # export models info
 		exported.extend(exporter.models_nr_and_probabilities(self.archive.working_models)) # + probabilities and numbers
 		exported.append(exporter.modeh_replacement(self.cost_model)) # export design elements (modeh eqiv)
@@ -65,8 +65,7 @@ class ExperimentModule:
 		exported.extend(exporter.experiment_design_rules()) # export design rules
 		exported.extend(exporter.interventions_rules())
 		exported.extend(exporter.predictions_rules())
-		activities = [len(mod.intermediate_activities) for mod in self.archive.working_models]
-		exported.extend(exporter.models_rules(max(activities))) # export modelling and prediction rules ASSUMES NO ACTIVITIES WILL BE ADDed
+		exported.extend(exporter.models_rules(len(self.archive.mnm_activities + self.archive.import_activities))) 
 		return exported
 
 
@@ -258,9 +257,9 @@ class BasicExpModuleNoCosts(ExperimentModule):
 		ExperimentModule.__init__(self, archive, cost_model, use_costs=False)
 
 	def get_experiment(self):
-		exps = self.design_experiment()
+		exps = self.design_experiments()
 		if exps == False:
-			self.archive.record(ExpDesignFail)
+			self.archive.record(ExpDesignFail())
 		else:
 			self.archive.record(ChosenExperiment([random.choice(exps)]))
 
@@ -270,9 +269,9 @@ class BasicExpModuleWithCosts(ExperimentModule):
 		ExperimentModule.__init__(self, archive, cost_model, use_costs=True)
 
 	def get_experiment(self):
-		exps = self.design_experiment()
+		exps = self.design_experiments()
 		if exps == False:
-			self.archive.record(ExpDesignFail)
+			self.archive.record(ExpDesignFail())
 		else:
 			self.archive.record(ChosenExperiment([random.choice(exps)]))
 

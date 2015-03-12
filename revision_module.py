@@ -62,13 +62,7 @@ class RevisionModule:
 
 
 	def calculate_max_number_activities(self, model):
-		results = [exp.results for exp in self.archive.known_results]
-		results = [val for sublist in results for val in sublist] # flatten
-		interventions = [res.exp_description.interventions for res in results]
-		interventions = [val for sublist in interventions for val in sublist] # flatten
-		adds = set([i for i in interventions if (isinstance(i, mnm_repr.Add), isinstance(i.condition_or_activity, mnm_repr.Activity))])
-		adds_act = set([i.condition_or_activity for i in adds]) - set(model.intermediate_activities) # unique additional activities
-		max_number_activities = len(model.intermediate_activities) + len(adds_act)
+		max_number_activities = len(self.archive.mnm_activities)
 		if max_number_activities < 4:
 			return 4
 		else:
@@ -98,7 +92,7 @@ class RevisionModule:
 	def prepare_input_elements(self):
 		exped_entities = exporter.export_entities(self.archive.mnm_entities)
 		exped_compartments = exporter.export_compartments(self.archive.mnm_compartments)
-		exped_activities = exporter.export_activities(self.archive.mnm_activities)
+		exped_activities = exporter.export_activities(self.archive.mnm_activities + self.archive.import_activities)
 		output = [exped_entities, exped_compartments, exped_activities] # not flattened
 		return [val for sublist in output for val in sublist] # flattened
 
@@ -218,14 +212,15 @@ class RevisionModule:
 
 	def get_current_best_model(self): # one of them at least
 		max_quality = max([m.quality for m in self.archive.working_models])
-		return random.choice([m for m in self.archive.working_models if (m.quality == max_quality)])
-
+		model = random.choice([m for m in self.archive.working_models if (m.quality == max_quality)])
+		return copy(model)
 
 	def create_random_model(self):
 		numberActToChoose = random.choice(list(range(len(self.archive.mnm_activities)))) # presence of two versions of the same entity will trigger revision anyway
 		activities = random.sample(self.archive.mnm_activities, numberActToChoose)
 		new_model = copy(self.archive.working_models[0]) # will cause problems if there will be no working models left...
 		new_model.intermediate_activities = frozenset(activities)
+		new_model.ID = 'random_base'
 		return new_model
 
 
@@ -341,8 +336,10 @@ class RevCIAddB(RevisionModule): # rev: minimise changes and ignored; additional
 		out = self.revise(model, True)
 		if out == False:
 			self.archive.record(AdditModProdFail())
+			return
 		else:
 			self.archive.record(AdditionalModels(out[0]))
+			return
 
 		if out[1] == True:
 			raise ValueError('produce_additional_models: revised set of ignored results instead of model itself')
@@ -361,10 +358,13 @@ class RevCIAddR(RevisionModule): # rev: minimise changes and ignored; additional
 			out = self.revise(model, True)
 			if out == False:
 				self.archive.record(AdditModProdFail())
+				return
 			else:
 				self.archive.record(AdditionalModels(out[0]))
+				return
 		else:
 			self.archive.record(AdditionalModels([model]))
+			return
 
 		if out[1] == True:
 			raise ValueError('produce_additional_models: revised set of ignored results instead of model itself')

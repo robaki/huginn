@@ -126,7 +126,6 @@ def export_results(results):
 def export_models(models_results):
 	strings = []
 	# model().
-	print([x.ID for x in models_results.keys()])
 	joined_models = ';'.join([x.ID for x in models_results.keys()])
 	strings.append(joined_models.join(['\nmodel(', ').']))
 	# specification:
@@ -548,7 +547,7 @@ def predictions_rules():
 
 
 def interventions_rules():
-	return ['%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%',
+	return ['\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%',
 	'\n%%%%%% application of interventions to all models %%%%%%',
 	'\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%',
 	'\n',
@@ -663,12 +662,14 @@ def ban_experiment(expDescription):
 
 	# dealing with interventions:
 	for inter in expDescription.interventions:
-		if isinstance(inter, mnm_repr.Add):
+		if (isinstance(inter, mnm_repr.Add) and isinstance(inter.condition_or_activity, mnm_repr.Condition)):
 			tpl = (inter.condition_or_activity.entity.ID, inter.condition_or_activity.entity.version, inter.condition_or_activity.compartment.ID)
 			exp_info.append('add(setup_present(%s, %s, %s))' % tpl)
-		elif isinstance(inter, mnm_repr.Remove):
+		elif (isinstance(inter, mnm_repr.Remove) and isinstance(inter.condition_or_activity, mnm_repr.Condition)):
 			tpl = (inter.condition_or_activity.entity.ID, inter.condition_or_activity.entity.version, inter.condition_or_activity.compartment.ID)
 			exp_info.append('remove(setup_present(%s, %s, %s))' % tpl)
+		elif (isinstance(inter, mnm_repr.Add) and isinstance(inter.condition_or_activity, mnm_repr.Activity)): # additional import activities
+			exp_info.append('add(%s)' % inter.condition_or_activity.ID)
 		else:
 			raise TypeError("ban_experiment: intervention type not recognised: %s" % inter)
 	# formatting:
@@ -719,6 +720,7 @@ def export_experiment_specification_elements(cost_model):
 		output['design_entity_det(%s)' % element.ID] = cost_model.design_entity_det[element]
 
 	for element in cost_model.intervention_add.keys():
+#		[print(type(element)) for element in cost_model.intervention_add.keys()]
 		if isinstance(element.condition_or_activity, Condition):
 			tup = (element.condition_or_activity.entity.ID, element.condition_or_activity.entity.version, element.condition_or_activity.compartment.ID)
 			output['add(setup_present(%s, %s, %s))' % tup] = cost_model.intervention_add[element]
@@ -809,10 +811,17 @@ def experiment_design_rules():
 
 def hide_show_statements():
 	return ['\n#hide.',
-	'\n#show design_type/1.',
-	'\n#show design_activity_det/1.',
 	'\n#show add/1.',
-	'\n#show remove/1.']
+	'\n#show remove/1.',
+	'\n#show design_type/1.',
+	'\n#show design_deletable/1.',
+	'\n#show design_available/1.',
+	'\n#show design_entity_det/1.',
+	'\n#show design_entity_loc/1.',
+	'\n#show design_compartment/1.',
+	'\n#show design_activity_rec/1.',
+	'\n#show design_activity_det/1.']
+
 
 
 #def basic_exp_design_rules():  #NOT NEEDED: advanced is more general and covers this one too
