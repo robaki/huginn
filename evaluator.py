@@ -1,6 +1,5 @@
 #! /usr/bin/env python3
 
-#from test_configurations import template_1
 from exp_cost_model import CostModel
 import pickle
 from archive import Archive, InitialModels
@@ -23,55 +22,183 @@ from revision_module import RevCIAddR# template: random
 
 class Evaluator:
 	def __init__(self):
-		self.test_case = None
-		self.cost_model = None
-		self.configuration_spec = None
+		pass
+#		self.test_case = None
+#		self.cost_model = None
+#		self.configuration_spec = None
 
 
-	def quick_test(self):
-		# test case
-		pkl_file = open('test_cases/case_7', 'rb')
-		self.test_case = pickle.load(pkl_file)
-		pkl_file.close()
+	def test_case_loader(self):
+		for case_number in [15, 13, 16, 12, 6, 10, 14, 2, 7, 9, 5, 8, 4, 3, 11, 0, 1]:
+			case_file = 'test_cases/case_%s' % case_number
+			for repetition in range(3):
+				pkl_file = open(case_file, 'rb')
+				case = pickle.load(pkl_file)
+				pkl_file.close()
+				if len(str(case_number)) == 1:
+					suffix = 'tc0%s_r%s' % (case_number, repetition)
+					yield (case, suffix)
+				else:
+					suffix = 'tc%s_r%s' % (case_number, repetition)
+					yield (case, suffix)
 
-		archive_ = Archive()
-		archive_.mnm_compartments = self.test_case['all_compartments']
-		archive_.model_of_ref = self.test_case['model_of_ref']
 
-		for ent in self.test_case['all_entities']:
-			ent.ID = archive_.get_new_ent_id()
-			archive_.mnm_entities.append(ent)
-		for act in self.test_case['all_activities']:
-			act.ID = archive_.get_new_act_id()
-			archive_.mnm_activities.append(act)
-		for act in self.test_case['add_import_activities']:
-			act.ID = archive_.get_new_act_id()
-			archive_.import_activities.append(act)
+	def system_configuration_generator(self, case, first_suffix):
+		for qual in [AllCoveredMinusIgnored, NewCoveredMinusIgnored]:
+			for rev in [RevCIAddR, RevCIAddB]:
+				for threshold_addit_mods in [2, 4, 8]:
+					for stop_threshold in [2, 4, 8]:
+
+						archive_ = Archive()
+						archive_.mnm_compartments = case['all_compartments']
+						archive_.model_of_ref = case['model_of_ref']
+
+						for ent in case['all_entities']:
+							ent.ID = archive_.get_new_ent_id()
+							archive_.mnm_entities.append(ent)
+						for act in case['all_activities']:
+							act.ID = archive_.get_new_act_id()
+							archive_.mnm_activities.append(act)
+						for act in case['add_import_activities']:
+							act.ID = archive_.get_new_act_id()
+							archive_.import_activities.append(act)
 		
-		archive_.record(InitialModels(self.test_case['initial_models']))
+						archive_.record(InitialModels(case['initial_models']))
 
-		quality_m = NewCoveredMinusIgnored(archive_)
-		revision_m = RevCIAddR(archive_)
 
-		self.cost_model = CostModel(self.test_case['all_entities'],
-			self.test_case['all_compartments'], self.test_case['all_activities'],
-			self.test_case['model_of_ref'].setup_conditions,
-			self.test_case['add_import_activities'])
-		self.cost_model.set_all_basic_costs_to_1()
-		self.cost_model.calculate_derived_costs(self.test_case['all_activities'])
-		self.cost_model.remove_None_valued_elements()
+						cost_model = CostModel(case['all_entities'],
+							case['all_compartments'], case['all_activities'],
+							case['model_of_ref'].setup_conditions,
+							case['add_import_activities'])
+						cost_model.set_all_basic_costs_to_1()
+						cost_model.calculate_derived_costs(case['all_activities'])
+						cost_model.remove_None_valued_elements()
 
-		exp_m = BasicExpModuleNoCosts(archive_, self.cost_model)
-		oracle_ = Oracle(archive_, self.test_case['entities_ref'],
-			self.test_case['activities_ref'], self.test_case['model_of_ref'],
-			self.test_case['all_entities'], self.test_case['all_compartments'],
-			self.test_case['all_activities'])
 
-		overseer = OverseerWithModQuality(archive_, revision_m, exp_m, oracle_, 2, quality_m, 8)
-		overseer.run()
+						exp_m = BasicExpModuleWithCosts(archive_, cost_model) # !!!!! switched from no costs
+						oracle_ = Oracle(archive_, case['entities_ref'],
+							case['activities_ref'], case['model_of_ref'],
+							case['all_entities'], case['all_compartments'],
+							case['all_activities'])
+
+
+						qual_m = qual(archive_)
+						rev_m = rev(archive_)
+
+
+						max_numb_cycles = 3 # 
+						max_time = 0.1 # 
+						suffix = 'conf%s_%s' % (self.get_suffix((qual, rev, threshold_addit_mods, stop_threshold)), first_suffix)
+
+
+						yield OverseerWithModQuality(archive_, rev_m, exp_m,
+							oracle_, threshold_addit_mods, qual_m, max_numb_cycles,
+							max_time, suffix, stop_threshold)
+
+
+
+	def test_all_single_process(self):
+		for (case, suffix) in self.test_case_loader():
+			for overseer in self.system_configuration_generator(case, suffix):
+				overseer.run()
+
+
+	def test_all_multiprocess(self):
+		pass
+
+
+
+	def get_suffix(self, tpl):
+		suff_dict = {
+			(AllCoveredMinusIgnored,RevCIAddR,2,2):'00',
+			(AllCoveredMinusIgnored,RevCIAddR,2,4):'01',
+			(AllCoveredMinusIgnored,RevCIAddR,2,8):'02',
+			(AllCoveredMinusIgnored,RevCIAddR,4,2):'03',
+			(AllCoveredMinusIgnored,RevCIAddR,4,4):'04',
+			(AllCoveredMinusIgnored,RevCIAddR,4,8):'05',
+			(AllCoveredMinusIgnored,RevCIAddR,8,2):'06',
+			(AllCoveredMinusIgnored,RevCIAddR,8,4):'07',
+			(AllCoveredMinusIgnored,RevCIAddR,8,8):'08',
+			(AllCoveredMinusIgnored,RevCIAddB,2,2):'09',
+			(AllCoveredMinusIgnored,RevCIAddB,2,4):'10',
+			(AllCoveredMinusIgnored,RevCIAddB,2,8):'11',
+			(AllCoveredMinusIgnored,RevCIAddB,4,2):'12',
+			(AllCoveredMinusIgnored,RevCIAddB,4,4):'13',
+			(AllCoveredMinusIgnored,RevCIAddB,4,8):'14',
+			(AllCoveredMinusIgnored,RevCIAddB,8,2):'15',
+			(AllCoveredMinusIgnored,RevCIAddB,8,4):'16',
+			(AllCoveredMinusIgnored,RevCIAddB,8,8):'17',
+			(NewCoveredMinusIgnored,RevCIAddR,2,2):'18',
+			(NewCoveredMinusIgnored,RevCIAddR,2,4):'19',
+			(NewCoveredMinusIgnored,RevCIAddR,2,8):'20',
+			(NewCoveredMinusIgnored,RevCIAddR,4,2):'21',
+			(NewCoveredMinusIgnored,RevCIAddR,4,4):'22',
+			(NewCoveredMinusIgnored,RevCIAddR,4,8):'23',
+			(NewCoveredMinusIgnored,RevCIAddR,8,2):'24',
+			(NewCoveredMinusIgnored,RevCIAddR,8,4):'25',
+			(NewCoveredMinusIgnored,RevCIAddR,8,8):'26',
+			(NewCoveredMinusIgnored,RevCIAddB,2,2):'27',
+			(NewCoveredMinusIgnored,RevCIAddB,2,4):'28',
+			(NewCoveredMinusIgnored,RevCIAddB,2,8):'29',
+			(NewCoveredMinusIgnored,RevCIAddB,4,2):'30',
+			(NewCoveredMinusIgnored,RevCIAddB,4,4):'31',
+			(NewCoveredMinusIgnored,RevCIAddB,4,8):'32',
+			(NewCoveredMinusIgnored,RevCIAddB,8,2):'33',
+			(NewCoveredMinusIgnored,RevCIAddB,8,4):'34',
+			(NewCoveredMinusIgnored,RevCIAddB,8,8):'35'
+			}
+
+		return suff_dict[tpl]
+
+
+
+
+#	def quick_test(self):
+#		# test case
+#		pkl_file = open('test_cases/case_7', 'rb')
+#		self.test_case = pickle.load(pkl_file)
+#		pkl_file.close()
+
+#		archive_ = Archive()
+#		archive_.mnm_compartments = self.test_case['all_compartments']
+#		archive_.model_of_ref = self.test_case['model_of_ref']
+
+#		for ent in self.test_case['all_entities']:
+#			ent.ID = archive_.get_new_ent_id()
+#			archive_.mnm_entities.append(ent)
+#		for act in self.test_case['all_activities']:
+#			act.ID = archive_.get_new_act_id()
+#			archive_.mnm_activities.append(act)
+#		for act in self.test_case['add_import_activities']:
+#			act.ID = archive_.get_new_act_id()
+#			archive_.import_activities.append(act)
+#		
+#		archive_.record(InitialModels(self.test_case['initial_models']))
+
+#		quality_m = NewCoveredMinusIgnored(archive_)
+#		revision_m = RevCIAddR(archive_)
+
+#		self.cost_model = CostModel(self.test_case['all_entities'],
+#			self.test_case['all_compartments'], self.test_case['all_activities'],
+#			self.test_case['model_of_ref'].setup_conditions,
+#			self.test_case['add_import_activities'])
+#		self.cost_model.set_all_basic_costs_to_1()
+#		self.cost_model.calculate_derived_costs(self.test_case['all_activities'])
+#		self.cost_model.remove_None_valued_elements()
+
+#		exp_m = BasicExpModuleWithCosts(archive_, self.cost_model) # !!!!! switched from no costs
+#		oracle_ = Oracle(archive_, self.test_case['entities_ref'],
+#			self.test_case['activities_ref'], self.test_case['model_of_ref'],
+#			self.test_case['all_entities'], self.test_case['all_compartments'],
+#			self.test_case['all_activities'])
+
+#		max_numb_cycles = 3
+#		max_time = 0.1
+#		overseer = OverseerWithModQuality(archive_, revision_m, exp_m, oracle_, 2, quality_m, max_numb_cycles, max_time, 8)
+#		overseer.run()
 
 
 
 
 evaluator = Evaluator()
-evaluator.quick_test()
+evaluator.test_all_single_process()

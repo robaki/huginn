@@ -1,0 +1,119 @@
+nr: 0
+setup conditions: 69
+termination conditions: 17
+initial models: 1
+all entities: 168
+all activities 147
+import activities: 73
+nr: 1
+setup conditions: 42
+termination conditions: 22
+initial models: 1
+all entities: 118
+all activities 185
+import activities: 92
+nr: 2
+setup conditions: 31
+termination conditions: 12
+initial models: 1
+all entities: 64
+all activities 45
+import activities: 25
+nr: 3
+setup conditions: 72
+termination conditions: 9
+initial models: 1
+all entities: 152
+all activities 122
+import activities: 28
+nr: 4
+setup conditions: 50
+termination conditions: 13
+initial models: 1
+all entities: 117
+all activities 94
+import activities: 35
+nr: 5
+setup conditions: 29
+termination conditions: 7
+initial models: 1
+all entities: 72
+all activities 73
+import activities: 22
+nr: 6
+setup conditions: 13
+termination conditions: 6
+initial models: 1
+all entities: 32
+all activities 37
+import activities: 22
+nr: 7
+setup conditions: 34
+termination conditions: 13
+initial models: 1
+all entities: 82
+all activities 69
+import activities: 34
+nr: 8
+setup conditions: 47
+termination conditions: 19
+initial models: 1
+all entities: 115
+all activities 94
+import activities: 48
+nr: 9
+setup conditions: 35
+termination conditions: 12
+initial models: 1
+all entities: 97
+all activities 78
+import activities: 45
+nr: 10
+setup conditions: 14
+termination conditions: 6
+initial models: 1
+all entities: 42
+all activities 44
+import activities: 30
+nr: 11
+setup conditions: 82
+termination conditions: 21
+initial models: 1
+all entities: 177
+all activities 116
+import activities: 44
+nr: 12
+setup conditions: 11
+termination conditions: 7
+initial models: 1
+all entities: 43
+all activities 39
+import activities: 27
+nr: 13
+setup conditions: 11
+termination conditions: 7
+initial models: 1
+all entities: 29
+all activities 28
+import activities: 17
+nr: 14
+setup conditions: 21
+termination conditions: 6
+initial models: 1
+all entities: 54
+all activities 52
+import activities: 27
+nr: 15
+setup conditions: 11
+termination conditions: 6
+initial models: 1
+all entities: 23
+all activities 26
+import activities: 19
+nr: 16
+setup conditions: 4
+termination conditions: 2
+initial models: 1
+all entities: 26
+all activities 40
+import activities: 22

@@ -1,0 +1,1295 @@
+#hide.
+#show add/1.
+#show remove/1.
+#show design_type/1.
+#show design_deletable/1.
+#show design_available/1.
+#show design_entity_det/1.
+#show design_entity_loc/1.
+#show design_compartment/1.
+#show design_activity_rec/1.
+#show design_activity_det/1.
+compartment(c_18;c_05;c_02;c_01).
+metabolite(ent_0,none).
+gene(ent_1,none).
+gene(ent_2,none).
+metabolite(ent_3,none).
+protein(ent_4,none).
+transports(ent_4,none,act_7).
+transports(ent_4,none,act_61).
+protein(ent_5,none).
+catalyses(ent_5,none,act_0).
+catalyses(ent_5,none,act_29).
+metabolite(ent_6,none).
+metabolite(ent_7,none).
+gene(ent_8,none).
+metabolite(ent_9,none).
+gene(ent_10,none).
+protein(ent_11,none).
+catalyses(ent_11,none,act_39).
+catalyses(ent_11,none,act_41).
+gene(ent_12,none).
+metabolite(ent_13,none).
+metabolite(ent_14,none).
+gene(ent_15,none).
+protein(ent_16,none).
+catalyses(ent_16,none,act_43).
+catalyses(ent_16,none,act_32).
+metabolite(ent_17,none).
+metabolite(ent_18,none).
+gene(ent_19,none).
+protein(ent_20,none).
+transports(ent_20,none,act_61).
+transports(ent_20,none,act_7).
+protein(ent_21,none).
+catalyses(ent_21,none,act_19).
+catalyses(ent_21,none,act_51).
+catalyses(ent_21,none,act_26).
+catalyses(ent_21,none,act_48).
+catalyses(ent_21,none,act_21).
+catalyses(ent_21,none,act_22).
+metabolite(ent_22,none).
+metabolite(ent_23,none).
+gene(ent_24,none).
+gene(ent_25,none).
+protein(ent_26,none).
+catalyses(ent_26,none,act_4).
+catalyses(ent_26,none,act_11).
+gene(ent_27,none).
+gene(ent_28,none).
+metabolite(ent_29,none).
+metabolite(ent_30,none).
+protein(ent_31,none).
+catalyses(ent_31,none,act_0).
+catalyses(ent_31,none,act_29).
+metabolite(ent_32,none).
+gene(ent_33,none).
+protein(ent_34,none).
+catalyses(ent_34,none,act_1).
+catalyses(ent_34,none,act_68).
+catalyses(ent_34,none,act_3).
+catalyses(ent_34,none,act_6).
+metabolite(ent_35,none).
+protein(ent_36,none).
+catalyses(ent_36,none,act_43).
+catalyses(ent_36,none,act_32).
+metabolite(ent_37,none).
+gene(ent_38,none).
+metabolite(ent_39,none).
+gene(ent_40,none).
+protein(ent_41,none).
+catalyses(ent_41,none,act_47).
+catalyses(ent_41,none,act_65).
+gene(ent_42,none).
+gene(ent_43,none).
+metabolite(ent_44,none).
+metabolite(ent_45,none).
+metabolite(ent_46,none).
+protein(ent_47,none).
+transports(ent_47,none,act_7).
+transports(ent_47,none,act_61).
+protein(ent_48,none).
+catalyses(ent_48,none,act_44).
+catalyses(ent_48,none,act_56).
+catalyses(ent_48,none,act_36).
+catalyses(ent_48,none,act_57).
+gene(ent_49,none).
+protein(ent_50,none).
+catalyses(ent_50,none,act_53).
+catalyses(ent_50,none,act_30).
+catalyses(ent_50,none,act_2).
+catalyses(ent_50,none,act_63).
+gene(ent_51,none).
+metabolite(ent_52,none).
+gene(ent_53,none).
+protein(ent_54,none).
+catalyses(ent_54,none,act_33).
+catalyses(ent_54,none,act_58).
+catalyses(ent_54,none,act_28).
+catalyses(ent_54,none,act_37).
+gene(ent_55,none).
+protein(ent_56,none).
+catalyses(ent_56,none,act_34).
+catalyses(ent_56,none,act_35).
+catalyses(ent_56,none,act_62).
+catalyses(ent_56,none,act_12).
+metabolite(ent_57,none).
+metabolite(ent_58,none).
+metabolite(ent_59,none).
+protein(ent_60,none).
+transports(ent_60,none,act_7).
+transports(ent_60,none,act_61).
+protein(ent_61,none).
+catalyses(ent_61,none,act_13).
+catalyses(ent_61,none,act_46).
+metabolite(ent_62,none).
+protein(ent_63,none).
+catalyses(ent_63,none,act_63).
+catalyses(ent_63,none,act_2).
+catalyses(ent_63,none,act_30).
+catalyses(ent_63,none,act_53).
+protein(ent_64,none).
+catalyses(ent_64,none,act_29).
+catalyses(ent_64,none,act_0).
+metabolite(ent_65,none).
+metabolite(ent_66,none).
+gene(ent_67,none).
+gene(ent_68,none).
+metabolite(ent_69,none).
+metabolite(ent_70,none).
+protein(ent_71,none).
+catalyses(ent_71,none,act_30).
+catalyses(ent_71,none,act_63).
+catalyses(ent_71,none,act_2).
+catalyses(ent_71,none,act_53).
+gene(ent_72,none).
+metabolite(ent_73,none).
+metabolite(ent_74,none).
+protein(ent_75,none).
+catalyses(ent_75,none,act_44).
+catalyses(ent_75,none,act_57).
+catalyses(ent_75,none,act_36).
+catalyses(ent_75,none,act_56).
+metabolite(ent_76,none).
+protein(ent_77,none).
+catalyses(ent_77,none,act_28).
+catalyses(ent_77,none,act_58).
+catalyses(ent_77,none,act_33).
+catalyses(ent_77,none,act_37).
+gene(ent_78,none).
+metabolite(ent_79,none).
+protein(ent_80,none).
+transports(ent_80,none,act_7).
+transports(ent_80,none,act_61).
+metabolite(ent_81,none).
+reaction(act_0).
+reaction(act_1).
+reaction(act_2).
+reaction(act_3).
+reaction(act_4).
+expression(act_5).
+reaction(act_6).
+transport(act_7).
+expression(act_8).
+expression(act_9).
+expression(act_10).
+reaction(act_11).
+reaction(act_12).
+reaction(act_13).
+expression(act_14).
+expression(act_15).
+growth(act_16).
+expression(act_17).
+transport(act_18).
+reaction(act_19).
+expression(act_20).
+reaction(act_21).
+reaction(act_22).
+transport(act_23).
+expression(act_24).
+expression(act_25).
+reaction(act_26).
+transport(act_27).
+reaction(act_28).
+reaction(act_29).
+reaction(act_30).
+expression(act_31).
+reaction(act_32).
+reaction(act_33).
+reaction(act_34).
+reaction(act_35).
+reaction(act_36).
+reaction(act_37).
+expression(act_38).
+reaction(act_39).
+expression(act_40).
+reaction(act_41).
+expression(act_42).
+reaction(act_43).
+reaction(act_44).
+expression(act_45).
+reaction(act_46).
+reaction(act_47).
+reaction(act_48).
+expression(act_49).
+transport(act_50).
+reaction(act_51).
+expression(act_52).
+reaction(act_53).
+expression(act_54).
+expression(act_55).
+reaction(act_56).
+reaction(act_57).
+reaction(act_58).
+expression(act_59).
+expression(act_60).
+transport(act_61).
+reaction(act_62).
+reaction(act_63).
+expression(act_64).
+reaction(act_65).
+expression(act_66).
+expression(act_67).
+reaction(act_68).
+transport(act_69).
+transport(act_70).
+transport(act_71).
+transport(act_72).
+transport(act_73).
+transport(act_74).
+transport(act_75).
+transport(act_76).
+transport(act_77).
+transport(act_78).
+transport(act_79).
+transport(act_80).
+transport(act_81).
+transport(act_82).
+transport(act_83).
+transport(act_84).
+transport(act_85).
+transport(act_86).
+transport(act_87).
+transport(act_88).
+transport(act_89).
+transport(act_90).
+transport(act_91).
+transport(act_92).
+transport(act_93).
+transport(act_94).
+transport(act_95).
+transport(act_96).
+transport(act_97).
+transport(act_98).
+transport(act_99).
+transport(act_100).
+transport(act_101).
+transport(act_102).
+enz_required(act_0).
+enz_compartment(c_05,act_0).
+substrate(ent_13,none,c_05,act_0).
+substrate(ent_37,none,c_05,act_0).
+product(ent_74,none,c_05,act_0).
+product(ent_79,none,c_05,act_0).
+enz_required(act_1).
+enz_compartment(c_05,act_1).
+substrate(ent_81,none,c_05,act_1).
+substrate(ent_39,none,c_05,act_1).
+product(ent_44,none,c_05,act_1).
+enz_required(act_2).
+enz_compartment(c_05,act_2).
+substrate(ent_66,none,c_05,act_2).
+substrate(ent_46,none,c_05,act_2).
+product(ent_70,none,c_05,act_2).
+product(ent_74,none,c_05,act_2).
+product(ent_37,none,c_05,act_2).
+substrate(ent_44,none,c_05,act_3).
+enz_required(act_3).
+enz_compartment(c_05,act_3).
+product(ent_81,none,c_05,act_3).
+product(ent_39,none,c_05,act_3).
+enz_required(act_4).
+enz_compartment(c_05,act_4).
+substrate(ent_29,none,c_05,act_4).
+substrate(ent_58,none,c_05,act_4).
+product(ent_44,none,c_05,act_4).
+product(ent_3,none,c_05,act_4).
+substrate(ent_25,none,c_18,act_5).
+product(ent_4,none,c_02,act_5).
+substrate(ent_59,none,c_05,act_6).
+enz_required(act_6).
+enz_compartment(c_05,act_6).
+product(ent_81,none,c_05,act_6).
+product(ent_39,none,c_05,act_6).
+substrate(ent_65,none,c_05,act_7).
+transp_required(act_7).
+transp_compartment(c_02,act_7).
+substrate(ent_37,none,c_05,act_7).
+product(ent_65,none,c_01,act_7).
+product(ent_37,none,c_01,act_7).
+substrate(ent_8,none,c_18,act_8).
+product(ent_61,none,c_05,act_8).
+substrate(ent_10,none,c_18,act_9).
+product(ent_63,none,c_05,act_9).
+substrate(ent_67,none,c_18,act_10).
+product(ent_41,none,c_05,act_10).
+substrate(ent_44,none,c_05,act_11).
+enz_required(act_11).
+enz_compartment(c_05,act_11).
+substrate(ent_3,none,c_05,act_11).
+product(ent_29,none,c_05,act_11).
+product(ent_58,none,c_05,act_11).
+enz_required(act_12).
+enz_compartment(c_05,act_12).
+substrate(ent_69,none,c_05,act_12).
+substrate(ent_39,none,c_05,act_12).
+product(ent_73,none,c_05,act_12).
+product(ent_9,none,c_05,act_12).
+product(ent_37,none,c_05,act_12).
+enz_required(act_13).
+enz_compartment(c_05,act_13).
+substrate(ent_79,none,c_05,act_13).
+substrate(ent_17,none,c_05,act_13).
+product(ent_37,none,c_05,act_13).
+product(ent_52,none,c_05,act_13).
+substrate(ent_53,none,c_18,act_14).
+product(ent_47,none,c_02,act_14).
+substrate(ent_49,none,c_18,act_15).
+product(ent_60,none,c_02,act_15).
+substrate(ent_65,none,c_05,act_16).
+substrate(ent_57,none,c_05,act_16).
+substrate(ent_0,none,c_05,act_16).
+substrate(ent_6,none,c_05,act_16).
+substrate(ent_23,none,c_05,act_16).
+substrate(ent_19,none,c_18,act_17).
+product(ent_21,none,c_05,act_17).
+substrate(ent_69,none,c_05,act_18).
+product(ent_69,none,c_01,act_18).
+substrate(ent_65,none,c_05,act_19).
+enz_required(act_19).
+enz_compartment(c_05,act_19).
+substrate(ent_14,none,c_05,act_19).
+product(ent_13,none,c_05,act_19).
+product(ent_23,none,c_05,act_19).
+substrate(ent_12,none,c_18,act_20).
+product(ent_31,none,c_05,act_20).
+enz_required(act_21).
+enz_compartment(c_05,act_21).
+substrate(ent_13,none,c_05,act_21).
+substrate(ent_23,none,c_05,act_21).
+product(ent_65,none,c_05,act_21).
+product(ent_14,none,c_05,act_21).
+enz_required(act_22).
+enz_compartment(c_05,act_22).
+substrate(ent_62,none,c_05,act_22).
+substrate(ent_37,none,c_05,act_22).
+product(ent_79,none,c_05,act_22).
+product(ent_52,none,c_05,act_22).
+substrate(ent_69,none,c_01,act_23).
+product(ent_69,none,c_05,act_23).
+substrate(ent_68,none,c_18,act_24).
+product(ent_71,none,c_05,act_24).
+substrate(ent_15,none,c_18,act_25).
+product(ent_75,none,c_05,act_25).
+substrate(ent_23,none,c_05,act_26).
+enz_required(act_26).
+enz_compartment(c_05,act_26).
+substrate(ent_52,none,c_05,act_26).
+product(ent_0,none,c_05,act_26).
+product(ent_14,none,c_05,act_26).
+substrate(ent_32,none,c_01,act_27).
+product(ent_32,none,c_05,act_27).
+enz_required(act_28).
+enz_compartment(c_05,act_28).
+substrate(ent_9,none,c_05,act_28).
+substrate(ent_22,none,c_05,act_28).
+product(ent_45,none,c_05,act_28).
+product(ent_69,none,c_05,act_28).
+enz_required(act_29).
+enz_compartment(c_05,act_29).
+substrate(ent_74,none,c_05,act_29).
+substrate(ent_79,none,c_05,act_29).
+product(ent_13,none,c_05,act_29).
+product(ent_37,none,c_05,act_29).
+substrate(ent_70,none,c_05,act_30).
+enz_required(act_30).
+enz_compartment(c_05,act_30).
+substrate(ent_74,none,c_05,act_30).
+substrate(ent_37,none,c_05,act_30).
+product(ent_66,none,c_05,act_30).
+product(ent_46,none,c_05,act_30).
+substrate(ent_51,none,c_18,act_31).
+product(ent_54,none,c_05,act_31).
+substrate(ent_59,none,c_05,act_32).
+enz_required(act_32).
+enz_compartment(c_05,act_32).
+substrate(ent_45,none,c_05,act_32).
+substrate(ent_37,none,c_05,act_32).
+product(ent_13,none,c_05,act_32).
+product(ent_39,none,c_05,act_32).
+product(ent_22,none,c_05,act_32).
+enz_required(act_33).
+enz_compartment(c_05,act_33).
+substrate(ent_46,none,c_05,act_33).
+substrate(ent_22,none,c_05,act_33).
+product(ent_32,none,c_05,act_33).
+product(ent_45,none,c_05,act_33).
+enz_required(act_34).
+enz_compartment(c_05,act_34).
+substrate(ent_32,none,c_05,act_34).
+substrate(ent_39,none,c_05,act_34).
+product(ent_73,none,c_05,act_34).
+product(ent_46,none,c_05,act_34).
+product(ent_37,none,c_05,act_34).
+substrate(ent_73,none,c_05,act_35).
+enz_required(act_35).
+enz_compartment(c_05,act_35).
+substrate(ent_46,none,c_05,act_35).
+substrate(ent_37,none,c_05,act_35).
+product(ent_32,none,c_05,act_35).
+product(ent_39,none,c_05,act_35).
+substrate(ent_37,none,c_05,act_36).
+enz_required(act_36).
+enz_compartment(c_05,act_36).
+substrate(ent_18,none,c_05,act_36).
+substrate(ent_17,none,c_05,act_36).
+product(ent_35,none,c_05,act_36).
+product(ent_9,none,c_05,act_36).
+enz_required(act_37).
+enz_compartment(c_05,act_37).
+substrate(ent_32,none,c_05,act_37).
+substrate(ent_45,none,c_05,act_37).
+product(ent_46,none,c_05,act_37).
+product(ent_22,none,c_05,act_37).
+substrate(ent_2,none,c_18,act_38).
+product(ent_48,none,c_05,act_38).
+enz_required(act_39).
+enz_compartment(c_05,act_39).
+substrate(ent_57,none,c_05,act_39).
+substrate(ent_76,none,c_05,act_39).
+substrate(ent_65,none,c_05,act_39).
+product(ent_6,none,c_05,act_39).
+product(ent_30,none,c_05,act_39).
+product(ent_7,none,c_05,act_39).
+substrate(ent_1,none,c_18,act_40).
+product(ent_5,none,c_05,act_40).
+enz_required(act_41).
+enz_compartment(c_05,act_41).
+substrate(ent_6,none,c_05,act_41).
+substrate(ent_30,none,c_05,act_41).
+substrate(ent_7,none,c_05,act_41).
+product(ent_57,none,c_05,act_41).
+product(ent_76,none,c_05,act_41).
+product(ent_65,none,c_05,act_41).
+substrate(ent_33,none,c_18,act_42).
+product(ent_20,none,c_02,act_42).
+enz_required(act_43).
+enz_compartment(c_05,act_43).
+substrate(ent_13,none,c_05,act_43).
+substrate(ent_39,none,c_05,act_43).
+substrate(ent_22,none,c_05,act_43).
+product(ent_59,none,c_05,act_43).
+product(ent_45,none,c_05,act_43).
+product(ent_37,none,c_05,act_43).
+substrate(ent_18,none,c_05,act_44).
+enz_required(act_44).
+enz_compartment(c_05,act_44).
+substrate(ent_74,none,c_05,act_44).
+substrate(ent_37,none,c_05,act_44).
+product(ent_35,none,c_05,act_44).
+product(ent_46,none,c_05,act_44).
+substrate(ent_55,none,c_18,act_45).
+product(ent_16,none,c_05,act_45).
+substrate(ent_37,none,c_05,act_46).
+enz_required(act_46).
+enz_compartment(c_05,act_46).
+substrate(ent_52,none,c_05,act_46).
+product(ent_79,none,c_05,act_46).
+product(ent_17,none,c_05,act_46).
+substrate(ent_70,none,c_05,act_47).
+enz_required(act_47).
+enz_compartment(c_05,act_47).
+substrate(ent_62,none,c_05,act_47).
+substrate(ent_37,none,c_05,act_47).
+product(ent_44,none,c_05,act_47).
+product(ent_66,none,c_05,act_47).
+enz_required(act_48).
+enz_compartment(c_05,act_48).
+substrate(ent_79,none,c_05,act_48).
+substrate(ent_52,none,c_05,act_48).
+product(ent_62,none,c_05,act_48).
+product(ent_37,none,c_05,act_48).
+substrate(ent_43,none,c_18,act_49).
+product(ent_56,none,c_05,act_49).
+substrate(ent_32,none,c_05,act_50).
+product(ent_32,none,c_01,act_50).
+enz_required(act_51).
+enz_compartment(c_05,act_51).
+substrate(ent_0,none,c_05,act_51).
+substrate(ent_14,none,c_05,act_51).
+product(ent_23,none,c_05,act_51).
+product(ent_52,none,c_05,act_51).
+substrate(ent_72,none,c_18,act_52).
+product(ent_36,none,c_05,act_52).
+substrate(ent_37,none,c_05,act_53).
+substrate(ent_70,none,c_05,act_53).
+enz_required(act_53).
+enz_compartment(c_05,act_53).
+substrate(ent_17,none,c_05,act_53).
+product(ent_66,none,c_05,act_53).
+product(ent_9,none,c_05,act_53).
+substrate(ent_27,none,c_18,act_54).
+product(ent_77,none,c_05,act_54).
+substrate(ent_28,none,c_18,act_55).
+product(ent_34,none,c_05,act_55).
+substrate(ent_35,none,c_05,act_56).
+enz_required(act_56).
+enz_compartment(c_05,act_56).
+substrate(ent_46,none,c_05,act_56).
+product(ent_18,none,c_05,act_56).
+product(ent_74,none,c_05,act_56).
+product(ent_37,none,c_05,act_56).
+enz_required(act_57).
+enz_compartment(c_05,act_57).
+substrate(ent_35,none,c_05,act_57).
+substrate(ent_9,none,c_05,act_57).
+product(ent_37,none,c_05,act_57).
+product(ent_18,none,c_05,act_57).
+product(ent_17,none,c_05,act_57).
+enz_required(act_58).
+enz_compartment(c_05,act_58).
+substrate(ent_45,none,c_05,act_58).
+substrate(ent_69,none,c_05,act_58).
+product(ent_9,none,c_05,act_58).
+product(ent_22,none,c_05,act_58).
+substrate(ent_38,none,c_18,act_59).
+product(ent_64,none,c_05,act_59).
+substrate(ent_40,none,c_18,act_60).
+product(ent_80,none,c_02,act_60).
+substrate(ent_65,none,c_01,act_61).
+transp_required(act_61).
+transp_compartment(c_02,act_61).
+substrate(ent_37,none,c_01,act_61).
+product(ent_65,none,c_05,act_61).
+product(ent_37,none,c_05,act_61).
+substrate(ent_73,none,c_05,act_62).
+enz_required(act_62).
+enz_compartment(c_05,act_62).
+substrate(ent_9,none,c_05,act_62).
+substrate(ent_37,none,c_05,act_62).
+product(ent_69,none,c_05,act_62).
+product(ent_39,none,c_05,act_62).
+enz_required(act_63).
+enz_compartment(c_05,act_63).
+substrate(ent_66,none,c_05,act_63).
+substrate(ent_9,none,c_05,act_63).
+product(ent_37,none,c_05,act_63).
+product(ent_70,none,c_05,act_63).
+product(ent_17,none,c_05,act_63).
+substrate(ent_24,none,c_18,act_64).
+product(ent_11,none,c_05,act_64).
+substrate(ent_44,none,c_05,act_65).
+enz_required(act_65).
+enz_compartment(c_05,act_65).
+substrate(ent_66,none,c_05,act_65).
+product(ent_70,none,c_05,act_65).
+product(ent_62,none,c_05,act_65).
+product(ent_37,none,c_05,act_65).
+substrate(ent_42,none,c_18,act_66).
+product(ent_26,none,c_05,act_66).
+substrate(ent_78,none,c_18,act_67).
+product(ent_50,none,c_05,act_67).
+enz_required(act_68).
+enz_compartment(c_05,act_68).
+substrate(ent_81,none,c_05,act_68).
+substrate(ent_39,none,c_05,act_68).
+product(ent_59,none,c_05,act_68).
+substrate(ent_22,none,c_01,act_69).
+product(ent_22,none,c_05,act_69).
+substrate(ent_39,none,c_01,act_70).
+product(ent_39,none,c_05,act_70).
+substrate(ent_65,none,c_01,act_71).
+product(ent_65,none,c_05,act_71).
+substrate(ent_79,none,c_01,act_72).
+product(ent_79,none,c_05,act_72).
+substrate(ent_62,none,c_01,act_73).
+product(ent_62,none,c_05,act_73).
+substrate(ent_6,none,c_01,act_74).
+product(ent_6,none,c_05,act_74).
+substrate(ent_30,none,c_01,act_75).
+product(ent_30,none,c_05,act_75).
+substrate(ent_17,none,c_01,act_76).
+product(ent_17,none,c_05,act_76).
+substrate(ent_32,none,c_01,act_77).
+product(ent_32,none,c_05,act_77).
+substrate(ent_23,none,c_01,act_78).
+product(ent_23,none,c_05,act_78).
+substrate(ent_44,none,c_01,act_79).
+product(ent_44,none,c_05,act_79).
+substrate(ent_35,none,c_01,act_80).
+product(ent_35,none,c_05,act_80).
+substrate(ent_52,none,c_01,act_81).
+product(ent_52,none,c_05,act_81).
+substrate(ent_58,none,c_01,act_82).
+product(ent_58,none,c_05,act_82).
+substrate(ent_46,none,c_01,act_83).
+product(ent_46,none,c_05,act_83).
+substrate(ent_57,none,c_01,act_84).
+product(ent_57,none,c_05,act_84).
+substrate(ent_66,none,c_01,act_85).
+product(ent_66,none,c_05,act_85).
+substrate(ent_0,none,c_01,act_86).
+product(ent_0,none,c_05,act_86).
+substrate(ent_18,none,c_01,act_87).
+product(ent_18,none,c_05,act_87).
+substrate(ent_76,none,c_01,act_88).
+product(ent_76,none,c_05,act_88).
+substrate(ent_9,none,c_01,act_89).
+product(ent_9,none,c_05,act_89).
+substrate(ent_59,none,c_01,act_90).
+product(ent_59,none,c_05,act_90).
+substrate(ent_14,none,c_01,act_91).
+product(ent_14,none,c_05,act_91).
+substrate(ent_7,none,c_01,act_92).
+product(ent_7,none,c_05,act_92).
+substrate(ent_74,none,c_01,act_93).
+product(ent_74,none,c_05,act_93).
+substrate(ent_13,none,c_01,act_94).
+product(ent_13,none,c_05,act_94).
+substrate(ent_69,none,c_01,act_95).
+product(ent_69,none,c_05,act_95).
+substrate(ent_3,none,c_01,act_96).
+product(ent_3,none,c_05,act_96).
+substrate(ent_37,none,c_01,act_97).
+product(ent_37,none,c_05,act_97).
+substrate(ent_73,none,c_01,act_98).
+product(ent_73,none,c_05,act_98).
+substrate(ent_70,none,c_01,act_99).
+product(ent_70,none,c_05,act_99).
+substrate(ent_81,none,c_01,act_100).
+product(ent_81,none,c_05,act_100).
+substrate(ent_45,none,c_01,act_101).
+product(ent_45,none,c_05,act_101).
+substrate(ent_29,none,c_01,act_102).
+product(ent_29,none,c_05,act_102).
+model(m_2;m_15).
+added_to_model(setup_present(ent_51,none,c_18),m_2).
+added_to_model(setup_present(ent_8,none,c_18),m_2).
+added_to_model(setup_present(ent_1,none,c_18),m_2).
+added_to_model(setup_present(ent_27,none,c_18),m_2).
+added_to_model(setup_present(ent_33,none,c_18),m_2).
+added_to_model(setup_present(ent_43,none,c_18),m_2).
+added_to_model(setup_present(ent_14,none,c_05),m_2).
+added_to_model(setup_present(ent_67,none,c_18),m_2).
+added_to_model(setup_present(ent_44,none,c_05),m_2).
+added_to_model(setup_present(ent_15,none,c_18),m_2).
+added_to_model(setup_present(ent_40,none,c_18),m_2).
+added_to_model(setup_present(ent_37,none,c_01),m_2).
+added_to_model(setup_present(ent_53,none,c_18),m_2).
+added_to_model(setup_present(ent_72,none,c_18),m_2).
+added_to_model(setup_present(ent_12,none,c_18),m_2).
+added_to_model(setup_present(ent_42,none,c_18),m_2).
+added_to_model(setup_present(ent_2,none,c_18),m_2).
+added_to_model(setup_present(ent_25,none,c_18),m_2).
+added_to_model(setup_present(ent_18,none,c_05),m_2).
+added_to_model(setup_present(ent_38,none,c_18),m_2).
+added_to_model(setup_present(ent_55,none,c_18),m_2).
+added_to_model(setup_present(ent_28,none,c_18),m_2).
+added_to_model(setup_present(ent_65,none,c_01),m_2).
+added_to_model(setup_present(ent_3,none,c_05),m_2).
+added_to_model(setup_present(ent_78,none,c_18),m_2).
+added_to_model(setup_present(ent_68,none,c_18),m_2).
+added_to_model(setup_present(ent_57,none,c_05),m_2).
+added_to_model(setup_present(ent_76,none,c_05),m_2).
+added_to_model(setup_present(ent_22,none,c_05),m_2).
+added_to_model(setup_present(ent_24,none,c_18),m_2).
+added_to_model(setup_present(ent_49,none,c_18),m_2).
+added_to_model(setup_present(ent_0,none,c_05),m_2).
+added_to_model(setup_present(ent_10,none,c_18),m_2).
+added_to_model(setup_present(ent_19,none,c_18),m_2).
+added_to_model(act_65,m_2).
+added_to_model(act_34,m_2).
+added_to_model(act_56,m_2).
+added_to_model(act_36,m_2).
+added_to_model(act_50,m_2).
+added_to_model(act_7,m_2).
+added_to_model(act_49,m_2).
+added_to_model(act_6,m_2).
+added_to_model(act_12,m_2).
+added_to_model(act_61,m_2).
+added_to_model(act_60,m_2).
+added_to_model(act_16,m_2).
+added_to_model(act_23,m_2).
+added_to_model(act_35,m_2).
+added_to_model(act_17,m_2).
+added_to_model(act_3,m_2).
+added_to_model(act_68,m_2).
+added_to_model(act_47,m_2).
+added_to_model(act_63,m_2).
+added_to_model(act_14,m_2).
+added_to_model(act_41,m_2).
+added_to_model(act_57,m_2).
+added_to_model(act_39,m_2).
+added_to_model(act_25,m_2).
+added_to_model(act_5,m_2).
+added_to_model(act_30,m_2).
+added_to_model(act_10,m_2).
+added_to_model(act_44,m_2).
+added_to_model(act_20,m_2).
+added_to_model(act_55,m_2).
+added_to_model(act_29,m_2).
+added_to_model(act_0,m_2).
+added_to_model(act_18,m_2).
+added_to_model(act_40,m_2).
+added_to_model(act_46,m_2).
+added_to_model(act_19,m_2).
+added_to_model(act_4,m_2).
+added_to_model(act_38,m_2).
+added_to_model(act_24,m_2).
+added_to_model(act_1,m_2).
+added_to_model(act_32,m_2).
+added_to_model(act_64,m_2).
+added_to_model(act_43,m_2).
+added_to_model(act_11,m_2).
+added_to_model(act_27,m_2).
+added_to_model(act_37,m_2).
+added_to_model(act_52,m_2).
+added_to_model(act_28,m_2).
+added_to_model(act_21,m_2).
+added_to_model(act_26,m_2).
+added_to_model(act_45,m_2).
+added_to_model(act_51,m_2).
+added_to_model(act_66,m_2).
+added_to_model(act_31,m_2).
+added_to_model(act_13,m_2).
+added_to_model(act_67,m_2).
+added_to_model(act_15,m_2).
+added_to_model(act_2,m_2).
+added_to_model(act_22,m_2).
+added_to_model(act_58,m_2).
+added_to_model(act_33,m_2).
+added_to_model(act_42,m_2).
+added_to_model(act_62,m_2).
+added_to_model(act_54,m_2).
+added_to_model(act_48,m_2).
+added_to_model(act_59,m_2).
+added_to_model(act_8,m_2).
+added_to_model(act_9,m_2).
+added_to_model(setup_present(ent_51,none,c_18),m_15).
+added_to_model(setup_present(ent_8,none,c_18),m_15).
+added_to_model(setup_present(ent_1,none,c_18),m_15).
+added_to_model(setup_present(ent_27,none,c_18),m_15).
+added_to_model(setup_present(ent_33,none,c_18),m_15).
+added_to_model(setup_present(ent_43,none,c_18),m_15).
+added_to_model(setup_present(ent_14,none,c_05),m_15).
+added_to_model(setup_present(ent_67,none,c_18),m_15).
+added_to_model(setup_present(ent_44,none,c_05),m_15).
+added_to_model(setup_present(ent_15,none,c_18),m_15).
+added_to_model(setup_present(ent_40,none,c_18),m_15).
+added_to_model(setup_present(ent_37,none,c_01),m_15).
+added_to_model(setup_present(ent_53,none,c_18),m_15).
+added_to_model(setup_present(ent_72,none,c_18),m_15).
+added_to_model(setup_present(ent_12,none,c_18),m_15).
+added_to_model(setup_present(ent_42,none,c_18),m_15).
+added_to_model(setup_present(ent_2,none,c_18),m_15).
+added_to_model(setup_present(ent_25,none,c_18),m_15).
+added_to_model(setup_present(ent_18,none,c_05),m_15).
+added_to_model(setup_present(ent_38,none,c_18),m_15).
+added_to_model(setup_present(ent_55,none,c_18),m_15).
+added_to_model(setup_present(ent_28,none,c_18),m_15).
+added_to_model(setup_present(ent_65,none,c_01),m_15).
+added_to_model(setup_present(ent_3,none,c_05),m_15).
+added_to_model(setup_present(ent_78,none,c_18),m_15).
+added_to_model(setup_present(ent_68,none,c_18),m_15).
+added_to_model(setup_present(ent_57,none,c_05),m_15).
+added_to_model(setup_present(ent_76,none,c_05),m_15).
+added_to_model(setup_present(ent_22,none,c_05),m_15).
+added_to_model(setup_present(ent_24,none,c_18),m_15).
+added_to_model(setup_present(ent_49,none,c_18),m_15).
+added_to_model(setup_present(ent_0,none,c_05),m_15).
+added_to_model(setup_present(ent_10,none,c_18),m_15).
+added_to_model(setup_present(ent_19,none,c_18),m_15).
+added_to_model(act_65,m_15).
+added_to_model(act_34,m_15).
+added_to_model(act_56,m_15).
+added_to_model(act_50,m_15).
+added_to_model(act_49,m_15).
+added_to_model(act_12,m_15).
+added_to_model(act_7,m_15).
+added_to_model(act_61,m_15).
+added_to_model(act_6,m_15).
+added_to_model(act_23,m_15).
+added_to_model(act_35,m_15).
+added_to_model(act_17,m_15).
+added_to_model(act_3,m_15).
+added_to_model(act_47,m_15).
+added_to_model(act_41,m_15).
+added_to_model(act_39,m_15).
+added_to_model(act_25,m_15).
+added_to_model(act_5,m_15).
+added_to_model(act_30,m_15).
+added_to_model(act_10,m_15).
+added_to_model(act_20,m_15).
+added_to_model(act_44,m_15).
+added_to_model(act_55,m_15).
+added_to_model(act_0,m_15).
+added_to_model(act_18,m_15).
+added_to_model(act_40,m_15).
+added_to_model(act_46,m_15).
+added_to_model(act_19,m_15).
+added_to_model(act_38,m_15).
+added_to_model(act_24,m_15).
+added_to_model(act_43,m_15).
+added_to_model(act_64,m_15).
+added_to_model(act_32,m_15).
+added_to_model(act_11,m_15).
+added_to_model(act_52,m_15).
+added_to_model(act_28,m_15).
+added_to_model(act_21,m_15).
+added_to_model(act_51,m_15).
+added_to_model(act_45,m_15).
+added_to_model(act_66,m_15).
+added_to_model(act_13,m_15).
+added_to_model(act_31,m_15).
+added_to_model(act_67,m_15).
+added_to_model(act_15,m_15).
+added_to_model(act_2,m_15).
+added_to_model(act_58,m_15).
+added_to_model(act_33,m_15).
+added_to_model(act_42,m_15).
+added_to_model(act_62,m_15).
+added_to_model(act_54,m_15).
+added_to_model(act_59,m_15).
+added_to_model(act_9,m_15).
+added_to_model(act_8,m_15).
+added_to_model(act_48,m_15).
+nr(0,m_2).
+probability(1, m_2).
+nr(1,m_15).
+probability(1, m_15).
+0{design_entity_loc(ent_21),add(setup_present(ent_0, none, c_01)),remove(setup_present(ent_78, none, c_18)),design_entity_loc(ent_60),add(setup_present(ent_18, none, c_01)),design_activity_rec(act_7),design_available(ent_44),design_entity_det(ent_29),design_activity_rec(act_57),design_entity_det(ent_75),design_entity_det(ent_44),design_deletable(ent_1),design_activity_rec(act_0),design_compartment(c_27),design_deletable(ent_53),add(setup_present(ent_57, none, c_01)),design_entity_loc(ent_54),design_compartment(c_23),design_entity_det(ent_20),design_activity_rec(act_58),remove(setup_present(ent_19, none, c_18)),design_entity_det(ent_61),design_available(ent_29),design_entity_det(ent_81),design_compartment(c_11),design_compartment(c_21),design_available(ent_23),design_entity_det(ent_59),design_entity_loc(ent_80),design_deletable(ent_42),add(setup_present(ent_37, none, c_01)),design_available(ent_3),design_entity_det(ent_80),design_activity_rec(act_3),design_available(ent_61),design_entity_loc(ent_31),add(act_85),design_available(ent_76),add(setup_present(ent_70, none, c_01)),design_entity_det(ent_30),design_activity_rec(act_56),design_activity_rec(act_37),add(setup_present(ent_35, none, c_01)),design_entity_det(ent_32),design_activity_rec(act_50),design_compartment(c_20),remove(setup_present(ent_65, none, c_01)),design_compartment(c_32),design_activity_rec(act_2),remove(setup_present(ent_1, none, c_18)),remove(setup_present(ent_72, none, c_18)),design_entity_det(ent_70),design_entity_det(ent_37),design_compartment(c_34),design_entity_det(ent_46),design_available(ent_4),design_entity_det(ent_21),design_activity_rec(act_36),design_entity_det(ent_69),remove(setup_present(ent_12, none, c_18)),design_available(ent_47),design_entity_det(ent_54),design_entity_det(ent_17),design_available(ent_31),add(setup_present(ent_13, none, c_01)),design_entity_det(ent_79),add(act_101),design_available(ent_21),add(act_74),design_deletable(ent_28),design_entity_loc(ent_36),design_entity_loc(ent_4),design_entity_det(ent_57),design_available(ent_39),remove(setup_present(ent_37, none, c_01)),design_compartment(c_31),design_available(ent_66),add(setup_present(ent_52, none, c_01)),design_compartment(c_08),design_available(ent_81),add(setup_present(ent_6, none, c_01)),design_activity_rec(act_11),design_entity_det(ent_71),design_available(ent_9),design_entity_det(ent_77),add(act_95),design_available(ent_79),add(setup_present(ent_73, none, c_01)),design_entity_det(ent_60),design_available(ent_70),design_available(ent_59),add(act_76),design_available(ent_60),design_entity_det(ent_50),design_deletable(ent_51),add(setup_present(ent_45, none, c_01)),add(setup_present(ent_66, none, c_01)),design_type(adam_two_factor_exp),design_entity_det(ent_5),design_compartment(c_04),design_compartment(c_10),design_activity_rec(act_63),design_activity_rec(act_28),design_entity_det(ent_23),design_entity_det(ent_22),design_deletable(ent_49),design_compartment(c_18),remove(setup_present(ent_15, none, c_18)),design_compartment(c_25),add(act_78),add(setup_present(ent_3, none, c_01)),design_entity_loc(ent_26),design_activity_rec(act_33),add(setup_present(ent_65, none, c_01)),add(setup_present(ent_17, none, c_01)),design_entity_loc(ent_63),design_activity_rec(act_1),design_entity_det(ent_18),design_entity_det(ent_6),add(act_70),design_activity_rec(act_34),design_entity_det(ent_9),design_entity_det(ent_64),remove(setup_present(ent_40, none, c_18)),add(act_86),design_compartment(c_09),design_deletable(ent_8),add(act_83),remove(setup_present(ent_10, none, c_18)),add(setup_present(ent_76, none, c_01)),design_compartment(c_17),design_available(ent_48),design_available(ent_26),add(setup_present(ent_7, none, c_01)),design_type(transp_reconstruction_exp),design_available(ent_62),remove(setup_present(ent_55, none, c_18)),design_activity_rec(act_18),add(act_89),design_activity_rec(act_39),design_activity_rec(act_12),design_activity_rec(act_46),design_available(ent_52),add(act_79),design_compartment(c_12),remove(setup_present(ent_67, none, c_18)),design_entity_det(ent_4),design_available(ent_56),add(act_98),add(act_93),add(act_84),design_available(ent_58),design_compartment(c_06),design_activity_rec(act_6),design_available(ent_35),design_entity_det(ent_58),design_entity_det(ent_0),add(act_71),design_available(ent_17),add(act_99),design_entity_loc(ent_56),design_entity_det(ent_13),design_available(ent_41),design_available(ent_34),add(act_72),add(act_97),design_activity_rec(act_43),design_entity_loc(ent_20),design_available(ent_30),design_activity_rec(act_26),design_compartment(c_15),add(act_94),design_type(basic_reconstruction_exp),design_deletable(ent_12),design_entity_det(ent_62),design_entity_det(ent_52),design_available(ent_22),design_available(ent_18),remove(setup_present(ent_42, none, c_18)),design_entity_loc(ent_47),design_compartment(c_05),remove(setup_present(ent_68, none, c_18)),add(setup_present(ent_79, none, c_01)),design_available(ent_54),design_deletable(ent_43),design_entity_det(ent_73),design_compartment(c_02),design_available(ent_6),design_deletable(ent_27),add(setup_present(ent_22, none, c_01)),design_type(localisation_entity_exp),design_deletable(ent_40),add(setup_present(ent_30, none, c_01)),design_entity_det(ent_3),design_available(ent_46),design_deletable(ent_10),design_entity_loc(ent_16),design_activity_rec(act_41),design_available(ent_77),design_entity_det(ent_26),add(setup_present(ent_14, none, c_01)),design_entity_det(ent_63),design_entity_det(ent_36),design_compartment(c_30),add(setup_present(ent_59, none, c_01)),add(act_96),design_entity_loc(ent_50),add(setup_present(ent_69, none, c_01)),remove(setup_present(ent_25, none, c_18)),design_available(ent_65),add(act_90),add(setup_present(ent_32, none, c_01)),design_activity_rec(act_53),design_activity_rec(act_4),add(setup_present(ent_29, none, c_01)),design_available(ent_63),design_entity_det(ent_34),add(act_80),add(setup_present(ent_74, none, c_01)),design_entity_loc(ent_61),design_activity_rec(act_51),design_activity_rec(act_22),add(setup_present(ent_9, none, c_01)),design_entity_det(ent_39),design_available(ent_20),design_activity_rec(act_29),design_entity_det(ent_45),add(setup_present(ent_23, none, c_01)),add(setup_present(ent_58, none, c_01)),design_deletable(ent_24),remove(setup_present(ent_33, none, c_18)),design_available(ent_5),design_entity_det(ent_7),add(act_77),add(act_81),design_available(ent_13),design_compartment(c_26),design_entity_loc(ent_64),add(setup_present(ent_81, none, c_01)),design_available(ent_11),design_available(ent_37),design_activity_det(act_16),design_activity_rec(act_48),design_entity_loc(ent_71),design_deletable(ent_55),design_compartment(c_07),design_activity_rec(act_44),design_entity_det(ent_48),design_compartment(c_24),design_entity_det(ent_56),design_available(ent_64),add(act_82),remove(setup_present(ent_43, none, c_18)),design_deletable(ent_2),design_activity_rec(act_61),design_entity_det(ent_35),design_entity_det(ent_14),remove(setup_present(ent_27, none, c_18)),design_compartment(c_13),design_available(ent_14),add(setup_present(ent_62, none, c_01)),design_entity_det(ent_16),design_entity_loc(ent_41),design_activity_rec(act_35),design_available(ent_73),design_available(ent_50),add(setup_present(ent_39, none, c_01)),design_deletable(ent_67),design_entity_det(ent_65),remove(setup_present(ent_24, none, c_18)),design_available(ent_32),design_compartment(c_28),design_available(ent_80),design_compartment(c_03),design_available(ent_57),add(act_91),design_compartment(c_22),design_deletable(ent_38),add(act_87),design_activity_rec(act_62),design_activity_rec(act_47),design_entity_det(ent_47),remove(setup_present(ent_51, none, c_18)),design_deletable(ent_15),design_deletable(ent_19),design_activity_rec(act_32),add(act_102),design_activity_rec(act_21),design_deletable(ent_72),design_activity_rec(act_30),design_compartment(c_29),design_compartment(c_14),design_deletable(ent_68),design_activity_rec(act_19),remove(setup_present(ent_8, none, c_18)),design_available(ent_71),design_deletable(ent_78),add(setup_present(ent_44, none, c_01)),design_compartment(c_19),design_entity_loc(ent_77),design_deletable(ent_33),design_available(ent_7),design_entity_det(ent_74),design_available(ent_45),design_entity_det(ent_66),design_compartment(c_16),design_entity_loc(ent_48),design_entity_det(ent_76),design_entity_loc(ent_5),add(act_92),add(act_69),design_available(ent_16),design_compartment(c_33),remove(setup_present(ent_49, none, c_18)),design_deletable(ent_25),design_entity_loc(ent_34),design_activity_rec(act_65),remove(setup_present(ent_38, none, c_18)),design_entity_det(ent_11),add(act_75),design_activity_rec(act_13),design_entity_loc(ent_75),add(act_100),design_available(ent_75),remove(setup_present(ent_2, none, c_18)),remove(setup_present(ent_53, none, c_18)),add(setup_present(ent_46, none, c_01)),remove(setup_present(ent_28, none, c_18)),design_type(detection_entity_exp),design_activity_rec(act_68),design_entity_det(ent_31),design_available(ent_0),design_available(ent_69),design_type(detection_activity_exp),design_type(enz_reconstruction_exp),design_entity_loc(ent_11),add(act_88),add(act_73),design_available(ent_36),design_entity_det(ent_41),design_available(ent_74)}341.
+
+designed :- designed(experiment(adam_two_factor_exp, Gene, Metabolite)), gene(Gene, Ver), metabolite(Metabolite, Ver).
+designed :- designed(experiment(transp_reconstruction_exp, Activity, Entity)), activity(Activity), entity(Entity, Ver).
+designed :- designed(experiment(enz_reconstruction_exp, Activity, Entity)), activity(Activity), entity(Entity, Ver).
+designed :- designed(experiment(basic_reconstruction_exp, Activity)), activity(Activity).
+designed :- designed(experiment(detection_activity_exp, Activity)), activity(Activity).
+designed :- designed(experiment(localisation_entity_exp, Entity, Compartment)), entity(Entity, Ver), compartment(Compartment).
+designed :- designed(experiment(detection_entity_exp, Entity)), entity(Entity, Ver).
+
+:- not designed.
+
+:- designed(Experiment1), designed(Experiment2), Experiment1 != Experiment2.
+
+has_true_model :- predicts(Model, Experiment, true), model(Model), designed(Experiment).
+has_false_model :- predicts(Model, Experiment, false), model(Model), designed(Experiment).
+:- not has_true_model.
+:- not has_false_model.
+
+:- designed(experiment(adam_two_factor_exp, Gene, Metabolite)), add(Whatever).
+:- designed(experiment(adam_two_factor_exp, Gene, Metabolite)), remove(Whatever).
+:- involved(Entity, Version1, Model), involved(Entity, Version2, Model), Version1 != Version2.
+
+:- designed(experiment(detection_entity_exp, ent_35)),add(act_97),remove(setup_present(ent_2, none, c_18)),add(act_75),add(setup_present(ent_14, none, c_01)),add(act_77),remove(setup_present(ent_53, none, c_18)),add(act_89),add(setup_present(ent_69, none, c_01)),add(act_102),add(setup_present(ent_32, none, c_01)),add(act_92),add(act_73),add(setup_present(ent_23, none, c_01)),add(act_74),add(act_93),add(act_79),add(setup_present(ent_46, none, c_01)),add(act_70),remove(setup_present(ent_1, none, c_18)),remove(setup_present(ent_65, none, c_01)),add(act_87),add(act_81),remove(setup_present(ent_12, none, c_18)),add(act_82),add(act_94),remove(setup_present(ent_37, none, c_01)),add(act_71),add(act_72),remove(setup_present(ent_10, none, c_18)),add(act_76),add(act_100),remove(setup_present(ent_55, none, c_18)),add(act_99),add(act_85),remove(setup_present(ent_68, none, c_18)),add(act_78),add(act_101),remove(setup_present(ent_25, none, c_18)),add(act_84),add(act_98),remove(setup_present(ent_33, none, c_18)),add(act_96),add(act_90),remove(setup_present(ent_24, none, c_18)),add(act_91),add(act_95),remove(setup_present(ent_51, none, c_18)),add(act_83),add(setup_present(ent_13, none, c_01)),add(act_86),remove(setup_present(ent_49, none, c_18)),add(act_80),add(act_69),add(setup_present(ent_0, none, c_01)),remove(setup_present(ent_38, none, c_18)),add(act_88).
+:- designed(experiment(detection_entity_exp, ent_35)),add(act_97),remove(setup_present(ent_2, none, c_18)),add(act_75),add(setup_present(ent_14, none, c_01)),add(act_77),remove(setup_present(ent_53, none, c_18)),add(act_89),add(setup_present(ent_69, none, c_01)),add(act_102),add(setup_present(ent_32, none, c_01)),add(act_92),add(act_73),add(setup_present(ent_23, none, c_01)),add(act_74),add(act_93),add(act_79),add(setup_present(ent_46, none, c_01)),add(act_70),remove(setup_present(ent_1, none, c_18)),remove(setup_present(ent_65, none, c_01)),add(act_87),add(act_81),remove(setup_present(ent_12, none, c_18)),add(act_82),add(act_94),remove(setup_present(ent_37, none, c_01)),add(act_71),add(act_72),remove(setup_present(ent_10, none, c_18)),add(act_76),add(act_100),remove(setup_present(ent_55, none, c_18)),add(act_99),add(act_85),remove(setup_present(ent_68, none, c_18)),add(act_78),add(act_101),remove(setup_present(ent_25, none, c_18)),add(act_84),add(act_98),remove(setup_present(ent_33, none, c_18)),add(act_96),add(act_90),remove(setup_present(ent_24, none, c_18)),add(act_91),add(act_95),remove(setup_present(ent_51, none, c_18)),add(act_83),add(setup_present(ent_13, none, c_01)),add(act_86),remove(setup_present(ent_49, none, c_18)),add(act_80),add(act_69),add(setup_present(ent_0, none, c_01)),remove(setup_present(ent_38, none, c_18)),add(act_88).
+:- designed(experiment(detection_entity_exp, ent_52)),add(act_94),remove(setup_present(ent_55, none, c_18)),add(act_72),add(act_100),remove(setup_present(ent_68, none, c_18)),add(act_99),add(act_78),remove(setup_present(ent_25, none, c_18)),add(act_101),add(act_84),remove(setup_present(ent_33, none, c_18)),add(act_98),add(act_96),remove(setup_present(ent_27, none, c_18)),add(act_90),add(act_91),remove(setup_present(ent_51, none, c_18)),add(act_95),add(act_83),remove(setup_present(ent_8, none, c_18)),add(act_86),add(act_80),remove(setup_present(ent_49, none, c_18)),add(act_69),add(setup_present(ent_57, none, c_01)),add(act_88),remove(setup_present(ent_2, none, c_18)),add(act_75),add(act_77),remove(setup_present(ent_53, none, c_18)),add(act_102),add(act_92),add(setup_present(ent_81, none, c_01)),add(act_73),add(act_74),add(setup_present(ent_6, none, c_01)),add(act_79),add(setup_present(ent_35, none, c_01)),remove(setup_present(ent_65, none, c_01)),add(setup_present(ent_76, none, c_01)),remove(setup_present(ent_78, none, c_18)),add(setup_present(ent_7, none, c_01)),remove(setup_present(ent_37, none, c_01)),add(setup_present(ent_32, none, c_01)),add(act_93),remove(setup_present(ent_40, none, c_18)),add(act_70),add(act_87),remove(setup_present(ent_10, none, c_18)),add(act_81),add(act_82).
+:- designed(experiment(detection_entity_exp, ent_52)),add(act_94),remove(setup_present(ent_55, none, c_18)),add(act_72),add(act_100),remove(setup_present(ent_68, none, c_18)),add(act_99),add(act_78),remove(setup_present(ent_25, none, c_18)),add(act_101),add(act_84),remove(setup_present(ent_33, none, c_18)),add(act_98),add(act_96),remove(setup_present(ent_27, none, c_18)),add(act_90),add(act_91),remove(setup_present(ent_51, none, c_18)),add(act_95),add(act_83),remove(setup_present(ent_8, none, c_18)),add(act_86),add(act_80),remove(setup_present(ent_49, none, c_18)),add(act_69),add(setup_present(ent_57, none, c_01)),add(act_88),remove(setup_present(ent_2, none, c_18)),add(act_75),add(act_77),remove(setup_present(ent_53, none, c_18)),add(act_102),add(act_92),add(setup_present(ent_81, none, c_01)),add(act_73),add(act_74),add(setup_present(ent_6, none, c_01)),add(act_79),add(setup_present(ent_35, none, c_01)),remove(setup_present(ent_65, none, c_01)),add(setup_present(ent_76, none, c_01)),remove(setup_present(ent_78, none, c_18)),add(setup_present(ent_7, none, c_01)),remove(setup_present(ent_37, none, c_01)),add(setup_present(ent_32, none, c_01)),add(act_93),remove(setup_present(ent_40, none, c_18)),add(act_70),add(act_87),remove(setup_present(ent_10, none, c_18)),add(act_81),add(act_82).
+:- designed(experiment(detection_entity_exp, ent_9)),add(setup_present(ent_0, none, c_01)),add(setup_present(ent_76, none, c_01)),remove(setup_present(ent_78, none, c_18)),add(setup_present(ent_62, none, c_01)),add(setup_present(ent_57, none, c_01)),remove(setup_present(ent_72, none, c_18)),add(setup_present(ent_44, none, c_01)),add(act_93),add(setup_present(ent_18, none, c_01)),remove(setup_present(ent_12, none, c_18)),add(setup_present(ent_46, none, c_01)),add(setup_present(ent_70, none, c_01)),add(act_72),remove(setup_present(ent_37, none, c_01)),add(act_76),add(act_71),add(setup_present(ent_35, none, c_01)),remove(setup_present(ent_15, none, c_18)),add(act_94),add(setup_present(ent_13, none, c_01)),add(act_100),remove(setup_present(ent_10, none, c_18)),add(act_99),add(setup_present(ent_6, none, c_01)),add(act_87),remove(setup_present(ent_55, none, c_18)),add(act_78),add(setup_present(ent_45, none, c_01)),add(act_101),remove(setup_present(ent_67, none, c_18)),add(act_84),add(setup_present(ent_3, none, c_01)),add(act_98),remove(setup_present(ent_42, none, c_18)),add(act_96),add(setup_present(ent_17, none, c_01)),add(act_90),remove(setup_present(ent_68, none, c_18)),add(act_91),add(act_95),add(setup_present(ent_7, none, c_01)),remove(setup_present(ent_43, none, c_18)),add(act_83),add(act_86),add(setup_present(ent_79, none, c_01)),remove(setup_present(ent_51, none, c_18)),add(act_69),add(act_88),add(setup_present(ent_22, none, c_01)),remove(setup_present(ent_49, none, c_18)),add(act_97),add(act_75),add(setup_present(ent_30, none, c_01)),remove(setup_present(ent_38, none, c_18)),add(act_77),add(act_102),add(setup_present(ent_14, none, c_01)),remove(setup_present(ent_2, none, c_18)),add(act_92),add(setup_present(ent_69, none, c_01)),remove(setup_present(ent_28, none, c_18)),add(act_73),add(act_74),add(setup_present(ent_32, none, c_01)),add(act_79),add(setup_present(ent_23, none, c_01)),remove(setup_present(ent_1, none, c_18)).
+:- designed(experiment(detection_entity_exp, ent_9)),add(setup_present(ent_0, none, c_01)),add(setup_present(ent_76, none, c_01)),remove(setup_present(ent_78, none, c_18)),add(setup_present(ent_62, none, c_01)),add(setup_present(ent_57, none, c_01)),remove(setup_present(ent_72, none, c_18)),add(setup_present(ent_44, none, c_01)),add(act_93),add(setup_present(ent_18, none, c_01)),remove(setup_present(ent_12, none, c_18)),add(setup_present(ent_46, none, c_01)),add(setup_present(ent_70, none, c_01)),add(act_72),remove(setup_present(ent_37, none, c_01)),add(act_76),add(act_71),add(setup_present(ent_35, none, c_01)),remove(setup_present(ent_15, none, c_18)),add(act_94),add(setup_present(ent_13, none, c_01)),add(act_100),remove(setup_present(ent_10, none, c_18)),add(act_99),add(setup_present(ent_6, none, c_01)),add(act_87),remove(setup_present(ent_55, none, c_18)),add(act_78),add(setup_present(ent_45, none, c_01)),add(act_101),remove(setup_present(ent_67, none, c_18)),add(act_84),add(setup_present(ent_3, none, c_01)),add(act_98),remove(setup_present(ent_42, none, c_18)),add(act_96),add(setup_present(ent_17, none, c_01)),add(act_90),remove(setup_present(ent_68, none, c_18)),add(act_91),add(act_95),add(setup_present(ent_7, none, c_01)),remove(setup_present(ent_43, none, c_18)),add(act_83),add(act_86),add(setup_present(ent_79, none, c_01)),remove(setup_present(ent_51, none, c_18)),add(act_69),add(act_88),add(setup_present(ent_22, none, c_01)),remove(setup_present(ent_49, none, c_18)),add(act_97),add(act_75),add(setup_present(ent_30, none, c_01)),remove(setup_present(ent_38, none, c_18)),add(act_77),add(act_102),add(setup_present(ent_14, none, c_01)),remove(setup_present(ent_2, none, c_18)),add(act_92),add(setup_present(ent_69, none, c_01)),remove(setup_present(ent_28, none, c_18)),add(act_73),add(act_74),add(setup_present(ent_32, none, c_01)),add(act_79),add(setup_present(ent_23, none, c_01)),remove(setup_present(ent_1, none, c_18)).
+:- designed(experiment(detection_entity_exp, ent_65)),add(setup_present(ent_23, none, c_01)),add(act_74),add(setup_present(ent_58, none, c_01)),add(act_79),add(act_93),add(setup_present(ent_13, none, c_01)),add(setup_present(ent_44, none, c_01)),add(setup_present(ent_0, none, c_01)),remove(setup_present(ent_65, none, c_01)),add(act_70),add(act_87),remove(setup_present(ent_19, none, c_18)),add(act_81),add(act_82),add(setup_present(ent_57, none, c_01)),remove(setup_present(ent_37, none, c_01)),add(act_94),add(act_71),remove(setup_present(ent_40, none, c_18)),add(act_72),add(act_76),remove(setup_present(ent_10, none, c_18)),add(act_100),add(setup_present(ent_35, none, c_01)),add(act_99),add(setup_present(ent_6, none, c_01)),remove(setup_present(ent_25, none, c_18)),add(act_85),add(act_78),add(setup_present(ent_66, none, c_01)),remove(setup_present(ent_24, none, c_18)),add(act_101),add(act_84),add(setup_present(ent_17, none, c_01)),remove(setup_present(ent_49, none, c_18)),add(act_98),add(act_96),add(setup_present(ent_76, none, c_01)),remove(setup_present(ent_53, none, c_18)),add(act_90),add(act_91),add(setup_present(ent_7, none, c_01)),remove(setup_present(ent_28, none, c_18)),add(act_95),add(act_83),add(setup_present(ent_79, none, c_01)),add(act_86),add(act_80),add(setup_present(ent_22, none, c_01)),add(act_69),add(act_88),add(setup_present(ent_30, none, c_01)),add(act_97),add(act_75),add(setup_present(ent_14, none, c_01)),add(act_77),add(act_89),add(setup_present(ent_59, none, c_01)),add(act_102),add(act_73),add(setup_present(ent_29, none, c_01)),add(act_92).
+:- designed(experiment(detection_entity_exp, ent_65)),add(setup_present(ent_23, none, c_01)),add(act_74),add(setup_present(ent_58, none, c_01)),add(act_79),add(act_93),add(setup_present(ent_13, none, c_01)),add(setup_present(ent_44, none, c_01)),add(setup_present(ent_0, none, c_01)),remove(setup_present(ent_65, none, c_01)),add(act_70),add(act_87),remove(setup_present(ent_19, none, c_18)),add(act_81),add(act_82),add(setup_present(ent_57, none, c_01)),remove(setup_present(ent_37, none, c_01)),add(act_94),add(act_71),remove(setup_present(ent_40, none, c_18)),add(act_72),add(act_76),remove(setup_present(ent_10, none, c_18)),add(act_100),add(setup_present(ent_35, none, c_01)),add(act_99),add(setup_present(ent_6, none, c_01)),remove(setup_present(ent_25, none, c_18)),add(act_85),add(act_78),add(setup_present(ent_66, none, c_01)),remove(setup_present(ent_24, none, c_18)),add(act_101),add(act_84),add(setup_present(ent_17, none, c_01)),remove(setup_present(ent_49, none, c_18)),add(act_98),add(act_96),add(setup_present(ent_76, none, c_01)),remove(setup_present(ent_53, none, c_18)),add(act_90),add(act_91),add(setup_present(ent_7, none, c_01)),remove(setup_present(ent_28, none, c_18)),add(act_95),add(act_83),add(setup_present(ent_79, none, c_01)),add(act_86),add(act_80),add(setup_present(ent_22, none, c_01)),add(act_69),add(act_88),add(setup_present(ent_30, none, c_01)),add(act_97),add(act_75),add(setup_present(ent_14, none, c_01)),add(act_77),add(act_89),add(setup_present(ent_59, none, c_01)),add(act_102),add(act_73),add(setup_present(ent_29, none, c_01)),add(act_92).
+:- designed(experiment(detection_entity_exp, ent_32)),remove(setup_present(ent_37, none, c_01)),add(setup_present(ent_74, none, c_01)),remove(setup_present(ent_15, none, c_18)),add(setup_present(ent_9, none, c_01)),add(setup_present(ent_0, none, c_01)),remove(setup_present(ent_40, none, c_18)),add(setup_present(ent_23, none, c_01)),add(setup_present(ent_17, none, c_01)),remove(setup_present(ent_55, none, c_18)),add(setup_present(ent_70, none, c_01)),add(setup_present(ent_58, none, c_01)),remove(setup_present(ent_67, none, c_18)),add(setup_present(ent_57, none, c_01)),add(setup_present(ent_81, none, c_01)),add(setup_present(ent_35, none, c_01)),remove(setup_present(ent_68, none, c_18)),add(setup_present(ent_62, none, c_01)),remove(setup_present(ent_25, none, c_18)),add(setup_present(ent_52, none, c_01)),add(setup_present(ent_39, none, c_01)),remove(setup_present(ent_27, none, c_18)),add(act_75),add(setup_present(ent_46, none, c_01)),add(setup_present(ent_73, none, c_01)),remove(setup_present(ent_51, none, c_18)),add(act_90),add(act_82),add(setup_present(ent_45, none, c_01)),remove(setup_present(ent_49, none, c_18)),add(act_86),add(act_100),add(setup_present(ent_66, none, c_01)),remove(setup_present(ent_38, none, c_18)),add(act_80),add(act_102),add(setup_present(ent_3, none, c_01)),remove(setup_present(ent_2, none, c_18)),add(act_73),remove(setup_present(ent_53, none, c_18)),add(act_71),add(setup_present(ent_7, none, c_01)),remove(setup_present(ent_28, none, c_18)),add(setup_present(ent_6, none, c_01)),remove(setup_present(ent_19, none, c_18)),add(setup_present(ent_79, none, c_01)),remove(setup_present(ent_78, none, c_18)),add(setup_present(ent_22, none, c_01)),remove(setup_present(ent_65, none, c_01)),add(setup_present(ent_14, none, c_01)),remove(setup_present(ent_1, none, c_18)),add(setup_present(ent_69, none, c_01)),remove(setup_present(ent_12, none, c_18)),add(setup_present(ent_29, none, c_01)).
+:- designed(experiment(detection_entity_exp, ent_32)),remove(setup_present(ent_37, none, c_01)),add(setup_present(ent_74, none, c_01)),remove(setup_present(ent_15, none, c_18)),add(setup_present(ent_9, none, c_01)),add(setup_present(ent_0, none, c_01)),remove(setup_present(ent_40, none, c_18)),add(setup_present(ent_23, none, c_01)),add(setup_present(ent_17, none, c_01)),remove(setup_present(ent_55, none, c_18)),add(setup_present(ent_70, none, c_01)),add(setup_present(ent_58, none, c_01)),remove(setup_present(ent_67, none, c_18)),add(setup_present(ent_57, none, c_01)),add(setup_present(ent_81, none, c_01)),add(setup_present(ent_35, none, c_01)),remove(setup_present(ent_68, none, c_18)),add(setup_present(ent_62, none, c_01)),remove(setup_present(ent_25, none, c_18)),add(setup_present(ent_52, none, c_01)),add(setup_present(ent_39, none, c_01)),remove(setup_present(ent_27, none, c_18)),add(act_75),add(setup_present(ent_46, none, c_01)),add(setup_present(ent_73, none, c_01)),remove(setup_present(ent_51, none, c_18)),add(act_90),add(act_82),add(setup_present(ent_45, none, c_01)),remove(setup_present(ent_49, none, c_18)),add(act_86),add(act_100),add(setup_present(ent_66, none, c_01)),remove(setup_present(ent_38, none, c_18)),add(act_80),add(act_102),add(setup_present(ent_3, none, c_01)),remove(setup_present(ent_2, none, c_18)),add(act_73),remove(setup_present(ent_53, none, c_18)),add(act_71),add(setup_present(ent_7, none, c_01)),remove(setup_present(ent_28, none, c_18)),add(setup_present(ent_6, none, c_01)),remove(setup_present(ent_19, none, c_18)),add(setup_present(ent_79, none, c_01)),remove(setup_present(ent_78, none, c_18)),add(setup_present(ent_22, none, c_01)),remove(setup_present(ent_65, none, c_01)),add(setup_present(ent_14, none, c_01)),remove(setup_present(ent_1, none, c_18)),add(setup_present(ent_69, none, c_01)),remove(setup_present(ent_12, none, c_18)),add(setup_present(ent_29, none, c_01)).
+:- designed(experiment(detection_entity_exp, ent_74)),remove(setup_present(ent_38, none, c_18)),remove(setup_present(ent_1, none, c_18)),remove(setup_present(ent_2, none, c_18)),remove(setup_present(ent_12, none, c_18)),remove(setup_present(ent_15, none, c_18)),remove(setup_present(ent_42, none, c_18)).
+:- designed(experiment(detection_entity_exp, ent_74)),remove(setup_present(ent_38, none, c_18)),remove(setup_present(ent_1, none, c_18)),remove(setup_present(ent_2, none, c_18)),remove(setup_present(ent_12, none, c_18)),remove(setup_present(ent_15, none, c_18)),remove(setup_present(ent_42, none, c_18)).
+:- designed(experiment(detection_entity_exp, ent_66)),remove(setup_present(ent_10, none, c_18)),remove(setup_present(ent_78, none, c_18)),remove(setup_present(ent_28, none, c_18)),remove(setup_present(ent_68, none, c_18)).
+:- designed(experiment(detection_entity_exp, ent_66)),remove(setup_present(ent_10, none, c_18)),remove(setup_present(ent_78, none, c_18)),remove(setup_present(ent_28, none, c_18)),remove(setup_present(ent_68, none, c_18)).
+:- designed(experiment(detection_entity_exp, ent_65)),remove(setup_present(ent_2, none, c_18)),add(setup_present(ent_44, none, c_01)),remove(setup_present(ent_53, none, c_18)),add(setup_present(ent_66, none, c_01)),add(act_93),remove(setup_present(ent_12, none, c_18)),add(setup_present(ent_46, none, c_01)),remove(setup_present(ent_28, none, c_18)),add(setup_present(ent_3, none, c_01)),add(act_94),remove(setup_present(ent_37, none, c_01)),add(act_85),add(setup_present(ent_17, none, c_01)),add(act_81),remove(setup_present(ent_15, none, c_18)),add(act_82),add(setup_present(ent_7, none, c_01)),add(act_71),remove(setup_present(ent_40, none, c_18)),add(act_72),add(setup_present(ent_79, none, c_01)),add(act_76),remove(setup_present(ent_10, none, c_18)),add(act_100),add(setup_present(ent_22, none, c_01)),add(setup_present(ent_18, none, c_01)),add(act_92),remove(setup_present(ent_55, none, c_18)),add(act_78),add(setup_present(ent_30, none, c_01)),add(act_99),remove(setup_present(ent_67, none, c_18)),add(setup_present(ent_35, none, c_01)),add(act_98),add(setup_present(ent_14, none, c_01)),add(act_96),remove(setup_present(ent_42, none, c_18)),add(act_83),add(setup_present(ent_59, none, c_01)),add(act_80),remove(setup_present(ent_68, none, c_18)),add(act_88),add(setup_present(ent_69, none, c_01)),add(act_75),remove(setup_present(ent_25, none, c_18)),add(act_77),add(setup_present(ent_29, none, c_01)),add(act_89),remove(setup_present(ent_33, none, c_18)),add(act_102),add(setup_present(ent_74, none, c_01)),remove(setup_present(ent_43, none, c_18)),add(act_73),add(setup_present(ent_9, none, c_01)),add(setup_present(ent_70, none, c_01)),add(act_74),remove(setup_present(ent_27, none, c_18)),add(setup_present(ent_57, none, c_01)),add(act_79),add(setup_present(ent_23, none, c_01)),remove(setup_present(ent_24, none, c_18)),add(setup_present(ent_52, none, c_01)),remove(setup_present(ent_19, none, c_18)),add(setup_present(ent_58, none, c_01)),remove(setup_present(ent_51, none, c_18)),add(setup_present(ent_6, none, c_01)),remove(setup_present(ent_78, none, c_18)),add(setup_present(ent_81, none, c_01)),remove(setup_present(ent_8, none, c_18)),add(setup_present(ent_73, none, c_01)),remove(setup_present(ent_65, none, c_01)),add(setup_present(ent_62, none, c_01)),remove(setup_present(ent_38, none, c_18)),add(setup_present(ent_45, none, c_01)),remove(setup_present(ent_1, none, c_18)),add(setup_present(ent_39, none, c_01)).
+:- designed(experiment(detection_entity_exp, ent_65)),remove(setup_present(ent_2, none, c_18)),add(setup_present(ent_44, none, c_01)),remove(setup_present(ent_53, none, c_18)),add(setup_present(ent_66, none, c_01)),add(act_93),remove(setup_present(ent_12, none, c_18)),add(setup_present(ent_46, none, c_01)),remove(setup_present(ent_28, none, c_18)),add(setup_present(ent_3, none, c_01)),add(act_94),remove(setup_present(ent_37, none, c_01)),add(act_85),add(setup_present(ent_17, none, c_01)),add(act_81),remove(setup_present(ent_15, none, c_18)),add(act_82),add(setup_present(ent_7, none, c_01)),add(act_71),remove(setup_present(ent_40, none, c_18)),add(act_72),add(setup_present(ent_79, none, c_01)),add(act_76),remove(setup_present(ent_10, none, c_18)),add(act_100),add(setup_present(ent_22, none, c_01)),add(setup_present(ent_18, none, c_01)),add(act_92),remove(setup_present(ent_55, none, c_18)),add(act_78),add(setup_present(ent_30, none, c_01)),add(act_99),remove(setup_present(ent_67, none, c_18)),add(setup_present(ent_35, none, c_01)),add(act_98),add(setup_present(ent_14, none, c_01)),add(act_96),remove(setup_present(ent_42, none, c_18)),add(act_83),add(setup_present(ent_59, none, c_01)),add(act_80),remove(setup_present(ent_68, none, c_18)),add(act_88),add(setup_present(ent_69, none, c_01)),add(act_75),remove(setup_present(ent_25, none, c_18)),add(act_77),add(setup_present(ent_29, none, c_01)),add(act_89),remove(setup_present(ent_33, none, c_18)),add(act_102),add(setup_present(ent_74, none, c_01)),remove(setup_present(ent_43, none, c_18)),add(act_73),add(setup_present(ent_9, none, c_01)),add(setup_present(ent_70, none, c_01)),add(act_74),remove(setup_present(ent_27, none, c_18)),add(setup_present(ent_57, none, c_01)),add(act_79),add(setup_present(ent_23, none, c_01)),remove(setup_present(ent_24, none, c_18)),add(setup_present(ent_52, none, c_01)),remove(setup_present(ent_19, none, c_18)),add(setup_present(ent_58, none, c_01)),remove(setup_present(ent_51, none, c_18)),add(setup_present(ent_6, none, c_01)),remove(setup_present(ent_78, none, c_18)),add(setup_present(ent_81, none, c_01)),remove(setup_present(ent_8, none, c_18)),add(setup_present(ent_73, none, c_01)),remove(setup_present(ent_65, none, c_01)),add(setup_present(ent_62, none, c_01)),remove(setup_present(ent_38, none, c_18)),add(setup_present(ent_45, none, c_01)),remove(setup_present(ent_1, none, c_18)),add(setup_present(ent_39, none, c_01)).
+:- designed(experiment(detection_entity_exp, ent_79)),add(act_85),add(setup_present(ent_45, none, c_01)),remove(setup_present(ent_10, none, c_18)),add(act_78),add(act_101),add(setup_present(ent_66, none, c_01)),remove(setup_present(ent_55, none, c_18)),add(act_84),add(act_98),add(setup_present(ent_3, none, c_01)),remove(setup_present(ent_67, none, c_18)),add(act_96),add(act_90),add(setup_present(ent_30, none, c_01)),remove(setup_present(ent_68, none, c_18)),add(act_91),add(act_80),add(setup_present(ent_14, none, c_01)),remove(setup_present(ent_25, none, c_18)),add(act_86),add(act_69),add(setup_present(ent_59, none, c_01)),remove(setup_present(ent_33, none, c_18)),add(act_88),add(act_97),add(setup_present(ent_32, none, c_01)),remove(setup_present(ent_27, none, c_18)),add(act_75),add(act_77),add(setup_present(ent_29, none, c_01)),remove(setup_present(ent_24, none, c_18)),add(act_102),add(setup_present(ent_9, none, c_01)),remove(setup_present(ent_51, none, c_18)),add(act_92),add(act_73),add(setup_present(ent_23, none, c_01)),remove(setup_present(ent_49, none, c_18)),add(act_74),add(act_79),add(setup_present(ent_58, none, c_01)),remove(setup_present(ent_38, none, c_18)),add(setup_present(ent_0, none, c_01)),remove(setup_present(ent_19, none, c_18)),add(setup_present(ent_81, none, c_01)),remove(setup_present(ent_53, none, c_18)),add(setup_present(ent_57, none, c_01)),remove(setup_present(ent_78, none, c_18)),add(setup_present(ent_62, none, c_01)),remove(setup_present(ent_28, none, c_18)),add(setup_present(ent_18, none, c_01)),remove(setup_present(ent_1, none, c_18)),add(setup_present(ent_39, none, c_01)),add(setup_present(ent_35, none, c_01)),add(act_93),remove(setup_present(ent_72, none, c_18)),add(setup_present(ent_46, none, c_01)),add(act_71),add(setup_present(ent_13, none, c_01)),remove(setup_present(ent_12, none, c_18)),add(act_76),add(setup_present(ent_52, none, c_01)),add(act_94),remove(setup_present(ent_37, none, c_01)),add(act_82),add(setup_present(ent_6, none, c_01)),add(act_100),remove(setup_present(ent_40, none, c_18)),add(act_99),add(setup_present(ent_73, none, c_01)),add(act_87).
+:- designed(experiment(detection_entity_exp, ent_79)),add(act_85),add(setup_present(ent_45, none, c_01)),remove(setup_present(ent_10, none, c_18)),add(act_78),add(act_101),add(setup_present(ent_66, none, c_01)),remove(setup_present(ent_55, none, c_18)),add(act_84),add(act_98),add(setup_present(ent_3, none, c_01)),remove(setup_present(ent_67, none, c_18)),add(act_96),add(act_90),add(setup_present(ent_30, none, c_01)),remove(setup_present(ent_68, none, c_18)),add(act_91),add(act_80),add(setup_present(ent_14, none, c_01)),remove(setup_present(ent_25, none, c_18)),add(act_86),add(act_69),add(setup_present(ent_59, none, c_01)),remove(setup_present(ent_33, none, c_18)),add(act_88),add(act_97),add(setup_present(ent_32, none, c_01)),remove(setup_present(ent_27, none, c_18)),add(act_75),add(act_77),add(setup_present(ent_29, none, c_01)),remove(setup_present(ent_24, none, c_18)),add(act_102),add(setup_present(ent_9, none, c_01)),remove(setup_present(ent_51, none, c_18)),add(act_92),add(act_73),add(setup_present(ent_23, none, c_01)),remove(setup_present(ent_49, none, c_18)),add(act_74),add(act_79),add(setup_present(ent_58, none, c_01)),remove(setup_present(ent_38, none, c_18)),add(setup_present(ent_0, none, c_01)),remove(setup_present(ent_19, none, c_18)),add(setup_present(ent_81, none, c_01)),remove(setup_present(ent_53, none, c_18)),add(setup_present(ent_57, none, c_01)),remove(setup_present(ent_78, none, c_18)),add(setup_present(ent_62, none, c_01)),remove(setup_present(ent_28, none, c_18)),add(setup_present(ent_18, none, c_01)),remove(setup_present(ent_1, none, c_18)),add(setup_present(ent_39, none, c_01)),add(setup_present(ent_35, none, c_01)),add(act_93),remove(setup_present(ent_72, none, c_18)),add(setup_present(ent_46, none, c_01)),add(act_71),add(setup_present(ent_13, none, c_01)),remove(setup_present(ent_12, none, c_18)),add(act_76),add(setup_present(ent_52, none, c_01)),add(act_94),remove(setup_present(ent_37, none, c_01)),add(act_82),add(setup_present(ent_6, none, c_01)),add(act_100),remove(setup_present(ent_40, none, c_18)),add(act_99),add(setup_present(ent_73, none, c_01)),add(act_87).
+:- designed(experiment(detection_entity_exp, ent_81)),add(act_73),add(act_74),add(setup_present(ent_23, none, c_01)),add(act_79),add(setup_present(ent_62, none, c_01)),remove(setup_present(ent_40, none, c_18)),add(setup_present(ent_44, none, c_01)),add(setup_present(ent_0, none, c_01)),remove(setup_present(ent_12, none, c_18)),add(act_93),add(setup_present(ent_46, none, c_01)),remove(setup_present(ent_33, none, c_18)),add(act_94),add(act_87),add(setup_present(ent_57, none, c_01)),remove(setup_present(ent_24, none, c_18)),add(act_81),add(setup_present(ent_18, none, c_01)),add(act_82),add(setup_present(ent_35, none, c_01)),remove(setup_present(ent_51, none, c_18)),add(act_71),add(act_72),remove(setup_present(ent_49, none, c_18)),add(act_76),add(setup_present(ent_13, none, c_01)),add(act_100),remove(setup_present(ent_53, none, c_18)),add(act_99),add(setup_present(ent_66, none, c_01)),add(act_85),add(act_78),add(setup_present(ent_17, none, c_01)),add(act_101),add(act_84),add(setup_present(ent_76, none, c_01)),add(act_96),add(act_90),add(setup_present(ent_7, none, c_01)),add(act_91),add(act_83),add(setup_present(ent_79, none, c_01)),add(act_80),add(act_86),add(setup_present(ent_30, none, c_01)),add(act_69),add(setup_present(ent_6, none, c_01)),add(act_88),add(setup_present(ent_14, none, c_01)),add(act_97),add(act_75),add(setup_present(ent_59, none, c_01)),add(act_77),add(act_89),add(setup_present(ent_74, none, c_01)),add(act_102),add(setup_present(ent_9, none, c_01)),add(act_92).
+:- designed(experiment(detection_entity_exp, ent_81)),add(act_73),add(act_74),add(setup_present(ent_23, none, c_01)),add(act_79),add(setup_present(ent_62, none, c_01)),remove(setup_present(ent_40, none, c_18)),add(setup_present(ent_44, none, c_01)),add(setup_present(ent_0, none, c_01)),remove(setup_present(ent_12, none, c_18)),add(act_93),add(setup_present(ent_46, none, c_01)),remove(setup_present(ent_33, none, c_18)),add(act_94),add(act_87),add(setup_present(ent_57, none, c_01)),remove(setup_present(ent_24, none, c_18)),add(act_81),add(setup_present(ent_18, none, c_01)),add(act_82),add(setup_present(ent_35, none, c_01)),remove(setup_present(ent_51, none, c_18)),add(act_71),add(act_72),remove(setup_present(ent_49, none, c_18)),add(act_76),add(setup_present(ent_13, none, c_01)),add(act_100),remove(setup_present(ent_53, none, c_18)),add(act_99),add(setup_present(ent_66, none, c_01)),add(act_85),add(act_78),add(setup_present(ent_17, none, c_01)),add(act_101),add(act_84),add(setup_present(ent_76, none, c_01)),add(act_96),add(act_90),add(setup_present(ent_7, none, c_01)),add(act_91),add(act_83),add(setup_present(ent_79, none, c_01)),add(act_80),add(act_86),add(setup_present(ent_30, none, c_01)),add(act_69),add(setup_present(ent_6, none, c_01)),add(act_88),add(setup_present(ent_14, none, c_01)),add(act_97),add(act_75),add(setup_present(ent_59, none, c_01)),add(act_77),add(act_89),add(setup_present(ent_74, none, c_01)),add(act_102),add(setup_present(ent_9, none, c_01)),add(act_92).
+:- designed(experiment(detection_entity_exp, ent_62)),add(setup_present(ent_23, none, c_01)),add(setup_present(ent_57, none, c_01)),remove(setup_present(ent_10, none, c_18)),add(setup_present(ent_81, none, c_01)),add(setup_present(ent_35, none, c_01)),remove(setup_present(ent_55, none, c_18)),add(setup_present(ent_39, none, c_01)),add(setup_present(ent_13, none, c_01)),remove(setup_present(ent_67, none, c_18)),add(setup_present(ent_44, none, c_01)),add(setup_present(ent_52, none, c_01)),add(act_96),remove(setup_present(ent_68, none, c_18)),add(setup_present(ent_46, none, c_01)),add(setup_present(ent_6, none, c_01)),add(act_82),remove(setup_present(ent_25, none, c_18)),add(act_93),add(setup_present(ent_73, none, c_01)),add(act_97),remove(setup_present(ent_33, none, c_18)),add(act_100),add(setup_present(ent_45, none, c_01)),add(act_90),remove(setup_present(ent_27, none, c_18)),add(act_85),add(setup_present(ent_66, none, c_01)),add(act_80),remove(setup_present(ent_49, none, c_18)),add(act_69),add(setup_present(ent_17, none, c_01)),add(act_102),remove(setup_present(ent_38, none, c_18)),add(setup_present(ent_76, none, c_01)),add(act_79),remove(setup_present(ent_2, none, c_18)),add(act_99),add(setup_present(ent_7, none, c_01)),remove(setup_present(ent_53, none, c_18)),remove(setup_present(ent_65, none, c_01)),add(setup_present(ent_79, none, c_01)),remove(setup_present(ent_28, none, c_18)),remove(setup_present(ent_78, none, c_18)),add(setup_present(ent_22, none, c_01)),remove(setup_present(ent_1, none, c_18)),add(setup_present(ent_30, none, c_01)),remove(setup_present(ent_72, none, c_18)),add(setup_present(ent_14, none, c_01)),add(setup_present(ent_18, none, c_01)),remove(setup_present(ent_12, none, c_18)),add(setup_present(ent_59, none, c_01)),add(setup_present(ent_0, none, c_01)),remove(setup_present(ent_37, none, c_01)),add(setup_present(ent_74, none, c_01)),remove(setup_present(ent_15, none, c_18)),add(setup_present(ent_9, none, c_01)).
+:- designed(experiment(detection_entity_exp, ent_62)),add(setup_present(ent_23, none, c_01)),add(setup_present(ent_57, none, c_01)),remove(setup_present(ent_10, none, c_18)),add(setup_present(ent_81, none, c_01)),add(setup_present(ent_35, none, c_01)),remove(setup_present(ent_55, none, c_18)),add(setup_present(ent_39, none, c_01)),add(setup_present(ent_13, none, c_01)),remove(setup_present(ent_67, none, c_18)),add(setup_present(ent_44, none, c_01)),add(setup_present(ent_52, none, c_01)),add(act_96),remove(setup_present(ent_68, none, c_18)),add(setup_present(ent_46, none, c_01)),add(setup_present(ent_6, none, c_01)),add(act_82),remove(setup_present(ent_25, none, c_18)),add(act_93),add(setup_present(ent_73, none, c_01)),add(act_97),remove(setup_present(ent_33, none, c_18)),add(act_100),add(setup_present(ent_45, none, c_01)),add(act_90),remove(setup_present(ent_27, none, c_18)),add(act_85),add(setup_present(ent_66, none, c_01)),add(act_80),remove(setup_present(ent_49, none, c_18)),add(act_69),add(setup_present(ent_17, none, c_01)),add(act_102),remove(setup_present(ent_38, none, c_18)),add(setup_present(ent_76, none, c_01)),add(act_79),remove(setup_present(ent_2, none, c_18)),add(act_99),add(setup_present(ent_7, none, c_01)),remove(setup_present(ent_53, none, c_18)),remove(setup_present(ent_65, none, c_01)),add(setup_present(ent_79, none, c_01)),remove(setup_present(ent_28, none, c_18)),remove(setup_present(ent_78, none, c_18)),add(setup_present(ent_22, none, c_01)),remove(setup_present(ent_1, none, c_18)),add(setup_present(ent_30, none, c_01)),remove(setup_present(ent_72, none, c_18)),add(setup_present(ent_14, none, c_01)),add(setup_present(ent_18, none, c_01)),remove(setup_present(ent_12, none, c_18)),add(setup_present(ent_59, none, c_01)),add(setup_present(ent_0, none, c_01)),remove(setup_present(ent_37, none, c_01)),add(setup_present(ent_74, none, c_01)),remove(setup_present(ent_15, none, c_18)),add(setup_present(ent_9, none, c_01)).
+:- designed(experiment(detection_entity_exp, ent_79)),remove(setup_present(ent_40, none, c_18)),add(setup_present(ent_39, none, c_01)),add(setup_present(ent_70, none, c_01)),remove(setup_present(ent_10, none, c_18)),add(setup_present(ent_44, none, c_01)),add(act_93),remove(setup_present(ent_55, none, c_18)),add(setup_present(ent_46, none, c_01)),add(act_87),add(setup_present(ent_18, none, c_01)),remove(setup_present(ent_67, none, c_18)),add(act_73),add(act_90),remove(setup_present(ent_42, none, c_18)),add(act_82),add(setup_present(ent_35, none, c_01)),add(act_91),add(setup_present(ent_13, none, c_01)),remove(setup_present(ent_68, none, c_18)),add(act_85),add(act_78),remove(setup_present(ent_33, none, c_18)),add(act_94),add(setup_present(ent_52, none, c_01)),add(act_80),remove(setup_present(ent_27, none, c_18)),add(act_102),add(act_99),add(setup_present(ent_45, none, c_01)),remove(setup_present(ent_51, none, c_18)),add(act_79),add(act_101),add(setup_present(ent_66, none, c_01)),remove(setup_present(ent_49, none, c_18)),add(setup_present(ent_17, none, c_01)),remove(setup_present(ent_38, none, c_18)),remove(setup_present(ent_19, none, c_18)),add(setup_present(ent_30, none, c_01)),remove(setup_present(ent_2, none, c_18)),remove(setup_present(ent_78, none, c_18)),add(setup_present(ent_59, none, c_01)),remove(setup_present(ent_53, none, c_18)),remove(setup_present(ent_65, none, c_01)),add(setup_present(ent_29, none, c_01)),remove(setup_present(ent_28, none, c_18)),remove(setup_present(ent_1, none, c_18)),add(setup_present(ent_73, none, c_01)),add(setup_present(ent_9, none, c_01)),remove(setup_present(ent_72, none, c_18)),add(setup_present(ent_23, none, c_01)),remove(setup_present(ent_12, none, c_18)),add(setup_present(ent_58, none, c_01)),remove(setup_present(ent_37, none, c_01)),add(setup_present(ent_62, none, c_01)),remove(setup_present(ent_15, none, c_18)).
+:- designed(experiment(detection_entity_exp, ent_79)),remove(setup_present(ent_40, none, c_18)),add(setup_present(ent_39, none, c_01)),add(setup_present(ent_70, none, c_01)),remove(setup_present(ent_10, none, c_18)),add(setup_present(ent_44, none, c_01)),add(act_93),remove(setup_present(ent_55, none, c_18)),add(setup_present(ent_46, none, c_01)),add(act_87),add(setup_present(ent_18, none, c_01)),remove(setup_present(ent_67, none, c_18)),add(act_73),add(act_90),remove(setup_present(ent_42, none, c_18)),add(act_82),add(setup_present(ent_35, none, c_01)),add(act_91),add(setup_present(ent_13, none, c_01)),remove(setup_present(ent_68, none, c_18)),add(act_85),add(act_78),remove(setup_present(ent_33, none, c_18)),add(act_94),add(setup_present(ent_52, none, c_01)),add(act_80),remove(setup_present(ent_27, none, c_18)),add(act_102),add(act_99),add(setup_present(ent_45, none, c_01)),remove(setup_present(ent_51, none, c_18)),add(act_79),add(act_101),add(setup_present(ent_66, none, c_01)),remove(setup_present(ent_49, none, c_18)),add(setup_present(ent_17, none, c_01)),remove(setup_present(ent_38, none, c_18)),remove(setup_present(ent_19, none, c_18)),add(setup_present(ent_30, none, c_01)),remove(setup_present(ent_2, none, c_18)),remove(setup_present(ent_78, none, c_18)),add(setup_present(ent_59, none, c_01)),remove(setup_present(ent_53, none, c_18)),remove(setup_present(ent_65, none, c_01)),add(setup_present(ent_29, none, c_01)),remove(setup_present(ent_28, none, c_18)),remove(setup_present(ent_1, none, c_18)),add(setup_present(ent_73, none, c_01)),add(setup_present(ent_9, none, c_01)),remove(setup_present(ent_72, none, c_18)),add(setup_present(ent_23, none, c_01)),remove(setup_present(ent_12, none, c_18)),add(setup_present(ent_58, none, c_01)),remove(setup_present(ent_37, none, c_01)),add(setup_present(ent_62, none, c_01)),remove(setup_present(ent_15, none, c_18)).
+:- designed(experiment(detection_entity_exp, ent_45)),remove(setup_present(ent_25, none, c_18)),add(act_100),add(setup_present(ent_22, none, c_01)),add(setup_present(ent_0, none, c_01)),add(act_99),remove(setup_present(ent_33, none, c_18)),add(act_85),add(setup_present(ent_30, none, c_01)),add(act_78),remove(setup_present(ent_27, none, c_18)),add(act_101),add(setup_present(ent_14, none, c_01)),add(act_84),remove(setup_present(ent_49, none, c_18)),add(act_98),add(setup_present(ent_59, none, c_01)),add(setup_present(ent_3, none, c_01)),add(act_96),add(act_90),add(setup_present(ent_29, none, c_01)),add(act_91),add(setup_present(ent_57, none, c_01)),add(act_83),add(setup_present(ent_74, none, c_01)),add(act_80),add(setup_present(ent_18, none, c_01)),add(act_86),add(setup_present(ent_9, none, c_01)),add(setup_present(ent_70, none, c_01)),add(act_69),add(act_88),add(setup_present(ent_23, none, c_01)),add(act_75),add(setup_present(ent_35, none, c_01)),add(act_89),add(setup_present(ent_58, none, c_01)),add(act_102),add(setup_present(ent_13, none, c_01)),add(setup_present(ent_81, none, c_01)),add(act_92),add(setup_present(ent_52, none, c_01)),add(act_73),add(setup_present(ent_62, none, c_01)),add(act_74),add(setup_present(ent_6, none, c_01)),add(act_79),add(setup_present(ent_39, none, c_01)),add(setup_present(ent_73, none, c_01)),remove(setup_present(ent_72, none, c_18)),add(setup_present(ent_44, none, c_01)),add(act_93),add(setup_present(ent_66, none, c_01)),remove(setup_present(ent_78, none, c_18)),add(setup_present(ent_46, none, c_01)),add(act_70),remove(setup_present(ent_12, none, c_18)),add(act_87),add(setup_present(ent_17, none, c_01)),add(act_81),remove(setup_present(ent_10, none, c_18)),add(act_82),add(setup_present(ent_76, none, c_01)),add(act_94),remove(setup_present(ent_55, none, c_18)),add(act_71),add(setup_present(ent_7, none, c_01)),add(act_72),remove(setup_present(ent_67, none, c_18)),add(act_76),add(setup_present(ent_79, none, c_01)).
+:- designed(experiment(detection_entity_exp, ent_45)),remove(setup_present(ent_25, none, c_18)),add(act_100),add(setup_present(ent_22, none, c_01)),add(setup_present(ent_0, none, c_01)),add(act_99),remove(setup_present(ent_33, none, c_18)),add(act_85),add(setup_present(ent_30, none, c_01)),add(act_78),remove(setup_present(ent_27, none, c_18)),add(act_101),add(setup_present(ent_14, none, c_01)),add(act_84),remove(setup_present(ent_49, none, c_18)),add(act_98),add(setup_present(ent_59, none, c_01)),add(setup_present(ent_3, none, c_01)),add(act_96),add(act_90),add(setup_present(ent_29, none, c_01)),add(act_91),add(setup_present(ent_57, none, c_01)),add(act_83),add(setup_present(ent_74, none, c_01)),add(act_80),add(setup_present(ent_18, none, c_01)),add(act_86),add(setup_present(ent_9, none, c_01)),add(setup_present(ent_70, none, c_01)),add(act_69),add(act_88),add(setup_present(ent_23, none, c_01)),add(act_75),add(setup_present(ent_35, none, c_01)),add(act_89),add(setup_present(ent_58, none, c_01)),add(act_102),add(setup_present(ent_13, none, c_01)),add(setup_present(ent_81, none, c_01)),add(act_92),add(setup_present(ent_52, none, c_01)),add(act_73),add(setup_present(ent_62, none, c_01)),add(act_74),add(setup_present(ent_6, none, c_01)),add(act_79),add(setup_present(ent_39, none, c_01)),add(setup_present(ent_73, none, c_01)),remove(setup_present(ent_72, none, c_18)),add(setup_present(ent_44, none, c_01)),add(act_93),add(setup_present(ent_66, none, c_01)),remove(setup_present(ent_78, none, c_18)),add(setup_present(ent_46, none, c_01)),add(act_70),remove(setup_present(ent_12, none, c_18)),add(act_87),add(setup_present(ent_17, none, c_01)),add(act_81),remove(setup_present(ent_10, none, c_18)),add(act_82),add(setup_present(ent_76, none, c_01)),add(act_94),remove(setup_present(ent_55, none, c_18)),add(act_71),add(setup_present(ent_7, none, c_01)),add(act_72),remove(setup_present(ent_67, none, c_18)),add(act_76),add(setup_present(ent_79, none, c_01)).
+
+#const n = 10.
+
+exp_score(0,Prb,0,0) :- indifferent(Model, Experiment), designed(Experiment), model(Model), nr(0,Model), probability(Prb, Model).
+exp_score(0,0,Prb,0) :- predicts(Model, Experiment, true), designed(Experiment), model(Model), nr(0,Model), probability(Prb, Model).
+exp_score(0,0,0,Prb) :- predicts(Model, Experiment, false), designed(Experiment), model(Model), nr(0,Model), probability(Prb, Model).
+
+exp_score(I,Ind+Prb,Tr,Fa) :- exp_score(I-1, Ind, Tr, Fa), indifferent(Model, Experiment), designed(Experiment), model(Model), nr(I, Model), probability(Prb, Model).
+exp_score(I,Ind,Tr+Prb,Fa) :- exp_score(I-1, Ind, Tr, Fa), predicts(Model, Experiment, true), designed(Experiment), model(Model), nr(I, Model), probability(Prb, Model).
+exp_score(I,Ind,Tr,Fa+Prb) :- exp_score(I-1, Ind, Tr, Fa), predicts(Model, Experiment, false), designed(Experiment), model(Model), nr(I, Model), probability(Prb, Model).
+
+exp_score(I) :- exp_score(I,Ind,Tr,Fa).
+
+final_score(I,Ind,Tr,Fa) :- exp_score(I,Ind,Tr,Fa), not exp_score(I+1).
+
+final_score(|Tr*10-n| + |Fa*10-n| + Ind*10) :- final_score(I,Ind,Tr,Fa).
+#minimize[final_score(Score) = Score@2].
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%% rules for exp design %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+designed(experiment(adam_two_factor_exp, Gene, Metabolite)) :-
+	design_type(adam_two_factor_exp),
+	design_deletable(Gene),
+	design_available(Metabolite).
+
+designed(experiment(transp_reconstruction_exp, Activity, Entity)) :-
+	design_type(transp_reconstruction_exp),
+	design_activity_rec(Activity),
+	design_available(Entity).
+
+designed(experiment(enz_reconstruction_exp, Activity, Entity)) :-
+	design_type(enz_reconstruction_exp),
+	design_activity_rec(Activity),
+	design_available(Entity).
+
+designed(experiment(basic_reconstruction_exp, Activity)) :-
+	design_type(basic_reconstruction_exp),
+	design_activity_rec(Activity).
+
+designed(experiment(detection_activity_exp, Activity)) :-
+	design_type(detection_activity_exp),
+	design_activity_det(Activity).
+
+designed(experiment(localisation_entity_exp, Entity, Compartment)) :-
+	design_type(localisation_entity_exp),
+	design_entity_loc(Entity),
+	design_compartment(Compartment).
+
+designed(experiment(detection_entity_exp, Entity)) :-
+	design_type(detection_entity_exp),
+	design_entity_det(Entity).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%% application of interventions to all models %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+removed(ActivityOrCondition, Model) :-
+	remove(ActivityOrCondition),
+	model(Model).
+
+added_to_model(ActivityOrCondition, Model) :-
+	add(ActivityOrCondition),
+	model(Model).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% prediction rules %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+growth(dummy).
+
+indifferent(Model, Experiment) :-
+	not predicts(Model, Experiment, true),
+	not predicts(Model, Experiment, false),
+	model(Model),
+	designed(Experiment).
+
+% Adams reconstruction
+predicts(Model, experiment(adam_two_factor_exp, Gene, Metabolite), false) :-
+	predicts(Model, experiment(detection_activity_exp, GrowthActivity), true),
+	growth(GrowthActivity),
+	not predicts(Model, experiment(adam_two_factor_exp, Gene, Metabolite), true),
+	involved(Gene, GeneVer, Model),
+	gene(Gene, GeneVer),
+	involved(Metabolite, MetVersion, Model),
+	metabolite(Metabolite, MetVersion).
+
+predicts(Model, experiment(adam_two_factor_exp, Gene, Metabolite), true) :-% for genes that produce enzymes
+	predicts(Model, experiment(detection_activity_exp, GrowthActivity), true),
+	growth(GrowthActivity),
+	substrate(Gene, GeneVer, GeneComp, ExpressionAct),
+	compartment(GeneComp),
+	expression(ExpressionAct),
+	in_model(ExpressionAct, Model),
+	metabolite(Metabolite, MetVersion),
+	% expression produces a catalyst
+	product(Ent, Ver, Comp, ExpressionAct),
+	catalyses(Ent, Ver, Reaction),
+	in_model(Reaction, Model),
+	enz_required(Reaction),% redundancy, but better make sure (might also help the ASP solver)
+	enz_compartment(SomeComp, Reaction),
+	connected_compartments(Comp, SomeComp),
+	% metabolite is within accepted distance from the catalysed reaction
+	distance(Reaction, Metabolite, MetVersion, MetComp, Integer, Model),
+	compartment(MetComp).
+
+predicts(Model, experiment(adam_two_factor_exp, Gene, Metabolite), true) :-% for genes that produce subunits of enzymes
+	predicts(Model, experiment(detection_activity_exp, GrowthActivity), true),
+	growth(GrowthActivity),
+	substrate(Gene, GeneVer, GeneComp, ExpressionAct),
+	compartment(GeneComp),
+	expression(ExpressionAct),
+	in_model(ExpressionAct, Model),
+	metabolite(Metabolite, MetVersion),
+	% expression produces sth that is involved in production of enzyme down the line
+	product(EntTo, VerTo, CompTo, ExpressionAct),
+	entity(EntFrom, VerFrom),
+	compartment(CompFrom),
+	path_back_from_to(EntFrom, VerFrom, CompFrom, EntTo, VerTo, CompTo, Model, Int),
+	int(Integer),
+	catalyses(EntFrom, VerFrom, Reaction),
+	% enzyme is in appropriate compartment
+	enz_compartment(SomeComp, Reaction),
+	connected_compartments(SomeComp, CompFrom),
+	compartment(SomeComp),
+	% metabolite is within accepted distance from the catalysed reaction
+	distance(Reaction, Metabolite, MetVersion, MetComp, Integer, Model),
+	compartment(MetComp).
+
+int(0;1;2).% distance goes up to 2
+
+distance(ActivityFrom, EntTo, VerTo, CompTo, 0, Model) :-
+	product(EntTo, VerTo, CompTo, ActivityFrom),
+	in_model(ActivityFrom, Model),
+	reaction(ActivityFrom),% only metabolic reactions
+	enz_required(ActivityFrom).% optimisation - only these activities make sense in the context of experiment
+
+distance(ActivityFrom, EntTo, VerTo, CompTo, Int+1, Model) :-
+	distance(ActivityFrom, InterEnt, InterVer, InterComp, Int, Model),
+	substrate(InterEnt, InterVer, InterComp, InterActivity),
+	product(EntTo, VerTo, CompTo, InterActivity),
+	in_model(InterActivity, Model),
+	reaction(InterActivity),% only metabolic reactions
+	Int < 2,
+	int(Int).
+
+
+% in vitro reconstruction: transporter required
+predicts(Model, experiment(transp_reconstruction_exp, Activity, Entity), true) :-
+	in_model(Activity, Model),
+	transp_required(Activity),
+	involved(Entity, Version, Model),
+	transports(Entity, Version, Activity).
+
+predicts(Model, experiment(transp_reconstruction_exp, Activity, Entity), false) :-
+	in_model(Activity, Model),
+	transp_required(Activity),
+	involved(Entity, Version, Model),% there is a version of the entity in the model
+	not transports(Entity, Version, Activity),% that doesnt transport that stuff
+	transports(Entity, OtherVersion, Activity).% but some propose that this entity could do that
+
+
+% in vitro reconstruction: enzymatic
+predicts(Model, experiment(enz_reconstruction_exp, Activity, Entity), true) :-
+	in_model(Activity, Model),
+	enz_required(Activity),
+	involved(Entity, Version, Model),
+	catalyses(Entity, Version, Activity).
+
+predicts(Model, experiment(enz_reconstruction_exp, Activity, Entity), false) :-
+	in_model(Activity, Model),
+	enz_required(Activity),
+	involved(Entity, Version, Model),% there is a version of the entity in the model
+	not catalyses(Entity, Version, Activity),% that doesnt catalyse the reaction
+	catalyses(Entity, OtherVersion, Activity).% but some propose that this entity could do that
+
+
+% in vitro reconstruction: basic
+predicts(Model, experiment(basic_reconstruction_exp, Activity), true) :-
+	activity(Activity),
+	in_model(Activity, Model),
+	not enz_required(Activity),
+	not transp_required(Activity).
+
+
+% localisation experiments: detecting entities
+predicts(Model, experiment(localisation_entity_exp, Entity, Compartment), true) :-
+	not predicts(Model, experiment(detection_activity_exp, GrowthActivity), false),
+	growth(GrowthActivity),
+	compartment(Compartment),
+	involved(Entity, Version, Model),
+	synthesizable(Entity, Version, Compartment, Model).
+
+predicts(Model, experiment(localisation_entity_exp, Entity, Compartment), true) :-
+	compartment(Compartment),
+	in_model(setup_present(Entity, Version, Compartment), Model).
+
+predicts(Model, experiment(localisation_entity_exp, Entity, Compartment), false) :-
+	not predicts(Model, experiment(detection_activity_exp, GrowthActivity), false),
+	growth(GrowthActivity),
+	compartment(Compartment),
+	involved(Entity, Version, Model),
+	not predicts(Model, experiment(localisation_entity_exp, Entity, Compartment), true).
+
+
+% detection experiments: detecting entities
+predicts(Model, experiment(detection_entity_exp, Entity), true) :-
+	not predicts(Model, experiment(detection_activity_exp, GrowthActivity), false),
+	growth(GrowthActivity),
+	compartment(Compartment),
+	involved(Entity, Version, Model),
+	synthesizable(Entity, Version, Compartment, Model).
+
+predicts(Model, experiment(detection_entity_exp, Entity), true) :-% for stuff in the setup
+	compartment(Compartment),
+	in_model(setup_present(Entity, Version, Compartment), Model).
+
+predicts(Model, experiment(detection_entity_exp, Entity), false) :-
+	not predicts(Model, experiment(detection_activity_exp, GrowthActivity), false),
+	growth(GrowthActivity),
+	involved(Entity, Version, Model),
+	not predicts(Model, experiment(detection_entity_exp, Entity), true).
+
+
+% growth experiments (or any other detecting activities)
+predicts(Model, experiment(detection_activity_exp, Activity), true) :-
+	not predicts(Model, experiment(detection_activity_exp, GrowthActivity), false),
+	growth(GrowthActivity),
+	in_model(Activity, Model),
+	activity(Activity),
+	active(Activity, Model).
+
+predicts(Model, experiment(detection_activity_exp, Activity), false) :-
+	not predicts(Model, experiment(detection_activity_exp, GrowthActivity), false),
+	growth(GrowthActivity),
+	in_model(Activity, Model),
+	activity(Activity),
+	not active(Activity, Model).
+
+predicts(Model, experiment(detection_activity_exp, GrowthActivity), false) :-
+	growth(GrowthActivity),
+	in_model(growth, Model),
+	activity(growth),
+	not active(growth, Model).
+
+% involved species (to handle open world)
+involved(Entity, Version, Model) :-
+	compartment(Compartment),
+	initially_present(Entity, Version, Compartment, Model).
+
+involved(Entity, Version, Model) :-
+	compartment(Compartment),
+	product(Entity, Version, Compartment, Activity),
+	in_model(Activity, Model).
+
+involved(Entity, Version, Model) :-
+	compartment(Compartment),
+	substrate(Entity, Version, Compartment, Activity),
+	in_model(Activity, Model).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% model specification rules %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+activity(Activity) :- reaction(Activity).
+activity(Activity) :- transport(Activity).
+activity(Activity) :- expression(Activity).
+activity(Activity) :- complex_formation(Activity).
+activity(Activity) :- growth(Activity).
+
+entity(Entity, Version) :- metabolite(Entity, Version).
+entity(Entity, Version) :- complex(Entity, Version).
+entity(Entity, Version) :- protein(Entity, Version).
+entity(Entity, Version) :- gene(Entity, Version).
+
+connected_compartments(Compartment2,Compartment1) :- connected_compartments(Compartment1,Compartment2).
+connected_compartments(Compartment,Compartment) :- compartment(Compartment).
+
+in_model(ActivityOrSetup, Model) :-
+	added_to_model(ActivityOrSetup, Model),
+	not removed(ActivityOrSetup, Model).
+
+initially_present(Entity, Version, Compartment, Model) :-
+	in_model(setup_present(Entity, Version, Compartment), Model).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% synthesizable Entity rules %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+synthesizable(Ent, Version, Compartment, Model) :-
+	activity(Activity),
+	product(Ent, Version, Compartment, Activity),
+	active(Activity, Model).
+
+active(Activity, Model) :-
+	activity(Activity),
+	in_model(Activity, Model),
+	not eliminated(Activity, Model).
+
+eliminated(Activity, Model) :-
+	eliminated(Activity, Model, Int),
+	iteration(Int).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% activities elimination rules %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% iterations counter
+iteration(0).
+iteration(1).
+
+iteration(Int+2) :-
+	Int < 103,
+	iteration(Int),
+	eliminated(Activity, Model, Int+1),
+	not eliminated(Activity, Model, Int),
+	in_model(Activity, Model),
+	activity(Activity),
+	model(Model).
+
+% reachability of one specie from another going only from products to substrates (i.e. back).
+path_back_from_to(EntFrom, VerFrom, CompFrom, EntTo, VerTo, CompTo, Model, 0) :-
+	product(EntFrom, VerFrom, CompFrom, Activity),
+	substrate(EntTo, VerTo, CompTo, Activity),
+	in_model(Activity, Model),
+	activity(Activity).
+
+path_back_from_to(EntFrom, VerFrom, CompFrom, EntTo, VerTo, CompTo, Model, 0) :-
+	product(EntFrom, VerFrom, CompFrom, Activity),
+	substrate(InterEnt, InterVer, InterComp, Activity),
+	in_model(Activity, Model),
+	path_back_from_to(InterEnt, InterVer, InterComp, EntTo, VerTo, CompTo, Model, 0).
+
+% reachability for subsequent iterations.
+path_back_from_to(EntFrom, VerFrom, CompFrom, EntTo, VerTo, CompTo, Model, Int+1) :-
+	iteration(Int),
+	product(EntFrom, VerFrom, CompFrom, Activity),
+	substrate(EntTo, VerTo, CompTo, Activity),
+	in_model(Activity, Model),
+	not eliminated(Activity, Model, Int), % not eliminated on previous iteration
+	activity(Activity).
+
+path_back_from_to(EntFrom, VerFrom, CompFrom, EntTo, VerTo, CompTo, Model, Int+1) :-
+	iteration(Int),
+	product(EntFrom, VerFrom, CompFrom, Activity),
+	substrate(InterEnt, InterVer, InterComp, Activity),
+	in_model(Activity, Model),
+	not eliminated(Activity, Model, Int), % not eliminated on previous iteration
+	path_back_from_to(InterEnt, InterVer, InterComp, EntTo, VerTo, CompTo, Model, Int+1).
+
+% is initially_present entity reachable from particular entity
+path_back_to_initially_present(EntFrom, VerFrom, CompFrom, Model, Int) :-
+	iteration(Int),
+	path_back_from_to(EntFrom, VerFrom, CompFrom, EntTo, VerTo, CompTo, Model, Int),
+	initially_present(EntTo, VerTo, CompTo, Model).
+
+path_back_to_initially_present(Ent, Ver, Comp, Model, Int) :-
+	iteration(Int),
+	initially_present(Ent, Ver, Comp, Model).
+
+% has enzymes/transporter
+has_enzyme(Activity, Model, Int) :-
+	iteration(Int),
+	in_model(Activity, Model),
+	enz_required(Activity),
+	compartment(Comp),
+	enz_compartment(Comp, Activity),
+	catalyses(Entity, Version, Activity),
+	connected_compartments(SomeComp, Comp),
+	path_back_to_initially_present(Entity, Version, SomeComp, Model, Int).
+
+has_transporter(Activity, Model, Int) :-
+	iteration(Int),
+	in_model(Activity, Model),
+	transp_required(Activity),
+	compartment(Comp),
+	transp_compartment(Comp, Activity),
+	transports(Entity, Version, Activity),
+	path_back_to_initially_present(Entity, Version, Comp, Model, Int).
+
+% elimination of activities
+eliminated(Activity, Model, Int) :-
+	iteration(Int),
+	activity(Activity),
+	in_model(Activity, Model),
+	substrate(EntFrom, VerFrom, CompFrom, Activity),
+	not path_back_to_initially_present(EntFrom, VerFrom, CompFrom, Model, Int).
+
+eliminated(Activity, Model, Int) :-
+	iteration(Int),
+	activity(Activity),
+	in_model(Activity, Model),
+	enz_required(Activity),
+	not has_enzyme(Activity, Model, Int).
+
+eliminated(Activity, Model, Int) :-
+	iteration(Int),
+	activity(Activity),
+	in_model(Activity, Model),
+	transp_required(Activity),
+	not has_transporter(Activity, Model, Int).
