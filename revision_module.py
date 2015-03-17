@@ -11,11 +11,12 @@ import re
 import random
 
 class RevisionModule:
-	def __init__(self, archive, xhail="/usr/local/xhail-0.5.1/xhail.jar", gringo="/usr/local/xhail-0.5.1/gringo", clasp="/usr/local/xhail-0.5.1/clasp"):
+	def __init__(self, archive, xhail="/usr/local/xhail-0.5.1/xhail.jar", gringo="/usr/local/xhail-0.5.1/gringo", clasp="/usr/local/xhail-0.5.1/clasp", sfx=""):
 		self.archive = archive
 		self.xhail = xhail
 		self.gringo = gringo
 		self.clasp = clasp
+		self.work_file = './temp/workfile_xhail_%s' % sfx # adds suffix specific for the task (required for multiprocessing)
 
 
 	def test_and_revise_all(self):
@@ -112,11 +113,11 @@ class RevisionModule:
 
 	def write_and_execute_xhail(self, inpt):
 		# try: remove the workfile
-		with open('./temp/workfile_xhail', 'w') as f:
+		with open(self.work_file, 'w') as f:
 			for string in inpt:
 				read_data = f.write(string)
 		# could suppress there warnig messages later on
-		output_enc = subprocess.check_output(["java", "-jar", self.xhail, "-g", self.gringo, "-c", self.clasp, "-a", "-f", './temp/workfile_xhail'])
+		output_enc = subprocess.check_output(["java", "-jar", self.xhail, "-g", self.gringo, "-c", self.clasp, "-a", "-f", self.work_file])
 		output_dec = output_enc.decode('utf-8')
 		return output_dec
 
@@ -175,8 +176,6 @@ class RevisionModule:
 		new_model.results_covered = frozenset(covered_res)
 		new_model.ignored_results = frozenset(ignored_res)
 
-#		models.append(new_model)
-#		self.archive.record(archive.RevisedModel(base_model, models))
 		return new_model
 
 
@@ -284,8 +283,8 @@ class RevisionModule:
 
 
 class RevCAddB(RevisionModule): # rev: minimise changes; additional: revise the best
-	def __init__(self, archive):
-		RevisionModule.__init__(self, archive)
+	def __init__(self, archive, sfx=""):
+		RevisionModule.__init__(self, archive, sfx=sfx)
 
 	def revise(self, base_model, force_new_model=False):
 		return self.prepare_input_execute_and_process(base_model, False, force_new_model)
@@ -303,8 +302,8 @@ class RevCAddB(RevisionModule): # rev: minimise changes; additional: revise the 
 
 
 class RevCAddR(RevisionModule): # rev: minimise changes; additional: random
-	def __init__(self, archive):
-		RevisionModule.__init__(self, archive)
+	def __init__(self, archive, sfx=""):
+		RevisionModule.__init__(self, archive, sfx=sfx)
 
 	def revise(self, base_model, force_new_model=False):
 		return self.prepare_input_execute_and_process(base_model, False, force_new_model)
@@ -325,8 +324,8 @@ class RevCAddR(RevisionModule): # rev: minimise changes; additional: random
 
 
 class RevCIAddB(RevisionModule): # rev: minimise changes and ignored; additional: revise the best
-	def __init__(self, archive):
-		RevisionModule.__init__(self, archive)
+	def __init__(self, archive, sfx=""):
+		RevisionModule.__init__(self, archive, sfx=sfx)
 
 	def revise(self, base_model, force_new_model=False):
 		return self.prepare_input_execute_and_process(base_model, True, force_new_model)
@@ -346,8 +345,8 @@ class RevCIAddB(RevisionModule): # rev: minimise changes and ignored; additional
 
 
 class RevCIAddR(RevisionModule): # rev: minimise changes and ignored; additional: random
-	def __init__(self, archive):
-		RevisionModule.__init__(self, archive)
+	def __init__(self, archive, sfx=""):
+		RevisionModule.__init__(self, archive, sfx=sfx)
 
 	def revise(self, base_model, force_new_model=False):
 		return self.prepare_input_execute_and_process(base_model, True, force_new_model)

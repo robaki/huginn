@@ -16,7 +16,7 @@ from archive import NewResults
 
 
 class Oracle:
-	def __init__(self, archive, entities_ref, activities_ref, model_ref, all_ent, all_comp, all_act):
+	def __init__(self, archive, entities_ref, activities_ref, model_ref, all_ent, all_comp, all_act, sfx=""):
 		ent_id_list = [e.ID for e in entities_ref]
 		if len(ent_id_list) != len(set(ent_id_list)):
 			raise ValueError("Oracle __init__: entities list contains more than one version of some entities (at least one)")
@@ -27,6 +27,7 @@ class Oracle:
 		self.all_ent = all_ent
 		self.all_comp = all_comp
 		self.all_act = all_act
+		self.work_file = './temp/workfile_gringo_clasp_oracle_%s' % sfx
 
 
 	def execute_exps(self):
@@ -103,11 +104,11 @@ class Oracle:
 
 	def write_and_execute(self, inp):
 		# try: remove the file
-		with open('./temp/workfile_gringo_clasp_oracle', 'w') as f:
+		with open(self.work_file, 'w') as f:
 			for string in inp:
 				read_data = f.write(string)
 		# could suppress there warnig messages later on
-		gringo = subprocess.Popen(['gringo', './temp/workfile_gringo_clasp_oracle'], stdout=subprocess.PIPE)
+		gringo = subprocess.Popen(['gringo', self.work_file], stdout=subprocess.PIPE)
 		clasp = subprocess.Popen(['clasp', '-n', '0'], stdin=gringo.stdout, stdout=subprocess.PIPE)
 		gringo.stdout.close()
 		output_enc = clasp.communicate()[0]

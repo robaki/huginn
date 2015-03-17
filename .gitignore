@@ -1,4 +1,4 @@
 /__pycache__
 /tests/__pycache__
-/evaluation_problems/*
-
+/test_cases/*
+/pickled_archives/*

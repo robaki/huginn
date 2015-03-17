@@ -1,5 +1,6 @@
 #! /usr/bin/env python3
 
+from sys import stdout
 import pickle
 from time import gmtime, time
 from archive import CheckPointFail, CheckPointSuccess, RevisedModel, AdditionalModels, AcceptedResults, NewResults
@@ -28,6 +29,8 @@ class Overseer:
 
 
 	def start_development(self):
+		print('starting development: %s' % self.suffix)
+		stdout.flush()
 		self.do_transition('test_and_revise_models')
 
 
@@ -41,6 +44,7 @@ class Overseer:
 		print('error flags?: %s' % self.archive.error_flag)
 		print('run out of time: %s' % (not self.time_passed_check()))
 		print('run out of cycles: %s' % (self.cycles_counter >= self.max_numb_cycles))
+		stdout.flush()
 
 
 	def do_check(self):
@@ -54,12 +58,16 @@ class Overseer:
 				self.cycles_counter += 1 # development process enters another cycle
 				print('starting cycle: %s' % self.cycles_counter)
 				print('time elapsed: %s h' % ((time() - self.archive.start_time)/3600))
+				stdout.flush()
 			
 		else: # no ignoring
 			if len(self.archive.working_models) <= 1: # one model left
 				self.archive.record(CheckPointFail('no ignoring'))
 			else:
 				self.archive.record(CheckPointSuccess())
+				print('starting cycle: %s' % self.cycles_counter)
+				print('time elapsed: %s h' % ((time() - self.archive.start_time)/3600))
+				stdout.flush()
 				self.cycles_counter += 1 # development process enters another cycle
 
 
@@ -171,10 +179,11 @@ class OverseerWithModQuality(Overseer):
 				else:
 					raise ValueError("Overseer: run: none of the specified conditions triggered: current state: %s" % self.current_state)
 
-		except Exception:
+		except Exception as e:
 			self.stop_development()
 			self.current_state = 'stop'
-			raise Exception
+			print(e)
+			stdout.flush()
 
 
 	def cond_1(self):

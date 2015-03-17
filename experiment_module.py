@@ -14,10 +14,11 @@ class ExperimentModule:
 	# module for experiment design. Method relies on splitting sum of models' probabilities (qualities) in half.
 	# If no model quality modules is used, then model quality = 1 and is constant throught development time.
 	# In that case the algorithm just splits set of working models in half.
-	def __init__(self, archive, cost_model, use_costs):
+	def __init__(self, archive, cost_model, use_costs, sfx=""):
 		self.archive = archive
 		self.cost_model = cost_model
 		self.use_costs = use_costs
+		self.work_file = './temp/workfile_gringo_clasp_%s' % sfx
 
 
 	def design_experiments(self):
@@ -29,11 +30,11 @@ class ExperimentModule:
 
 	def write_and_execute_gringo_clasp(self, exp_input):
 		# try remove the file
-		with open('./temp/workfile_gringo_clasp', 'w') as f:
+		with open(self.work_file, 'w') as f:
 			for string in exp_input:
 				read_data = f.write(string)
 		# could suppress there warnig messages later on
-		gringo = subprocess.Popen(['gringo', './temp/workfile_gringo_clasp'], stdout=subprocess.PIPE)
+		gringo = subprocess.Popen(['gringo', self.work_file], stdout=subprocess.PIPE)
 		clasp = subprocess.Popen(['clasp', '-n', '0'], stdin=gringo.stdout, stdout=subprocess.PIPE)
 		gringo.stdout.close()
 		output_enc = clasp.communicate()[0]
@@ -253,8 +254,8 @@ class ExperimentModule:
 
 
 class BasicExpModuleNoCosts(ExperimentModule):
-	def __init__(self, archive, cost_model):
-		ExperimentModule.__init__(self, archive, cost_model, use_costs=False)
+	def __init__(self, archive, cost_model, sfx=""):
+		ExperimentModule.__init__(self, archive, cost_model, use_costs=False, sfx=sfx)
 
 	def get_experiment(self):
 		exps = self.design_experiments()
@@ -265,8 +266,8 @@ class BasicExpModuleNoCosts(ExperimentModule):
 
 
 class BasicExpModuleWithCosts(ExperimentModule):
-	def __init__(self, archive, cost_model):
-		ExperimentModule.__init__(self, archive, cost_model, use_costs=True)
+	def __init__(self, archive, cost_model, sfx=""):
+		ExperimentModule.__init__(self, archive, cost_model, use_costs=True, sfx=sfx)
 
 	def get_experiment(self):
 		exps = self.design_experiments()

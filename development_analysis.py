@@ -116,6 +116,11 @@ def print_exp_results(experiment):
 		print_exp_description(res.exp_description)
 
 
+
+
+
+
+
 arch = read_archive('pickled_archives/archive_2015_3_13_17_21_48')
 print_development_history(arch)
 #print('\navailable activities (activities, )')
