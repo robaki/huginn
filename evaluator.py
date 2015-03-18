@@ -29,8 +29,25 @@ class Evaluator:
 			Peroxisome(), VacuolarMembrane(), Vacuole()]
 
 
+	def test_all_single_process(self):
+		for (case, suffix) in self.test_case_loader():
+			for overseer in self.system_configuration_generator(case, suffix):
+				overseer.run()
+
+
+	def test_all_multiprocess(self):
+		with Pool(processes = 2) as pool:
+			result = pool.map(self.test_generator, self.test_case_loader())
+			print(result)
+
+
 	def test_case_loader(self):
-		for case_number in [15]: # , 13, 16, 12, 6, 10, 14, 2, 7, 9, 5, 8, 4, 3, 11, 0, 1
+		# has growth: 0, 2, 3, 7, 8, 11
+		# small:	15, 13, 16, 12, 6, 10, 14, 2
+		# medium:	7, 9, 5
+		# big:		8, 4
+		# huge:		3, 11, 0, 1
+		for case_number in [15]:
 			case_file = 'test_cases/case_%s' % case_number
 			for repetition in range(3):
 				pkl_file = open(case_file, 'rb')
@@ -47,8 +64,8 @@ class Evaluator:
 	def system_configuration_generator(self, case, first_suffix):
 		for qual in [AllCoveredMinusIgnored, NewCoveredMinusIgnored]:
 			for rev in [RevCIAddR, RevCIAddB]:
-				for threshold_addit_mods in [2, 4, 8]:
-					for stop_threshold in [2, 4, 8]:
+				for threshold_addit_mods in [4]: #2, , 8
+					for stop_threshold in [8]: #2, 4, 
 
 						suffix = 'conf%s_%s' % (self.get_suffix((qual, rev, threshold_addit_mods, stop_threshold)), first_suffix)
 
@@ -85,8 +102,8 @@ class Evaluator:
 							case['all_entities'], self.compartments,
 							case['all_activities'], sfx=suffix)
 
-						max_numb_cycles = 3 # 
-						max_time = 0.1 # 
+						max_numb_cycles = 10 # 
+						max_time = 1 # 
 
 						yield OverseerWithModQuality(archive_, rev_m, exp_m,
 							oracle_, threshold_addit_mods, qual_m, max_numb_cycles,
@@ -96,17 +113,6 @@ class Evaluator:
 	def test_generator(self, tpl):
 		for overseer in self.system_configuration_generator(tpl[0], tpl[1]):
 			overseer.run()
-
-	def test_all_single_process(self):
-		for (case, suffix) in self.test_case_loader():
-			for overseer in self.system_configuration_generator(case, suffix):
-				overseer.run()
-
-
-	def test_all_multiprocess(self):
-		with Pool(processes = 2) as pool:
-			result = pool.map(self.test_generator, self.test_case_loader())
-			print(result)
 
 
 	def get_suffix(self, tpl):
@@ -154,5 +160,5 @@ class Evaluator:
 
 
 evaluator = Evaluator()
-#evaluator.test_all_single_process()
-evaluator.test_all_multiprocess()
+evaluator.test_all_single_process()
+#evaluator.test_all_multiprocess()

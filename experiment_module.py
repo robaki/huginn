@@ -87,6 +87,8 @@ class ExperimentModule:
 		strings.remove('')
 		# find answers:
 		answers = self.get_answers(strings)
+		if answers == False:
+			return False
 		# process answers:
 		for ans in answers:
 			components = ans.split(' ')
@@ -119,7 +121,13 @@ class ExperimentModule:
 
 	def get_answers(self, strings):
 		answers = []
-		optimum = [st.split('Optimization : ')[1] for st in strings if st.startswith('Optimization : ')][0]
+		try: # can fail if the solver fails (not enough RAM; bad memory allocation...)
+			optimum = [st.split('Optimization : ')[1] for st in strings if st.startswith('Optimization : ')][0]
+		except IndexError, err:
+			print('experiment_module: solver failed.')
+			print('output as strings: %s' % strings)
+			return False
+			
 		for st in strings:
 			if not st.startswith('Answer: '):
 				continue
