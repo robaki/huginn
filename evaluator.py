@@ -62,8 +62,8 @@ class Evaluator:
 
 
 	def system_configuration_generator(self, case, first_suffix):
-		for qual in [AllCoveredMinusIgnored, NewCoveredMinusIgnored]:
-			for rev in [RevCIAddR, RevCIAddB]:
+		for qual in [AllCoveredMinusIgnored]: # NewCoveredMinusIgnored
+			for rev in [RevCIAddR]: # RevCIAddB
 				for threshold_addit_mods in [4]: #2, , 8
 					for stop_threshold in [8]: #2, 4, 
 
