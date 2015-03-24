@@ -159,7 +159,11 @@ class CostModel:
 				continue
 			else:
 				substrates_available_costs = [self.design_available[ent] for ent in act.return_substrates()]
-				products_detection_costs = [self.design_entity_det[ent] for ent in act.return_products()]
+				try:
+					products_detection_costs = [self.design_entity_det[ent] for ent in act.return_products()]
+				except KeyError as err:
+					print('all act products: %s' % [(ent.ID, ent.version) for ent in act.return_products()])
+					print('dict: %s' % [(ent.ID, ent.version) for ent in self.design_entity_det])
 				if (None in substrates_available_costs):
 					continue
 				elif (None in products_detection_costs):

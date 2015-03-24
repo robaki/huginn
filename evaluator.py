@@ -47,9 +47,9 @@ class Evaluator:
 		# medium:	7, 9, 5
 		# big:		8, 4
 		# huge:		3, 11, 0, 1
-		for case_number in [15]:
+		for case_number in [15, 13, 16, 12, 6, 10, 14, 2]:
 			case_file = 'test_cases/case_%s' % case_number
-			for repetition in range(3):
+			for repetition in range(1):
 				pkl_file = open(case_file, 'rb')
 				case = pickle.load(pkl_file)
 				pkl_file.close()
@@ -73,15 +73,44 @@ class Evaluator:
 						archive_.mnm_compartments = self.compartments # added access to all compartments
 						archive_.model_of_ref = case['model_of_ref']
 
+						# recording entities with proper IDs: base versions and derived versions
+						# these entities were involved in producing new versions and are handled below, not here
+						entities_to_skip = list(case['ents_base_and_derived'].keys())
+						for list_of_ents in case['ents_base_and_derived'].values():
+							entities_to_skip.extend(list_of_ents)
+
 						for ent in case['all_entities']:
+							if ent in entities_to_skip:
+								continue
+							# not-skipped activities:
 							ent.ID = archive_.get_new_ent_id()
 							archive_.mnm_entities.append(ent)
+
+						for ent in case['ents_base_and_derived'].keys():
+							derv_ents = case['ents_base_and_derived'][ent]# need to copy this now, dictionary stops working after ID change
+							ent.ID = archive_.get_new_ent_id()
+							archive_.mnm_entities.append(ent)
+							for derv_ent in derv_ents:
+								derv_ent.ID = ent.ID
+								archive_.mnm_entities.append(derv_ent)
+
+#						for ent in case['all_entities']:
+#							ent.ID = archive_.get_new_ent_id()
+#							archive_.mnm_entities.append(ent)
+
 						for act in case['all_activities']:
 							act.ID = archive_.get_new_act_id()
 							archive_.mnm_activities.append(act)
+
 						for act in case['add_import_activities']:
 							act.ID = archive_.get_new_act_id()
 							archive_.import_activities.append(act)
+
+#						for act in archive_.mnm_activities:
+#							for cond in act.changes:
+#								if cond.entity.ID == None:
+#									print(cond.entity in case['all_entities'])
+#									print('AAAAAAAAAAAAAA')
 		
 						archive_.record(InitialModels(case['initial_models']))
 

@@ -19,6 +19,7 @@ class Oracle:
 	def __init__(self, archive, entities_ref, activities_ref, model_ref, all_ent, all_comp, all_act, sfx=""):
 		ent_id_list = [e.ID for e in entities_ref]
 		if len(ent_id_list) != len(set(ent_id_list)):
+			print([(e.ID, e.version, type(e)) for e in entities_ref])
 			raise ValueError("Oracle __init__: entities list contains more than one version of some entities (at least one)")
 		self.archive = archive
 		self.entities = entities_ref

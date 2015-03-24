@@ -123,7 +123,7 @@ class ExperimentModule:
 		answers = []
 		try: # can fail if the solver fails (not enough RAM; bad memory allocation...)
 			optimum = [st.split('Optimization : ')[1] for st in strings if st.startswith('Optimization : ')][0]
-		except IndexError, err:
+		except IndexError as err:
 			print('experiment_module: solver failed.')
 			print('output as strings: %s' % strings)
 			return False
