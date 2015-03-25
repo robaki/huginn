@@ -575,7 +575,10 @@ def inconsistency_rules():
 	'\n	result(Result, Experiment, Outcome),',
 	'\n	Prediction != Outcome,',
 	'\n	relevant(Result, Model),',
-	'\n	not ignored(Result).']
+	'\n	not ignored(Result).',
+	'\n',
+	'\n%constraint for revision/producing new models: models with two versions of one entity are banned',
+	'\n:- involved(Entity, Version1, Model), involved(Entity, Version2, Model), Version1 != Version2.']
 
 
 def model_difference_rules():
@@ -866,7 +869,7 @@ def export_display_for_oracle(expDescription):
 	elif isinstance(expDescription.experiment_type, DetectionActivity):
 		return ['\n#hide.', '\n#show active/2.']
 	elif isinstance(expDescription.experiment_type, AdamTwoFactorExperiment):
-		return ['\n#hide.', '\n#show predicts/3.'].extend(predictions_rules())
+		return ['\n#hide.', '\n#show predicts/3.']
 	else:
 		raise TypeError("export_display_for_oracle: exp type not recognised: %" % expDescription.experiment_type)
 

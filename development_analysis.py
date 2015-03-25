@@ -419,4 +419,7 @@ def shiftedColorMap(cmap, start=0, midpoint=0.5, stop=1.0, name='shiftedcmap'):
     return newcmap
 
 
-print_not_so_pretty_all_matrices()
+#print_not_so_pretty_all_matrices()
+
+archive = read_archive('pickled_archives/archive_2015_3_25_20_48_36_conf05_tc16_r0')
+print_development_history(archive)

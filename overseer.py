@@ -5,6 +5,7 @@ import pickle
 from time import gmtime, time
 from archive import CheckPointFail, CheckPointSuccess, RevisedModel, AdditionalModels, AcceptedResults, NewResults
 from revision_module import RevCIAddB, RevCIAddR, RevCAddB, RevCAddR
+import traceback
 
 class Overseer:
 	def __init__(self, archive, checkpoint, stop_threshold, max_numb_cycles, max_time, suffix):
@@ -182,6 +183,7 @@ class OverseerWithModQuality(Overseer):
 		except Exception as e:
 			self.stop_development()
 			self.current_state = 'stop'
+			print(traceback.format_exc())
 			print(e)
 			stdout.flush()
 

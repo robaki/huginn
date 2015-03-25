@@ -1,114 +1,68 @@
 starting development: conf05_tc15_r0
 starting cycle: 1
-time elapsed: 0.0019173518154356215 h
-starting cycle: 2
-time elapsed: 0.005019344488779704 h
-error flags?: False
+time elapsed: 0.0045065082444085015 h
+error flags?: True
 run out of time: False
 run out of cycles: False
-'NoneType' object is not iterable
 starting development: conf05_tc13_r0
 starting cycle: 1
-time elapsed: 0.0020942104525036283 h
-starting cycle: 2
-time elapsed: 0.006268368760744731 h
-error flags?: False
+time elapsed: 0.002389582991600037 h
+error flags?: True
 run out of time: False
 run out of cycles: False
-'NoneType' object is not iterable
 starting development: conf05_tc16_r0
 starting cycle: 1
-time elapsed: 0.0028422240416208903 h
+time elapsed: 0.008040383723047044 h
 starting cycle: 2
-time elapsed: 0.012822543183962504 h
-starting cycle: 3
-time elapsed: 0.023945821192529467 h
-starting cycle: 4
-time elapsed: 0.035502801007694665 h
-starting cycle: 5
-time elapsed: 0.04823397669527266 h
-starting cycle: 6
-time elapsed: 0.06580458005269368 h
-starting cycle: 7
-time elapsed: 0.0878293091721005 h
-starting cycle: 8
-time elapsed: 0.10383545696735381 h
-starting cycle: 9
-time elapsed: 0.12087050643232133 h
-starting cycle: 10
-time elapsed: 0.1550600117444992 h
-error flags?: False
+time elapsed: 0.014376221034261916 h
+error flags?: True
 run out of time: False
-run out of cycles: True
+run out of cycles: False
 starting development: conf05_tc12_r0
 starting cycle: 1
-time elapsed: 0.012743051846822102 h
-starting cycle: 2
-time elapsed: 0.027765075233247546 h
-error flags?: False
+time elapsed: 0.35022217929363253 h
+error flags?: True
 run out of time: False
 run out of cycles: False
-'NoneType' object is not iterable
 starting development: conf05_tc06_r0
 starting cycle: 1
-time elapsed: 0.0074084760083092584 h
-starting cycle: 2
-time elapsed: 0.013863816989792718 h
-error flags?: False
+time elapsed: 0.09823452644877964 h
+error flags?: True
 run out of time: False
 run out of cycles: False
-'NoneType' object is not iterable
 starting development: conf05_tc10_r0
 starting cycle: 1
-time elapsed: 0.014676275120841133 h
+time elapsed: 0.04403412686453925 h
+error flags?: True
+run out of time: False
+run out of cycles: False
+starting development: conf05_tc14_r0
+starting cycle: 1
+time elapsed: 0.014504282606972589 h
 starting cycle: 2
-time elapsed: 0.043693878915574816 h
+time elapsed: 0.06380841745270623 h
 starting cycle: 3
-time elapsed: 0.074486137231191 h
+time elapsed: 0.10774865070978801 h
 starting cycle: 4
-time elapsed: 0.12264982322851817 h
+time elapsed: 0.16357759647899203 h
 starting cycle: 5
-time elapsed: 0.17269852300484975 h
+time elapsed: 0.21115413082970513 h
 starting cycle: 6
-time elapsed: 0.25240945915381113 h
+time elapsed: 0.28520617531405557 h
 starting cycle: 7
-time elapsed: 0.3054569845729404 h
+time elapsed: 0.3563474347194036 h
 starting cycle: 8
-time elapsed: 0.39333820852968426 h
+time elapsed: 0.4280234862698449 h
 starting cycle: 9
-time elapsed: 0.46104611436525983 h
+time elapsed: 0.5137094395690495 h
 starting cycle: 10
-time elapsed: 0.5726588150527743 h
+time elapsed: 0.6876607706149419 h
 error flags?: False
 run out of time: False
 run out of cycles: True
-starting development: conf05_tc14_r0
-starting cycle: 1
-time elapsed: 0.027716156774097018 h
-starting cycle: 2
-time elapsed: 0.0739130718840493 h
-starting cycle: 3
-time elapsed: 0.1665992612308926 h
-starting cycle: 4
-time elapsed: 0.2627998265955183 h
-starting cycle: 5
-time elapsed: 0.35343246585792965 h
-starting cycle: 6
-time elapsed: 0.48057783954673344 h
-error flags?: False
-run out of time: False
-run out of cycles: False
-'NoneType' object is not iterable
 starting development: conf05_tc02_r0
 starting cycle: 1
-time elapsed: 0.009018062816725837 h
-starting cycle: 2
-time elapsed: 0.039046010242568124 h
-starting cycle: 3
-time elapsed: 0.06449830174446106 h
-starting cycle: 4
-time elapsed: 0.10629813578393724 h
-error flags?: False
+time elapsed: 0.02752149376604292 h
+error flags?: True
 run out of time: False
 run out of cycles: False
-'NoneType' object is not iterable
