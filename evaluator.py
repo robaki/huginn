@@ -49,7 +49,7 @@ class Evaluator:
 		# huge:		3, 11, 0, 1
 		for case_number in [15, 13, 16, 12, 6, 10, 14, 2]:
 			case_file = 'test_cases/case_%s' % case_number
-			for repetition in range(1):
+			for repetition in range(3):
 				pkl_file = open(case_file, 'rb')
 				case = pickle.load(pkl_file)
 				pkl_file.close()
@@ -94,10 +94,6 @@ class Evaluator:
 								derv_ent.ID = ent.ID
 								archive_.mnm_entities.append(derv_ent)
 
-#						for ent in case['all_entities']:
-#							ent.ID = archive_.get_new_ent_id()
-#							archive_.mnm_entities.append(ent)
-
 						for act in case['all_activities']:
 							act.ID = archive_.get_new_act_id()
 							archive_.mnm_activities.append(act)
@@ -105,12 +101,6 @@ class Evaluator:
 						for act in case['add_import_activities']:
 							act.ID = archive_.get_new_act_id()
 							archive_.import_activities.append(act)
-
-#						for act in archive_.mnm_activities:
-#							for cond in act.changes:
-#								if cond.entity.ID == None:
-#									print(cond.entity in case['all_entities'])
-#									print('AAAAAAAAAAAAAA')
 		
 						archive_.record(InitialModels(case['initial_models']))
 
@@ -131,8 +121,8 @@ class Evaluator:
 							case['all_entities'], self.compartments,
 							case['all_activities'], sfx=suffix)
 
-						max_numb_cycles = 10 # 
-						max_time = 1 # 
+						max_numb_cycles = 100 # 
+						max_time = 4 # 
 
 						yield OverseerWithModQuality(archive_, rev_m, exp_m,
 							oracle_, threshold_addit_mods, qual_m, max_numb_cycles,
@@ -189,5 +179,5 @@ class Evaluator:
 
 
 evaluator = Evaluator()
-evaluator.test_all_single_process()
-#evaluator.test_all_multiprocess()
+#evaluator.test_all_single_process()
+evaluator.test_all_multiprocess()

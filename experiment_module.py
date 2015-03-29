@@ -10,6 +10,8 @@ from mnm_repr import PresentEntity, Add, Remove
 
 from archive import ExpDesignFail, ChosenExperiment
 
+from time import gmtime
+
 class ExperimentModule:
 	# module for experiment design. Method relies on splitting sum of models' probabilities (qualities) in half.
 	# If no model quality modules is used, then model quality = 1 and is constant throught development time.
@@ -29,6 +31,10 @@ class ExperimentModule:
 
 
 	def write_and_execute_gringo_clasp(self, exp_input):
+		# TESTING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#		current_time = gmtime()
+#		time_stamp = '_'.join([str(x) for x in [current_time[0], current_time[1], current_time[2], current_time[3], current_time[4], current_time[5]]])
+#		modified_workfile = '_'.join([self.work_file, time_stamp])
 		# try remove the file
 		with open(self.work_file, 'w') as f:
 			for string in exp_input:

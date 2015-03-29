@@ -150,7 +150,8 @@ def export_termination_conds_revision(base_model):
 	strings = []
 	for cond in base_model.termination_conditions:
 		strings.append('\n#example synthesizable(%s, %s, %s, %s).' % (cond.entity.ID, cond.entity.version, cond.compartment.ID, base_model.ID))
-
+	# base model shouldn't have inactive activities or more than one version of any entity (would restrict derived models too, so OK)
+	strings.append('\n#example not not_clean_model(%s).' % base_model.ID)
 	return strings
 
 
@@ -167,7 +168,8 @@ def export_termination_conds_consistency(base_model):
 	strings = []
 	for cond in base_model.termination_conditions:
 		strings.append('\n:- not synthesizable(%s, %s, %s, %s).' % (cond.entity.ID, cond.entity.version, cond.compartment.ID, base_model.ID))
-
+	# base model shouldn't have inactive activities or more than one version of any entity (would restrict derived models too, so OK)
+	strings.append('\n:- not_clean_model(%s).' % base_model.ID)
 	return strings
 
 
@@ -570,15 +572,17 @@ def inconsistency_rules():
 	'\n	in_model(Activity, Model),',
 	'\n	not active(Activity, Model).',
 	'\n',
+	'\nnot_clean_model(Model) :-',
+	'\n	involved(Entity, Version1, Model),',
+	'\n	involved(Entity, Version2, Model),',
+	'\n	Version1 != Version2.',
+	'\n',
 	'\ninconsistent(Model, Result) :-',
 	'\n	predicts(Model, Experiment, Prediction),',
 	'\n	result(Result, Experiment, Outcome),',
 	'\n	Prediction != Outcome,',
 	'\n	relevant(Result, Model),',
-	'\n	not ignored(Result).',
-	'\n',
-	'\n%constraint for revision/producing new models: models with two versions of one entity are banned',
-	'\n:- involved(Entity, Version1, Model), involved(Entity, Version2, Model), Version1 != Version2.']
+	'\n	not ignored(Result).']
 
 
 def model_difference_rules():
@@ -767,7 +771,13 @@ def design_constraints_basic():
 	'\n',
 	'\n:- designed(experiment(adam_two_factor_exp, Gene, Metabolite)), add(Whatever).',
 	'\n:- designed(experiment(adam_two_factor_exp, Gene, Metabolite)), remove(Whatever).', # no interventions for adam-style exps
-	'\n:- involved(Entity, Version1, Model), involved(Entity, Version2, Model), Version1 != Version2.'] # only one version of entity in model
+	'\n:- involved(Entity, Version1, Model), involved(Entity, Version2, Model), Version1 != Version2.', # only one version of entity in model
+	'\n',
+	'\nentity_in_model(Entity, Version, Compartment, Model) :- in_model(setup_present(Entity, Version, Compartment), Model).',
+	'\nentity_in_model(Entity, Version, Compartment, Model) :- synthesizable(Entity, Version, Compartment, Model).',
+	'\n:- add(Activity), substrate(Ent,Ver,Comp,Activity), model(Model), not entity_in_model(Ent, Ver, Comp, Model).']
+
+
 
 def cost_minimisation_rules():
 	return ['\n\ntotal_cost(TCost) :- TCost = #sum[cost(Cost, Nr)=Cost].',

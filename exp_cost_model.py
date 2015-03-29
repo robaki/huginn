@@ -38,7 +38,7 @@ class CostModel:
 		self.intervention_remove = {}
 		#
 		for act in import_activities:
-			self.intervention_add[mnm_repr.Add(act)] = 0
+			self.intervention_add[mnm_repr.Add(act)] = 1
 		#
 		for st in setup_conds:
 			if (isinstance(st.entity, mnm_repr.Gene) or isinstance(st.compartment, Medium)): # all genes can be removed; metabs can only be removed from medium

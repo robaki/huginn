@@ -37,7 +37,7 @@ class Archive:
 			for res in event.experiment.results:
 				res.ID = self.get_new_res_id()
 			self.new_result = event.experiment
-			self.known_results.append(event.experiment)
+#			self.known_results.append(event.experiment)
 
 		elif isinstance(event, AcceptedResults):
 			self.new_result = None # clearing 
@@ -51,6 +51,9 @@ class Archive:
 			for model in event.revised_models:
 				model.ID = self.get_new_model_id()
 				self.working_models.append(model)
+
+		elif isinstance(event, RedundantModel):
+			pass # not added, so no need to remove
 
 		elif isinstance(event, RevisionFail):
 			self.revflag = True
@@ -256,4 +259,9 @@ class CheckPointSuccess(Event):
 
 class RevisedIgnoredUpdate(Event):
 	def __init__(self, model):
+		self.model = model
+
+class RedundantModel(Event):
+	def __init__(self, base_model, model):
+		self.base_model = base_model
 		self.model = model

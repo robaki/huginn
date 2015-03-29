@@ -50,32 +50,32 @@ class Oracle:
 		if isinstance(expD.experiment_type, ReconstructionActivity):
 			act_ids = [a.ID for a in self.activities]
 			if (expD.experiment_type.activity_id in act_ids):
-				return Result(None, expD, True)
+				return Result(None, expD, 'true')
 			else:
-				return Result(None, expD, False)
+				return Result(None, expD, 'false')
 			
 		elif isinstance(expD.experiment_type, ReconstructionEnzReaction):
 			act_ids = [a.ID for a in self.activities]
 			matching_entity = [ent for ent in self.entities if ent.ID == expD.experiment_type.enzyme_id][0]
 			catalysed_by_entity = [p.activity.ID for p in matching_entity.properties if isinstance(p, Catalyses)]
 			if not (expD.experiment_type.reaction_id in act_ids):
-				return Result(None, expD, False)
+				return Result(None, expD, 'false')
 			elif not (expD.experiment_type.reaction_id in catalysed_by_entity):
-				print('\n\n no ent \n\n')
-				return Result(None, expD, False)
+#				print('\n\n no ent \n\n')
+				return Result(None, expD, 'false')
 			else:
-				return Result(None, expD, True)
+				return Result(None, expD, 'true')
 
 		elif isinstance(expD.experiment_type, ReconstructionTransporterRequired):
 			act_ids = [a.ID for a in self.activities]
 			matching_entity = [ent for ent in self.entities if ent.ID == expD.experiment_type.transporter_id][0]
 			transported_by_entity = [p.activity.ID for p in matching_entity.properties if isinstance(p, Transports)]
 			if not (expD.experiment_type.transport_activity_id in act_ids):
-				return Result(None, expD, False)
+				return Result(None, expD, 'false')
 			elif not (expD.experiment_type.transport_activity_id in transported_by_entity):
-				return Result(None, expD, False)
+				return Result(None, expD, 'false')
 			else:
-				return Result(None, expD, True)
+				return Result(None, expD, 'true')
 
 		else:
 			raise TypeError("execute_in_vitro_exp: experiment type not recognised: %s" % expD.experiment_type)

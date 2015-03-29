@@ -295,13 +295,34 @@ class Intervention:
 	def __init__(self, condition_or_activity):
 		self.condition_or_activity = condition_or_activity
 
+
+	def __hash__(self):
+		return hash(self.condition_or_activity)
+
+	def __eq__(self, other):
+		return ((hash(self) == hash(other)) and (type(self) == type(other)))
+
+
 class Add(Intervention):
 	def __init__(self, condition_or_activity):
 		Intervention.__init__(self, condition_or_activity)
 
+	def __hash__(self):
+		return hash(self.condition_or_activity)
+
+	def __eq__(self, other):
+		return ((hash(self) == hash(other)) and (type(self) == type(other)))
+
+
 class Remove(Intervention):
 	def __init__(self, condition_or_activity):
 		Intervention.__init__(self, condition_or_activity)
+
+	def __hash__(self):
+		return hash(self.condition_or_activity)
+
+	def __eq__(self, other):
+		return ((hash(self) == hash(other)) and (type(self) == type(other)))
 
 
 
