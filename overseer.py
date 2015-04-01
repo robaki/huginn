@@ -22,6 +22,9 @@ class Overseer:
 		self.cycles_counter = 0
 		self.suffix = suffix
 
+	def lower_equivalence_flag(self):
+		self.archive.all_models_equivalent = False
+
 	def time_passed_check(self):
 		# number of hours since init of archive till now
 		# returns True if smaller than max_time; False otherwise
@@ -45,10 +48,14 @@ class Overseer:
 		print('error flags?: %s' % self.archive.error_flag)
 		print('run out of time: %s' % (not self.time_passed_check()))
 		print('run out of cycles: %s' % (self.cycles_counter >= self.max_numb_cycles))
+		print('failed to produce experiment too many times: %s' % (self.archive.all_models_equivalent_counter > 8))
 		stdout.flush()
 
 
 	def do_check(self):
+		if self.archive.all_models_equivalent_counter > 8:# 10 attempts
+			self.archive.record(CheckPointFail('failed to produce experiment too many times'))
+
 		if self.checkpoint_version == 'ignoring':
 			self.was_new_model_produced_since_last_check()
 			self.did_the_best_model_change_since_last_check()
@@ -140,6 +147,7 @@ class OverseerWithModQuality(Overseer):
 			{'name':'start_development', 'src':'start', 'dst':'models_tested_and_revised', 'method':self.start_development},
 			{'name':'get_experiment', 'src':'checkpoint', 'dst':'experiment_ready', 'method':exp_mod.get_experiment},###
 			{'name':'execute_experiment', 'src':'experiment_ready', 'dst':'has_new_result', 'method':oracle.execute_exps},# NewResults
+			{'name':'lower_redundant_models_flag', 'src':'experiment_ready', 'dst':'quality_recalculated', 'method':self.lower_equivalence_flag},
 			{'name':'record_result', 'src':'has_new_result', 'dst':'result_recorded', 'method':self.record_result},# AcceptedResults
 			{'name':'test_and_revise_models', 'src':'start', 'dst':'models_tested_and_revised', 'method':rev_mod.test_and_revise_all},
 			{'name':'test_and_revise_models', 'src':'result_recorded', 'dst':'models_tested_and_revised', 'method':rev_mod.test_and_revise_all},
@@ -164,6 +172,12 @@ class OverseerWithModQuality(Overseer):
 				elif not self.time_passed_check():
 					self.stop_development()
 					self.current_state = 'stop'
+				# all working models are equivalent
+				elif ((self.current_state == 'experiment_ready') and (self.archive.all_models_equivalent == True)):
+					self.do_transition('lower_redundant_models_flag')
+				# experiment design went fine:
+				elif ((self.current_state == 'experiment_ready') and (self.archive.all_models_equivalent == False)):
+					self.do_transition('execute_experiment')
 				# if only one transition available, do it
 				elif len(self.available_transitions()) == 1:
 					self.do_transition(self.available_transitions()[0]['name'])

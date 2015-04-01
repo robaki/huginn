@@ -121,7 +121,7 @@ class Evaluator:
 							case['all_entities'], self.compartments,
 							case['all_activities'], sfx=suffix)
 
-						max_numb_cycles = 100 # 
+						max_numb_cycles = 1000 # 
 						max_time = 4 # 
 
 						yield OverseerWithModQuality(archive_, rev_m, exp_m,

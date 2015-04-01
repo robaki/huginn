@@ -1,6 +1,8 @@
 #! /usr/bin/env python3
 
 from time import time
+from random import choice
+from sys import stdout
 
 class Archive:
 	def __init__(self):
@@ -11,6 +13,8 @@ class Archive:
 		self.new_result = None # stored here before it's accepted
 		self.error_flag = False
 		self.revflag = False
+		self.all_models_equivalent = False
+		self.all_models_equivalent_counter = 0 # counts in row - restarts after succesfull design
 		self.mnm_compartments = [] # to keep track of mnm elements; info for exp design
 		self.mnm_entities = [] # to keep track of mnm elements
 		self.mnm_activities = [] # to keep track of mnm elements; info for revision and exp design
@@ -27,6 +31,7 @@ class Archive:
 
 		if isinstance(event, ChosenExperiment):
 			self.chosen_experiment_descriptions = event.experiment_descriptions
+			self.all_models_equivalent_counter = 0
 
 		elif isinstance(event, ExpDesignFail):
 			self.error_flag = True
@@ -54,6 +59,17 @@ class Archive:
 
 		elif isinstance(event, RedundantModel):
 			pass # not added, so no need to remove
+
+		elif isinstance(event, AllModelsEmpiricallyEquivalent):
+			self.all_models_equivalent_counter += 1
+			self.all_models_equivalent = True
+			max_quality = max([m.quality for m in event.models])
+			best_models = [m for m in event.models if m.quality == max_quality]
+			chosen_model = choice(best_models)
+			self.working_models = [chosen_model]
+			event.model_left = chosen_model
+			print('all models equivalent!')
+			stdout.flush()
 
 		elif isinstance(event, RevisionFail):
 			self.revflag = True
@@ -265,3 +281,8 @@ class RedundantModel(Event):
 	def __init__(self, base_model, model):
 		self.base_model = base_model
 		self.model = model
+
+class AllModelsEmpiricallyEquivalent(Event):
+	def __init__(self, models):
+		self.models = list(models)
+		self.model_left = None

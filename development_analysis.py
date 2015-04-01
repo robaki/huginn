@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 
 # basic stuff
-from archive import InitialModels, InitialResults, ChosenExperiment, NewResults, AcceptedResults, RefutedModels, RevisedModel, UpdatedModelQuality, AdditionalModels, RevisionFail, AdditModProdFail, ExpDesignFail, CheckPointFail, CheckPointSuccess, RevisedIgnoredUpdate
+from archive import InitialModels, InitialResults, ChosenExperiment, NewResults, AcceptedResults, RefutedModels, RevisedModel, UpdatedModelQuality, AdditionalModels, RevisionFail, AdditModProdFail, ExpDesignFail, CheckPointFail, CheckPointSuccess, RevisedIgnoredUpdate, AllModelsEmpiricallyEquivalent
 import pickle
 from mnm_repr import Activity
 from os import listdir
@@ -310,6 +310,10 @@ def print_development_history(archive):
 			print('addtitional models:')
 			for model in event.additional_models:
 				print('model ID: %s' % model.ID)
+
+		elif isinstance(event, AllModelsEmpiricallyEquivalent):
+			print('all models empirically equivalent')
+			print('remaining model: %s' % event.model_left.ID)
 			
 		elif isinstance(event, RevisionFail):
 			print('revision fail')
@@ -330,6 +334,10 @@ def print_development_history(archive):
 		elif isinstance(event, RevisedIgnoredUpdate):
 			print('revision: only ignored set changed:')
 			print('model ID: %s' % event.model.ID)
+
+		elif isinstance(event, RedundantModel):
+			print('revision produced redundant model')
+			print('base_model ID: %s' % event.base_model.ID)
 
 		else:
 			raise TypeError('unknown event: %s' % type(event))
@@ -421,6 +429,6 @@ def shiftedColorMap(cmap, start=0, midpoint=0.5, stop=1.0, name='shiftedcmap'):
 
 #print_not_so_pretty_all_matrices()
 
-archive = read_archive('pickled_archives/archive_2015_3_29_17_49_15_conf05_tc12_r0')
+archive = read_archive('pickled_archives/archive_2015_4_1_14_10_13_conf05_tc15_r0')
 print_development_history(archive)
 #print_not_so_pretty_all_matrices()

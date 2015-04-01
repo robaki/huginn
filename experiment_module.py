@@ -8,7 +8,7 @@ from exp_repr import DetectionEntity, LocalisationEntity, DetectionActivity, Ada
 
 from mnm_repr import PresentEntity, Add, Remove
 
-from archive import ExpDesignFail, ChosenExperiment
+from archive import ExpDesignFail, ChosenExperiment, AllModelsEmpiricallyEquivalent
 
 from time import gmtime
 
@@ -87,7 +87,7 @@ class ExperimentModule:
 		experiments = []
 		# check if program was satisfiable
 		if 'UNSATISFIABLE' in out:
-			return False
+			return AllModelsEmpiricallyEquivalent(self.archive.working_models)
 		# find optimum info:
 		strings = out.split('\n')
 		strings.remove('')
@@ -273,7 +273,9 @@ class BasicExpModuleNoCosts(ExperimentModule):
 
 	def get_experiment(self):
 		exps = self.design_experiments()
-		if exps == False:
+		if isinstance(exps, AllModelsEmpiricallyEquivalent):
+			self.archive.record(exps)
+		elif exps == False:
 			self.archive.record(ExpDesignFail())
 		else:
 			self.archive.record(ChosenExperiment([random.choice(exps)]))
@@ -285,7 +287,9 @@ class BasicExpModuleWithCosts(ExperimentModule):
 
 	def get_experiment(self):
 		exps = self.design_experiments()
-		if exps == False:
+		if isinstance(exps, AllModelsEmpiricallyEquivalent):
+			self.archive.record(exps)
+		elif exps == False:
 			self.archive.record(ExpDesignFail())
 		else:
 			self.archive.record(ChosenExperiment([random.choice(exps)]))
