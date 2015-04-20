@@ -258,7 +258,7 @@ class RevisionModule:
 	def create_random_model(self):
 		numberActToChoose = random.choice(list(range(len(self.archive.mnm_activities)))) # presence of two versions of the same entity will trigger revision anyway
 		activities = random.sample(self.archive.mnm_activities, numberActToChoose)
-		new_model = copy(self.archive.working_models[0]) # will cause problems if there will be no working models left...
+		new_model = copy(list(self.archive.working_models)[0]) # will cause problems if there will be no working models left...
 		new_model.intermediate_activities = frozenset(activities)
 		new_model.ID = 'random_base'
 		return new_model

@@ -7,7 +7,7 @@ from sys import stdout
 class Archive:
 	def __init__(self):
 		self.development_history = []
-		self.working_models = []
+		self.working_models = set([])
 		self.known_results = [] # container for Experiment type objects not Result type
 		self.chosen_experiment_descriptions = [] # list of expDs
 		self.new_result = None # stored here before it's accepted
@@ -42,20 +42,22 @@ class Archive:
 			for res in event.experiment.results:
 				res.ID = self.get_new_res_id()
 			self.new_result = event.experiment
-#			self.known_results.append(event.experiment)
+#			self.known_results.append(event.experiment)# doubled accepted results
 
 		elif isinstance(event, AcceptedResults):
 			self.new_result = None # clearing 
 			self.known_results.append(event.experiment)
 
 		elif isinstance(event, RefutedModels):
-			for model in event.refuted_models:
-				self.working_models.remove(model)
+			self.working_models = self.working_models - set(event.refuted_models)
+#			for model in event.refuted_models:
+#				self.working_models.remove(model)
 
 		elif isinstance(event, RevisedModel):
 			for model in event.revised_models:
 				model.ID = self.get_new_model_id()
-				self.working_models.append(model)
+# append
+			self.working_models = self.working_models | set(event.revised_models)
 
 		elif isinstance(event, RedundantModel):
 			pass # not added, so no need to remove
@@ -66,7 +68,7 @@ class Archive:
 			max_quality = max([m.quality for m in event.models])
 			best_models = [m for m in event.models if m.quality == max_quality]
 			chosen_model = choice(best_models)
-			self.working_models = [chosen_model]
+			self.working_models = set([chosen_model]) # was list, not set
 			event.model_left = chosen_model
 			print('all models equivalent!')
 			stdout.flush()
@@ -83,7 +85,8 @@ class Archive:
 		elif isinstance(event, AdditionalModels):
 			for model in event.additional_models:
 				model.ID = self.get_new_model_id()
-				self.working_models.append(model)
+#				self.working_models.append(model)
+			self.working_models = self.working_models | set(event.additional_models)
 
 		elif isinstance(event, AdditModProdFail):
 			self.revflag = True
@@ -94,7 +97,8 @@ class Archive:
 		elif isinstance(event,  InitialModels):
 			for model in event.models:
 				model.ID = self.get_new_model_id()
-				self.working_models.append(model)
+#				self.working_models.append(model)
+			self.working_models = self.working_models | set(event.models)
 
 		elif isinstance(event,  InitialResults):
 			for exp in event.experiments:
