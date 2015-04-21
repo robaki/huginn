@@ -16,7 +16,7 @@ class CostModel:
 
 	def generate_all_possible(self, entities, compartments, activities, setup_conds, import_activities):
 		# exp types:
-		self.types = {DetectionEntity:None, AdamTwoFactorExperiment:None,
+		self.types = {DetectionEntity:None, AdamTwoFactorExperiment:None, 
 			ReconstructionActivity:None, ReconstructionEnzReaction:None,
 			ReconstructionTransporterRequired:None, LocalisationEntity:None,
 			DetectionActivity:None}

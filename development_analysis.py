@@ -154,7 +154,7 @@ def plot_all_archives_3_reps():
 			all_filenames.append("".join([conf_pfx, tc_pfx]))
 
 	# get all files in pickled archives
-	all_paths = get_all_paths()
+	all_paths = get_all_paths('pickled_archives')
 
 	# process files
 	for file_name_part in all_filenames:
@@ -198,14 +198,15 @@ def plot_all_archives_3_reps():
 #		print(all_3_worst)
 #		print(all_3_timestamps)
 #
-		plot_3_sequences(all_3_timestamps, all_3_avg, all_3_error_lower, all_3_error_higher, 'plots/absolute_difference_%s' % file_name_part)
+#		plot_3_sequences(all_3_timestamps, all_3_avg, all_3_error_lower, all_3_error_higher, 'plots/absolute_difference_%s' % file_name_part)
 
 		# printing just difference in %:
 		print(file_name_part)
 		for n in range(3):
 			print('rep %s' % n)
+			print('difference: %s' % (all_3_avg[n][0] - all_3_avg[n][-1]))
 			difference_in_error = (all_3_avg[n][0] - all_3_avg[n][-1]) / all_3_avg[n][0]
-			print(difference_in_error)
+			print('in %% %s' % difference_in_error)
 		print('\n')
 
 
@@ -524,8 +525,8 @@ def read_archive(path):
 	return archive
 
 
-def get_all_paths():
-	folder = 'pickled_archives'
+def get_all_paths(folder):
+#	folder = 'pickled_archives'
 	return [ file_ for file_ in listdir(folder) if isfile(join(folder,file_))] # filters out subdirectories
 
 
@@ -779,8 +780,8 @@ def print_all_histories():
 
 
 def print_all_exps():
-	folder = 'pickled_archives'
-	paths = get_all_paths()
+	folder = 'pickled_archives' # pickled_archives_just_two_factor pickled_archives
+	paths = get_all_paths(folder)
 	all_exps = []
 	for path in paths:
 		full_path = '/'.join([folder,path])
@@ -879,17 +880,18 @@ def detect_import_of_setup(archive):
 
 def plotting_all_with_drifts():
 	folder = 'pickled_archives'
-	paths = get_all_paths()
+	paths = get_all_paths(folder)
 	for path in paths:
 		full_path = '/'.join([folder,path])
 		arch = read_archive(full_path)
-		print(path)
+#		print(path)
 #		print(arch.development_history)
 #		print('\n\n')
-		plot_with_drifts(arch, path)
+		Y_sequences_dev, X_sequences_dev, Y_sequences_drift, X_sequences_drift = plot_with_drifts(arch)
+		plot_with_drift_lines(Y_sequences_dev, X_sequences_dev, Y_sequences_drift, X_sequences_drift, path[-14:])
 
 
-def plot_with_drifts(arch, path):
+def plot_with_drifts(arch):
 	X_sequences_dev = []
 	X_sequences_drift = []
 	Y_sequences_dev = []
@@ -966,63 +968,163 @@ def plot_with_drifts(arch, path):
 			X_sequences_drift.append(event_sequence_cache)
 			Y_sequences_drift.append(models_sequence_cache)
 
-
-#	print(X_sequences_dev)
-#	print([[len(x) for x in l] for l in Y_sequences_dev])
-#	print(X_sequences_drift)
-#	print([[len(x) for x in l] for l in  Y_sequences_drift])
-#	print('\n\n')
-
 	# preprocess data
 	r = arch.model_of_ref.intermediate_activities
 	Y_sequences_dev = [[[len(r^m.intermediate_activities) for m in st] for st in sequence] for sequence in Y_sequences_dev]
 	Y_sequences_dev = [[sum(st)/len(st) for st in sequence] for sequence in Y_sequences_dev]
 	X_sequences_dev = [[event.timestamp/60 for event in sequence] for sequence in X_sequences_dev]
+
 	Y_sequences_drift = [[[len(r^m.intermediate_activities) for m in st] for st in sequence] for sequence in Y_sequences_drift]
-	Y_sequences_dev = [[sum(st)/len(st) for st in sequence] for sequence in Y_sequences_drift]
+	Y_sequences_drift = [[sum(st)/len(st) for st in sequence] for sequence in Y_sequences_drift]
 	X_sequences_drift = [[event.timestamp/60 for event in sequence] for sequence in X_sequences_drift]
 
 
-#	plot_with_drift_lines(Y_sequences_dev, X_sequences_dev, Y_sequences_drift, X_sequences_drift, path)
-
+	return Y_sequences_dev, X_sequences_dev, Y_sequences_drift, X_sequences_drift
 
 #	print(sum([len(s) for s in X_sequences_dev]) + sum([len(s) for s in X_sequences_drift]))
 #	print(len([x for x in arch.development_history if isinstance(x, CheckPointSuccess)]))
 #	print(len([x for x in arch.development_history if isinstance(x, CheckPointFail)]))
 
-	print(X_sequences_dev)
-	print(Y_sequences_dev)
+#	print(X_sequences_dev)
+#	print(Y_sequences_dev)
 #	print(X_sequences_drift)
 #	print(Y_sequences_drift)
 
 
 def plot_with_drift_lines(Y_sequences_dev, X_sequences_dev, Y_sequences_drift, X_sequences_drift, path):
+	# filling in connections
+	X_connections_green = []
+	Y_connections_green = []
+	X_connections_grey = []
+	Y_connections_grey = []
+
+	for x_sequence, y_sequence in zip(X_sequences_dev[1:], Y_sequences_dev[1:]):
+		connection_x = [x_sequence[0]]
+		connection_y = [y_sequence[0]]
+		try:
+			connection_x.append(X_sequences_drift[X_sequences_dev.index(x_sequence)-1][-1])
+			connection_y.append(Y_sequences_drift[X_sequences_dev.index(x_sequence)-1][-1])
+			X_connections_green = [connection_x] + X_connections_green
+			Y_connections_green = [connection_y] + Y_connections_green
+		except:
+			pass
+
+	for x_sequence, y_sequence in zip(X_sequences_drift, Y_sequences_drift):
+		connection_x = [x_sequence[0]]
+		connection_y = [y_sequence[0]]
+		try:
+			connection_x.append(X_sequences_dev[X_sequences_drift.index(x_sequence)][-1])
+			connection_y.append(Y_sequences_dev[X_sequences_drift.index(x_sequence)][-1])
+			X_connections_grey = [connection_x] + X_connections_grey
+			Y_connections_grey = [connection_y] + Y_connections_grey
+		except:
+			pass
+
+	# plotting
+	for x, y in zip(X_connections_green, Y_connections_green):
+		plt.plot(x, y, color='green')
+	for x, y in zip(X_connections_grey, Y_connections_grey):
+	    plt.plot(x, y, color='grey')
 
 	for x, y in zip(X_sequences_dev, Y_sequences_dev):
-		print(len(x))
-		print(len(y))
-#		plt.plot(x, y, color='green')
+		plt.plot(x, y, color='green', marker='.')
+	for x, y in zip(X_sequences_drift, Y_sequences_drift):
+	    plt.plot(x, y, color='grey', marker='.')
 
-#	for x, y in zip(X_sequences_drift, Y_sequences_drift):
-#	    plt.plot(x, y, color='grey')
-
-#	fig, ax = plt.subplots()
-
-#	for x, y in zip(X_sequences_dev, Y_sequences_dev):
-#	    ax.plot(x, y, color='green')
-
-#	for x, y in zip(X_sequences_drift, Y_sequences_drift):
-#	    ax.plot(x, y, color='grey')
-
-#	plt.savefig("".join(['plots/', path, '.svg']))
-#	plt.clf()
+	plt.savefig("".join(['plots/', path, '.svg']))
+	plt.clf()
 
 
 
+def analyse_all_development_and_drift():
+	folder = 'pickled_archives'
+	paths = get_all_paths(folder)
 
 
-#def plot_with_drift_seqments(whole_sequence, events, drifting_periods):
-	
+	for path in paths: #paths:
+		full_path = '/'.join([folder,path])
+		arch = read_archive(full_path)
+		Y_sq_dev, X_sq_dev, Y_sq_drift, X_sq_drift = plot_with_drifts(arch)
+		before_drift, tot_dev, tot_drft, prop_dev, last_drift = analyse_development_and_drift_one_run(Y_sq_dev, X_sq_dev, Y_sq_drift, X_sq_drift)
+#		print(path)
+#		print('before drift: %s' % before_drift)
+#		print('total dev: %s' % tot_dev)
+#		print('total drift: %s' % tot_drft)
+#		print('up to last drift: %s' % prop_dev)
+#		print('last drift: %s' % last_drift)
+#		print('\n\n')
+
+
+
+
+
+def analyse_development_and_drift_one_run(Y_sequences_dev, X_sequences_dev, Y_sequences_drift, X_sequences_drift):
+	# filling in connections
+	X_connections_green = []
+	Y_connections_green = []
+	X_connections_grey = []
+	Y_connections_grey = []
+
+	for x_sequence, y_sequence in zip(X_sequences_dev[1:], Y_sequences_dev[1:]):
+		connection_x = [x_sequence[0]]
+		connection_y = [y_sequence[0]]
+		try:
+			connection_x = [X_sequences_drift[X_sequences_dev.index(x_sequence)-1][-1]] + connection_x
+			connection_y = [Y_sequences_drift[X_sequences_dev.index(x_sequence)-1][-1]] + connection_y
+			X_connections_green.append(connection_x)
+			Y_connections_green.append(connection_y)
+		except:
+			pass
+
+	for x_sequence, y_sequence in zip(X_sequences_drift, Y_sequences_drift):
+		connection_x = [x_sequence[0]]
+		connection_y = [y_sequence[0]]
+		try:
+			connection_x = [X_sequences_dev[X_sequences_drift.index(x_sequence)][-1]] + connection_x
+			connection_y = [Y_sequences_dev[X_sequences_drift.index(x_sequence)][-1]] + connection_y
+			X_connections_grey.append(connection_x)
+			Y_connections_grey.append(connection_y)
+		except:
+			pass
+
+
+#	print('Y dev: %s' % Y_sequences_dev)
+#	print('X dev: %s' % X_sequences_dev)
+#	print('Y drift: %s' % Y_sequences_drift)
+#	print('X drift: %s' % X_sequences_drift)
+#	print('\n')
+#	print('X con green: %s' % X_connections_green)
+#	print('Y con green: %s' % Y_connections_green)
+#	print('X con grey: %s' % X_connections_grey)
+#	print('Y con grey: %s' % Y_connections_grey)
+
+
+	# change before the first drift:
+	change_before_first_drift = Y_sequences_dev[0][-1] - Y_sequences_dev[0][0]
+
+	# total development vs. total drift analysis:
+	# dev
+	total_dev_change = 0.0
+	for sequence in Y_sequences_dev + Y_connections_green:
+		total_dev_change += (sequence[-1] - sequence[0])
+	# drift
+	total_drift_change = 0.0
+	for sequence in Y_sequences_drift + Y_connections_grey:
+		total_drift_change += (sequence[-1] - sequence[0])
+
+	# development vs. last drift analysis:
+	if len(Y_sequences_drift) == 0: # no drift
+		return change_before_first_drift, total_dev_change, total_drift_change, None, None
+	if X_sequences_dev[-1][-1] > X_sequences_drift[-1][-1]: # ended during development (no last drift)
+		return change_before_first_drift, total_dev_change, total_drift_change, None, None
+	# change without last drift:
+	change_up_to_last_drift = 0.0
+	for sequence in Y_sequences_dev + Y_connections_green + Y_sequences_drift[:-1] + Y_connections_grey[:-1]:
+		change_up_to_last_drift += (sequence[-1] - sequence[0])
+	# change during last drift:
+	change_during_last_drift = Y_sequences_drift[-1][-1] - Y_connections_grey[-1][0]
+
+	return change_before_first_drift, total_dev_change, total_drift_change, change_up_to_last_drift, change_during_last_drift
 
 
 
@@ -1037,6 +1139,8 @@ def plot_with_drift_lines(Y_sequences_dev, X_sequences_dev, Y_sequences_drift, X
 #print_all_histories()
 #print_all_exps()
 #detect_all_import_of_setup()
+analyse_all_development_and_drift()
+
 
 #print_all_avg_and_best_absolute_scores()
 
@@ -1044,4 +1148,4 @@ def plot_with_drift_lines(Y_sequences_dev, X_sequences_dev, Y_sequences_drift, X
 
 #plot_all_archives_3_reps()
 
-plotting_all_with_drifts()
+#plotting_all_with_drifts()

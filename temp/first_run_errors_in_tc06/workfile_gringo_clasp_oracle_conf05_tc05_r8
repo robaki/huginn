@@ -1,0 +1,622 @@
+
+metabolite(ent_0,none).
+metabolite(ent_1,none).
+metabolite(ent_2,none).
+gene(ent_3,none).
+protein(ent_39,none).
+catalyses(ent_39,none,act_5).
+catalyses(ent_39,none,act_0).
+catalyses(ent_39,none,act_1).
+catalyses(ent_39,none,act_10).
+protein(ent_42,none).
+catalyses(ent_42,none,act_22).
+catalyses(ent_42,none,act_21).
+catalyses(ent_42,none,act_20).
+catalyses(ent_42,none,act_16).
+metabolite(ent_4,none).
+metabolite(ent_5,none).
+metabolite(ent_6,none).
+gene(ent_7,none).
+metabolite(ent_8,none).
+metabolite(ent_9,none).
+protein(ent_45,none).
+catalyses(ent_45,none,act_24).
+catalyses(ent_45,none,act_6).
+catalyses(ent_45,none,act_12).
+metabolite(ent_10,none).
+metabolite(ent_11,none).
+metabolite(ent_12,none).
+metabolite(ent_13,none).
+metabolite(ent_14,none).
+metabolite(ent_15,none).
+metabolite(ent_16,none).
+metabolite(ent_17,none).
+metabolite(ent_18,none).
+metabolite(ent_19,none).
+metabolite(ent_20,none).
+metabolite(ent_21,none).
+gene(ent_22,none).
+metabolite(ent_23,none).
+metabolite(ent_24,none).
+metabolite(ent_25,none).
+gene(ent_26,none).
+protein(ent_50,none).
+catalyses(ent_50,none,act_23).
+catalyses(ent_50,none,act_15).
+catalyses(ent_50,none,act_8).
+gene(ent_27,none).
+metabolite(ent_28,none).
+metabolite(ent_29,none).
+protein(ent_47,none).
+catalyses(ent_47,none,act_19).
+catalyses(ent_47,none,act_18).
+catalyses(ent_47,none,act_3).
+catalyses(ent_47,none,act_17).
+gene(ent_30,none).
+protein(ent_36,none).
+catalyses(ent_36,none,act_15).
+catalyses(ent_36,none,act_23).
+catalyses(ent_36,none,act_7).
+catalyses(ent_36,none,act_8).
+metabolite(ent_31,none).
+metabolite(ent_32,none).
+metabolite(ent_33,none).
+metabolite(ent_34,none).
+metabolite(ent_35,none).
+protein(ent_39,ver_0).
+catalyses(ent_39,ver_0,act_5).
+catalyses(ent_39,ver_0,act_15).
+catalyses(ent_39,ver_0,act_41).
+catalyses(ent_39,ver_0,act_0).
+catalyses(ent_39,ver_0,act_1).
+catalyses(ent_39,ver_0,act_10).
+catalyses(ent_39,ver_0,act_40).
+protein(ent_39,ver_1).
+catalyses(ent_39,ver_1,act_5).
+catalyses(ent_39,ver_1,act_1).
+catalyses(ent_39,ver_1,act_10).
+protein(ent_36,ver_0).
+catalyses(ent_36,ver_0,act_15).
+catalyses(ent_36,ver_0,act_23).
+catalyses(ent_36,ver_0,act_7).
+catalyses(ent_36,ver_0,act_16).
+protein(ent_42,ver_0).
+catalyses(ent_42,ver_0,act_22).
+catalyses(ent_42,ver_0,act_21).
+catalyses(ent_42,ver_0,act_20).
+catalyses(ent_42,ver_0,act_16).
+protein(ent_47,ver_1).
+catalyses(ent_47,ver_1,act_19).
+catalyses(ent_47,ver_1,act_39).
+catalyses(ent_47,ver_1,act_18).
+catalyses(ent_47,ver_1,act_17).
+protein(ent_45,ver_0).
+catalyses(ent_45,ver_0,act_8).
+catalyses(ent_45,ver_0,act_24).
+catalyses(ent_45,ver_0,act_6).
+catalyses(ent_45,ver_0,act_38).
+catalyses(ent_45,ver_0,act_12).
+protein(ent_50,ver_0).
+catalyses(ent_50,ver_0,act_23).
+catalyses(ent_50,ver_0,act_15).
+catalyses(ent_50,ver_0,act_8).
+protein(ent_47,ver_0).
+catalyses(ent_47,ver_0,act_19).
+catalyses(ent_47,ver_0,act_18).
+catalyses(ent_47,ver_0,act_17).
+protein(ent_42,ver_1).
+catalyses(ent_42,ver_1,act_8).
+catalyses(ent_42,ver_1,act_22).
+catalyses(ent_42,ver_1,act_20).
+catalyses(ent_42,ver_1,act_21).
+protein(ent_36,ver_1).
+catalyses(ent_36,ver_1,act_23).
+catalyses(ent_36,ver_1,act_16).
+catalyses(ent_36,ver_1,act_7).
+catalyses(ent_36,ver_1,act_8).
+compartment(c_02;c_05;c_22;c_23;c_01;c_17;c_14;c_35;c_11;c_07;c_18;c_31;c_34;c_27;c_26).
+reaction(act_0).
+reaction(act_1).
+expression(act_2).
+reaction(act_3).
+expression(act_4).
+reaction(act_5).
+reaction(act_6).
+reaction(act_7).
+reaction(act_8).
+expression(act_9).
+reaction(act_10).
+expression(act_11).
+reaction(act_12).
+expression(act_13).
+expression(act_14).
+reaction(act_15).
+reaction(act_16).
+reaction(act_17).
+reaction(act_18).
+reaction(act_19).
+reaction(act_20).
+reaction(act_21).
+reaction(act_22).
+reaction(act_23).
+reaction(act_24).
+expression(act_25).
+expression(act_26).
+expression(act_27).
+expression(act_28).
+expression(act_29).
+expression(act_30).
+expression(act_31).
+expression(act_32).
+expression(act_33).
+expression(act_34).
+expression(act_35).
+expression(act_36).
+expression(act_37).
+reaction(act_38).
+reaction(act_39).
+reaction(act_40).
+reaction(act_41).
+transport(act_42).
+transport(act_43).
+transport(act_44).
+transport(act_45).
+transport(act_46).
+transport(act_47).
+transport(act_48).
+transport(act_49).
+transport(act_50).
+transport(act_51).
+transport(act_52).
+transport(act_53).
+transport(act_54).
+transport(act_55).
+transport(act_56).
+transport(act_57).
+transport(act_58).
+transport(act_59).
+transport(act_60).
+transport(act_61).
+transport(act_62).
+transport(act_63).
+transport(act_64).
+transport(act_65).
+transport(act_66).
+transport(act_67).
+transport(act_68).
+transport(act_69).
+transport(act_70).
+transport(act_71).
+enz_required(act_0).
+enz_compartment(c_23,act_0).
+substrate(ent_31,none,c_23,act_0).
+substrate(ent_6,none,c_23,act_0).
+substrate(ent_20,none,c_23,act_0).
+product(ent_25,none,c_23,act_0).
+product(ent_9,none,c_23,act_0).
+enz_required(act_1).
+enz_compartment(c_23,act_1).
+substrate(ent_31,none,c_23,act_1).
+substrate(ent_1,none,c_23,act_1).
+substrate(ent_20,none,c_23,act_1).
+product(ent_25,none,c_23,act_1).
+product(ent_13,none,c_23,act_1).
+substrate(ent_7,none,c_18,act_2).
+product(ent_45,none,c_23,act_2).
+substrate(ent_9,none,c_23,act_3).
+enz_required(act_3).
+enz_compartment(c_23,act_3).
+product(ent_17,none,c_23,act_3).
+product(ent_19,none,c_23,act_3).
+substrate(ent_27,none,c_18,act_4).
+product(ent_39,none,c_23,act_4).
+enz_required(act_5).
+enz_compartment(c_23,act_5).
+substrate(ent_8,none,c_23,act_5).
+substrate(ent_31,none,c_23,act_5).
+substrate(ent_20,none,c_23,act_5).
+product(ent_25,none,c_23,act_5).
+product(ent_21,none,c_23,act_5).
+enz_required(act_6).
+enz_compartment(c_23,act_6).
+substrate(ent_24,none,c_23,act_6).
+substrate(ent_28,none,c_23,act_6).
+substrate(ent_5,none,c_23,act_6).
+product(ent_2,none,c_23,act_6).
+product(ent_14,none,c_23,act_6).
+product(ent_18,none,c_23,act_6).
+substrate(ent_16,none,c_23,act_7).
+enz_required(act_7).
+enz_compartment(c_23,act_7).
+substrate(ent_20,none,c_23,act_7).
+substrate(ent_18,none,c_23,act_7).
+product(ent_35,none,c_23,act_7).
+product(ent_24,none,c_23,act_7).
+product(ent_1,none,c_23,act_7).
+substrate(ent_16,none,c_23,act_8).
+enz_required(act_8).
+enz_compartment(c_23,act_8).
+substrate(ent_20,none,c_23,act_8).
+substrate(ent_23,none,c_23,act_8).
+product(ent_35,none,c_23,act_8).
+product(ent_8,none,c_23,act_8).
+product(ent_24,none,c_23,act_8).
+substrate(ent_3,none,c_18,act_9).
+product(ent_47,none,c_23,act_9).
+substrate(ent_12,none,c_23,act_10).
+enz_required(act_10).
+enz_compartment(c_23,act_10).
+substrate(ent_31,none,c_23,act_10).
+substrate(ent_20,none,c_23,act_10).
+product(ent_25,none,c_23,act_10).
+product(ent_33,none,c_23,act_10).
+substrate(ent_22,none,c_18,act_11).
+product(ent_42,none,c_23,act_11).
+enz_required(act_12).
+enz_compartment(c_23,act_12).
+substrate(ent_24,none,c_23,act_12).
+substrate(ent_11,none,c_23,act_12).
+substrate(ent_28,none,c_23,act_12).
+product(ent_2,none,c_23,act_12).
+product(ent_14,none,c_23,act_12).
+product(ent_23,none,c_23,act_12).
+substrate(ent_30,none,c_18,act_13).
+product(ent_36,none,c_23,act_13).
+substrate(ent_26,none,c_18,act_14).
+product(ent_50,none,c_23,act_14).
+substrate(ent_16,none,c_23,act_15).
+enz_required(act_15).
+enz_compartment(c_23,act_15).
+substrate(ent_20,none,c_23,act_15).
+substrate(ent_0,none,c_23,act_15).
+product(ent_12,none,c_23,act_15).
+product(ent_35,none,c_23,act_15).
+product(ent_24,none,c_23,act_15).
+enz_required(act_16).
+enz_compartment(c_23,act_16).
+substrate(ent_31,none,c_23,act_16).
+substrate(ent_10,none,c_23,act_16).
+substrate(ent_20,none,c_23,act_16).
+product(ent_25,none,c_23,act_16).
+product(ent_15,none,c_23,act_16).
+substrate(ent_21,none,c_23,act_17).
+enz_required(act_17).
+enz_compartment(c_23,act_17).
+product(ent_32,none,c_23,act_17).
+product(ent_19,none,c_23,act_17).
+substrate(ent_33,none,c_23,act_18).
+enz_required(act_18).
+enz_compartment(c_23,act_18).
+product(ent_19,none,c_23,act_18).
+product(ent_10,none,c_23,act_18).
+enz_required(act_19).
+enz_compartment(c_23,act_19).
+substrate(ent_13,none,c_23,act_19).
+product(ent_29,none,c_23,act_19).
+product(ent_19,none,c_23,act_19).
+substrate(ent_32,none,c_23,act_20).
+enz_required(act_20).
+enz_compartment(c_23,act_20).
+substrate(ent_31,none,c_23,act_20).
+substrate(ent_20,none,c_23,act_20).
+product(ent_25,none,c_23,act_20).
+product(ent_18,none,c_23,act_20).
+enz_required(act_21).
+enz_compartment(c_23,act_21).
+substrate(ent_31,none,c_23,act_21).
+substrate(ent_29,none,c_23,act_21).
+substrate(ent_20,none,c_23,act_21).
+product(ent_25,none,c_23,act_21).
+product(ent_34,none,c_23,act_21).
+substrate(ent_17,none,c_23,act_22).
+enz_required(act_22).
+enz_compartment(c_23,act_22).
+substrate(ent_31,none,c_23,act_22).
+substrate(ent_20,none,c_23,act_22).
+product(ent_25,none,c_23,act_22).
+product(ent_23,none,c_23,act_22).
+substrate(ent_16,none,c_23,act_23).
+substrate(ent_15,none,c_23,act_23).
+enz_required(act_23).
+enz_compartment(c_23,act_23).
+substrate(ent_20,none,c_23,act_23).
+product(ent_35,none,c_23,act_23).
+product(ent_24,none,c_23,act_23).
+product(ent_6,none,c_23,act_23).
+enz_required(act_24).
+enz_compartment(c_23,act_24).
+substrate(ent_24,none,c_23,act_24).
+substrate(ent_28,none,c_23,act_24).
+substrate(ent_4,none,c_23,act_24).
+product(ent_2,none,c_23,act_24).
+product(ent_34,none,c_23,act_24).
+product(ent_14,none,c_23,act_24).
+substrate(ent_27,none,c_18,act_25).
+product(ent_39,ver_0,c_23,act_25).
+substrate(ent_27,none,c_18,act_26).
+product(ent_39,ver_1,c_23,act_26).
+substrate(ent_22,none,c_18,act_27).
+product(ent_42,ver_0,c_23,act_27).
+substrate(ent_22,none,c_18,act_28).
+product(ent_42,ver_1,c_23,act_28).
+substrate(ent_30,none,c_18,act_29).
+product(ent_36,ver_0,c_23,act_29).
+substrate(ent_30,none,c_18,act_30).
+product(ent_36,ver_1,c_23,act_30).
+substrate(ent_26,none,c_18,act_31).
+product(ent_50,ver_0,c_23,act_31).
+substrate(ent_7,none,c_18,act_32).
+product(ent_45,ver_0,c_23,act_32).
+substrate(ent_3,none,c_18,act_33).
+product(ent_47,ver_0,c_23,act_33).
+substrate(ent_3,none,c_18,act_34).
+product(ent_47,ver_1,c_23,act_34).
+substrate(ent_3,none,c_18,act_35).
+product(ent_36,ver_1,c_23,act_35).
+substrate(ent_26,none,c_18,act_36).
+product(ent_36,none,c_23,act_36).
+substrate(ent_7,none,c_18,act_37).
+product(ent_42,ver_0,c_23,act_37).
+substrate(ent_12,none,c_23,act_38).
+enz_required(act_38).
+enz_compartment(c_23,act_38).
+substrate(ent_31,none,c_23,act_38).
+product(ent_14,none,c_23,act_38).
+product(ent_23,none,c_23,act_38).
+substrate(ent_16,none,c_23,act_39).
+enz_required(act_39).
+enz_compartment(c_23,act_39).
+substrate(ent_5,none,c_23,act_39).
+product(ent_9,none,c_23,act_39).
+product(ent_23,none,c_23,act_39).
+enz_required(act_40).
+enz_compartment(c_23,act_40).
+substrate(ent_31,none,c_23,act_40).
+substrate(ent_24,none,c_23,act_40).
+substrate(ent_11,none,c_23,act_40).
+product(ent_34,none,c_23,act_40).
+enz_required(act_41).
+enz_compartment(c_23,act_41).
+substrate(ent_28,none,c_23,act_41).
+product(ent_12,none,c_23,act_41).
+substrate(ent_8,none,c_01,act_42).
+product(ent_8,none,c_05,act_42).
+substrate(ent_16,none,c_01,act_43).
+product(ent_16,none,c_05,act_43).
+substrate(ent_12,none,c_01,act_44).
+product(ent_12,none,c_05,act_44).
+substrate(ent_14,none,c_01,act_45).
+product(ent_14,none,c_05,act_45).
+substrate(ent_1,none,c_01,act_46).
+product(ent_1,none,c_05,act_46).
+substrate(ent_24,none,c_01,act_47).
+product(ent_24,none,c_05,act_47).
+substrate(ent_18,none,c_01,act_48).
+product(ent_18,none,c_05,act_48).
+substrate(ent_25,none,c_01,act_49).
+product(ent_25,none,c_05,act_49).
+substrate(ent_32,none,c_01,act_50).
+product(ent_32,none,c_05,act_50).
+substrate(ent_34,none,c_01,act_51).
+product(ent_34,none,c_05,act_51).
+substrate(ent_2,none,c_01,act_52).
+product(ent_2,none,c_05,act_52).
+substrate(ent_9,none,c_01,act_53).
+product(ent_9,none,c_05,act_53).
+substrate(ent_33,none,c_01,act_54).
+product(ent_33,none,c_05,act_54).
+substrate(ent_21,none,c_01,act_55).
+product(ent_21,none,c_05,act_55).
+substrate(ent_15,none,c_01,act_56).
+product(ent_15,none,c_05,act_56).
+substrate(ent_13,none,c_01,act_57).
+product(ent_13,none,c_05,act_57).
+substrate(ent_11,none,c_01,act_58).
+product(ent_11,none,c_05,act_58).
+substrate(ent_28,none,c_01,act_59).
+product(ent_28,none,c_05,act_59).
+substrate(ent_10,none,c_01,act_60).
+product(ent_10,none,c_05,act_60).
+substrate(ent_20,none,c_01,act_61).
+product(ent_20,none,c_05,act_61).
+substrate(ent_29,none,c_01,act_62).
+product(ent_29,none,c_05,act_62).
+substrate(ent_19,none,c_01,act_63).
+product(ent_19,none,c_05,act_63).
+substrate(ent_0,none,c_01,act_64).
+product(ent_0,none,c_05,act_64).
+substrate(ent_31,none,c_01,act_65).
+product(ent_31,none,c_05,act_65).
+substrate(ent_4,none,c_01,act_66).
+product(ent_4,none,c_05,act_66).
+substrate(ent_35,none,c_01,act_67).
+product(ent_35,none,c_05,act_67).
+substrate(ent_6,none,c_01,act_68).
+product(ent_6,none,c_05,act_68).
+substrate(ent_17,none,c_01,act_69).
+product(ent_17,none,c_05,act_69).
+substrate(ent_5,none,c_01,act_70).
+product(ent_5,none,c_05,act_70).
+substrate(ent_23,none,c_01,act_71).
+product(ent_23,none,c_05,act_71).
+model(copied_None).
+added_to_model(setup_present(ent_28,none,c_23),copied_None).
+added_to_model(setup_present(ent_31,none,c_23),copied_None).
+added_to_model(setup_present(ent_11,none,c_23),copied_None).
+added_to_model(setup_present(ent_3,none,c_18),copied_None).
+added_to_model(setup_present(ent_20,none,c_23),copied_None).
+added_to_model(setup_present(ent_5,none,c_23),copied_None).
+added_to_model(setup_present(ent_7,none,c_18),copied_None).
+added_to_model(setup_present(ent_27,none,c_18),copied_None).
+added_to_model(setup_present(ent_0,none,c_23),copied_None).
+added_to_model(setup_present(ent_26,none,c_18),copied_None).
+added_to_model(setup_present(ent_30,none,c_18),copied_None).
+added_to_model(setup_present(ent_4,none,c_23),copied_None).
+added_to_model(setup_present(ent_16,none,c_23),copied_None).
+added_to_model(act_11,copied_None).
+added_to_model(act_17,copied_None).
+added_to_model(act_13,copied_None).
+added_to_model(act_4,copied_None).
+added_to_model(act_9,copied_None).
+added_to_model(act_8,copied_None).
+added_to_model(act_23,copied_None).
+added_to_model(act_24,copied_None).
+added_to_model(act_14,copied_None).
+added_to_model(act_1,copied_None).
+added_to_model(act_6,copied_None).
+added_to_model(act_15,copied_None).
+added_to_model(act_12,copied_None).
+added_to_model(act_10,copied_None).
+added_to_model(act_18,copied_None).
+added_to_model(act_5,copied_None).
+added_to_model(act_16,copied_None).
+added_to_model(act_0,copied_None).
+added_to_model(act_19,copied_None).
+added_to_model(act_2,copied_None).
+added_to_model(act_22,copied_None).
+added_to_model(act_7,copied_None).
+added_to_model(act_3,copied_None).
+added_to_model(act_20,copied_None).
+added_to_model(act_21,copied_None).
+#hide.
+#show synthesizable/4.
+#show initially_present/4.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% model specification rules %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+activity(Activity) :- reaction(Activity).
+activity(Activity) :- transport(Activity).
+activity(Activity) :- expression(Activity).
+activity(Activity) :- complex_formation(Activity).
+activity(Activity) :- growth(Activity).
+
+entity(Entity, Version) :- metabolite(Entity, Version).
+entity(Entity, Version) :- complex(Entity, Version).
+entity(Entity, Version) :- protein(Entity, Version).
+entity(Entity, Version) :- gene(Entity, Version).
+
+connected_compartments(Compartment2,Compartment1) :- connected_compartments(Compartment1,Compartment2).
+connected_compartments(Compartment,Compartment) :- compartment(Compartment).
+
+in_model(ActivityOrSetup, Model) :-
+	added_to_model(ActivityOrSetup, Model),
+	not removed(ActivityOrSetup, Model).
+
+initially_present(Entity, Version, Compartment, Model) :-
+	in_model(setup_present(Entity, Version, Compartment), Model).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% synthesizable Entity rules %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+synthesizable(Ent, Version, Compartment, Model) :-
+	activity(Activity),
+	product(Ent, Version, Compartment, Activity),
+	active(Activity, Model).
+
+active(Activity, Model) :-
+	activity(Activity),
+	in_model(Activity, Model),
+	not eliminated(Activity, Model).
+
+eliminated(Activity, Model) :-
+	eliminated(Activity, Model, Int),
+	iteration(Int).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% activities elimination rules %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% iterations counter
+iteration(0).
+iteration(1).
+
+iteration(Int+2) :-
+	Int < 25,
+	iteration(Int),
+	eliminated(Activity, Model, Int+1),
+	not eliminated(Activity, Model, Int),
+	in_model(Activity, Model),
+	activity(Activity),
+	model(Model).
+
+% reachability of one specie from another going only from products to substrates (i.e. back).
+path_back_from_to(EntFrom, VerFrom, CompFrom, EntTo, VerTo, CompTo, Model, 0) :-
+	product(EntFrom, VerFrom, CompFrom, Activity),
+	substrate(EntTo, VerTo, CompTo, Activity),
+	in_model(Activity, Model),
+	activity(Activity).
+
+path_back_from_to(EntFrom, VerFrom, CompFrom, EntTo, VerTo, CompTo, Model, 0) :-
+	product(EntFrom, VerFrom, CompFrom, Activity),
+	substrate(InterEnt, InterVer, InterComp, Activity),
+	in_model(Activity, Model),
+	path_back_from_to(InterEnt, InterVer, InterComp, EntTo, VerTo, CompTo, Model, 0).
+
+% reachability for subsequent iterations.
+path_back_from_to(EntFrom, VerFrom, CompFrom, EntTo, VerTo, CompTo, Model, Int+1) :-
+	iteration(Int),
+	product(EntFrom, VerFrom, CompFrom, Activity),
+	substrate(EntTo, VerTo, CompTo, Activity),
+	in_model(Activity, Model),
+	not eliminated(Activity, Model, Int), % not eliminated on previous iteration
+	activity(Activity).
+
+path_back_from_to(EntFrom, VerFrom, CompFrom, EntTo, VerTo, CompTo, Model, Int+1) :-
+	iteration(Int),
+	product(EntFrom, VerFrom, CompFrom, Activity),
+	substrate(InterEnt, InterVer, InterComp, Activity),
+	in_model(Activity, Model),
+	not eliminated(Activity, Model, Int), % not eliminated on previous iteration
+	path_back_from_to(InterEnt, InterVer, InterComp, EntTo, VerTo, CompTo, Model, Int+1).
+
+% is initially_present entity reachable from particular entity
+path_back_to_initially_present(EntFrom, VerFrom, CompFrom, Model, Int) :-
+	iteration(Int),
+	path_back_from_to(EntFrom, VerFrom, CompFrom, EntTo, VerTo, CompTo, Model, Int),
+	initially_present(EntTo, VerTo, CompTo, Model).
+
+path_back_to_initially_present(Ent, Ver, Comp, Model, Int) :-
+	iteration(Int),
+	initially_present(Ent, Ver, Comp, Model).
+
+% has enzymes/transporter
+has_enzyme(Activity, Model, Int) :-
+	iteration(Int),
+	in_model(Activity, Model),
+	enz_required(Activity),
+	compartment(Comp),
+	enz_compartment(Comp, Activity),
+	catalyses(Entity, Version, Activity),
+	connected_compartments(SomeComp, Comp),
+	path_back_to_initially_present(Entity, Version, SomeComp, Model, Int).
+
+has_transporter(Activity, Model, Int) :-
+	iteration(Int),
+	in_model(Activity, Model),
+	transp_required(Activity),
+	compartment(Comp),
+	transp_compartment(Comp, Activity),
+	transports(Entity, Version, Activity),
+	path_back_to_initially_present(Entity, Version, Comp, Model, Int).
+
+% elimination of activities
+eliminated(Activity, Model, Int) :-
+	iteration(Int),
+	activity(Activity),
+	in_model(Activity, Model),
+	substrate(EntFrom, VerFrom, CompFrom, Activity),
+	not path_back_to_initially_present(EntFrom, VerFrom, CompFrom, Model, Int).
+
+eliminated(Activity, Model, Int) :-
+	iteration(Int),
+	activity(Activity),
+	in_model(Activity, Model),
+	enz_required(Activity),
+	not has_enzyme(Activity, Model, Int).
+
+eliminated(Activity, Model, Int) :-
+	iteration(Int),
+	activity(Activity),
+	in_model(Activity, Model),
+	transp_required(Activity),
+	not has_transporter(Activity, Model, Int).

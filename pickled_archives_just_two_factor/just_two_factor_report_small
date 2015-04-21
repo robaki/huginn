@@ -1,0 +1,1056 @@
+starting development: conf05_tc01_r0
+starting development: conf05_tc02_r0
+starting cycle: 1
+time elapsed: 0.002637915147675408 h
+starting cycle: 1
+time elapsed: 0.002905547221501668 h
+all models equivalent!
+starting cycle: 2
+time elapsed: 0.0034283592303593954 h
+starting cycle: 3
+time elapsed: 0.003954813215467665 h
+all models equivalent!
+starting cycle: 4
+time elapsed: 0.004873506757948134 h
+all models equivalent!
+starting cycle: 2
+time elapsed: 0.005666135483317905 h
+starting cycle: 5
+time elapsed: 0.006024700204531352 h
+all models equivalent!
+starting cycle: 6
+time elapsed: 0.006852974494298299 h
+all models equivalent!
+starting cycle: 7
+time elapsed: 0.007865268654293484 h
+starting cycle: 3
+time elapsed: 0.007932498322592841 h
+all models equivalent!
+all models equivalent!
+starting cycle: 8
+time elapsed: 0.009275169173876444 h
+all models equivalent!
+starting cycle: 9
+time elapsed: 0.010204211407237583 h
+all models equivalent!
+starting cycle: 4
+time elapsed: 0.010721838275591533 h
+all models equivalent!
+starting cycle: 10
+time elapsed: 0.011204797493086921 h
+all models equivalent!
+starting cycle: 11
+time elapsed: 0.01246149996916453 h
+all models equivalent!
+starting cycle: 12
+time elapsed: 0.013469807439380222 h
+error flags?: True
+run out of time: False
+run out of cycles: False
+failed to produce experiment too many times: True
+starting development: conf05_tc01_r1
+starting cycle: 5
+time elapsed: 0.01488515383667416 h
+all models equivalent!
+starting cycle: 1
+time elapsed: 0.0025837113459904987 h
+starting cycle: 2
+time elapsed: 0.0033480230304929947 h
+all models equivalent!
+starting cycle: 3
+time elapsed: 0.004232454895973205 h
+all models equivalent!
+starting cycle: 6
+time elapsed: 0.018668807612525092 h
+starting cycle: 4
+time elapsed: 0.0052127788464228315 h
+all models equivalent!
+all models equivalent!
+starting cycle: 5
+time elapsed: 0.00648650586605072 h
+all models equivalent!
+starting cycle: 6
+time elapsed: 0.007490880091985066 h
+all models equivalent!
+starting cycle: 7
+time elapsed: 0.021690297192997404 h
+starting cycle: 7
+time elapsed: 0.008361040552457174 h
+all models equivalent!
+all models equivalent!
+starting cycle: 8
+time elapsed: 0.00960575626956092 h
+all models equivalent!
+starting cycle: 8
+time elapsed: 0.02400736861758762 h
+starting cycle: 9
+time elapsed: 0.010745710068278843 h
+all models equivalent!
+all models equivalent!
+starting cycle: 10
+time elapsed: 0.011886485020319621 h
+all models equivalent!
+starting cycle: 11
+time elapsed: 0.012815264860788982 h
+error flags?: True
+run out of time: False
+run out of cycles: False
+failed to produce experiment too many times: True
+starting development: conf05_tc01_r2
+starting cycle: 9
+time elapsed: 0.026500047776434155 h
+all models equivalent!
+starting cycle: 1
+time elapsed: 0.0026980276240242853 h
+starting cycle: 10
+time elapsed: 0.028986489507887098 h
+all models equivalent!
+starting cycle: 2
+time elapsed: 0.003222909172375997 h
+starting cycle: 3
+time elapsed: 0.0037559337748421565 h
+all models equivalent!
+starting cycle: 4
+time elapsed: 0.005508313443925645 h
+starting cycle: 5
+time elapsed: 0.006326374146673415 h
+all models equivalent!
+starting cycle: 6
+time elapsed: 0.007274555696381463 h
+all models equivalent!
+starting cycle: 11
+time elapsed: 0.03432584298981561 h
+all models equivalent!
+starting cycle: 7
+time elapsed: 0.008383841911951701 h
+all models equivalent!
+starting cycle: 8
+time elapsed: 0.009678601556354098 h
+all models equivalent!
+starting cycle: 9
+time elapsed: 0.01058361013730367 h
+starting cycle: 12
+time elapsed: 0.03690196434656779 h
+error flags?: True
+run out of time: False
+run out of cycles: False
+failed to produce experiment too many times: True
+starting development: conf05_tc02_r1
+all models equivalent!
+starting cycle: 10
+time elapsed: 0.01190270377529992 h
+all models equivalent!
+starting cycle: 11
+time elapsed: 0.012790049844317966 h
+all models equivalent!
+starting cycle: 1
+time elapsed: 0.0029494959778255886 h
+starting cycle: 12
+time elapsed: 0.01370707803302341 h
+all models equivalent!
+starting cycle: 13
+time elapsed: 0.015071941216786703 h
+all models equivalent!
+starting cycle: 2
+time elapsed: 0.005347011751598782 h
+starting cycle: 14
+time elapsed: 0.016021696329116823 h
+error flags?: True
+run out of time: False
+run out of cycles: False
+failed to produce experiment too many times: True
+starting development: conf05_tc03_r0
+all models equivalent!
+starting cycle: 1
+time elapsed: 0.001195885075463189 h
+starting cycle: 3
+time elapsed: 0.007644821802775065 h
+starting cycle: 2
+time elapsed: 0.00229560653368632 h
+all models equivalent!
+starting cycle: 3
+time elapsed: 0.0032032832834455703 h
+starting cycle: 4
+time elapsed: 0.003909953037897746 h
+all models equivalent!
+starting cycle: 4
+time elapsed: 0.010943073961469861 h
+all models equivalent!
+starting cycle: 5
+time elapsed: 0.006050605442788866 h
+starting cycle: 6
+time elapsed: 0.00696772038936615 h
+starting cycle: 7
+time elapsed: 0.00807383206155565 h
+starting cycle: 5
+time elapsed: 0.013814340432484945 h
+all models equivalent!
+starting cycle: 8
+time elapsed: 0.009216854704750909 h
+starting cycle: 9
+time elapsed: 0.010386464397112528 h
+all models equivalent!
+starting cycle: 10
+time elapsed: 0.012630685567855834 h
+starting cycle: 6
+time elapsed: 0.018760123252868653 h
+starting cycle: 11
+time elapsed: 0.013364233507050408 h
+all models equivalent!
+all models equivalent!
+starting cycle: 12
+time elapsed: 0.014698409305678473 h
+all models equivalent!
+starting cycle: 7
+time elapsed: 0.020980508261256747 h
+all models equivalent!
+starting cycle: 13
+time elapsed: 0.016379151940345765 h
+all models equivalent!
+starting cycle: 14
+time elapsed: 0.018205165995491875 h
+all models equivalent!
+all models equivalent!
+starting cycle: 15
+time elapsed: 0.01974545266893175 h
+all models equivalent!
+starting cycle: 16
+time elapsed: 0.021239657865630257 h
+all models equivalent!
+starting cycle: 9
+time elapsed: 0.02703294469250573 h
+all models equivalent!
+starting cycle: 17
+time elapsed: 0.022797173857688903 h
+all models equivalent!
+starting cycle: 18
+time elapsed: 0.024061765472094217 h
+all models equivalent!
+starting cycle: 19
+time elapsed: 0.02560905310842726 h
+all models equivalent!
+starting cycle: 10
+time elapsed: 0.03221315873993768 h
+starting cycle: 20
+time elapsed: 0.02697088831000858 h
+error flags?: True
+run out of time: False
+run out of cycles: False
+failed to produce experiment too many times: True
+starting development: conf05_tc03_r1
+all models equivalent!
+starting cycle: 1
+time elapsed: 0.0011916000975502861 h
+starting cycle: 2
+time elapsed: 0.0023044002056121825 h
+starting cycle: 11
+time elapsed: 0.035381361179881624 h
+error flags?: True
+run out of time: False
+run out of cycles: False
+failed to produce experiment too many times: True
+starting development: conf05_tc02_r2
+starting cycle: 3
+time elapsed: 0.0032025649812486437 h
+starting cycle: 4
+time elapsed: 0.003900416029824151 h
+all models equivalent!
+starting cycle: 1
+time elapsed: 0.0028012508153915407 h
+starting cycle: 5
+time elapsed: 0.006722977492544386 h
+starting cycle: 2
+time elapsed: 0.004026873509089152 h
+all models equivalent!
+starting cycle: 6
+time elapsed: 0.007851219243473477 h
+starting cycle: 7
+time elapsed: 0.008792895674705505 h
+starting cycle: 8
+time elapsed: 0.009493724173969693 h
+starting cycle: 3
+time elapsed: 0.00660714328289032 h
+all models equivalent!
+all models equivalent!
+starting cycle: 9
+time elapsed: 0.010922747055689493 h
+all models equivalent!
+starting cycle: 4
+time elapsed: 0.009032065868377686 h
+all models equivalent!
+starting cycle: 10
+time elapsed: 0.01264082948366801 h
+starting cycle: 11
+time elapsed: 0.013348757359716627 h
+all models equivalent!
+starting cycle: 12
+time elapsed: 0.01461508380042182 h
+all models equivalent!
+starting cycle: 5
+time elapsed: 0.01211120069026947 h
+all models equivalent!
+starting cycle: 13
+time elapsed: 0.016305653585327998 h
+all models equivalent!
+starting cycle: 14
+time elapsed: 0.017761519816186695 h
+all models equivalent!
+starting cycle: 6
+time elapsed: 0.01568481677108341 h
+all models equivalent!
+starting cycle: 15
+time elapsed: 0.0193593915965822 h
+all models equivalent!
+starting cycle: 16
+time elapsed: 0.020739159054226346 h
+all models equivalent!
+starting cycle: 17
+time elapsed: 0.02248619152439965 h
+all models equivalent!
+starting cycle: 7
+time elapsed: 0.02018330328994327 h
+all models equivalent!
+starting cycle: 18
+time elapsed: 0.024120926128493415 h
+all models equivalent!
+starting cycle: 19
+time elapsed: 0.025591071115599738 h
+all models equivalent!
+starting cycle: 20
+time elapsed: 0.02697394953833686 h
+error flags?: True
+run out of time: False
+run out of cycles: False
+failed to produce experiment too many times: True
+starting development: conf05_tc03_r2
+starting cycle: 8
+time elapsed: 0.024613320297665067 h
+all models equivalent!
+starting cycle: 1
+time elapsed: 0.0011935413546032376 h
+starting cycle: 2
+time elapsed: 0.002291679647233751 h
+starting cycle: 3
+time elapsed: 0.0031825875573688084 h
+starting cycle: 4
+time elapsed: 0.0038652997546725805 h
+all models equivalent!
+starting cycle: 9
+time elapsed: 0.02992416269249386 h
+all models equivalent!
+starting cycle: 5
+time elapsed: 0.006866804295116001 h
+starting cycle: 6
+time elapsed: 0.007839525673124525 h
+starting cycle: 7
+time elapsed: 0.008550277021196153 h
+starting cycle: 10
+time elapsed: 0.03321487062507206 h
+starting cycle: 8
+time elapsed: 0.009305744833416408 h
+all models equivalent!
+starting cycle: 9
+time elapsed: 0.01022656328148312 h
+starting cycle: 10
+time elapsed: 0.010936366783248054 h
+all models equivalent!
+starting cycle: 11
+time elapsed: 0.012366424865192837 h
+all models equivalent!
+starting cycle: 11
+time elapsed: 0.03784013754791683 h
+error flags?: True
+run out of time: False
+run out of cycles: False
+failed to produce experiment too many times: True
+starting development: conf05_tc04_r0
+starting cycle: 12
+time elapsed: 0.01389026701450348 h
+starting cycle: 13
+time elapsed: 0.014625713494088914 h
+all models equivalent!
+starting cycle: 1
+time elapsed: 0.0014653616481357151 h
+starting cycle: 14
+time elapsed: 0.016463957495159574 h
+starting cycle: 2
+time elapsed: 0.0027686350213156808 h
+all models equivalent!
+starting cycle: 3
+time elapsed: 0.004457808335622151 h
+starting cycle: 15
+time elapsed: 0.01848487767908308 h
+all models equivalent!
+starting cycle: 4
+time elapsed: 0.005309063129954868 h
+starting cycle: 5
+time elapsed: 0.006129170987341139 h
+starting cycle: 16
+time elapsed: 0.020336973600917393 h
+all models equivalent!
+starting cycle: 6
+time elapsed: 0.006946722070376078 h
+starting cycle: 7
+time elapsed: 0.007777911159727309 h
+starting cycle: 17
+time elapsed: 0.021742895775371127 h
+all models equivalent!
+starting cycle: 8
+time elapsed: 0.00916281693511539 h
+starting cycle: 18
+time elapsed: 0.0238709247774548 h
+all models equivalent!
+starting cycle: 9
+time elapsed: 0.010507233407762315 h
+all models equivalent!
+starting cycle: 19
+time elapsed: 0.025181235803498164 h
+all models equivalent!
+starting cycle: 10
+time elapsed: 0.012042699257532756 h
+all models equivalent!
+starting cycle: 20
+time elapsed: 0.027056218253241646 h
+all models equivalent!
+starting cycle: 11
+time elapsed: 0.013503287765714857 h
+all models equivalent!
+starting cycle: 21
+time elapsed: 0.028816203872362774 h
+starting cycle: 12
+time elapsed: 0.015063663125038146 h
+all models equivalent!
+all models equivalent!
+starting cycle: 13
+time elapsed: 0.016424860225783454 h
+all models equivalent!
+starting cycle: 22
+time elapsed: 0.030767587423324586 h
+error flags?: True
+run out of time: False
+run out of cycles: False
+failed to produce experiment too many times: True
+starting development: conf05_tc05_r0
+starting cycle: 14
+time elapsed: 0.018105701671706307 h
+all models equivalent!
+starting cycle: 15
+time elapsed: 0.019861382246017457 h
+all models equivalent!
+starting cycle: 16
+time elapsed: 0.02137009925312466 h
+all models equivalent!
+starting cycle: 17
+time elapsed: 0.023095016678174336 h
+all models equivalent!
+starting cycle: 18
+time elapsed: 0.024830408096313476 h
+error flags?: True
+run out of time: False
+run out of cycles: False
+failed to produce experiment too many times: True
+starting development: conf05_tc04_r1
+starting cycle: 1
+time elapsed: 0.0013977274629804824 h
+starting cycle: 2
+time elapsed: 0.002314631210433112 h
+starting cycle: 3
+time elapsed: 0.00427813450495402 h
+starting cycle: 4
+time elapsed: 0.005863820844226413 h
+starting cycle: 1
+time elapsed: 0.01440089397960239 h
+starting cycle: 5
+time elapsed: 0.006836238768365648 h
+starting cycle: 6
+time elapsed: 0.007866107622782389 h
+starting cycle: 7
+time elapsed: 0.008923848470052084 h
+starting cycle: 2
+time elapsed: 0.017146440744400023 h
+starting cycle: 8
+time elapsed: 0.010009868476125929 h
+starting cycle: 9
+time elapsed: 0.011279617680443658 h
+all models equivalent!
+starting cycle: 3
+time elapsed: 0.01973266263802846 h
+starting cycle: 10
+time elapsed: 0.012771893673472935 h
+starting cycle: 11
+time elapsed: 0.01383038878440857 h
+all models equivalent!
+starting cycle: 4
+time elapsed: 0.022053864465819466 h
+starting cycle: 12
+time elapsed: 0.015195343030823602 h
+all models equivalent!
+starting cycle: 13
+time elapsed: 0.016469855705897013 h
+all models equivalent!
+starting cycle: 5
+time elapsed: 0.024864090416166516 h
+starting cycle: 14
+time elapsed: 0.01800970839129554 h
+all models equivalent!
+starting cycle: 6
+time elapsed: 0.027024488978915743 h
+starting cycle: 15
+time elapsed: 0.019431920912530688 h
+all models equivalent!
+starting cycle: 16
+time elapsed: 0.020784304936726887 h
+all models equivalent!
+starting cycle: 7
+time elapsed: 0.02910648398929172 h
+starting cycle: 17
+time elapsed: 0.022075577908092076 h
+all models equivalent!
+starting cycle: 8
+time elapsed: 0.031153150465753343 h
+starting cycle: 18
+time elapsed: 0.023563381565941705 h
+all models equivalent!
+starting cycle: 19
+time elapsed: 0.024861218730608623 h
+all models equivalent!
+starting cycle: 20
+time elapsed: 0.026169112986988492 h
+error flags?: True
+run out of time: False
+run out of cycles: False
+failed to produce experiment too many times: True
+starting development: conf05_tc04_r2
+starting cycle: 9
+time elapsed: 0.035163480109638635 h
+starting cycle: 1
+time elapsed: 0.001429343753390842 h
+starting cycle: 10
+time elapsed: 0.03662381907304128 h
+starting cycle: 2
+time elapsed: 0.0029162174463272096 h
+starting cycle: 11
+time elapsed: 0.038014126817385356 h
+all models equivalent!
+starting cycle: 3
+time elapsed: 0.004288230074776543 h
+starting cycle: 4
+time elapsed: 0.005084618131319682 h
+starting cycle: 5
+time elapsed: 0.005880782074398465 h
+starting cycle: 6
+time elapsed: 0.007478200793266296 h
+starting cycle: 12
+time elapsed: 0.04177816695637173 h
+all models equivalent!
+starting cycle: 7
+time elapsed: 0.008266931838459439 h
+all models equivalent!
+starting cycle: 8
+time elapsed: 0.010147622757487826 h
+all models equivalent!
+starting cycle: 13
+time elapsed: 0.04514980494976044 h
+all models equivalent!
+starting cycle: 9
+time elapsed: 0.011666471428341336 h
+starting cycle: 10
+time elapsed: 0.01295939995182885 h
+all models equivalent!
+starting cycle: 14
+time elapsed: 0.048187578784094916 h
+all models equivalent!
+starting cycle: 11
+time elapsed: 0.015068670445018344 h
+all models equivalent!
+starting cycle: 12
+time elapsed: 0.016515396502282884 h
+all models equivalent!
+starting cycle: 15
+time elapsed: 0.05159904989931319 h
+all models equivalent!
+starting cycle: 13
+time elapsed: 0.01798133545451694 h
+all models equivalent!
+starting cycle: 14
+time elapsed: 0.019424173898167082 h
+all models equivalent!
+starting cycle: 16
+time elapsed: 0.054442609747250875 h
+all models equivalent!
+starting cycle: 15
+time elapsed: 0.021538631319999696 h
+all models equivalent!
+starting cycle: 16
+time elapsed: 0.02308905687597063 h
+all models equivalent!
+starting cycle: 17
+time elapsed: 0.05862762517399258 h
+starting cycle: 17
+time elapsed: 0.02468733867009481 h
+all models equivalent!
+all models equivalent!
+starting cycle: 18
+time elapsed: 0.02637308789624108 h
+all models equivalent!
+starting cycle: 18
+time elapsed: 0.061929361290401885 h
+starting cycle: 19
+time elapsed: 0.027844022115071615 h
+error flags?: True
+run out of time: False
+run out of cycles: False
+failed to produce experiment too many times: True
+starting development: conf05_tc06_r0
+all models equivalent!
+starting cycle: 19
+time elapsed: 0.06555737137794494 h
+all models equivalent!
+starting cycle: 1
+time elapsed: 0.00477726678053538 h
+starting cycle: 20
+time elapsed: 0.06792089912626478 h
+error flags?: True
+run out of time: False
+run out of cycles: False
+failed to produce experiment too many times: True
+starting development: conf05_tc05_r1
+starting cycle: 2
+time elapsed: 0.008342840141720242 h
+starting cycle: 3
+time elapsed: 0.011576888230111864 h
+starting cycle: 4
+time elapsed: 0.013463701407114665 h
+starting cycle: 5
+time elapsed: 0.01514098670747545 h
+starting cycle: 6
+time elapsed: 0.017451787061161465 h
+starting cycle: 1
+time elapsed: 0.014651697476704915 h
+starting cycle: 7
+time elapsed: 0.02202273971504635 h
+starting cycle: 2
+time elapsed: 0.01802431450949775 h
+starting cycle: 8
+time elapsed: 0.024407873617278204 h
+all models equivalent!
+starting cycle: 3
+time elapsed: 0.020718834863768684 h
+starting cycle: 4
+time elapsed: 0.023376060591803655 h
+starting cycle: 9
+time elapsed: 0.029755162994066876 h
+all models equivalent!
+starting cycle: 5
+time elapsed: 0.025575656361050077 h
+starting cycle: 10
+time elapsed: 0.034034066398938495 h
+starting cycle: 6
+time elapsed: 0.02806627478864458 h
+all models equivalent!
+starting cycle: 7
+time elapsed: 0.02958759287993113 h
+starting cycle: 8
+time elapsed: 0.03100874927308824 h
+all models equivalent!
+starting cycle: 11
+time elapsed: 0.03800799661212497 h
+all models equivalent!
+starting cycle: 12
+time elapsed: 0.0423601237932841 h
+all models equivalent!
+starting cycle: 9
+time elapsed: 0.0389316338300705 h
+starting cycle: 13
+time elapsed: 0.04604507201247745 h
+all models equivalent!
+starting cycle: 10
+time elapsed: 0.041421016256014506 h
+starting cycle: 11
+time elapsed: 0.042742555803722805 h
+all models equivalent!
+starting cycle: 14
+time elapsed: 0.049972242183155484 h
+all models equivalent!
+starting cycle: 12
+time elapsed: 0.04562424911393059 h
+all models equivalent!
+starting cycle: 15
+time elapsed: 0.05423774513933394 h
+all models equivalent!
+starting cycle: 13
+time elapsed: 0.04970781458748712 h
+all models equivalent!
+starting cycle: 16
+time elapsed: 0.05824627896149953 h
+all models equivalent!
+starting cycle: 14
+time elapsed: 0.05350971235169305 h
+all models equivalent!
+starting cycle: 17
+time elapsed: 0.06230795661608378 h
+error flags?: True
+run out of time: False
+run out of cycles: False
+failed to produce experiment too many times: True
+starting development: conf05_tc06_r1
+starting cycle: 15
+time elapsed: 0.05685695416397519 h
+all models equivalent!
+starting cycle: 16
+time elapsed: 0.05912793298562368 h
+all models equivalent!
+starting cycle: 1
+time elapsed: 0.0047810728682412046 h
+starting cycle: 17
+time elapsed: 0.062190739578670926 h
+all models equivalent!
+starting cycle: 2
+time elapsed: 0.007463040086958144 h
+starting cycle: 18
+time elapsed: 0.06565547671582964 h
+all models equivalent!
+starting cycle: 3
+time elapsed: 0.012644778423839145 h
+starting cycle: 19
+time elapsed: 0.06973610877990723 h
+all models equivalent!
+starting cycle: 4
+time elapsed: 0.01511557095580631 h
+starting cycle: 20
+time elapsed: 0.07371598217222426 h
+error flags?: True
+run out of time: False
+run out of cycles: False
+failed to produce experiment too many times: True
+starting development: conf05_tc05_r2
+starting cycle: 5
+time elapsed: 0.018521854016515942 h
+starting cycle: 6
+time elapsed: 0.019989825155999924 h
+all models equivalent!
+starting cycle: 7
+time elapsed: 0.023526945975091723 h
+all models equivalent!
+starting cycle: 8
+time elapsed: 0.027039572530322603 h
+all models equivalent!
+starting cycle: 9
+time elapsed: 0.031657358076837325 h
+starting cycle: 1
+time elapsed: 0.014398565424813164 h
+all models equivalent!
+starting cycle: 2
+time elapsed: 0.01718973345226712 h
+starting cycle: 10
+time elapsed: 0.03546411666605208 h
+all models equivalent!
+starting cycle: 3
+time elapsed: 0.019629500640763176 h
+starting cycle: 4
+time elapsed: 0.021836197508705985 h
+starting cycle: 11
+time elapsed: 0.039598404102855256 h
+all models equivalent!
+starting cycle: 5
+time elapsed: 0.023987229135301377 h
+starting cycle: 6
+time elapsed: 0.026103231840663488 h
+starting cycle: 12
+time elapsed: 0.044534369508425396 h
+starting cycle: 7
+time elapsed: 0.027453655269410876 h
+all models equivalent!
+starting cycle: 8
+time elapsed: 0.02884697549872928 h
+all models equivalent!
+starting cycle: 13
+time elapsed: 0.0480837631225586 h
+all models equivalent!
+starting cycle: 14
+time elapsed: 0.051710587872399225 h
+all models equivalent!
+starting cycle: 9
+time elapsed: 0.035315280622906155 h
+starting cycle: 10
+time elapsed: 0.03778968956735399 h
+starting cycle: 15
+time elapsed: 0.0557211215628518 h
+error flags?: True
+run out of time: False
+run out of cycles: False
+failed to produce experiment too many times: True
+starting development: conf05_tc06_r2
+starting cycle: 11
+time elapsed: 0.039291290839513146 h
+starting cycle: 12
+time elapsed: 0.04127724607785543 h
+all models equivalent!
+starting cycle: 1
+time elapsed: 0.004769866400294834 h
+starting cycle: 13
+time elapsed: 0.0438202178478241 h
+all models equivalent!
+starting cycle: 2
+time elapsed: 0.0066204642587237884 h
+starting cycle: 3
+time elapsed: 0.00835973858833313 h
+starting cycle: 14
+time elapsed: 0.047246025535795426 h
+all models equivalent!
+starting cycle: 4
+time elapsed: 0.012262354162004259 h
+starting cycle: 15
+time elapsed: 0.05061291853586833 h
+all models equivalent!
+starting cycle: 5
+time elapsed: 0.014652973877059088 h
+starting cycle: 16
+time elapsed: 0.05330530285835266 h
+all models equivalent!
+starting cycle: 17
+time elapsed: 0.05553473267290327 h
+all models equivalent!
+starting cycle: 6
+time elapsed: 0.01758286535739899 h
+starting cycle: 7
+time elapsed: 0.020623141792085437 h
+starting cycle: 18
+time elapsed: 0.05920209209124247 h
+all models equivalent!
+all models equivalent!
+starting cycle: 19
+time elapsed: 0.06213568091392517 h
+all models equivalent!
+starting cycle: 8
+time elapsed: 0.025683558053440518 h
+all models equivalent!
+starting cycle: 20
+time elapsed: 0.06519661333825853 h
+all models equivalent!
+starting cycle: 21
+time elapsed: 0.06843298494815826 h
+error flags?: True
+run out of time: False
+run out of cycles: False
+failed to produce experiment too many times: True
+starting development: conf05_tc07_r0
+starting cycle: 9
+time elapsed: 0.031382791333728365 h
+all models equivalent!
+starting cycle: 10
+time elapsed: 0.03661868135134379 h
+all models equivalent!
+starting cycle: 1
+time elapsed: 0.012455981042650012 h
+starting cycle: 11
+time elapsed: 0.04280997865729862 h
+all models equivalent!
+starting cycle: 2
+time elapsed: 0.018332381314701503 h
+starting cycle: 12
+time elapsed: 0.049757392274008855 h
+all models equivalent!
+starting cycle: 3
+time elapsed: 0.022321115930875143 h
+starting cycle: 13
+time elapsed: 0.05420030468040042 h
+all models equivalent!
+starting cycle: 4
+time elapsed: 0.02527515431245168 h
+starting cycle: 14
+time elapsed: 0.059587866730160186 h
+starting cycle: 5
+time elapsed: 0.029555187622706095 h
+all models equivalent!
+starting cycle: 6
+time elapsed: 0.03316119909286499 h
+starting cycle: 15
+time elapsed: 0.06417535185813904 h
+all models equivalent!
+starting cycle: 7
+time elapsed: 0.036861317422654895 h
+all models equivalent!
+starting cycle: 16
+time elapsed: 0.06983190966977014 h
+error flags?: True
+run out of time: False
+run out of cycles: False
+failed to produce experiment too many times: True
+starting cycle: 8
+time elapsed: 0.05710807389683194 h
+starting cycle: 9
+time elapsed: 0.060939866635534495 h
+starting cycle: 10
+time elapsed: 0.06373068286312951 h
+starting cycle: 11
+time elapsed: 0.0663366245561176 h
+all models equivalent!
+starting cycle: 12
+time elapsed: 0.07350376089413961 h
+starting cycle: 13
+time elapsed: 0.07622524718443553 h
+starting cycle: 14
+time elapsed: 0.07882663137382931 h
+all models equivalent!
+starting cycle: 15
+time elapsed: 0.09041935649183061 h
+starting cycle: 16
+time elapsed: 0.09371374838882023 h
+all models equivalent!
+starting cycle: 17
+time elapsed: 0.10005360987451341 h
+all models equivalent!
+starting cycle: 18
+time elapsed: 0.10706046117676629 h
+all models equivalent!
+starting cycle: 19
+time elapsed: 0.11315464205212063 h
+all models equivalent!
+starting cycle: 20
+time elapsed: 0.11937684184975095 h
+all models equivalent!
+starting cycle: 21
+time elapsed: 0.12484767682022518 h
+all models equivalent!
+starting cycle: 22
+time elapsed: 0.130935743716028 h
+all models equivalent!
+starting cycle: 23
+time elapsed: 0.1389116175307168 h
+all models equivalent!
+starting cycle: 24
+time elapsed: 0.14510062237580618 h
+all models equivalent!
+starting cycle: 25
+time elapsed: 0.152452615764406 h
+error flags?: True
+run out of time: False
+run out of cycles: False
+failed to produce experiment too many times: True
+starting development: conf05_tc07_r1
+starting cycle: 1
+time elapsed: 0.011878901256455316 h
+starting cycle: 2
+time elapsed: 0.01794556087917752 h
+starting cycle: 3
+time elapsed: 0.021760071449809605 h
+starting cycle: 4
+time elapsed: 0.02557999147309197 h
+starting cycle: 5
+time elapsed: 0.02976252131991916 h
+starting cycle: 6
+time elapsed: 0.03263403713703156 h
+starting cycle: 7
+time elapsed: 0.03616050759951273 h
+starting cycle: 8
+time elapsed: 0.03999161303043366 h
+all models equivalent!
+starting cycle: 9
+time elapsed: 0.050566397971577116 h
+starting cycle: 10
+time elapsed: 0.056486816340022616 h
+starting cycle: 11
+time elapsed: 0.0594249963760376 h
+starting cycle: 12
+time elapsed: 0.062201508416069876 h
+starting cycle: 13
+time elapsed: 0.06494363533125984 h
+all models equivalent!
+starting cycle: 14
+time elapsed: 0.07380134489801195 h
+starting cycle: 15
+time elapsed: 0.07720891356468201 h
+all models equivalent!
+starting cycle: 16
+time elapsed: 0.08380069785647921 h
+all models equivalent!
+starting cycle: 17
+time elapsed: 0.0908498771985372 h
+all models equivalent!
+starting cycle: 18
+time elapsed: 0.09847813347975413 h
+all models equivalent!
+starting cycle: 19
+time elapsed: 0.10585271338621775 h
+all models equivalent!
+starting cycle: 20
+time elapsed: 0.11295413566960229 h
+all models equivalent!
+starting cycle: 21
+time elapsed: 0.11863684038321178 h
+all models equivalent!
+starting cycle: 22
+time elapsed: 0.12614624288347032 h
+all models equivalent!
+starting cycle: 23
+time elapsed: 0.13296053813563452 h
+all models equivalent!
+starting cycle: 24
+time elapsed: 0.13952156901359558 h
+error flags?: True
+run out of time: False
+run out of cycles: False
+failed to produce experiment too many times: True
+starting development: conf05_tc07_r2
+starting cycle: 1
+time elapsed: 0.011937327318721347 h
+starting cycle: 2
+time elapsed: 0.0179241814215978 h
+starting cycle: 3
+time elapsed: 0.021753345131874085 h
+starting cycle: 4
+time elapsed: 0.02560455898443858 h
+starting cycle: 5
+time elapsed: 0.029839462637901305 h
+starting cycle: 6
+time elapsed: 0.03333375612894694 h
+starting cycle: 7
+time elapsed: 0.03737277024322086 h
+starting cycle: 8
+time elapsed: 0.04004299561182658 h
+all models equivalent!
+starting cycle: 9
+time elapsed: 0.05000711474153731 h
+starting cycle: 10
+time elapsed: 0.05316347983148363 h
+starting cycle: 11
+time elapsed: 0.05598797579606374 h
+starting cycle: 12
+time elapsed: 0.058693681293063696 h
+starting cycle: 13
+time elapsed: 0.06129049797852834 h
+starting cycle: 14
+time elapsed: 0.0638538400332133 h
+all models equivalent!
+starting cycle: 15
+time elapsed: 0.07039999107519786 h
+all models equivalent!
+starting cycle: 16
+time elapsed: 0.0776941759718789 h
+all models equivalent!
+starting cycle: 17
+time elapsed: 0.08394822577635447 h
+all models equivalent!
+starting cycle: 18
+time elapsed: 0.09277293874157799 h
+all models equivalent!
+starting cycle: 19
+time elapsed: 0.09998732758892907 h
+all models equivalent!
+starting cycle: 20
+time elapsed: 0.10597906092802684 h
+all models equivalent!
+starting cycle: 21
+time elapsed: 0.11306284493870206 h
+all models equivalent!
+starting cycle: 22
+time elapsed: 0.11836954957909054 h
+all models equivalent!
+starting cycle: 23
+time elapsed: 0.12469784001509349 h
+error flags?: True
+run out of time: False
+run out of cycles: False
+failed to produce experiment too many times: True
+[None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]

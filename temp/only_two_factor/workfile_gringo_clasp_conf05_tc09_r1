@@ -1,0 +1,1496 @@
+
+#hide.
+#show add/1.
+#show remove/1.
+#show design_type/1.
+#show design_deletable/1.
+#show design_available/1.
+#show design_entity_det/1.
+#show design_entity_loc/1.
+#show design_compartment/1.
+#show design_activity_rec/1.
+#show design_activity_det/1.
+compartment(c_02;c_05;c_22;c_23;c_01;c_17;c_14;c_35;c_11;c_07;c_18;c_31;c_34;c_27;c_26).
+gene(ent_0,none).
+complex(ent_1,none).
+catalyses(ent_1,none,act_4).
+metabolite(ent_2,none).
+metabolite(ent_3,none).
+protein(ent_4,none).
+transports(ent_4,none,act_28).
+gene(ent_5,none).
+metabolite(ent_6,none).
+metabolite(ent_7,none).
+gene(ent_8,none).
+metabolite(ent_9,none).
+gene(ent_10,none).
+gene(ent_11,none).
+metabolite(ent_12,none).
+metabolite(ent_13,none).
+protein(ent_14,none).
+catalyses(ent_14,none,act_2).
+protein(ent_15,none).
+catalyses(ent_15,none,act_7).
+gene(ent_16,none).
+protein(ent_17,none).
+transports(ent_17,none,act_12).
+metabolite(ent_18,none).
+gene(ent_19,none).
+protein(ent_20,none).
+transports(ent_20,none,act_28).
+metabolite(ent_21,none).
+protein(ent_22,none).
+catalyses(ent_22,none,act_17).
+metabolite(ent_23,none).
+metabolite(ent_24,none).
+gene(ent_25,none).
+metabolite(ent_26,none).
+gene(ent_27,none).
+metabolite(ent_28,none).
+gene(ent_29,none).
+protein(ent_30,none).
+transports(ent_30,none,act_12).
+protein(ent_31,none).
+transports(ent_31,none,act_9).
+protein(ent_32,none).
+metabolite(ent_33,none).
+metabolite(ent_34,none).
+gene(ent_35,none).
+gene(ent_36,none).
+protein(ent_37,none).
+catalyses(ent_37,none,act_7).
+protein(ent_38,none).
+transports(ent_38,none,act_9).
+gene(ent_39,none).
+protein(ent_40,none).
+transports(ent_40,none,act_9).
+gene(ent_41,none).
+metabolite(ent_42,none).
+metabolite(ent_43,none).
+gene(ent_44,none).
+gene(ent_45,none).
+metabolite(ent_46,none).
+metabolite(ent_47,none).
+metabolite(ent_48,none).
+gene(ent_49,none).
+metabolite(ent_50,none).
+metabolite(ent_51,none).
+gene(ent_52,none).
+metabolite(ent_53,none).
+protein(ent_54,none).
+protein(ent_55,none).
+catalyses(ent_55,none,act_7).
+gene(ent_56,none).
+protein(ent_57,none).
+catalyses(ent_57,none,act_26).
+metabolite(ent_58,none).
+metabolite(ent_59,none).
+protein(ent_60,ver_0).
+catalyses(ent_60,ver_0,act_17).
+catalyses(ent_60,ver_0,act_2).
+protein(ent_61,ver_1).
+catalyses(ent_61,ver_1,act_66).
+protein(ent_62,ver_1).
+catalyses(ent_62,ver_1,act_67).
+catalyses(ent_62,ver_1,act_17).
+catalyses(ent_62,ver_1,act_61).
+protein(ent_63,ver_0).
+protein(ent_64,ver_0).
+catalyses(ent_64,ver_0,act_4).
+catalyses(ent_64,ver_0,act_17).
+catalyses(ent_64,ver_0,act_65).
+protein(ent_65,ver_1).
+catalyses(ent_65,ver_1,act_7).
+protein(ent_66,ver_0).
+catalyses(ent_66,ver_0,act_68).
+catalyses(ent_66,ver_0,act_69).
+catalyses(ent_66,ver_0,act_17).
+protein(ent_67,ver_1).
+catalyses(ent_67,ver_1,act_4).
+catalyses(ent_67,ver_1,act_7).
+protein(ent_68,ver_0).
+catalyses(ent_68,ver_0,act_2).
+catalyses(ent_68,ver_0,act_26).
+protein(ent_69,ver_0).
+catalyses(ent_69,ver_0,act_70).
+catalyses(ent_69,ver_0,act_26).
+protein(ent_70,ver_0).
+catalyses(ent_70,ver_0,act_63).
+catalyses(ent_70,ver_0,act_7).
+catalyses(ent_70,ver_0,act_2).
+protein(ent_71,ver_0).
+complex(ent_72,ver_0).
+catalyses(ent_72,ver_0,act_4).
+protein(ent_73,none).
+catalyses(ent_73,none,act_30).
+protein(ent_73,ver_0).
+catalyses(ent_73,ver_0,act_30).
+protein(ent_73,ver_1).
+catalyses(ent_73,ver_1,act_30).
+protein(ent_73,ver_0).
+catalyses(ent_73,ver_0,act_30).
+protein(ent_73,ver_1).
+catalyses(ent_73,ver_1,act_30).
+protein(ent_78,none).
+catalyses(ent_78,none,act_14).
+protein(ent_78,ver_0).
+catalyses(ent_78,ver_0,act_30).
+protein(ent_78,ver_1).
+catalyses(ent_78,ver_1,act_25).
+catalyses(ent_78,ver_1,act_23).
+catalyses(ent_78,ver_1,act_14).
+protein(ent_78,ver_0).
+catalyses(ent_78,ver_0,act_30).
+protein(ent_78,ver_1).
+catalyses(ent_78,ver_1,act_25).
+catalyses(ent_78,ver_1,act_23).
+catalyses(ent_78,ver_1,act_14).
+protein(ent_83,none).
+catalyses(ent_83,none,act_14).
+protein(ent_83,ver_0).
+catalyses(ent_83,ver_0,act_62).
+catalyses(ent_83,ver_0,act_14).
+protein(ent_83,ver_1).
+catalyses(ent_83,ver_1,act_14).
+protein(ent_83,ver_0).
+catalyses(ent_83,ver_0,act_62).
+catalyses(ent_83,ver_0,act_14).
+protein(ent_83,ver_1).
+catalyses(ent_83,ver_1,act_14).
+protein(ent_88,none).
+catalyses(ent_88,none,act_23).
+catalyses(ent_88,none,act_25).
+protein(ent_88,ver_0).
+catalyses(ent_88,ver_0,act_25).
+catalyses(ent_88,ver_0,act_23).
+protein(ent_88,ver_1).
+catalyses(ent_88,ver_1,act_64).
+catalyses(ent_88,ver_1,act_25).
+protein(ent_88,ver_0).
+catalyses(ent_88,ver_0,act_25).
+catalyses(ent_88,ver_0,act_23).
+protein(ent_88,ver_1).
+catalyses(ent_88,ver_1,act_64).
+catalyses(ent_88,ver_1,act_25).
+expression(act_0).
+expression(act_1).
+reaction(act_2).
+expression(act_3).
+reaction(act_4).
+expression(act_5).
+expression(act_6).
+reaction(act_7).
+expression(act_8).
+transport(act_9).
+expression(act_10).
+complex_formation(act_11).
+transport(act_12).
+expression(act_13).
+reaction(act_14).
+expression(act_15).
+expression(act_16).
+reaction(act_17).
+expression(act_18).
+growth(act_19).
+expression(act_20).
+expression(act_21).
+expression(act_22).
+reaction(act_23).
+expression(act_24).
+reaction(act_25).
+reaction(act_26).
+expression(act_27).
+transport(act_28).
+expression(act_29).
+reaction(act_30).
+expression(act_31).
+expression(act_32).
+expression(act_33).
+expression(act_34).
+expression(act_35).
+expression(act_36).
+expression(act_37).
+expression(act_38).
+expression(act_39).
+expression(act_40).
+expression(act_41).
+expression(act_42).
+expression(act_43).
+expression(act_44).
+expression(act_45).
+expression(act_46).
+expression(act_47).
+expression(act_48).
+expression(act_49).
+expression(act_50).
+expression(act_51).
+expression(act_52).
+complex_formation(act_53).
+expression(act_54).
+expression(act_55).
+expression(act_56).
+expression(act_57).
+expression(act_58).
+expression(act_59).
+expression(act_60).
+reaction(act_61).
+reaction(act_62).
+reaction(act_63).
+reaction(act_64).
+reaction(act_65).
+reaction(act_66).
+reaction(act_67).
+reaction(act_68).
+reaction(act_69).
+reaction(act_70).
+transport(act_71).
+transport(act_72).
+transport(act_73).
+transport(act_74).
+transport(act_75).
+transport(act_76).
+transport(act_77).
+transport(act_78).
+transport(act_79).
+transport(act_80).
+transport(act_81).
+transport(act_82).
+transport(act_83).
+transport(act_84).
+transport(act_85).
+transport(act_86).
+transport(act_87).
+transport(act_88).
+transport(act_89).
+transport(act_90).
+transport(act_91).
+transport(act_92).
+transport(act_93).
+substrate(ent_11,none,c_18,act_0).
+product(ent_15,none,c_05,act_0).
+substrate(ent_10,none,c_18,act_1).
+product(ent_88,none,c_07,act_1).
+substrate(ent_43,none,c_05,act_2).
+substrate(ent_2,none,c_05,act_2).
+substrate(ent_59,none,c_05,act_2).
+enz_required(act_2).
+enz_compartment(c_05,act_2).
+product(ent_9,none,c_05,act_2).
+product(ent_3,none,c_05,act_2).
+product(ent_18,none,c_05,act_2).
+substrate(ent_25,none,c_18,act_3).
+product(ent_22,none,c_05,act_3).
+substrate(ent_24,none,c_05,act_4).
+substrate(ent_23,none,c_05,act_4).
+substrate(ent_51,none,c_05,act_4).
+enz_required(act_4).
+enz_compartment(c_05,act_4).
+product(ent_34,none,c_05,act_4).
+product(ent_46,none,c_05,act_4).
+product(ent_21,none,c_05,act_4).
+substrate(ent_35,none,c_18,act_5).
+product(ent_32,none,c_05,act_5).
+substrate(ent_44,none,c_18,act_6).
+product(ent_20,none,c_02,act_6).
+substrate(ent_48,none,c_05,act_7).
+substrate(ent_13,none,c_05,act_7).
+enz_required(act_7).
+enz_compartment(c_05,act_7).
+product(ent_6,none,c_05,act_7).
+product(ent_23,none,c_05,act_7).
+substrate(ent_41,none,c_18,act_8).
+product(ent_4,none,c_02,act_8).
+substrate(ent_24,none,c_26,act_9).
+transp_required(act_9).
+transp_compartment(c_27,act_9).
+substrate(ent_2,none,c_05,act_9).
+product(ent_24,none,c_05,act_9).
+product(ent_2,none,c_26,act_9).
+substrate(ent_0,none,c_18,act_10).
+product(ent_73,none,c_07,act_10).
+substrate(ent_32,none,c_05,act_11).
+substrate(ent_54,none,c_05,act_11).
+product(ent_1,none,c_05,act_11).
+substrate(ent_33,none,c_05,act_12).
+transp_required(act_12).
+transp_compartment(c_11,act_12).
+substrate(ent_48,none,c_07,act_12).
+product(ent_48,none,c_05,act_12).
+product(ent_33,none,c_07,act_12).
+substrate(ent_16,none,c_18,act_13).
+product(ent_78,none,c_07,act_13).
+substrate(ent_12,none,c_07,act_14).
+substrate(ent_21,none,c_07,act_14).
+enz_required(act_14).
+enz_compartment(c_07,act_14).
+substrate(ent_6,none,c_07,act_14).
+product(ent_42,none,c_07,act_14).
+product(ent_26,none,c_07,act_14).
+product(ent_24,none,c_07,act_14).
+substrate(ent_56,none,c_18,act_15).
+product(ent_37,none,c_05,act_15).
+substrate(ent_27,none,c_18,act_16).
+product(ent_54,none,c_05,act_16).
+substrate(ent_28,none,c_05,act_17).
+substrate(ent_50,none,c_05,act_17).
+substrate(ent_21,none,c_05,act_17).
+enz_required(act_17).
+enz_compartment(c_05,act_17).
+product(ent_53,none,c_05,act_17).
+product(ent_24,none,c_05,act_17).
+product(ent_6,none,c_05,act_17).
+product(ent_2,none,c_05,act_17).
+substrate(ent_8,none,c_18,act_18).
+product(ent_83,none,c_07,act_18).
+substrate(ent_3,none,c_05,act_19).
+substrate(ent_43,none,c_05,act_19).
+substrate(ent_13,none,c_05,act_19).
+substrate(ent_2,none,c_05,act_19).
+substrate(ent_49,none,c_18,act_20).
+product(ent_55,none,c_05,act_20).
+substrate(ent_19,none,c_18,act_21).
+product(ent_14,none,c_05,act_21).
+substrate(ent_52,none,c_18,act_22).
+product(ent_40,none,c_27,act_22).
+substrate(ent_21,none,c_07,act_23).
+enz_required(act_23).
+enz_compartment(c_07,act_23).
+substrate(ent_47,none,c_07,act_23).
+product(ent_7,none,c_07,act_23).
+substrate(ent_29,none,c_18,act_24).
+product(ent_31,none,c_27,act_24).
+substrate(ent_42,none,c_07,act_25).
+enz_required(act_25).
+enz_compartment(c_07,act_25).
+product(ent_21,none,c_07,act_25).
+product(ent_47,none,c_07,act_25).
+substrate(ent_24,none,c_05,act_26).
+substrate(ent_46,none,c_05,act_26).
+substrate(ent_13,none,c_05,act_26).
+substrate(ent_51,none,c_05,act_26).
+enz_required(act_26).
+enz_compartment(c_05,act_26).
+product(ent_28,none,c_05,act_26).
+product(ent_34,none,c_05,act_26).
+product(ent_21,none,c_05,act_26).
+substrate(ent_5,none,c_18,act_27).
+product(ent_17,none,c_11,act_27).
+substrate(ent_24,none,c_01,act_28).
+substrate(ent_2,none,c_01,act_28).
+transp_required(act_28).
+transp_compartment(c_02,act_28).
+product(ent_24,none,c_05,act_28).
+product(ent_2,none,c_05,act_28).
+substrate(ent_45,none,c_18,act_29).
+product(ent_30,none,c_11,act_29).
+substrate(ent_50,none,c_07,act_30).
+enz_required(act_30).
+enz_compartment(c_07,act_30).
+substrate(ent_7,none,c_07,act_30).
+product(ent_58,none,c_07,act_30).
+product(ent_48,none,c_07,act_30).
+product(ent_53,none,c_07,act_30).
+product(ent_24,none,c_07,act_30).
+substrate(ent_36,none,c_18,act_31).
+product(ent_38,none,c_27,act_31).
+substrate(ent_39,none,c_18,act_32).
+product(ent_57,none,c_05,act_32).
+substrate(ent_11,none,c_18,act_33).
+product(ent_60,ver_0,c_05,act_33).
+substrate(ent_11,none,c_18,act_34).
+product(ent_65,ver_1,c_05,act_34).
+substrate(ent_56,none,c_18,act_35).
+product(ent_71,ver_0,c_05,act_35).
+substrate(ent_56,none,c_18,act_36).
+product(ent_67,ver_1,c_05,act_36).
+substrate(ent_39,none,c_18,act_37).
+product(ent_69,ver_0,c_05,act_37).
+substrate(ent_27,none,c_18,act_38).
+product(ent_66,ver_0,c_05,act_38).
+substrate(ent_27,none,c_18,act_39).
+product(ent_61,ver_1,c_05,act_39).
+substrate(ent_49,none,c_18,act_40).
+product(ent_68,ver_0,c_05,act_40).
+substrate(ent_35,none,c_18,act_41).
+product(ent_63,ver_0,c_05,act_41).
+substrate(ent_25,none,c_18,act_42).
+product(ent_64,ver_0,c_05,act_42).
+substrate(ent_25,none,c_18,act_43).
+product(ent_62,ver_1,c_05,act_43).
+substrate(ent_19,none,c_18,act_44).
+product(ent_70,ver_0,c_05,act_44).
+substrate(ent_10,none,c_18,act_45).
+product(ent_88,ver_0,c_07,act_45).
+substrate(ent_10,none,c_18,act_46).
+product(ent_88,ver_1,c_07,act_46).
+substrate(ent_8,none,c_18,act_47).
+product(ent_83,ver_0,c_07,act_47).
+substrate(ent_8,none,c_18,act_48).
+product(ent_83,ver_1,c_07,act_48).
+substrate(ent_16,none,c_18,act_49).
+product(ent_78,ver_0,c_07,act_49).
+substrate(ent_16,none,c_18,act_50).
+product(ent_78,ver_1,c_07,act_50).
+substrate(ent_0,none,c_18,act_51).
+product(ent_73,ver_0,c_07,act_51).
+substrate(ent_0,none,c_18,act_52).
+product(ent_73,ver_1,c_07,act_52).
+substrate(ent_32,none,c_05,act_53).
+substrate(ent_54,none,c_05,act_53).
+product(ent_72,ver_0,c_05,act_53).
+substrate(ent_0,none,c_18,act_54).
+product(ent_57,none,c_05,act_54).
+substrate(ent_41,none,c_18,act_55).
+product(ent_78,ver_0,c_07,act_55).
+substrate(ent_41,none,c_18,act_56).
+product(ent_83,none,c_07,act_56).
+substrate(ent_49,none,c_18,act_57).
+product(ent_71,ver_0,c_05,act_57).
+substrate(ent_44,none,c_18,act_58).
+product(ent_64,ver_0,c_05,act_58).
+substrate(ent_41,none,c_18,act_59).
+product(ent_83,ver_1,c_07,act_59).
+substrate(ent_44,none,c_18,act_60).
+product(ent_78,ver_1,c_07,act_60).
+substrate(ent_28,none,c_05,act_61).
+substrate(ent_2,none,c_05,act_61).
+enz_required(act_61).
+enz_compartment(c_05,act_61).
+product(ent_48,none,c_05,act_61).
+product(ent_21,none,c_05,act_61).
+substrate(ent_12,none,c_07,act_62).
+substrate(ent_42,none,c_07,act_62).
+enz_required(act_62).
+enz_compartment(c_07,act_62).
+product(ent_58,none,c_07,act_62).
+product(ent_33,none,c_07,act_62).
+substrate(ent_28,none,c_05,act_63).
+enz_required(act_63).
+enz_compartment(c_05,act_63).
+product(ent_6,none,c_05,act_63).
+enz_required(act_64).
+enz_compartment(c_07,act_64).
+substrate(ent_47,none,c_07,act_64).
+product(ent_42,none,c_07,act_64).
+substrate(ent_33,none,c_05,act_65).
+substrate(ent_23,none,c_05,act_65).
+enz_required(act_65).
+enz_compartment(c_05,act_65).
+product(ent_6,none,c_05,act_65).
+substrate(ent_28,none,c_05,act_66).
+substrate(ent_13,none,c_05,act_66).
+substrate(ent_23,none,c_05,act_66).
+enz_required(act_66).
+enz_compartment(c_05,act_66).
+product(ent_3,none,c_05,act_66).
+product(ent_18,none,c_05,act_66).
+substrate(ent_13,none,c_05,act_67).
+enz_required(act_67).
+enz_compartment(c_05,act_67).
+product(ent_48,none,c_05,act_67).
+substrate(ent_46,none,c_05,act_68).
+substrate(ent_50,none,c_05,act_68).
+substrate(ent_13,none,c_05,act_68).
+enz_required(act_68).
+enz_compartment(c_05,act_68).
+product(ent_9,none,c_05,act_68).
+product(ent_23,none,c_05,act_68).
+substrate(ent_13,none,c_05,act_69).
+enz_required(act_69).
+enz_compartment(c_05,act_69).
+product(ent_34,none,c_05,act_69).
+substrate(ent_48,none,c_05,act_70).
+substrate(ent_21,none,c_05,act_70).
+enz_required(act_70).
+enz_compartment(c_05,act_70).
+product(ent_46,none,c_05,act_70).
+product(ent_23,none,c_05,act_70).
+substrate(ent_48,none,c_01,act_71).
+product(ent_48,none,c_05,act_71).
+substrate(ent_53,none,c_01,act_72).
+product(ent_53,none,c_05,act_72).
+substrate(ent_7,none,c_01,act_73).
+product(ent_7,none,c_05,act_73).
+substrate(ent_43,none,c_01,act_74).
+product(ent_43,none,c_05,act_74).
+substrate(ent_51,none,c_01,act_75).
+product(ent_51,none,c_05,act_75).
+substrate(ent_9,none,c_01,act_76).
+product(ent_9,none,c_05,act_76).
+substrate(ent_13,none,c_01,act_77).
+product(ent_13,none,c_05,act_77).
+substrate(ent_50,none,c_01,act_78).
+product(ent_50,none,c_05,act_78).
+substrate(ent_34,none,c_01,act_79).
+product(ent_34,none,c_05,act_79).
+substrate(ent_26,none,c_01,act_80).
+product(ent_26,none,c_05,act_80).
+substrate(ent_46,none,c_01,act_81).
+product(ent_46,none,c_05,act_81).
+substrate(ent_58,none,c_01,act_82).
+product(ent_58,none,c_05,act_82).
+substrate(ent_23,none,c_01,act_83).
+product(ent_23,none,c_05,act_83).
+substrate(ent_12,none,c_01,act_84).
+product(ent_12,none,c_05,act_84).
+substrate(ent_18,none,c_01,act_85).
+product(ent_18,none,c_05,act_85).
+substrate(ent_28,none,c_01,act_86).
+product(ent_28,none,c_05,act_86).
+substrate(ent_21,none,c_01,act_87).
+product(ent_21,none,c_05,act_87).
+substrate(ent_33,none,c_01,act_88).
+product(ent_33,none,c_05,act_88).
+substrate(ent_42,none,c_01,act_89).
+product(ent_42,none,c_05,act_89).
+substrate(ent_59,none,c_01,act_90).
+product(ent_59,none,c_05,act_90).
+substrate(ent_47,none,c_01,act_91).
+product(ent_47,none,c_05,act_91).
+substrate(ent_6,none,c_01,act_92).
+product(ent_6,none,c_05,act_92).
+substrate(ent_3,none,c_01,act_93).
+product(ent_3,none,c_05,act_93).
+model(m_53;m_54;m_55;m_51).
+added_to_model(setup_present(ent_29,none,c_18),m_53).
+added_to_model(setup_present(ent_5,none,c_18),m_53).
+added_to_model(setup_present(ent_6,none,c_07),m_53).
+added_to_model(setup_present(ent_2,none,c_01),m_53).
+added_to_model(setup_present(ent_43,none,c_05),m_53).
+added_to_model(setup_present(ent_25,none,c_18),m_53).
+added_to_model(setup_present(ent_50,none,c_07),m_53).
+added_to_model(setup_present(ent_59,none,c_05),m_53).
+added_to_model(setup_present(ent_41,none,c_18),m_53).
+added_to_model(setup_present(ent_36,none,c_18),m_53).
+added_to_model(setup_present(ent_50,none,c_05),m_53).
+added_to_model(setup_present(ent_19,none,c_18),m_53).
+added_to_model(setup_present(ent_0,none,c_18),m_53).
+added_to_model(setup_present(ent_24,none,c_26),m_53).
+added_to_model(setup_present(ent_10,none,c_18),m_53).
+added_to_model(setup_present(ent_13,none,c_05),m_53).
+added_to_model(setup_present(ent_35,none,c_18),m_53).
+added_to_model(setup_present(ent_49,none,c_18),m_53).
+added_to_model(setup_present(ent_56,none,c_18),m_53).
+added_to_model(setup_present(ent_45,none,c_18),m_53).
+added_to_model(setup_present(ent_39,none,c_18),m_53).
+added_to_model(setup_present(ent_24,none,c_01),m_53).
+added_to_model(setup_present(ent_8,none,c_18),m_53).
+added_to_model(setup_present(ent_11,none,c_18),m_53).
+added_to_model(setup_present(ent_51,none,c_05),m_53).
+added_to_model(setup_present(ent_52,none,c_18),m_53).
+added_to_model(setup_present(ent_12,none,c_07),m_53).
+added_to_model(setup_present(ent_33,none,c_05),m_53).
+added_to_model(setup_present(ent_44,none,c_18),m_53).
+added_to_model(setup_present(ent_27,none,c_18),m_53).
+added_to_model(setup_present(ent_16,none,c_18),m_53).
+added_to_model(act_8,m_53).
+added_to_model(act_2,m_53).
+added_to_model(act_27,m_53).
+added_to_model(act_14,m_53).
+added_to_model(act_12,m_53).
+added_to_model(act_22,m_53).
+added_to_model(act_33,m_53).
+added_to_model(act_9,m_53).
+added_to_model(act_52,m_53).
+added_to_model(act_70,m_53).
+added_to_model(act_37,m_53).
+added_to_model(act_39,m_53).
+added_to_model(act_13,m_53).
+added_to_model(act_30,m_53).
+added_to_model(act_19,m_53).
+added_to_model(act_45,m_53).
+added_to_model(act_25,m_53).
+added_to_model(act_26,m_53).
+added_to_model(act_17,m_53).
+added_to_model(act_23,m_53).
+added_to_model(setup_present(ent_29,none,c_18),m_54).
+added_to_model(setup_present(ent_5,none,c_18),m_54).
+added_to_model(setup_present(ent_6,none,c_07),m_54).
+added_to_model(setup_present(ent_2,none,c_01),m_54).
+added_to_model(setup_present(ent_43,none,c_05),m_54).
+added_to_model(setup_present(ent_25,none,c_18),m_54).
+added_to_model(setup_present(ent_50,none,c_07),m_54).
+added_to_model(setup_present(ent_59,none,c_05),m_54).
+added_to_model(setup_present(ent_41,none,c_18),m_54).
+added_to_model(setup_present(ent_36,none,c_18),m_54).
+added_to_model(setup_present(ent_50,none,c_05),m_54).
+added_to_model(setup_present(ent_19,none,c_18),m_54).
+added_to_model(setup_present(ent_0,none,c_18),m_54).
+added_to_model(setup_present(ent_24,none,c_26),m_54).
+added_to_model(setup_present(ent_10,none,c_18),m_54).
+added_to_model(setup_present(ent_13,none,c_05),m_54).
+added_to_model(setup_present(ent_35,none,c_18),m_54).
+added_to_model(setup_present(ent_49,none,c_18),m_54).
+added_to_model(setup_present(ent_56,none,c_18),m_54).
+added_to_model(setup_present(ent_45,none,c_18),m_54).
+added_to_model(setup_present(ent_39,none,c_18),m_54).
+added_to_model(setup_present(ent_24,none,c_01),m_54).
+added_to_model(setup_present(ent_8,none,c_18),m_54).
+added_to_model(setup_present(ent_11,none,c_18),m_54).
+added_to_model(setup_present(ent_51,none,c_05),m_54).
+added_to_model(setup_present(ent_52,none,c_18),m_54).
+added_to_model(setup_present(ent_12,none,c_07),m_54).
+added_to_model(setup_present(ent_33,none,c_05),m_54).
+added_to_model(setup_present(ent_44,none,c_18),m_54).
+added_to_model(setup_present(ent_27,none,c_18),m_54).
+added_to_model(setup_present(ent_16,none,c_18),m_54).
+added_to_model(act_2,m_54).
+added_to_model(act_27,m_54).
+added_to_model(act_10,m_54).
+added_to_model(act_32,m_54).
+added_to_model(act_14,m_54).
+added_to_model(act_31,m_54).
+added_to_model(act_12,m_54).
+added_to_model(act_33,m_54).
+added_to_model(act_9,m_54).
+added_to_model(act_70,m_54).
+added_to_model(act_37,m_54).
+added_to_model(act_13,m_54).
+added_to_model(act_30,m_54).
+added_to_model(act_25,m_54).
+added_to_model(act_26,m_54).
+added_to_model(act_17,m_54).
+added_to_model(act_1,m_54).
+added_to_model(act_23,m_54).
+added_to_model(setup_present(ent_29,none,c_18),m_55).
+added_to_model(setup_present(ent_5,none,c_18),m_55).
+added_to_model(setup_present(ent_6,none,c_07),m_55).
+added_to_model(setup_present(ent_2,none,c_01),m_55).
+added_to_model(setup_present(ent_43,none,c_05),m_55).
+added_to_model(setup_present(ent_25,none,c_18),m_55).
+added_to_model(setup_present(ent_50,none,c_07),m_55).
+added_to_model(setup_present(ent_59,none,c_05),m_55).
+added_to_model(setup_present(ent_41,none,c_18),m_55).
+added_to_model(setup_present(ent_36,none,c_18),m_55).
+added_to_model(setup_present(ent_50,none,c_05),m_55).
+added_to_model(setup_present(ent_19,none,c_18),m_55).
+added_to_model(setup_present(ent_0,none,c_18),m_55).
+added_to_model(setup_present(ent_24,none,c_26),m_55).
+added_to_model(setup_present(ent_10,none,c_18),m_55).
+added_to_model(setup_present(ent_13,none,c_05),m_55).
+added_to_model(setup_present(ent_35,none,c_18),m_55).
+added_to_model(setup_present(ent_49,none,c_18),m_55).
+added_to_model(setup_present(ent_56,none,c_18),m_55).
+added_to_model(setup_present(ent_45,none,c_18),m_55).
+added_to_model(setup_present(ent_39,none,c_18),m_55).
+added_to_model(setup_present(ent_24,none,c_01),m_55).
+added_to_model(setup_present(ent_8,none,c_18),m_55).
+added_to_model(setup_present(ent_11,none,c_18),m_55).
+added_to_model(setup_present(ent_51,none,c_05),m_55).
+added_to_model(setup_present(ent_52,none,c_18),m_55).
+added_to_model(setup_present(ent_12,none,c_07),m_55).
+added_to_model(setup_present(ent_33,none,c_05),m_55).
+added_to_model(setup_present(ent_44,none,c_18),m_55).
+added_to_model(setup_present(ent_27,none,c_18),m_55).
+added_to_model(setup_present(ent_16,none,c_18),m_55).
+added_to_model(act_2,m_55).
+added_to_model(act_14,m_55).
+added_to_model(act_27,m_55).
+added_to_model(act_12,m_55).
+added_to_model(act_33,m_55).
+added_to_model(act_9,m_55).
+added_to_model(act_52,m_55).
+added_to_model(act_70,m_55).
+added_to_model(act_37,m_55).
+added_to_model(act_13,m_55).
+added_to_model(act_24,m_55).
+added_to_model(act_30,m_55).
+added_to_model(act_25,m_55).
+added_to_model(act_26,m_55).
+added_to_model(act_17,m_55).
+added_to_model(act_1,m_55).
+added_to_model(act_23,m_55).
+added_to_model(setup_present(ent_29,none,c_18),m_51).
+added_to_model(setup_present(ent_5,none,c_18),m_51).
+added_to_model(setup_present(ent_6,none,c_07),m_51).
+added_to_model(setup_present(ent_2,none,c_01),m_51).
+added_to_model(setup_present(ent_43,none,c_05),m_51).
+added_to_model(setup_present(ent_25,none,c_18),m_51).
+added_to_model(setup_present(ent_50,none,c_07),m_51).
+added_to_model(setup_present(ent_59,none,c_05),m_51).
+added_to_model(setup_present(ent_41,none,c_18),m_51).
+added_to_model(setup_present(ent_36,none,c_18),m_51).
+added_to_model(setup_present(ent_50,none,c_05),m_51).
+added_to_model(setup_present(ent_19,none,c_18),m_51).
+added_to_model(setup_present(ent_0,none,c_18),m_51).
+added_to_model(setup_present(ent_24,none,c_26),m_51).
+added_to_model(setup_present(ent_10,none,c_18),m_51).
+added_to_model(setup_present(ent_13,none,c_05),m_51).
+added_to_model(setup_present(ent_35,none,c_18),m_51).
+added_to_model(setup_present(ent_49,none,c_18),m_51).
+added_to_model(setup_present(ent_56,none,c_18),m_51).
+added_to_model(setup_present(ent_45,none,c_18),m_51).
+added_to_model(setup_present(ent_39,none,c_18),m_51).
+added_to_model(setup_present(ent_24,none,c_01),m_51).
+added_to_model(setup_present(ent_8,none,c_18),m_51).
+added_to_model(setup_present(ent_11,none,c_18),m_51).
+added_to_model(setup_present(ent_51,none,c_05),m_51).
+added_to_model(setup_present(ent_52,none,c_18),m_51).
+added_to_model(setup_present(ent_12,none,c_07),m_51).
+added_to_model(setup_present(ent_33,none,c_05),m_51).
+added_to_model(setup_present(ent_44,none,c_18),m_51).
+added_to_model(setup_present(ent_27,none,c_18),m_51).
+added_to_model(setup_present(ent_16,none,c_18),m_51).
+added_to_model(act_8,m_51).
+added_to_model(act_2,m_51).
+added_to_model(act_10,m_51).
+added_to_model(act_14,m_51).
+added_to_model(act_32,m_51).
+added_to_model(act_27,m_51).
+added_to_model(act_41,m_51).
+added_to_model(act_12,m_51).
+added_to_model(act_22,m_51).
+added_to_model(act_33,m_51).
+added_to_model(act_9,m_51).
+added_to_model(act_70,m_51).
+added_to_model(act_37,m_51).
+added_to_model(act_13,m_51).
+added_to_model(act_30,m_51).
+added_to_model(act_25,m_51).
+added_to_model(act_26,m_51).
+added_to_model(act_17,m_51).
+added_to_model(act_1,m_51).
+added_to_model(act_23,m_51).
+nr(0,m_53).
+probability(13, m_53).
+nr(1,m_54).
+probability(13, m_54).
+nr(2,m_55).
+probability(13, m_55).
+nr(3,m_51).
+probability(13, m_51).
+0{design_compartment(c_19),design_entity_loc(ent_37),design_available(ent_9),design_entity_loc(ent_14),design_compartment(c_30),add(act_86),design_compartment(c_09),design_available(ent_6),design_compartment(c_34),design_available(ent_38),design_entity_loc(ent_1),design_entity_loc(ent_68),remove(setup_present(ent_56, none, c_18)),design_entity_loc(ent_31),design_available(ent_50),design_entity_loc(ent_60),design_deletable(ent_35),remove(setup_present(ent_16, none, c_18)),design_available(ent_66),design_activity_rec(act_66),design_entity_det(ent_50),design_compartment(c_11),add(setup_present(ent_6, none, c_01)),design_available(ent_2),design_deletable(ent_56),design_available(ent_12),design_activity_rec(act_64),design_available(ent_54),design_available(ent_78),design_available(ent_71),design_entity_loc(ent_63),remove(setup_present(ent_19, none, c_18)),design_entity_loc(ent_67),design_activity_det(act_19),add(act_75),design_compartment(c_24),add(setup_present(ent_3, none, c_01)),add(act_85),add(setup_present(ent_18, none, c_01)),add(act_84),design_available(ent_37),design_entity_det(ent_48),design_compartment(c_12),design_deletable(ent_25),design_available(ent_83),design_entity_det(ent_6),design_entity_det(ent_40),design_activity_rec(act_25),design_available(ent_60),design_compartment(c_20),design_entity_det(ent_22),add(setup_present(ent_59, none, c_01)),design_activity_rec(act_2),design_available(ent_65),design_entity_det(ent_67),design_entity_det(ent_47),design_entity_det(ent_17),design_deletable(ent_0),remove(setup_present(ent_8, none, c_18)),design_activity_rec(act_70),design_entity_det(ent_21),design_entity_det(ent_32),design_available(ent_61),design_entity_det(ent_30),design_available(ent_14),design_entity_det(ent_46),design_entity_det(ent_2),design_deletable(ent_29),design_available(ent_88),design_available(ent_4),design_compartment(c_13),add(setup_present(ent_12, none, c_01)),remove(setup_present(ent_10, none, c_18)),design_available(ent_63),design_entity_det(ent_70),design_compartment(c_21),design_entity_loc(ent_83),add(setup_present(ent_51, none, c_01)),design_entity_det(ent_59),design_available(ent_42),add(act_91),design_type(adam_two_factor_exp),design_entity_det(ent_43),add(setup_present(ent_46, none, c_01)),design_entity_det(ent_61),design_entity_det(ent_3),add(act_90),add(act_82),add(act_78),design_deletable(ent_19),design_available(ent_72),add(act_81),design_compartment(c_05),design_available(ent_20),design_available(ent_47),design_entity_det(ent_71),add(setup_present(ent_2, none, c_01)),add(setup_present(ent_43, none, c_01)),design_entity_det(ent_73),design_deletable(ent_16),design_entity_det(ent_31),add(act_74),design_entity_loc(ent_57),design_entity_loc(ent_66),design_available(ent_7),add(setup_present(ent_24, none, c_01)),design_activity_rec(act_30),design_entity_loc(ent_54),design_compartment(c_32),design_entity_loc(ent_69),add(act_89),design_entity_loc(ent_17),design_available(ent_53),design_entity_loc(ent_64),design_activity_rec(act_69),design_entity_loc(ent_70),design_entity_det(ent_1),design_available(ent_57),design_available(ent_40),design_entity_loc(ent_62),design_deletable(ent_36),design_entity_det(ent_23),design_available(ent_24),design_available(ent_48),design_compartment(c_23),design_entity_det(ent_34),design_available(ent_30),design_entity_det(ent_55),design_compartment(c_29),design_entity_loc(ent_40),remove(setup_present(ent_41, none, c_18)),design_activity_rec(act_4),design_available(ent_32),design_activity_rec(act_7),design_activity_rec(act_26),design_available(ent_46),design_activity_rec(act_28),design_entity_det(ent_57),design_compartment(c_16),design_entity_loc(ent_71),add(setup_present(ent_13, none, c_01)),remove(setup_present(ent_27, none, c_18)),design_entity_det(ent_53),remove(setup_present(ent_36, none, c_18)),design_available(ent_23),design_compartment(c_26),design_activity_rec(act_68),design_entity_det(ent_38),design_entity_det(ent_60),design_compartment(c_18),design_entity_loc(ent_22),add(setup_present(ent_58, none, c_01)),design_compartment(c_03),design_available(ent_64),design_activity_rec(act_9),add(setup_present(ent_42, none, c_01)),add(act_71),design_activity_rec(act_11),add(act_73),design_deletable(ent_10),add(setup_present(ent_53, none, c_01)),design_available(ent_31),design_compartment(c_25),design_available(ent_17),design_entity_det(ent_18),design_activity_rec(act_67),design_entity_det(ent_33),design_available(ent_58),add(act_76),add(setup_present(ent_26, none, c_01)),design_compartment(c_27),design_entity_loc(ent_72),add(setup_present(ent_9, none, c_01)),design_entity_det(ent_14),design_deletable(ent_11),remove(setup_present(ent_52, none, c_18)),design_entity_det(ent_64),design_entity_det(ent_65),add(act_77),design_entity_det(ent_7),add(setup_present(ent_28, none, c_01)),remove(setup_present(ent_24, none, c_01)),add(act_79),design_compartment(c_22),design_available(ent_18),add(act_93),design_entity_loc(ent_73),remove(setup_present(ent_35, none, c_18)),remove(setup_present(ent_29, none, c_18)),remove(setup_present(ent_39, none, c_18)),design_entity_det(ent_66),design_deletable(ent_39),design_activity_rec(act_12),design_compartment(c_07),add(setup_present(ent_47, none, c_01)),remove(setup_present(ent_25, none, c_18)),design_compartment(c_06),design_available(ent_26),design_deletable(ent_52),design_entity_det(ent_72),design_entity_det(ent_42),design_available(ent_67),design_compartment(c_31),design_compartment(c_33),design_available(ent_59),design_compartment(c_08),design_entity_det(ent_83),design_entity_det(ent_9),add(setup_present(ent_21, none, c_01)),design_available(ent_22),add(act_92),design_entity_loc(ent_88),design_entity_det(ent_88),design_activity_rec(act_63),design_available(ent_28),remove(setup_present(ent_49, none, c_18)),design_entity_det(ent_62),add(setup_present(ent_50, none, c_01)),design_activity_rec(act_61),add(act_88),design_entity_loc(ent_32),design_available(ent_73),design_available(ent_21),design_entity_det(ent_24),design_deletable(ent_44),design_available(ent_51),design_compartment(c_02),add(setup_present(ent_33, none, c_01)),design_deletable(ent_49),remove(setup_present(ent_5, none, c_18)),design_available(ent_62),remove(setup_present(ent_0, none, c_18)),design_deletable(ent_41),design_entity_loc(ent_30),design_activity_rec(act_17),design_entity_det(ent_68),design_compartment(c_15),add(setup_present(ent_7, none, c_01)),add(setup_present(ent_34, none, c_01)),design_available(ent_68),design_entity_det(ent_28),design_entity_det(ent_13),design_deletable(ent_27),design_compartment(c_14),design_compartment(c_10),design_compartment(c_17),design_compartment(c_04),remove(setup_present(ent_2, none, c_01)),design_activity_rec(act_53),add(act_83),design_entity_det(ent_63),add(setup_present(ent_23, none, c_01)),design_available(ent_34),design_activity_rec(act_65),remove(setup_present(ent_44, none, c_18)),design_available(ent_69),remove(setup_present(ent_11, none, c_18)),design_available(ent_70),remove(setup_present(ent_45, none, c_18)),design_activity_rec(act_14),design_entity_loc(ent_78),design_entity_det(ent_78),design_available(ent_3),add(act_80),design_available(ent_33),design_entity_loc(ent_4),add(act_87),design_available(ent_43),design_deletable(ent_8),design_entity_loc(ent_61),design_available(ent_13),design_entity_det(ent_58),design_entity_loc(ent_65),design_entity_loc(ent_15),design_available(ent_15),design_entity_det(ent_26),design_entity_det(ent_37),design_entity_loc(ent_20),design_entity_det(ent_69),design_activity_rec(act_62),design_activity_rec(act_23),design_entity_loc(ent_55),design_entity_det(ent_15),add(setup_present(ent_48, none, c_01)),design_compartment(c_28),design_entity_loc(ent_38),design_entity_det(ent_4),design_entity_det(ent_12),design_entity_det(ent_54),design_available(ent_55),design_available(ent_1),design_entity_det(ent_20),design_deletable(ent_5),design_entity_det(ent_51),design_deletable(ent_45),add(act_72)}296.
+
+designed :- designed(experiment(adam_two_factor_exp, Gene, Metabolite)), gene(Gene, Ver), metabolite(Metabolite, Ver).
+designed :- designed(experiment(transp_reconstruction_exp, Activity, Entity)), activity(Activity), entity(Entity, Ver).
+designed :- designed(experiment(enz_reconstruction_exp, Activity, Entity)), activity(Activity), entity(Entity, Ver).
+designed :- designed(experiment(basic_reconstruction_exp, Activity)), activity(Activity).
+designed :- designed(experiment(detection_activity_exp, Activity)), activity(Activity).
+designed :- designed(experiment(localisation_entity_exp, Entity, Compartment)), entity(Entity, Ver), compartment(Compartment).
+designed :- designed(experiment(detection_entity_exp, Entity)), entity(Entity, Ver).
+
+:- not designed.
+
+:- designed(Experiment1), designed(Experiment2), Experiment1 != Experiment2.
+
+has_true_model :- predicts(Model, Experiment, true), model(Model), designed(Experiment).
+has_false_model :- predicts(Model, Experiment, false), model(Model), designed(Experiment).
+:- not has_true_model.
+:- not has_false_model.
+
+:- designed(experiment(adam_two_factor_exp, Gene, Metabolite)), add(Whatever).
+:- designed(experiment(adam_two_factor_exp, Gene, Metabolite)), remove(Whatever).
+:- involved(Entity, Version1, Model), involved(Entity, Version2, Model), Version1 != Version2.
+
+entity_in_model(Entity, Version, Compartment, Model) :- in_model(setup_present(Entity, Version, Compartment), Model).
+entity_in_model(Entity, Version, Compartment, Model) :- synthesizable(Entity, Version, Compartment, Model).
+:- add(Activity), substrate(Ent,Ver,Comp,Activity), model(Model), not entity_in_model(Ent, Ver, Comp, Model).
+:- designed(experiment(adam_two_factor_exp, ent_8, ent_24)).
+:- designed(experiment(adam_two_factor_exp, ent_44, ent_24)).
+:- designed(experiment(adam_two_factor_exp, ent_19, ent_9)).
+:- designed(experiment(adam_two_factor_exp, ent_41, ent_21)).
+:- designed(experiment(adam_two_factor_exp, ent_49, ent_23)).
+:- designed(experiment(adam_two_factor_exp, ent_16, ent_53)).
+:- designed(experiment(adam_two_factor_exp, ent_27, ent_3)).
+:- designed(experiment(adam_two_factor_exp, ent_25, ent_23)).
+:- designed(experiment(adam_two_factor_exp, ent_49, ent_3)).
+:- designed(experiment(adam_two_factor_exp, ent_25, ent_3)).
+:- designed(experiment(adam_two_factor_exp, ent_56, ent_3)).
+:- designed(experiment(adam_two_factor_exp, ent_56, ent_23)).
+:- designed(experiment(adam_two_factor_exp, ent_0, ent_3)).
+
+#const n = 260.
+
+exp_score(0,Prb,0,0) :- indifferent(Model, Experiment), designed(Experiment), model(Model), nr(0,Model), probability(Prb, Model).
+exp_score(0,0,Prb,0) :- predicts(Model, Experiment, true), designed(Experiment), model(Model), nr(0,Model), probability(Prb, Model).
+exp_score(0,0,0,Prb) :- predicts(Model, Experiment, false), designed(Experiment), model(Model), nr(0,Model), probability(Prb, Model).
+
+exp_score(I,Ind+Prb,Tr,Fa) :- exp_score(I-1, Ind, Tr, Fa), indifferent(Model, Experiment), designed(Experiment), model(Model), nr(I, Model), probability(Prb, Model).
+exp_score(I,Ind,Tr+Prb,Fa) :- exp_score(I-1, Ind, Tr, Fa), predicts(Model, Experiment, true), designed(Experiment), model(Model), nr(I, Model), probability(Prb, Model).
+exp_score(I,Ind,Tr,Fa+Prb) :- exp_score(I-1, Ind, Tr, Fa), predicts(Model, Experiment, false), designed(Experiment), model(Model), nr(I, Model), probability(Prb, Model).
+
+exp_score(I) :- exp_score(I,Ind,Tr,Fa).
+
+final_score(I,Ind,Tr,Fa) :- exp_score(I,Ind,Tr,Fa), not exp_score(I+1).
+
+final_score(|Tr*10-n| + |Fa*10-n| + Ind*10) :- final_score(I,Ind,Tr,Fa).
+#minimize[final_score(Score) = Score@2].
+cost(1, 0) :- design_compartment(c_19).
+cost(1, 1) :- design_entity_loc(ent_37).
+cost(1, 2) :- design_available(ent_9).
+cost(1, 3) :- design_entity_loc(ent_14).
+cost(1, 4) :- design_compartment(c_30).
+cost(1, 5) :- add(act_86).
+cost(1, 6) :- design_compartment(c_09).
+cost(1, 7) :- design_available(ent_6).
+cost(1, 8) :- design_compartment(c_34).
+cost(1, 9) :- design_available(ent_38).
+cost(2, 10) :- design_entity_loc(ent_1).
+cost(1, 11) :- design_entity_loc(ent_68).
+cost(1, 12) :- remove(setup_present(ent_56, none, c_18)).
+cost(1, 13) :- design_entity_loc(ent_31).
+cost(1, 14) :- design_available(ent_50).
+cost(1, 15) :- design_entity_loc(ent_60).
+cost(1, 16) :- design_deletable(ent_35).
+cost(1, 17) :- remove(setup_present(ent_16, none, c_18)).
+cost(1, 18) :- design_available(ent_66).
+cost(5, 19) :- design_activity_rec(act_66).
+cost(1, 20) :- design_entity_det(ent_50).
+cost(1, 21) :- design_compartment(c_11).
+cost(1, 22) :- add(setup_present(ent_6, none, c_01)).
+cost(1, 23) :- design_available(ent_2).
+cost(1, 24) :- design_deletable(ent_56).
+cost(1, 25) :- design_available(ent_12).
+cost(2, 26) :- design_activity_rec(act_64).
+cost(1, 27) :- design_available(ent_54).
+cost(1, 28) :- design_available(ent_78).
+cost(1, 29) :- design_available(ent_71).
+cost(1, 30) :- design_entity_loc(ent_63).
+cost(1, 31) :- remove(setup_present(ent_19, none, c_18)).
+cost(1, 32) :- design_entity_loc(ent_67).
+cost(1, 33) :- design_activity_det(act_19).
+cost(1, 34) :- add(act_75).
+cost(1, 35) :- design_compartment(c_24).
+cost(1, 36) :- add(setup_present(ent_3, none, c_01)).
+cost(1, 37) :- add(act_85).
+cost(1, 38) :- add(setup_present(ent_18, none, c_01)).
+cost(1, 39) :- add(act_84).
+cost(1, 40) :- design_available(ent_37).
+cost(1, 41) :- design_entity_det(ent_48).
+cost(1, 42) :- design_compartment(c_12).
+cost(1, 43) :- design_deletable(ent_25).
+cost(1, 44) :- design_available(ent_83).
+cost(1, 45) :- design_entity_det(ent_6).
+cost(1, 46) :- design_entity_det(ent_40).
+cost(3, 47) :- design_activity_rec(act_25).
+cost(1, 48) :- design_available(ent_60).
+cost(1, 49) :- design_compartment(c_20).
+cost(1, 50) :- design_entity_det(ent_22).
+cost(1, 51) :- add(setup_present(ent_59, none, c_01)).
+cost(6, 52) :- design_activity_rec(act_2).
+cost(1, 53) :- design_available(ent_65).
+cost(1, 54) :- design_entity_det(ent_67).
+cost(1, 55) :- design_entity_det(ent_47).
+cost(1, 56) :- design_entity_det(ent_17).
+cost(1, 57) :- design_deletable(ent_0).
+cost(1, 58) :- remove(setup_present(ent_8, none, c_18)).
+cost(4, 59) :- design_activity_rec(act_70).
+cost(1, 60) :- design_entity_det(ent_21).
+cost(1, 61) :- design_entity_det(ent_32).
+cost(1, 62) :- design_available(ent_61).
+cost(1, 63) :- design_entity_det(ent_30).
+cost(1, 64) :- design_available(ent_14).
+cost(1, 65) :- design_entity_det(ent_46).
+cost(1, 66) :- design_entity_det(ent_2).
+cost(1, 67) :- design_deletable(ent_29).
+cost(1, 68) :- design_available(ent_88).
+cost(1, 69) :- design_available(ent_4).
+cost(1, 70) :- design_compartment(c_13).
+cost(1, 71) :- add(setup_present(ent_12, none, c_01)).
+cost(1, 72) :- remove(setup_present(ent_10, none, c_18)).
+cost(1, 73) :- design_available(ent_63).
+cost(1, 74) :- design_entity_det(ent_70).
+cost(1, 75) :- design_compartment(c_21).
+cost(1, 76) :- design_entity_loc(ent_83).
+cost(1, 77) :- add(setup_present(ent_51, none, c_01)).
+cost(1, 78) :- design_entity_det(ent_59).
+cost(1, 79) :- design_available(ent_42).
+cost(1, 80) :- add(act_91).
+cost(1, 81) :- design_type(adam_two_factor_exp).
+cost(1, 82) :- design_entity_det(ent_43).
+cost(1, 83) :- add(setup_present(ent_46, none, c_01)).
+cost(1, 84) :- design_entity_det(ent_61).
+cost(1, 85) :- design_entity_det(ent_3).
+cost(1, 86) :- add(act_90).
+cost(1, 87) :- add(act_82).
+cost(1, 88) :- add(act_78).
+cost(1, 89) :- design_deletable(ent_19).
+cost(2, 90) :- design_available(ent_72).
+cost(1, 91) :- add(act_81).
+cost(1, 92) :- design_compartment(c_05).
+cost(1, 93) :- design_available(ent_20).
+cost(1, 94) :- design_available(ent_47).
+cost(1, 95) :- design_entity_det(ent_71).
+cost(1, 96) :- add(setup_present(ent_2, none, c_01)).
+cost(1, 97) :- add(setup_present(ent_43, none, c_01)).
+cost(1, 98) :- design_entity_det(ent_73).
+cost(1, 99) :- design_deletable(ent_16).
+cost(1, 100) :- design_entity_det(ent_31).
+cost(1, 101) :- add(act_74).
+cost(1, 102) :- design_entity_loc(ent_57).
+cost(1, 103) :- design_entity_loc(ent_66).
+cost(1, 104) :- design_available(ent_7).
+cost(1, 105) :- add(setup_present(ent_24, none, c_01)).
+cost(6, 106) :- design_activity_rec(act_30).
+cost(1, 107) :- design_entity_loc(ent_54).
+cost(1, 108) :- design_compartment(c_32).
+cost(1, 109) :- design_entity_loc(ent_69).
+cost(1, 110) :- add(act_89).
+cost(1, 111) :- design_entity_loc(ent_17).
+cost(1, 112) :- design_available(ent_53).
+cost(1, 113) :- design_entity_loc(ent_64).
+cost(2, 114) :- design_activity_rec(act_69).
+cost(1, 115) :- design_entity_loc(ent_70).
+cost(2, 116) :- design_entity_det(ent_1).
+cost(1, 117) :- design_available(ent_57).
+cost(1, 118) :- design_available(ent_40).
+cost(1, 119) :- design_entity_loc(ent_62).
+cost(1, 120) :- design_deletable(ent_36).
+cost(1, 121) :- design_entity_det(ent_23).
+cost(1, 122) :- design_available(ent_24).
+cost(1, 123) :- design_available(ent_48).
+cost(1, 124) :- design_compartment(c_23).
+cost(1, 125) :- design_entity_det(ent_34).
+cost(1, 126) :- design_available(ent_30).
+cost(1, 127) :- design_entity_det(ent_55).
+cost(1, 128) :- design_compartment(c_29).
+cost(1, 129) :- design_entity_loc(ent_40).
+cost(1, 130) :- remove(setup_present(ent_41, none, c_18)).
+cost(6, 131) :- design_activity_rec(act_4).
+cost(1, 132) :- design_available(ent_32).
+cost(4, 133) :- design_activity_rec(act_7).
+cost(7, 134) :- design_activity_rec(act_26).
+cost(1, 135) :- design_available(ent_46).
+cost(4, 136) :- design_activity_rec(act_28).
+cost(1, 137) :- design_entity_det(ent_57).
+cost(1, 138) :- design_compartment(c_16).
+cost(1, 139) :- design_entity_loc(ent_71).
+cost(1, 140) :- add(setup_present(ent_13, none, c_01)).
+cost(1, 141) :- remove(setup_present(ent_27, none, c_18)).
+cost(1, 142) :- design_entity_det(ent_53).
+cost(1, 143) :- remove(setup_present(ent_36, none, c_18)).
+cost(1, 144) :- design_available(ent_23).
+cost(1, 145) :- design_compartment(c_26).
+cost(5, 146) :- design_activity_rec(act_68).
+cost(1, 147) :- design_entity_det(ent_38).
+cost(1, 148) :- design_entity_det(ent_60).
+cost(1, 149) :- design_compartment(c_18).
+cost(1, 150) :- design_entity_loc(ent_22).
+cost(1, 151) :- add(setup_present(ent_58, none, c_01)).
+cost(1, 152) :- design_compartment(c_03).
+cost(1, 153) :- design_available(ent_64).
+cost(4, 154) :- design_activity_rec(act_9).
+cost(1, 155) :- add(setup_present(ent_42, none, c_01)).
+cost(1, 156) :- add(act_71).
+cost(4, 157) :- design_activity_rec(act_11).
+cost(1, 158) :- add(act_73).
+cost(1, 159) :- design_deletable(ent_10).
+cost(1, 160) :- add(setup_present(ent_53, none, c_01)).
+cost(1, 161) :- design_available(ent_31).
+cost(1, 162) :- design_compartment(c_25).
+cost(1, 163) :- design_available(ent_17).
+cost(1, 164) :- design_entity_det(ent_18).
+cost(2, 165) :- design_activity_rec(act_67).
+cost(1, 166) :- design_entity_det(ent_33).
+cost(1, 167) :- design_available(ent_58).
+cost(1, 168) :- add(act_76).
+cost(1, 169) :- add(setup_present(ent_26, none, c_01)).
+cost(1, 170) :- design_compartment(c_27).
+cost(2, 171) :- design_entity_loc(ent_72).
+cost(1, 172) :- add(setup_present(ent_9, none, c_01)).
+cost(1, 173) :- design_entity_det(ent_14).
+cost(1, 174) :- design_deletable(ent_11).
+cost(1, 175) :- remove(setup_present(ent_52, none, c_18)).
+cost(1, 176) :- design_entity_det(ent_64).
+cost(1, 177) :- design_entity_det(ent_65).
+cost(1, 178) :- add(act_77).
+cost(1, 179) :- design_entity_det(ent_7).
+cost(1, 180) :- add(setup_present(ent_28, none, c_01)).
+cost(1, 181) :- remove(setup_present(ent_24, none, c_01)).
+cost(1, 182) :- add(act_79).
+cost(1, 183) :- design_compartment(c_22).
+cost(1, 184) :- design_available(ent_18).
+cost(1, 185) :- add(act_93).
+cost(1, 186) :- design_entity_loc(ent_73).
+cost(1, 187) :- remove(setup_present(ent_35, none, c_18)).
+cost(1, 188) :- remove(setup_present(ent_29, none, c_18)).
+cost(1, 189) :- remove(setup_present(ent_39, none, c_18)).
+cost(1, 190) :- design_entity_det(ent_66).
+cost(1, 191) :- design_deletable(ent_39).
+cost(4, 192) :- design_activity_rec(act_12).
+cost(1, 193) :- design_compartment(c_07).
+cost(1, 194) :- add(setup_present(ent_47, none, c_01)).
+cost(1, 195) :- remove(setup_present(ent_25, none, c_18)).
+cost(1, 196) :- design_compartment(c_06).
+cost(1, 197) :- design_available(ent_26).
+cost(1, 198) :- design_deletable(ent_52).
+cost(2, 199) :- design_entity_det(ent_72).
+cost(1, 200) :- design_entity_det(ent_42).
+cost(1, 201) :- design_available(ent_67).
+cost(1, 202) :- design_compartment(c_31).
+cost(1, 203) :- design_compartment(c_33).
+cost(1, 204) :- design_available(ent_59).
+cost(1, 205) :- design_compartment(c_08).
+cost(1, 206) :- design_entity_det(ent_83).
+cost(1, 207) :- design_entity_det(ent_9).
+cost(1, 208) :- add(setup_present(ent_21, none, c_01)).
+cost(1, 209) :- design_available(ent_22).
+cost(1, 210) :- add(act_92).
+cost(1, 211) :- design_entity_loc(ent_88).
+cost(1, 212) :- design_entity_det(ent_88).
+cost(2, 213) :- design_activity_rec(act_63).
+cost(1, 214) :- design_available(ent_28).
+cost(1, 215) :- remove(setup_present(ent_49, none, c_18)).
+cost(1, 216) :- design_entity_det(ent_62).
+cost(1, 217) :- add(setup_present(ent_50, none, c_01)).
+cost(4, 218) :- design_activity_rec(act_61).
+cost(1, 219) :- add(act_88).
+cost(1, 220) :- design_entity_loc(ent_32).
+cost(1, 221) :- design_available(ent_73).
+cost(1, 222) :- design_available(ent_21).
+cost(1, 223) :- design_entity_det(ent_24).
+cost(1, 224) :- design_deletable(ent_44).
+cost(1, 225) :- design_available(ent_51).
+cost(1, 226) :- design_compartment(c_02).
+cost(1, 227) :- add(setup_present(ent_33, none, c_01)).
+cost(1, 228) :- design_deletable(ent_49).
+cost(1, 229) :- remove(setup_present(ent_5, none, c_18)).
+cost(1, 230) :- design_available(ent_62).
+cost(1, 231) :- remove(setup_present(ent_0, none, c_18)).
+cost(1, 232) :- design_deletable(ent_41).
+cost(1, 233) :- design_entity_loc(ent_30).
+cost(7, 234) :- design_activity_rec(act_17).
+cost(1, 235) :- design_entity_det(ent_68).
+cost(1, 236) :- design_compartment(c_15).
+cost(1, 237) :- add(setup_present(ent_7, none, c_01)).
+cost(1, 238) :- add(setup_present(ent_34, none, c_01)).
+cost(1, 239) :- design_available(ent_68).
+cost(1, 240) :- design_entity_det(ent_28).
+cost(1, 241) :- design_entity_det(ent_13).
+cost(1, 242) :- design_deletable(ent_27).
+cost(1, 243) :- design_compartment(c_14).
+cost(1, 244) :- design_compartment(c_10).
+cost(1, 245) :- design_compartment(c_17).
+cost(1, 246) :- design_compartment(c_04).
+cost(1, 247) :- remove(setup_present(ent_2, none, c_01)).
+cost(4, 248) :- design_activity_rec(act_53).
+cost(1, 249) :- add(act_83).
+cost(1, 250) :- design_entity_det(ent_63).
+cost(1, 251) :- add(setup_present(ent_23, none, c_01)).
+cost(1, 252) :- design_available(ent_34).
+cost(3, 253) :- design_activity_rec(act_65).
+cost(1, 254) :- remove(setup_present(ent_44, none, c_18)).
+cost(1, 255) :- design_available(ent_69).
+cost(1, 256) :- remove(setup_present(ent_11, none, c_18)).
+cost(1, 257) :- design_available(ent_70).
+cost(1, 258) :- remove(setup_present(ent_45, none, c_18)).
+cost(6, 259) :- design_activity_rec(act_14).
+cost(1, 260) :- design_entity_loc(ent_78).
+cost(1, 261) :- design_entity_det(ent_78).
+cost(1, 262) :- design_available(ent_3).
+cost(1, 263) :- add(act_80).
+cost(1, 264) :- design_available(ent_33).
+cost(1, 265) :- design_entity_loc(ent_4).
+cost(1, 266) :- add(act_87).
+cost(1, 267) :- design_available(ent_43).
+cost(1, 268) :- design_deletable(ent_8).
+cost(1, 269) :- design_entity_loc(ent_61).
+cost(1, 270) :- design_available(ent_13).
+cost(1, 271) :- design_entity_det(ent_58).
+cost(1, 272) :- design_entity_loc(ent_65).
+cost(1, 273) :- design_entity_loc(ent_15).
+cost(1, 274) :- design_available(ent_15).
+cost(1, 275) :- design_entity_det(ent_26).
+cost(1, 276) :- design_entity_det(ent_37).
+cost(1, 277) :- design_entity_loc(ent_20).
+cost(1, 278) :- design_entity_det(ent_69).
+cost(4, 279) :- design_activity_rec(act_62).
+cost(3, 280) :- design_activity_rec(act_23).
+cost(1, 281) :- design_entity_loc(ent_55).
+cost(1, 282) :- design_entity_det(ent_15).
+cost(1, 283) :- add(setup_present(ent_48, none, c_01)).
+cost(1, 284) :- design_compartment(c_28).
+cost(1, 285) :- design_entity_loc(ent_38).
+cost(1, 286) :- design_entity_det(ent_4).
+cost(1, 287) :- design_entity_det(ent_12).
+cost(1, 288) :- design_entity_det(ent_54).
+cost(1, 289) :- design_available(ent_55).
+cost(2, 290) :- design_available(ent_1).
+cost(1, 291) :- design_entity_det(ent_20).
+cost(1, 292) :- design_deletable(ent_5).
+cost(1, 293) :- design_entity_det(ent_51).
+cost(1, 294) :- design_deletable(ent_45).
+cost(1, 295) :- add(act_72).
+
+total_cost(TCost) :- TCost = #sum[cost(Cost, Nr)=Cost].
+#minimize[total_cost(TCost) = TCost@1].
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%% rules for exp design %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+designed(experiment(adam_two_factor_exp, Gene, Metabolite)) :-
+	design_type(adam_two_factor_exp),
+	design_deletable(Gene),
+	design_available(Metabolite).
+
+designed(experiment(transp_reconstruction_exp, Activity, Entity)) :-
+	design_type(transp_reconstruction_exp),
+	design_activity_rec(Activity),
+	design_available(Entity).
+
+designed(experiment(enz_reconstruction_exp, Activity, Entity)) :-
+	design_type(enz_reconstruction_exp),
+	design_activity_rec(Activity),
+	design_available(Entity).
+
+designed(experiment(basic_reconstruction_exp, Activity)) :-
+	design_type(basic_reconstruction_exp),
+	design_activity_rec(Activity).
+
+designed(experiment(detection_activity_exp, Activity)) :-
+	design_type(detection_activity_exp),
+	design_activity_det(Activity).
+
+designed(experiment(localisation_entity_exp, Entity, Compartment)) :-
+	design_type(localisation_entity_exp),
+	design_entity_loc(Entity),
+	design_compartment(Compartment).
+
+designed(experiment(detection_entity_exp, Entity)) :-
+	design_type(detection_entity_exp),
+	design_entity_det(Entity).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%% application of interventions to all models %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+removed(ActivityOrCondition, Model) :-
+	remove(ActivityOrCondition),
+	model(Model).
+
+added_to_model(ActivityOrCondition, Model) :-
+	add(ActivityOrCondition),
+	model(Model).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% prediction rules %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+growth(dummy).
+
+indifferent(Model, Experiment) :-
+	not predicts(Model, Experiment, true),
+	not predicts(Model, Experiment, false),
+	model(Model),
+	designed(Experiment).
+
+% Adams reconstruction
+ predicts(Model, experiment(adam_two_factor_exp, Gene, Metabolite), false) :-
+	not predicts(Model, experiment(detection_activity_exp, GrowthActivity), false),
+	growth(GrowthActivity),
+	not predicts(Model, experiment(adam_two_factor_exp, Gene, Metabolite), true),
+	involved(Gene, GeneVer, Model),
+	gene(Gene, GeneVer),
+	involved(Metabolite, MetVersion, Model),
+	metabolite(Metabolite, MetVersion).
+
+ predicts(Model, experiment(adam_two_factor_exp, Gene, Metabolite), true) :-% for genes that produce enzymes
+	not predicts(Model, experiment(detection_activity_exp, GrowthActivity), false),
+	growth(GrowthActivity),
+	substrate(Gene, GeneVer, GeneComp, ExpressionAct),
+	compartment(GeneComp),
+	expression(ExpressionAct),
+	in_model(ExpressionAct, Model),
+	metabolite(Metabolite, MetVersion),
+	% expression produces a catalyst
+	product(Ent, Ver, Comp, ExpressionAct),
+	catalyses(Ent, Ver, Reaction),
+	in_model(Reaction, Model),
+	enz_required(Reaction),% redundancy, but better make sure (might also help the ASP solver)
+	enz_compartment(SomeComp, Reaction),
+	connected_compartments(Comp, SomeComp),
+	% metabolite is within accepted distance from the catalysed reaction
+	distance(Reaction, Metabolite, MetVersion, MetComp, Integer, Model),
+	compartment(MetComp).
+
+ predicts(Model, experiment(adam_two_factor_exp, Gene, Metabolite), true) :-% for genes that produce subunits of enzymes
+	not predicts(Model, experiment(detection_activity_exp, GrowthActivity), false),
+	growth(GrowthActivity),
+	substrate(Gene, GeneVer, GeneComp, ExpressionAct),
+	compartment(GeneComp),
+	expression(ExpressionAct),
+	in_model(ExpressionAct, Model),
+	metabolite(Metabolite, MetVersion),
+	% expression produces sth that is involved in production of enzyme down the line
+	product(EntTo, VerTo, CompTo, ExpressionAct),
+	entity(EntFrom, VerFrom),
+	compartment(CompFrom),
+	path_back_from_to(EntFrom, VerFrom, CompFrom, EntTo, VerTo, CompTo, Model, Int),
+	int(Integer),
+	catalyses(EntFrom, VerFrom, Reaction),
+	% enzyme is in appropriate compartment
+	enz_compartment(SomeComp, Reaction),
+	connected_compartments(SomeComp, CompFrom),
+	compartment(SomeComp),
+	% metabolite is within accepted distance from the catalysed reaction
+	distance(Reaction, Metabolite, MetVersion, MetComp, Integer, Model),
+	compartment(MetComp).
+
+int(0;1;2).% distance goes up to 2
+
+distance(ActivityFrom, EntTo, VerTo, CompTo, 0, Model) :-
+	product(EntTo, VerTo, CompTo, ActivityFrom),
+	in_model(ActivityFrom, Model),
+	reaction(ActivityFrom),% only metabolic reactions
+	enz_required(ActivityFrom).% optimisation - only these activities make sense in the context of experiment
+
+distance(ActivityFrom, EntTo, VerTo, CompTo, Int+1, Model) :-
+	distance(ActivityFrom, InterEnt, InterVer, InterComp, Int, Model),
+	substrate(InterEnt, InterVer, InterComp, InterActivity),
+	product(EntTo, VerTo, CompTo, InterActivity),
+	in_model(InterActivity, Model),
+	reaction(InterActivity),% only metabolic reactions
+	Int < 2,
+	int(Int).
+
+
+% in vitro reconstruction: transporter required
+predicts(Model, experiment(transp_reconstruction_exp, Activity, Entity), true) :-
+	in_model(Activity, Model),
+	transp_required(Activity),
+	involved(Entity, Version, Model),
+	transports(Entity, Version, Activity).
+
+predicts(Model, experiment(transp_reconstruction_exp, Activity, Entity), false) :-
+	in_model(Activity, Model),
+	transp_required(Activity),
+	involved(Entity, Version, Model),% there is a version of the entity in the model
+	not transports(Entity, Version, Activity),% that doesnt transport that stuff
+	transports(Entity, OtherVersion, Activity).% but some propose that this entity could do that
+
+
+% in vitro reconstruction: enzymatic
+predicts(Model, experiment(enz_reconstruction_exp, Activity, Entity), true) :-
+	in_model(Activity, Model),
+	enz_required(Activity),
+	involved(Entity, Version, Model),
+	catalyses(Entity, Version, Activity).
+
+predicts(Model, experiment(enz_reconstruction_exp, Activity, Entity), false) :-
+	in_model(Activity, Model),
+	enz_required(Activity),
+	involved(Entity, Version, Model),% there is a version of the entity in the model
+	not catalyses(Entity, Version, Activity),% that doesnt catalyse the reaction
+	catalyses(Entity, OtherVersion, Activity).% but some propose that this entity could do that
+
+
+% in vitro reconstruction: basic
+predicts(Model, experiment(basic_reconstruction_exp, Activity), true) :-
+	activity(Activity),
+	in_model(Activity, Model),
+	not enz_required(Activity),
+	not transp_required(Activity).
+
+
+% localisation experiments: detecting entities
+predicts(Model, experiment(localisation_entity_exp, Entity, Compartment), true) :-
+	not predicts(Model, experiment(detection_activity_exp, GrowthActivity), false),
+	growth(GrowthActivity),
+	compartment(Compartment),
+	involved(Entity, Version, Model),
+	synthesizable(Entity, Version, Compartment, Model).
+
+predicts(Model, experiment(localisation_entity_exp, Entity, Compartment), true) :-
+	compartment(Compartment),
+	in_model(setup_present(Entity, Version, Compartment), Model).
+
+predicts(Model, experiment(localisation_entity_exp, Entity, Compartment), false) :-
+	not predicts(Model, experiment(detection_activity_exp, GrowthActivity), false),
+	growth(GrowthActivity),
+	compartment(Compartment),
+	involved(Entity, Version, Model),
+	not predicts(Model, experiment(localisation_entity_exp, Entity, Compartment), true).
+
+
+% detection experiments: detecting entities
+predicts(Model, experiment(detection_entity_exp, Entity), true) :-
+	not predicts(Model, experiment(detection_activity_exp, GrowthActivity), false),
+	growth(GrowthActivity),
+	compartment(Compartment),
+	involved(Entity, Version, Model),
+	synthesizable(Entity, Version, Compartment, Model).
+
+predicts(Model, experiment(detection_entity_exp, Entity), true) :-% for stuff in the setup
+	compartment(Compartment),
+	in_model(setup_present(Entity, Version, Compartment), Model).
+
+predicts(Model, experiment(detection_entity_exp, Entity), false) :-
+	not predicts(Model, experiment(detection_activity_exp, GrowthActivity), false),
+	growth(GrowthActivity),
+	involved(Entity, Version, Model),
+	not predicts(Model, experiment(detection_entity_exp, Entity), true).
+
+
+% growth experiments (or any other detecting activities)
+predicts(Model, experiment(detection_activity_exp, Activity), true) :-
+	not predicts(Model, experiment(detection_activity_exp, GrowthActivity), false),
+	growth(GrowthActivity),
+	in_model(Activity, Model),
+	activity(Activity),
+	active(Activity, Model).
+
+predicts(Model, experiment(detection_activity_exp, Activity), false) :-
+	not predicts(Model, experiment(detection_activity_exp, GrowthActivity), false),
+	growth(GrowthActivity),
+	in_model(Activity, Model),
+	activity(Activity),
+	not active(Activity, Model).
+
+predicts(Model, experiment(detection_activity_exp, GrowthActivity), false) :-
+	growth(GrowthActivity),
+	in_model(GrowthActivity, Model),
+	activity(GrowthActivity),
+	not active(GrowthActivity, Model).
+
+% involved species (to handle open world)
+involved(Entity, Version, Model) :-
+	compartment(Compartment),
+	initially_present(Entity, Version, Compartment, Model).
+
+involved(Entity, Version, Model) :-
+	compartment(Compartment),
+	product(Entity, Version, Compartment, Activity),
+	in_model(Activity, Model).
+
+involved(Entity, Version, Model) :-
+	compartment(Compartment),
+	substrate(Entity, Version, Compartment, Activity),
+	in_model(Activity, Model).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% model specification rules %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+activity(Activity) :- reaction(Activity).
+activity(Activity) :- transport(Activity).
+activity(Activity) :- expression(Activity).
+activity(Activity) :- complex_formation(Activity).
+activity(Activity) :- growth(Activity).
+
+entity(Entity, Version) :- metabolite(Entity, Version).
+entity(Entity, Version) :- complex(Entity, Version).
+entity(Entity, Version) :- protein(Entity, Version).
+entity(Entity, Version) :- gene(Entity, Version).
+
+connected_compartments(Compartment2,Compartment1) :- connected_compartments(Compartment1,Compartment2).
+connected_compartments(Compartment,Compartment) :- compartment(Compartment).
+
+in_model(ActivityOrSetup, Model) :-
+	added_to_model(ActivityOrSetup, Model),
+	not removed(ActivityOrSetup, Model).
+
+initially_present(Entity, Version, Compartment, Model) :-
+	in_model(setup_present(Entity, Version, Compartment), Model).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% synthesizable Entity rules %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+synthesizable(Ent, Version, Compartment, Model) :-
+	activity(Activity),
+	product(Ent, Version, Compartment, Activity),
+	active(Activity, Model).
+
+active(Activity, Model) :-
+	activity(Activity),
+	in_model(Activity, Model),
+	not eliminated(Activity, Model).
+
+eliminated(Activity, Model) :-
+	eliminated(Activity, Model, Int),
+	iteration(Int).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% activities elimination rules %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% iterations counter
+iteration(0).
+iteration(1).
+
+iteration(Int+2) :-
+	Int < 94,
+	iteration(Int),
+	eliminated(Activity, Model, Int+1),
+	not eliminated(Activity, Model, Int),
+	in_model(Activity, Model),
+	activity(Activity),
+	model(Model).
+
+% reachability of one specie from another going only from products to substrates (i.e. back).
+path_back_from_to(EntFrom, VerFrom, CompFrom, EntTo, VerTo, CompTo, Model, 0) :-
+	product(EntFrom, VerFrom, CompFrom, Activity),
+	substrate(EntTo, VerTo, CompTo, Activity),
+	in_model(Activity, Model),
+	activity(Activity).
+
+path_back_from_to(EntFrom, VerFrom, CompFrom, EntTo, VerTo, CompTo, Model, 0) :-
+	product(EntFrom, VerFrom, CompFrom, Activity),
+	substrate(InterEnt, InterVer, InterComp, Activity),
+	in_model(Activity, Model),
+	path_back_from_to(InterEnt, InterVer, InterComp, EntTo, VerTo, CompTo, Model, 0).
+
+% reachability for subsequent iterations.
+path_back_from_to(EntFrom, VerFrom, CompFrom, EntTo, VerTo, CompTo, Model, Int+1) :-
+	iteration(Int),
+	product(EntFrom, VerFrom, CompFrom, Activity),
+	substrate(EntTo, VerTo, CompTo, Activity),
+	in_model(Activity, Model),
+	not eliminated(Activity, Model, Int), % not eliminated on previous iteration
+	activity(Activity).
+
+path_back_from_to(EntFrom, VerFrom, CompFrom, EntTo, VerTo, CompTo, Model, Int+1) :-
+	iteration(Int),
+	product(EntFrom, VerFrom, CompFrom, Activity),
+	substrate(InterEnt, InterVer, InterComp, Activity),
+	in_model(Activity, Model),
+	not eliminated(Activity, Model, Int), % not eliminated on previous iteration
+	path_back_from_to(InterEnt, InterVer, InterComp, EntTo, VerTo, CompTo, Model, Int+1).
+
+% is initially_present entity reachable from particular entity
+path_back_to_initially_present(EntFrom, VerFrom, CompFrom, Model, Int) :-
+	iteration(Int),
+	path_back_from_to(EntFrom, VerFrom, CompFrom, EntTo, VerTo, CompTo, Model, Int),
+	initially_present(EntTo, VerTo, CompTo, Model).
+
+path_back_to_initially_present(Ent, Ver, Comp, Model, Int) :-
+	iteration(Int),
+	initially_present(Ent, Ver, Comp, Model).
+
+% has enzymes/transporter
+has_enzyme(Activity, Model, Int) :-
+	iteration(Int),
+	in_model(Activity, Model),
+	enz_required(Activity),
+	compartment(Comp),
+	enz_compartment(Comp, Activity),
+	catalyses(Entity, Version, Activity),
+	connected_compartments(SomeComp, Comp),
+	path_back_to_initially_present(Entity, Version, SomeComp, Model, Int).
+
+has_transporter(Activity, Model, Int) :-
+	iteration(Int),
+	in_model(Activity, Model),
+	transp_required(Activity),
+	compartment(Comp),
+	transp_compartment(Comp, Activity),
+	transports(Entity, Version, Activity),
+	path_back_to_initially_present(Entity, Version, Comp, Model, Int).
+
+% elimination of activities
+eliminated(Activity, Model, Int) :-
+	iteration(Int),
+	activity(Activity),
+	in_model(Activity, Model),
+	substrate(EntFrom, VerFrom, CompFrom, Activity),
+	not path_back_to_initially_present(EntFrom, VerFrom, CompFrom, Model, Int).
+
+eliminated(Activity, Model, Int) :-
+	iteration(Int),
+	activity(Activity),
+	in_model(Activity, Model),
+	enz_required(Activity),
+	not has_enzyme(Activity, Model, Int).
+
+eliminated(Activity, Model, Int) :-
+	iteration(Int),
+	activity(Activity),
+	in_model(Activity, Model),
+	transp_required(Activity),
+	not has_transporter(Activity, Model, Int).
