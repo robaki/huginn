@@ -1,4 +1,5 @@
 #! /usr/bin/env python3
+# I, Robert Rozanski, the copyright holder of this work, release this work into the public domain. This applies worldwide. In some countries this may not be legally possible; if so: I grant anyone the right to use this work for any purpose, without any conditions, unless such conditions are required by law.
 
 from mnm_repr import CellMembrane, Cytosol, EndoplasmicReticulum, ERMembrane, Medium, GolgiApparatus, GolgiMembrane, LipidParticle, MitochInnerMembrane, MitochMatrix, Nucleus, PeroxisomalMembrane, Peroxisome, VacuolarMembrane, Vacuole
 
@@ -45,14 +46,9 @@ class Evaluator:
 		# small: 1, 2, 3, 4, 5, 6
 		# medium: 7, 8, 9, 10, 11
 		# too big: 11+
-		####### test cases have been ranmed; here are original:
-		# has growth original: 0, 2, 3, 7, 8, 11
-		# small original:	15, 13, 12, 6, 10, 14, 2, 16,
-		# medium original:	7, 9, 5
-		# too big original: 3, 11, 0, 1,  4, 8
-		for case_number in []:
+		for case_number in [1, 2, 3, 4, 5, 6]:
 			case_file = 'test_cases/case_%s' % case_number
-			for repetition in []: # range(3)
+			for repetition in range(3):
 				pkl_file = open(case_file, 'rb')
 				case = pickle.load(pkl_file)
 				pkl_file.close()
