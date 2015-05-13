@@ -43,18 +43,42 @@ def export_compartments(compartments):
 def export_activities(activities):
 	strings = []
 	for act in activities:
-		if isinstance(act, mnm_repr.Growth):
-			strings.append('\ngrowth(%s).' % act.ID)
-		elif isinstance(act, mnm_repr.Expression):
-			strings.append('\nexpression(%s).' % act.ID)
-		elif isinstance(act, mnm_repr.Reaction):
-			strings.append('\nreaction(%s).' % act.ID)
-		elif isinstance(act, mnm_repr.Transport):
-			strings.append('\ntransport(%s).' % act.ID)
-		elif isinstance(act, mnm_repr.ComplexFormation):
-			strings.append('\ncomplex_formation(%s).' % act.ID)
+		if act.reversible == False:
+			if isinstance(act, mnm_repr.Growth):
+				strings.append('\ngrowth(%s).' % act.ID)
+			elif isinstance(act, mnm_repr.Expression):
+				strings.append('\nexpression(%s).' % act.ID)
+			elif isinstance(act, mnm_repr.Reaction):
+				strings.append('\nreaction(%s).' % act.ID)
+			elif isinstance(act, mnm_repr.Transport):
+				strings.append('\ntransport(%s).' % act.ID)
+			elif isinstance(act, mnm_repr.ComplexFormation):
+				strings.append('\ncomplex_formation(%s).' % act.ID)
+			else:
+				raise TypeError("export_activities: activity type not recognised: %s" % type(act))
+
+		elif act.reversible == True:
+			strings.append('\nreverse(%s,%s_rev).' % (act.ID,act.ID))
+			if isinstance(act, mnm_repr.Growth):
+				strings.append('\ngrowth(%s).' % act.ID)
+				strings.append('\ngrowth(%s_rev).' % act.ID)
+			elif isinstance(act, mnm_repr.Expression):
+				strings.append('\nexpression(%s).' % act.ID)
+				strings.append('\nexpression(%s_rev).' % act.ID)
+			elif isinstance(act, mnm_repr.Reaction):
+				strings.append('\nreaction(%s).' % act.ID)
+				strings.append('\nreaction(%s_rev).' % act.ID)
+			elif isinstance(act, mnm_repr.Transport):
+				strings.append('\ntransport(%s).' % act.ID)
+				strings.append('\ntransport(%s_rev).' % act.ID)
+			elif isinstance(act, mnm_repr.ComplexFormation):
+				strings.append('\ncomplex_formation(%s).' % act.ID)
+				strings.append('\ncomplex_formation(%s_rev).' % act.ID)
+			else:
+				raise TypeError("export_activities: activity type not recognised: %s" % type(act))
+
 		else:
-			raise TypeError("export_activities: activity type not recognised: %s" % type(act))
+			raise ValueError("export_activities: activity's reversibility status not specified")
 
 	for act in activities:
 		strings.extend(export_activity(act))
@@ -63,22 +87,45 @@ def export_activities(activities):
 
 def export_activity(activity):
 	strings = []
-	for req in activity.required_conditions:
-		if isinstance(req, mnm_repr.PresentEntity):
-			strings.append('\nsubstrate(%s,%s,%s,%s).' % (req.entity.ID, req.entity.version, req.compartment.ID, activity.ID))
-		elif isinstance(req, mnm_repr.PresentCatalyst):		
-			strings.append('\nenz_required(%s).' % activity.ID)
-			strings.append('\nenz_compartment(%s,%s).' % (req.compartment.ID, activity.ID))
-		elif isinstance(req, mnm_repr.PresentTransporter):
-			strings.append('\ntransp_required(%s).' % activity.ID)
-			strings.append('\ntransp_compartment(%s,%s).' % (req.compartment.ID, activity.ID))
-		else:
-			raise TypeError("export_activity: requirement type not recognised:%s" % type(req))
+	if activity.reversible == False:
+		for req in activity.required_conditions:
+			strings.extend(export_required_condition(req, activity))
+		for change in activity.changes:
+			strings.extend(export_change(change, activity))
 
-	for change in activity.changes:
-		strings.append('\nproduct(%s,%s,%s,%s).' % (change.entity.ID, change.entity.version, change.compartment.ID, activity.ID))
+	elif activity.reversible == True:
+		for req in activity.required_conditions:
+			strings.extend(export_required_condition(req, activity))
+		for change in activity.changes:
+			strings.extend(export_change(change, activity))
+		# export reverse version
+		for change in list(activity.changes) + [x for x in activity.required_conditions if (not isinstance(x, mnm_repr.PresentEntity))]:
+			strings.extend(export_required_condition(change, activity, '_rev'))
+		for req in [x for x in activity.required_conditions if isinstance(x, mnm_repr.PresentEntity)]:
+			strings.extend(export_change(req, activity, '_rev'))
+
+	else:
+		raise ValueError("export_activity: activity's reversibility status not specified")
 
 	return strings
+
+
+def export_required_condition(req, activity, suffix=''):
+	strings = []
+	if isinstance(req, mnm_repr.PresentEntity):
+		strings.append('\nsubstrate(%s,%s,%s,%s%s).' % (req.entity.ID, req.entity.version, req.compartment.ID, activity.ID, suffix))
+	elif isinstance(req, mnm_repr.PresentCatalyst):		
+		strings.append('\nenz_required(%s%s).' % (activity.ID, suffix))
+		strings.append('\nenz_compartment(%s,%s%s).' % (req.compartment.ID, activity.ID, suffix))
+	elif isinstance(req, mnm_repr.PresentTransporter):
+		strings.append('\ntransp_required(%s%s).' % (activity.ID, suffix))
+		strings.append('\ntransp_compartment(%s,%s%s).' % (req.compartment.ID, activity.ID, suffix))
+	else:
+		raise TypeError("export_activity: requirement type not recognised:%s" % type(req))
+	return strings
+
+def export_change(change, activity, suffix=''):
+	return ['\nproduct(%s,%s,%s,%s%s).' % (change.entity.ID, change.entity.version, change.compartment.ID, activity.ID, suffix)]
 
 
 def export_results(results):
@@ -554,6 +601,14 @@ def interventions_rules():
 	'\n%%%%%% application of interventions to all models %%%%%%',
 	'\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%',
 	'\n',
+	'\nremove(ReverseActivity):-',
+	'\n	remove(BaseActivity),',
+	'\n	reverse(ReverseActivity, BaseActivity).',
+	'\n',
+	'\nadd(ReverseActivity):-',
+	'\n	add(BaseActivity),',
+	'\n	reverse(ReverseActivity, BaseActivity).',
+	'\n',
 	'\nremoved(ActivityOrCondition, Model) :-',
 	'\n	remove(ActivityOrCondition),',
 	'\n	model(Model).',
@@ -885,3 +940,5 @@ def export_display_for_oracle(expDescription):
 		raise TypeError("export_display_for_oracle: exp type not recognised: %" % expDescription.experiment_type)
 
 
+#for x in models_rules(5):
+#	print(x)

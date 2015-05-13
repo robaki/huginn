@@ -46,6 +46,7 @@ class Activity(Element):
 		Element.__init__(self, ID, name)
 		self.required_conditions = frozenset(required_conditions)
 		self.changes = frozenset(changes)
+		self.reversibility = None # should be turned True or False; exporter should raise exception if left with None
 		self.detection_cost = 1
 		self.base_reconstruction_cost = 1
 		self.add_cost = 1
