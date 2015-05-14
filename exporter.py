@@ -258,7 +258,17 @@ def export_ignore_results(results):
 
 
 def models_rules(max_number_activities):
-	return ['\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%',
+	return [
+	'\n%%% catalysis/ transport of reversed activities:',
+	'\ncatalyses(Entity, Version, ReverseActivity) :-',
+	'\n	catalyses(Entity, Version, BaseActivity),',
+	'\n	reverse(ReverseActivity, BaseActivity).',
+	'\n',
+	'\ncatalyses(Entity, Version, ReverseActivity) :-',
+	'\n	transports(Entity, Version, BaseActivity),',
+	'\n	reverse(ReverseActivity, BaseActivity).',
+	'\n',
+	'\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%',
 	'\n%%%%% model specification rules %%%%%',
 	'\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%',
 	'\nactivity(Activity) :- reaction(Activity).',
