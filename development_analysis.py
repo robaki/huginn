@@ -279,7 +279,7 @@ def get_timestamps_development(dev_history):
 
 def print_all_avg_and_best_absolute_scores():
 	folder = 'pickled_archives'
-	paths = get_all_paths()
+	paths = get_all_paths(folder)
 	for path in paths:
 		full_path = '/'.join([folder,path])
 		arch = read_archive(full_path)
@@ -788,7 +788,7 @@ def detect_import_of_setup(archive):
 
 
 def plotting_all_with_drifts():
-	folder = 'pickled_archives_addit_runs'
+	folder = 'pickled_archives'
 	paths = get_all_paths(folder)
 	for path in paths:
 		full_path = '/'.join([folder,path])
@@ -1344,9 +1344,9 @@ def get_revision_data(events_list):
 
 
 
-#plotting_all_with_drifts()
+plotting_all_with_drifts()
 #analyse_all_development_and_drift()
-print_all_revisions()
+#print_all_revisions()
 
 
 #print_abs_difference_to_the_last_successful_cycle()
