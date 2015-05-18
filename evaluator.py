@@ -100,6 +100,12 @@ class Evaluator:
 						for act in case['add_import_activities']:
 							act.ID = archive_.get_new_act_id()
 							archive_.import_activities.append(act)
+
+						#####
+#						for act in archive_.mnm_activities + archive_.import_activities:
+#							print(act.reversibility)
+
+						#####
 		
 						archive_.record(InitialModels(case['initial_models']))
 
@@ -178,5 +184,5 @@ class Evaluator:
 
 
 evaluator = Evaluator()
-evaluator.test_all_single_process()
-#evaluator.test_all_multiprocess()
+#evaluator.test_all_single_process()
+evaluator.test_all_multiprocess()

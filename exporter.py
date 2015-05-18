@@ -43,7 +43,7 @@ def export_compartments(compartments):
 def export_activities(activities):
 	strings = []
 	for act in activities:
-		if act.reversible == False:
+		if act.reversibility == False:
 			if isinstance(act, mnm_repr.Growth):
 				strings.append('\ngrowth(%s).' % act.ID)
 			elif isinstance(act, mnm_repr.Expression):
@@ -57,7 +57,7 @@ def export_activities(activities):
 			else:
 				raise TypeError("export_activities: activity type not recognised: %s" % type(act))
 
-		elif act.reversible == True:
+		elif act.reversibility == True:
 			strings.append('\nreverse(%s,%s_rev).' % (act.ID,act.ID))
 			if isinstance(act, mnm_repr.Growth):
 				strings.append('\ngrowth(%s).' % act.ID)
@@ -87,13 +87,13 @@ def export_activities(activities):
 
 def export_activity(activity):
 	strings = []
-	if activity.reversible == False:
+	if activity.reversibility == False:
 		for req in activity.required_conditions:
 			strings.extend(export_required_condition(req, activity))
 		for change in activity.changes:
 			strings.extend(export_change(change, activity))
 
-	elif activity.reversible == True:
+	elif activity.reversibility == True:
 		for req in activity.required_conditions:
 			strings.extend(export_required_condition(req, activity))
 		for change in activity.changes:
