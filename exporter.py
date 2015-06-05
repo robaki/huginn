@@ -262,11 +262,16 @@ def models_rules(max_number_activities):
 	'\n%%% catalysis/ transport of reversed activities:',
 	'\ncatalyses(Entity, Version, ReverseActivity) :-',
 	'\n	catalyses(Entity, Version, BaseActivity),',
-	'\n	reverse(ReverseActivity, BaseActivity).',
+	'\n	reverse(BaseActivity, ReverseActivity).',
 	'\n',
 	'\ncatalyses(Entity, Version, ReverseActivity) :-',
 	'\n	transports(Entity, Version, BaseActivity),',
-	'\n	reverse(ReverseActivity, BaseActivity).',
+	'\n	reverse(BaseActivity, ReverseActivity).',
+	'\n',
+	'\n%%% automatically adding reverse activities to models:',
+	'\nadded_to_model(ActivityRev, Model) :-',
+	'\n	added_to_model(BaseActivity, Model),',
+	'\n	reverse(BaseActivity, ActivityRev).',
 	'\n',
 	'\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%',
 	'\n%%%%% model specification rules %%%%%',
@@ -613,11 +618,11 @@ def interventions_rules():
 	'\n',
 	'\nremove(ReverseActivity):-',
 	'\n	remove(BaseActivity),',
-	'\n	reverse(ReverseActivity, BaseActivity).',
+	'\n	reverse(BaseActivity, ReverseActivity).',
 	'\n',
 	'\nadd(ReverseActivity):-',
 	'\n	add(BaseActivity),',
-	'\n	reverse(ReverseActivity, BaseActivity).',
+	'\n	reverse(BaseActivity, ReverseActivity).',
 	'\n',
 	'\nremoved(ActivityOrCondition, Model) :-',
 	'\n	remove(ActivityOrCondition),',
@@ -841,7 +846,7 @@ def design_constraints_basic():
 	'\n',
 	'\nentity_in_model(Entity, Version, Compartment, Model) :- in_model(setup_present(Entity, Version, Compartment), Model).',
 	'\nentity_in_model(Entity, Version, Compartment, Model) :- synthesizable(Entity, Version, Compartment, Model).',
-	'\n:- add(Activity), substrate(Ent,Ver,Comp,Activity), model(Model), not entity_in_model(Ent, Ver, Comp, Model).']
+	'\n:- add(ImportAct), substrate(Ent,Ver,Comp,ImportAct), not add(setup_present(Ent, Ver, Comp)).'] # import restriction: can't add without adding the substance
 
 
 

@@ -18,14 +18,14 @@ class ArchiveTest(unittest.TestCase):
 
 	def test_record_Results(self):
 		res = exp_repr.Experiment('res')
-		event = archive.NewResults(res)
+		event = archive.AcceptedResults(res)
 		self.archive.record(event)
 		self.assertIn(event, self.archive.development_history)
-		self.assertIn(exp_repr.Experiment('exp_0'), self.archive.known_results)
+		self.assertIn(res, self.archive.known_results)
 
 	def test_record_RefutedModels(self):
 		mod = 'mod'
-		self.archive.working_models.append(mod)
+		self.archive.working_models.update([mod])
 		event = archive.RefutedModels([mod])
 		self.archive.record(event)
 		self.assertIn(event, self.archive.development_history)

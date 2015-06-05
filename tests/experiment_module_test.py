@@ -26,8 +26,11 @@ class ExperimentModuleTest(unittest.TestCase):
 		self.cond4 = PresentEntity(self.cplx1, self.cytosol)
 
 		self.growth = Growth('growth', [self.cond2])
+		self.growth.reversibility = False
 		self.r1 = Reaction('r1', [self.cond1], [self.cond2])
 		self.r2 = Reaction('r2', [self.cond3], [self.cond4])
+		self.r1.reversibility = False
+		self.r2.reversibility = False
 
 		self.entities = [self.g1, self.p1, self.met1, self.met2, self.cplx1]
 		self.compartments = [self.cytosol]
@@ -146,7 +149,7 @@ class ExperimentModuleTest(unittest.TestCase):
 
 
 	def test_get_interventions(self):
-		components = ['add(setup_present(met1,none,c_05))', 'remove(setup_present(met2,none,c_05))', 'add(r123)']
+		components = ['add(setup_present(met1,none,c_05))', 'remove(setup_present(met2,none,c_05))']
 		interventions = self.exp_module.get_interventions(components)
 		eval_info = []
 		for inter in interventions:

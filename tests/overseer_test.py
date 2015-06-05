@@ -20,8 +20,10 @@ class OverseerTest(unittest.TestCase):
 		oracle = Oracle(archive, [], [], None, [], [], [])
 		qual_mod = QualityModule(archive)
 		stop_threshold = 2
-		self.overseer_qual = OverseerWithModQuality(archive, rev_mod, exp_mod, oracle, 2, qual_mod, stop_threshold)
-		self.overseer_no_qual = OverseerNoQuality(archive, rev_mod, exp_mod, oracle, 2, stop_threshold)
+		max_time = 4
+		suffix = 'test'
+		self.overseer_qual = OverseerWithModQuality(archive, rev_mod, exp_mod, oracle, 2, qual_mod, max_time, suffix, stop_threshold)
+		self.overseer_no_qual = OverseerNoQuality(archive, rev_mod, exp_mod, oracle, 2, max_time, suffix, stop_threshold)
 
 
 	def test_available_transitions(self):
@@ -41,19 +43,17 @@ class OverseerTest(unittest.TestCase):
 		self.assertEqual(state_after, 'models_tested_and_revised')
 
 
-#	def test_stop_development(self):# TESTED BUT SHOULDN'T BE PART OF THE SUIT
-#		self.overseer_qual.stop_development()
-
-
 	def test_do_check_ignoring_negative(self):
 		mod = Model('m_0', [], [], [])
 		archive = Archive()
-		archive.working_models.append(mod)
+		archive.working_models.update([mod])
 		rev_mod = RevCIAddR(archive)
 		exp_mod = BasicExpModuleNoCosts(archive, None)
 		oracle = Oracle(archive, [], [], None, [], [], [])
 		qual_mod = QualityModule(archive)
-		overseer = OverseerWithModQuality(archive, rev_mod, exp_mod, oracle, 2, qual_mod, 2)
+		max_time = 4
+		suffix = 'test'
+		overseer = OverseerWithModQuality(archive, rev_mod, exp_mod, oracle, 2, qual_mod, 10, max_time, suffix, 2)
 		overseer.cycles_since_last_new_model = 5
 		overseer.cycles_since_best_model_changed = 5
 		overseer.current_best_models = set([mod])
@@ -101,13 +101,13 @@ class OverseerTest(unittest.TestCase):
 
 	def test_did_the_best_model_change_since_last_check_positive(self):
 		mod = Model('m_0', [], [], [])
-		self.overseer_qual.archive.working_models.append(mod)
+		self.overseer_qual.archive.working_models.update([mod])
 		out = self.overseer_qual.did_the_best_model_change_since_last_check()
 		self.assertEqual(out, True)
 
 	def test_did_the_best_model_change_since_last_check_negative(self):
 		mod = Model('m_0', [], [], [])
-		self.overseer_qual.archive.working_models.append(mod)
+		self.overseer_qual.archive.working_models.update([mod])
 		self.overseer_qual.current_best_models = set([mod])
 		out = self.overseer_qual.did_the_best_model_change_since_last_check()
 		self.assertEqual(out, False)

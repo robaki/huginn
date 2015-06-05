@@ -22,7 +22,7 @@ suite_7 = unittest.TestLoader().loadTestsFromTestCase(experiment_module_test.Exp
 suite_8 = unittest.TestLoader().loadTestsFromTestCase(oracle_test.OracleTest)
 suite_9 = unittest.TestLoader().loadTestsFromTestCase(overseer_test.OverseerTest)
 
-suits = [suite_4] #suite_1, suite_2, suite_3, suite_4, suite_5, suite_6, suite_7, suite_8
+suits = [suite_5] #suite_1, suite_2, suite_3, suite_4, suite_5, suite_6, suite_7, suite_8
 
 for suite in suits:
 	print('\n\n')

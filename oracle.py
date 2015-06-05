@@ -15,6 +15,8 @@ import re
 
 from archive import NewResults
 
+import random
+
 
 class Oracle:
 	def __init__(self, archive, entities_ref, activities_ref, model_ref, all_ent, all_comp, all_act, sfx=""):
@@ -99,7 +101,8 @@ class Oracle:
 		exported_model = exporter.export_models_exp_design([copied_model])
 		exported_model_rules = exporter.models_rules(len(copied_model.intermediate_activities))
 		exported_display = exporter.export_display_for_oracle(expD)
-		inp = [exported_ent, exported_comp, exported_act, exported_model, exported_display, exported_model_rules]
+		exported_prediction_rules = exporter.predictions_rules() # debug: prediction rules are needed for two-factor experiments
+		inp = [exported_display, exported_ent, exported_comp, exported_act, exported_model, exported_prediction_rules, exported_model_rules]
 		inp = [val for sublist in inp for val in sublist] # flatten
 		return inp
 
@@ -157,3 +160,26 @@ class Oracle:
 
 		else:
 			raise TypeError("oracle process_output: experiment type not recognised: %s" % expD.experiment_type)
+
+
+class SloppyOracle(Oracle):# allows to randomly flip the outcome of experiment (simulates experimental errors, etc.)
+	def __init__(self, archive, entities_ref, activities_ref, model_ref, all_ent, all_comp, all_act, sfx="", error_parameter=0.00):
+		Oracle.__init__(self, archive, entities_ref, activities_ref, model_ref, all_ent, all_comp, all_act, sfx)
+		self.error_parameter = error_parameter
+
+	def execute_exp(self, expD):
+		tp = expD.experiment_type
+		if isinstance(tp, DetectionEntity) or isinstance(tp, LocalisationEntity) or isinstance(tp, DetectionActivity) or isinstance(tp, AdamTwoFactorExperiment):
+			result = self.execute_in_vivo(expD)
+		else:
+			result = self.execute_in_vitro_exp(expD)
+		# randomly decide whether to flip the outcome (true->false or vice versa)
+		if random.random() < error_parameter: # flip
+			if result.outcome == 'true':
+				result.outcome = 'false'
+			else:
+				result.outcome = 'true'
+			return result
+		else: # don't flip
+			return result
+

@@ -312,6 +312,7 @@ class RevisionModule:
 #		print('processed output:')
 #		print(processed_output)
 		
+		new_mod = []
 		updated_base_model = False
 		solutions_for_model_revision = [solution for solution in processed_output if ((solution[0] != []) or (solution[1] != []))]
 		solution_for_ignoring_update = [solution for solution in processed_output if ((solution[0] == []) and (solution[1] == []))]
@@ -321,11 +322,15 @@ class RevisionModule:
 #		print(solutions_for_model_revision)
 
 		# random choice used to limit # of new models to 1: more than that would blow up experiment design!
-		new_mod = [random.choice([self.create_revised_models(cmodel, solution) for solution in solutions_for_model_revision])]
+		if (solutions_for_model_revision != []):
+			new_mod = [random.choice([self.create_revised_models(cmodel, solution) for solution in solutions_for_model_revision])]
 
-		if (solution_for_ignoring_update != []): # update of ignoring results (pick one randomly, they're all optimal)
+		elif (solution_for_ignoring_update != []): # update of ignoring results (pick one randomly, they're all optimal)
 			self.update_base_model(base_model, random.choice(solution_for_ignoring_update))
 			updated_base_model = True
+
+		else:
+			raise ValueError("no solutions for revisions and ignoring: revision failed")
 
 		return (new_mod, updated_base_model)
 
