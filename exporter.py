@@ -264,7 +264,7 @@ def models_rules(max_number_activities):
 	'\n	catalyses(Entity, Version, BaseActivity),',
 	'\n	reverse(BaseActivity, ReverseActivity).',
 	'\n',
-	'\ncatalyses(Entity, Version, ReverseActivity) :-',
+	'\ntransports(Entity, Version, ReverseActivity) :-',
 	'\n	transports(Entity, Version, BaseActivity),',
 	'\n	reverse(BaseActivity, ReverseActivity).',
 	'\n',
