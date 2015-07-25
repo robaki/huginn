@@ -46,7 +46,7 @@ class Evaluator:
 		# small: 1, 2, 3, 4, 5, 6
 		# medium: 7, 8, 9, 10, 11
 		# too big: 11+
-		for case_number in [1, 2, 3, 4, 5, 6]:
+		for case_number in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]:
 			case_file = 'test_cases/case_%s' % case_number
 			for repetition in range(3):
 				pkl_file = open(case_file, 'rb')
@@ -184,5 +184,5 @@ class Evaluator:
 
 
 evaluator = Evaluator()
-#evaluator.test_all_single_process()
-evaluator.test_all_multiprocess()
+evaluator.test_all_single_process()
+#evaluator.test_all_multiprocess()
