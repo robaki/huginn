@@ -174,7 +174,7 @@ class SloppyOracle(Oracle):# allows to randomly flip the outcome of experiment (
 		else:
 			result = self.execute_in_vitro_exp(expD)
 		# randomly decide whether to flip the outcome (true->false or vice versa)
-		if random.random() < error_parameter: # flip
+		if random.random() < self.error_parameter: # flip
 			if result.outcome == 'true':
 				result.outcome = 'false'
 			else:
