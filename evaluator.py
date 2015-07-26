@@ -9,7 +9,7 @@ import pickle
 from archive import Archive, InitialModels
 from experiment_module import BasicExpModuleNoCosts
 from experiment_module import BasicExpModuleWithCosts
-from oracle import Oracle
+from oracle import Oracle, SloppyOracle
 from overseer import OverseerWithModQuality
 from overseer import OverseerNoQuality
 from quality_module import AllCovered
@@ -63,8 +63,8 @@ class Evaluator:
 	def system_configuration_generator(self, case, first_suffix):
 		for qual in [AllCoveredMinusIgnored]: # NewCoveredMinusIgnored
 			for rev in [RevCIAddR]: # RevCIAddB
-				for threshold_addit_mods in [4]: #2, , 8
-					for stop_threshold in [8]: #2, 4, 
+				for threshold_addit_mods in [6]: #2, 4, 6, 8
+					for stop_threshold in [8]: # just 8 
 
 						suffix = 'conf%s_%s' % (self.get_suffix((qual, rev, threshold_addit_mods, stop_threshold)), first_suffix)
 
@@ -141,42 +141,37 @@ class Evaluator:
 
 	def get_suffix(self, tpl):
 		suff_dict = {
-			(AllCoveredMinusIgnored,RevCIAddR,2,2):'00',
-			(AllCoveredMinusIgnored,RevCIAddR,2,4):'01',
-			(AllCoveredMinusIgnored,RevCIAddR,2,8):'02',
-			(AllCoveredMinusIgnored,RevCIAddR,4,2):'03',
-			(AllCoveredMinusIgnored,RevCIAddR,4,4):'04',
-			(AllCoveredMinusIgnored,RevCIAddR,4,8):'05',
-			(AllCoveredMinusIgnored,RevCIAddR,8,2):'06',
-			(AllCoveredMinusIgnored,RevCIAddR,8,4):'07',
-			(AllCoveredMinusIgnored,RevCIAddR,8,8):'08',
-			(AllCoveredMinusIgnored,RevCIAddB,2,2):'09',
-			(AllCoveredMinusIgnored,RevCIAddB,2,4):'10',
-			(AllCoveredMinusIgnored,RevCIAddB,2,8):'11',
-			(AllCoveredMinusIgnored,RevCIAddB,4,2):'12',
-			(AllCoveredMinusIgnored,RevCIAddB,4,4):'13',
-			(AllCoveredMinusIgnored,RevCIAddB,4,8):'14',
-			(AllCoveredMinusIgnored,RevCIAddB,8,2):'15',
-			(AllCoveredMinusIgnored,RevCIAddB,8,4):'16',
-			(AllCoveredMinusIgnored,RevCIAddB,8,8):'17',
-			(NewCoveredMinusIgnored,RevCIAddR,2,2):'18',
-			(NewCoveredMinusIgnored,RevCIAddR,2,4):'19',
-			(NewCoveredMinusIgnored,RevCIAddR,2,8):'20',
-			(NewCoveredMinusIgnored,RevCIAddR,4,2):'21',
-			(NewCoveredMinusIgnored,RevCIAddR,4,4):'22',
-			(NewCoveredMinusIgnored,RevCIAddR,4,8):'23',
-			(NewCoveredMinusIgnored,RevCIAddR,8,2):'24',
-			(NewCoveredMinusIgnored,RevCIAddR,8,4):'25',
-			(NewCoveredMinusIgnored,RevCIAddR,8,8):'26',
-			(NewCoveredMinusIgnored,RevCIAddB,2,2):'27',
-			(NewCoveredMinusIgnored,RevCIAddB,2,4):'28',
-			(NewCoveredMinusIgnored,RevCIAddB,2,8):'29',
-			(NewCoveredMinusIgnored,RevCIAddB,4,2):'30',
-			(NewCoveredMinusIgnored,RevCIAddB,4,4):'31',
-			(NewCoveredMinusIgnored,RevCIAddB,4,8):'32',
-			(NewCoveredMinusIgnored,RevCIAddB,8,2):'33',
-			(NewCoveredMinusIgnored,RevCIAddB,8,4):'34',
-			(NewCoveredMinusIgnored,RevCIAddB,8,8):'35'
+			(AllCoveredMinusIgnored,RevCIAddR,2,8):'00',
+			(AllCoveredMinusIgnored,RevCIAddR,4,8):'01',
+			(AllCoveredMinusIgnored,RevCIAddR,6,8):'02',
+			(AllCoveredMinusIgnored,RevCIAddR,8,8):'03'
+#			(AllCoveredMinusIgnored,RevCIAddB,2,2):'',
+#			(AllCoveredMinusIgnored,RevCIAddB,2,4):'',
+#			(AllCoveredMinusIgnored,RevCIAddB,2,8):'',
+#			(AllCoveredMinusIgnored,RevCIAddB,4,2):'',
+#			(AllCoveredMinusIgnored,RevCIAddB,4,4):'',
+#			(AllCoveredMinusIgnored,RevCIAddB,4,8):'',
+#			(AllCoveredMinusIgnored,RevCIAddB,8,2):'',
+#			(AllCoveredMinusIgnored,RevCIAddB,8,4):'',
+#			(AllCoveredMinusIgnored,RevCIAddB,8,8):'',
+#			(NewCoveredMinusIgnored,RevCIAddR,2,2):'',
+#			(NewCoveredMinusIgnored,RevCIAddR,2,4):'',
+#			(NewCoveredMinusIgnored,RevCIAddR,2,8):'',
+#			(NewCoveredMinusIgnored,RevCIAddR,4,2):'',
+#			(NewCoveredMinusIgnored,RevCIAddR,4,4):'',
+#			(NewCoveredMinusIgnored,RevCIAddR,4,8):'',
+#			(NewCoveredMinusIgnored,RevCIAddR,8,2):'',
+#			(NewCoveredMinusIgnored,RevCIAddR,8,4):'',
+#			(NewCoveredMinusIgnored,RevCIAddR,8,8):'',
+#			(NewCoveredMinusIgnored,RevCIAddB,2,2):'',
+#			(NewCoveredMinusIgnored,RevCIAddB,2,4):'',
+#			(NewCoveredMinusIgnored,RevCIAddB,2,8):'',
+#			(NewCoveredMinusIgnored,RevCIAddB,4,2):'',
+#			(NewCoveredMinusIgnored,RevCIAddB,4,4):'',
+#			(NewCoveredMinusIgnored,RevCIAddB,4,8):'',
+#			(NewCoveredMinusIgnored,RevCIAddB,8,2):'',
+#			(NewCoveredMinusIgnored,RevCIAddB,8,4):'',
+#			(NewCoveredMinusIgnored,RevCIAddB,8,8):''
 			}
 
 		return suff_dict[tpl]
