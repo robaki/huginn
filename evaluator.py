@@ -46,7 +46,8 @@ class Evaluator:
 		# small: 1, 2, 3, 4, 5, 6
 		# medium: 7, 8, 9, 10, 11
 		# too big: 11+
-		for case_number in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]:
+		# serwer simulations: staring with the biggest to see RAM consumption and react if problems
+		for case_number in [17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]:# 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17
 			case_file = 'test_cases/case_%s' % case_number
 			for repetition in range(3):
 				pkl_file = open(case_file, 'rb')
@@ -63,7 +64,7 @@ class Evaluator:
 	def system_configuration_generator(self, case, first_suffix):
 		for qual in [AllCoveredMinusIgnored]: # NewCoveredMinusIgnored
 			for rev in [RevCIAddR]: # RevCIAddB
-				for threshold_addit_mods in [6]: #2, 4, 6, 8
+				for threshold_addit_mods in [2]: #2, 4, 6, 8
 					for stop_threshold in [8]: # just 8 
 
 						suffix = 'conf%s_%s' % (self.get_suffix((qual, rev, threshold_addit_mods, stop_threshold)), first_suffix)
@@ -121,10 +122,12 @@ class Evaluator:
 						cost_model.remove_None_valued_elements()
 
 						exp_m = BasicExpModuleWithCosts(archive_, cost_model, sfx=suffix) # !!!!! switched from no costs
+
+						# SloppyOracle
 						oracle_ = Oracle(archive_, case['entities_ref'],
 							case['activities_ref'], case['model_of_ref'],
 							case['all_entities'], self.compartments,
-							case['all_activities'], sfx=suffix)
+							case['all_activities'], sfx=suffix)# , error_parameter=0.60
 
 						max_numb_cycles = 1000 # 
 						max_time = 4 # 
