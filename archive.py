@@ -76,6 +76,7 @@ class Archive:
 
 		elif isinstance(event, RevisionFail):
 			self.revflag = True
+			self.error_flag = True
 
 		elif isinstance(event, RevisedIgnoredUpdate):
 			pass
@@ -91,6 +92,7 @@ class Archive:
 
 		elif isinstance(event, AdditModProdFail):
 			self.revflag = True
+			self.error_flag = True
 
 		elif isinstance(event, UpdatedModelQuality):
 			pass

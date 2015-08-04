@@ -208,18 +208,18 @@ class OverseerWithModQuality(Overseer):
 			return False
 		elif not (len(self.archive.working_models) < self.threshold_addit_models):
 			return False
-		elif not (self.archive.revflag == False):
+		elif not (self.archive.revflag == False):# flag is True if sth went wrong in revision or production of addit models
 			return False
 		else:
 			return True
 
 
 	def cond_2(self):
-		if (self.archive.revflag == True):
+		if not (self.current_state == 'quality_recalculated'):
+			return False
+		elif (self.archive.revflag == True):# flag is True if sth went wrong in revision or production of addit models 
 			return True
 		elif not (len(self.archive.working_models) >= self.threshold_addit_models):
-			return False
-		elif not (self.current_state == 'quality_recalculated'):
 			return False
 		else:
 			return True
