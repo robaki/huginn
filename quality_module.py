@@ -41,6 +41,10 @@ class AllCoveredMinusIgnored(QualityModule):
 
 	def calculate_models_quality(self):# 'normalised' score; checks if needed update
 		all_scores = [model.score for model in self.archive.working_models]
+		if all_scores == []:
+			print("Quality module: NO WORKING MODELS!?")
+			return None
+
 		smallest = min(all_scores)
 		if smallest < 1:# needs normalisation; +1 below to cope with 0
 			for model in self.archive.working_models:
