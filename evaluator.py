@@ -47,7 +47,7 @@ class Evaluator:
 		# medium: 7, 8, 9, 10, 11
 		# too big: 11+
 		# serwer simulations: staring with the biggest to see RAM consumption and react if problems
-		for case_number in [1]:# 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17
+		for case_number in [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]:# 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17
 			case_file = 'test_cases/case_%s' % case_number
 			for repetition in range(3):
 				pkl_file = open(case_file, 'rb')
@@ -129,8 +129,8 @@ class Evaluator:
 							case['all_entities'], self.compartments,
 							case['all_activities'], sfx=suffix)# , error_parameter=0.60
 
-						max_numb_cycles = 1000 # 
-						max_time = 4 # 
+						max_numb_cycles = 10000 # 
+						max_time = 24 # 
 
 						yield OverseerWithModQuality(archive_, rev_m, exp_m,
 							oracle_, threshold_addit_mods, qual_m, max_numb_cycles,
