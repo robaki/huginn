@@ -64,7 +64,7 @@ class Evaluator:
 	def system_configuration_generator(self, case, first_suffix):
 		for qual in [AllCoveredMinusIgnored]: # NewCoveredMinusIgnored
 			for rev in [RevCIAddR]: # RevCIAddB
-				for threshold_addit_mods in [2]: #2, 4, 6, 8
+				for threshold_addit_mods in [6]: #2, 4, 6, 8
 					for stop_threshold in [8]: # just 8 
 
 						suffix = 'conf%s_%s' % (self.get_suffix((qual, rev, threshold_addit_mods, stop_threshold)), first_suffix)
@@ -124,10 +124,10 @@ class Evaluator:
 						exp_m = BasicExpModuleWithCosts(archive_, cost_model, sfx=suffix) # !!!!! switched from no costs
 
 						# SloppyOracle
-						oracle_ = Oracle(archive_, case['entities_ref'],
+						oracle_ = SloppyOracle(archive_, case['entities_ref'],
 							case['activities_ref'], case['model_of_ref'],
 							case['all_entities'], self.compartments,
-							case['all_activities'], sfx=suffix)# , error_parameter=0.60
+							case['all_activities'], sfx=suffix, error_parameter=0.60)# , error_parameter=0.60
 
 						max_numb_cycles = 10000 # 
 						max_time = 24 # 
