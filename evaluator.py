@@ -31,7 +31,7 @@ class Evaluator:
 
 
 	def test_all_single_process(self):
-		for (case, suffix) in self.test_case_loader():
+		for (case, suffix) in self.test_case_loader_manual():
 			for overseer in self.system_configuration_generator(case, suffix):
 				overseer.run()
 
@@ -40,6 +40,37 @@ class Evaluator:
 		with Pool(processes = 2) as pool:
 			result = pool.map(self.test_generator, self.test_case_loader())
 			print(result)
+
+
+	def test_case_loader_manual(self):
+		cases_and_reps_to_run = {
+			1:set([0]),
+			2:set([]),
+			3:set([]),
+			4:set([]),
+			5:set([]),
+			6:set([]),
+			7:set([]),
+			8:set([]),
+			9:set([]),
+			10:set([]),
+			11:set([]),
+			12:set([])
+		}
+		#
+		for case_number in cases_and_reps_to_run.keys():
+			case_file = 'test_cases/case_%s' % case_number
+			print(cases_and_reps_to_run[case_number])
+			for repetition in cases_and_reps_to_run[case_number]:
+				pkl_file = open(case_file, 'rb')
+				case = pickle.load(pkl_file)
+				pkl_file.close()
+				if len(str(case_number)) == 1:
+					suffix = 'tc0%s_r%s' % (case_number, repetition)
+					yield (case, suffix)
+				else:
+					suffix = 'tc%s_r%s' % (case_number, repetition)
+					yield (case, suffix)
 
 
 	def test_case_loader(self):

@@ -22,6 +22,7 @@ class Overseer:
 		self.current_best_models = None
 		self.cycles_counter = 0
 		self.suffix = suffix
+		self.tried_producing_additional_models = 0
 
 	def lower_equivalence_flag(self):
 		self.archive.all_models_equivalent = False
@@ -30,6 +31,8 @@ class Overseer:
 		# number of hours since init of archive till now
 		# returns True if smaller than max_time; False otherwise
 		# False stops model development
+#		print(time() - self.archive.start_time)/3600)
+#		stdout.flush()
 		return ((time() - self.archive.start_time)/3600) < self.max_time
 
 
@@ -173,6 +176,10 @@ class OverseerWithModQuality(Overseer):
 				elif not self.time_passed_check():
 					self.stop_development()
 					self.current_state = 'stop'
+				elif self.tried_producing_additional_models > 4:
+					print('ERROR: tried producing aditional models too many times: %s' % self.tried_producing_additional_models)
+					self.stop_development()
+					self.current_state = 'stop'
 				# all working models are equivalent
 				elif ((self.current_state == 'experiment_ready') and (self.archive.all_models_equivalent == True)):
 					self.do_transition('lower_redundant_models_flag')
@@ -184,8 +191,10 @@ class OverseerWithModQuality(Overseer):
 					self.do_transition(self.available_transitions()[0]['name'])
 				# if number of working models below threshold, then produce some more
 				elif self.cond_1():
+					self.tried_producing_additional_models += 1
 					self.do_transition('produce_additional_models')
 				elif self.cond_2():
+					self.tried_producing_additional_models = 0
 					self.do_transition('do_check')
 				# if more than one transitions available but one of them is stop_dev
 				elif len([tr for tr in self.available_transitions() if tr['name'] != 'stop_development']) == 1:
