@@ -71,7 +71,7 @@ class Overseer:
 				print('starting cycle: %s' % self.cycles_counter)
 				print('time elapsed: %s h' % ((time() - self.archive.start_time)/3600))
 				stdout.flush()
-			
+
 		else: # no ignoring
 			if len(self.archive.working_models) <= 1: # one model left
 				self.archive.record(CheckPointFail('no ignoring'))
@@ -226,7 +226,7 @@ class OverseerWithModQuality(Overseer):
 	def cond_2(self):
 		if not (self.current_state == 'quality_recalculated'):
 			return False
-		elif (self.archive.revflag == True):# flag is True if sth went wrong in revision or production of addit models 
+		elif (self.archive.revflag == True):# flag is True if sth went wrong in revision or production of addit models
 			return True
 		elif not (len(self.archive.working_models) >= self.threshold_addit_models):
 			return False
