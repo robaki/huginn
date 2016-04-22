@@ -18,7 +18,8 @@ class RevisionModule:
 		self.xhail = xhail
 		self.gringo = gringo
 		self.clasp = clasp
-		self.work_file = './temp/workfile_xhail_%s' % sfx # adds suffix specific for the task (required for multiprocessing)
+		# adds suffix specific for the task (required for multiprocessing)
+		self.work_file = './temp/workfile_xhail_%s' % sfx
 
 
 	def test_and_revise_all(self):
@@ -34,8 +35,10 @@ class RevisionModule:
 		updated_ignoring_models = []
 		redundant_model_created_events = []
 		for model in inconsistent_models:
-			out = self.revise(model) #(new_mods, updated_base_model)
-			if out == False: # in this case: there is no other consistent model
+			#(new_mods, updated_base_model)
+			out = self.revise(model)
+			# in this case: there is no other consistent model
+			if out == False:
 				self.archive.record(RevisionFail())
 				break
 			else:
@@ -44,7 +47,8 @@ class RevisionModule:
 					activities_from_current_models = [mod.intermediate_activities for mod in self.archive.working_models]
 					non_redundant_new_models = []
 					for new_model in out[0]:
-						if new_model.intermediate_activities in activities_from_current_models: # is redundant (set of activities identical to some other model)
+						# is redundant (set of activities identical to some other model)
+						if new_model.intermediate_activities in activities_from_current_models:
 							redundant_model_created_events.append(RedundantModel(model, new_model))
 						else: # is not redundant
 							non_redundant_new_models.append(new_model)
@@ -54,7 +58,8 @@ class RevisionModule:
 					update_events.append(RevisedIgnoredUpdate(model))
 					updated_ignoring_models.append(model)
 
-		# record refuted (revision required change in model's structure, not just in set of ignored results)
+		# record refuted
+		# (revision required change in model's structure, not just in set of ignored results)
 		self.archive.record(RefutedModels(list(set(inconsistent_models) - set(updated_ignoring_models))))
 		# record revision/update events
 		for event in revision_events + update_events + redundant_model_created_events:
@@ -70,7 +75,7 @@ class RevisionModule:
 		inpt = [res_mods, mod_rules, pred_rules, incons_rules]
 		inpt = [val for sublist in inpt for val in sublist] # flatten
 		raw_output = self.write_and_execute_xhail(inpt)
-		outcome = self.process_output_consistency(raw_output)	
+		outcome = self.process_output_consistency(raw_output)
 		return outcome
 
 
@@ -85,8 +90,10 @@ class RevisionModule:
 	def prepare_input_results_models_consistency(self, base_model):
 		exped_elements = self.prepare_input_elements()
 		exped_deriv_mods, models_results = self.prepare_input_deriv_mods_and_results(base_model)
-		exped_term = exporter.export_termination_conds_consistency(base_model) # base_model() and termination conds
-		exped_results = exporter.export_relevancy_results_consistency(models_results, base_model) # relevancy info, :- inconsistent()
+		# base_model() and termination conds
+		exped_term = exporter.export_termination_conds_consistency(base_model)
+		# relevancy info, :- inconsistent()
+		exped_results = exporter.export_relevancy_results_consistency(models_results, base_model)
 		output = [exped_elements, exped_deriv_mods, exped_term, exped_results]
 		output = [val for sublist in output for val in sublist]
 		return output
@@ -95,8 +102,10 @@ class RevisionModule:
 	def prepare_input_results_models_revision(self, base_model):
 		exped_elements = self.prepare_input_elements()
 		exped_deriv_mods, models_results = self.prepare_input_deriv_mods_and_results(base_model)
-		exped_term = exporter.export_termination_conds_revision(base_model) # base_model() and termination conds
-		exped_results = exporter.export_relevancy_results_revision(models_results) # relevancy info, #example not inconsistent()
+		# base_model() and termination conds
+		exped_term = exporter.export_termination_conds_revision(base_model)
+		# relevancy info, #example not inconsistent()
+		exped_results = exporter.export_relevancy_results_revision(models_results)
 		output = [exped_elements, exped_deriv_mods, exped_term, exped_results]
 		output = [val for sublist in output for val in sublist]
 		return output
@@ -106,28 +115,31 @@ class RevisionModule:
 		exped_entities = exporter.export_entities(self.archive.mnm_entities)
 		exped_compartments = exporter.export_compartments(self.archive.mnm_compartments)
 		exped_activities = exporter.export_activities(self.archive.mnm_activities + self.archive.import_activities)
-		output = [exped_entities, exped_compartments, exped_activities] # not flattened
-		return [val for sublist in output for val in sublist] # flattened
+		# not flattened
+		output = [exped_entities, exped_compartments, exped_activities]
+		# flattened
+		return [val for sublist in output for val in sublist]
 
 
 	def prepare_input_deriv_mods_and_results(self, base_model):
-		extracted_results = [exp.results for exp in self.archive.known_results] # not flattened
-		extracted_results = [val for sublist in extracted_results for val in sublist] # flattened
+		# not flattened
+		extracted_results = [exp.results for exp in self.archive.known_results]
+		# flattened
+		extracted_results = [val for sublist in extracted_results for val in sublist]
 
 		exped_results = exporter.export_results(extracted_results)
 		models_results = self.make_derivative_models(base_model, extracted_results)
-		exped_models = exporter.export_models(models_results) # specification and model()
+		# specification and model()
+		exped_models = exporter.export_models(models_results)
 
-		out = [exped_results, exped_models] # not flattened
-		out = [val for sublist in out for val in sublist] # flattened
+		# not flattened
+		out = [exped_results, exped_models]
+		# flattened
+		out = [val for sublist in out for val in sublist]
 		return (out, models_results)
 
 
 	def write_and_execute_xhail(self, inpt):
-		# TESTING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-#		current_time = gmtime()
-#		time_stamp = '_'.join([str(x) for x in [current_time[0], current_time[1], current_time[2], current_time[3], current_time[4], current_time[5]]])
-#		modified_workfile = '_'.join([self.work_file, time_stamp])
 		# try: remove the workfile
 		with open(self.work_file, 'w') as f:
 			for string in inpt:
@@ -155,7 +167,8 @@ class RevisionModule:
 			pass
 		# create derived models and keep interventions info
 		models = {}
-		models[frozenset([])] = base_model # adding the base model
+		# adding the base model
+		models[frozenset([])] = base_model
 		counter = 0
 		for interv_set in unique_interventions:
 			derived_model = copy(base_model)
@@ -194,12 +207,6 @@ class RevisionModule:
 		new_model.results_covered = frozenset(covered_res)
 		new_model.ignored_results = frozenset(ignored_res)
 
-#		print('create revised model info:')
-#		print([act.ID for act in base_model.intermediate_activities])
-#		print(solution)
-#		print([inter.condition_or_activity.ID for inter in interv_add])
-#		print([act.ID for act in new_model.intermediate_activities])
-
 		return new_model
 
 
@@ -214,36 +221,28 @@ class RevisionModule:
 		output = []
 		counter = 0
 		for ans in answers:
-#			print('RAW ANSWER')
-#			print(ans)
 			added = set(pat_add.findall(ans))
-			added = [ad.split('add(')[1] for ad in added] # using split not strip; strip matchech chars not string: overzelous
-			added = [ad.strip(')') for ad in added] # formatting: leaving only id
-
-#			print('added:')
-#			print(added)
+			# using split not strip; strip matchech chars not string: overzelous
+			added = [ad.split('add(')[1] for ad in added]
+			# formatting: leaving only id
+			added = [ad.strip(')') for ad in added]
 
 			removed = set(pat_remove.findall(ans))
-			removed = [rem.split('remove(')[1] for rem in removed]# using split not strip; strip matchech chars not string: overzelous
+			# using split not strip; strip matchech chars not string: overzelous
+			removed = [rem.split('remove(')[1] for rem in removed]
 			removed = [rem.strip(')') for rem in removed]
 
-#			print('removed:')
-#			print(removed)
-
 			covered = set(pat_not_incon.findall(ans))
-			covered = [cov.split('not inconsistent(')[1] for cov in covered]# using split not strip; strip matchech chars not string: overzelous
+			# using split not strip; strip matchech chars not string: overzelous
+			covered = [cov.split('not inconsistent(')[1] for cov in covered]
 			covered = [cov.strip(')') for cov in covered]
-			covered = [cov.split(',')[1] for cov in covered] # removing first argument
-
-#			print('covered:')
-#			print(covered)
+			# removing first argument
+			covered = [cov.split(',')[1] for cov in covered]
 
 			ignored = set(pat_ignored.findall(ans))
-			ignored = [ign.split('ignored(')[1] for ign in ignored] # using split not strip; strip matchech chars not string: overzelous
+			# using split not strip; strip matchech chars not string: overzelous
+			ignored = [ign.split('ignored(')[1] for ign in ignored]
 			ignored = [ign.strip(')') for ign in ignored]
-
-#			print('ignored:')
-#			print(ignored)
 
 			counter += 1
 			output.append((added, removed, covered, ignored))
@@ -251,21 +250,25 @@ class RevisionModule:
 		return output
 
 
-	def get_current_best_model(self): # one of them at least
+	def get_current_best_model(self):
+		# one of them at least
 		max_quality = max([m.quality for m in self.archive.working_models])
 		model = random.choice([m for m in self.archive.working_models if (m.quality == max_quality)])
 		return copy(model)
 
 	def create_random_model(self):
-		numberActToChoose = random.choice(list(range(len(self.archive.mnm_activities)))) # presence of two versions of the same entity will trigger revision anyway
+		# presence of two versions of the same entity will trigger revision anyway
+		numberActToChoose = random.choice(list(range(len(self.archive.mnm_activities))))
 		activities = random.sample(self.archive.mnm_activities, numberActToChoose)
-		new_model = copy(list(self.archive.working_models)[0]) # will cause problems if there will be no working models left...
+		# will cause problems if there will be no working models left...
+		new_model = copy(list(self.archive.working_models)[0])
 		new_model.intermediate_activities = frozenset(activities)
 		new_model.ID = 'random_base'
 		return new_model
 
 
-	def prepare_input_execute_and_process(self, base_model, ignoring, force_new_model): # pretty much revise; base_model = original one
+	def prepare_input_execute_and_process(self, base_model, ignoring, force_new_model):
+		# pretty much revise; base_model = original one
 		cmodel = copy(base_model)
 		cmodel.ID = 'base'
 
@@ -280,14 +283,15 @@ class RevisionModule:
 		if ignoring:
 			results = [exp.results for exp in self.archive.known_results]
 			results = [val for sublist in results for val in sublist] # flatten
-			modeh_ignore = exporter.export_ignore_results(results)# added ignoring!!!
+			modeh_ignore = exporter.export_ignore_results(results)
 
 		inter_rules = exporter.interventions_rules()
 
 		difference_facts = []
 		model_difference_rules = []
 		if force_new_model:
-			difference_facts = exporter.export_force_new_model(cmodel, self.archive.working_models)# base model (id) must not be in the working mods
+			# base model (id) must not be in the working mods
+			difference_facts = exporter.export_force_new_model(cmodel, self.archive.working_models)
 			model_difference_rules = exporter.model_difference_rules()
 
 		max_number_activities = len(self.archive.mnm_activities + self.archive.import_activities)
@@ -300,32 +304,25 @@ class RevisionModule:
 
 		raw_output = self.write_and_execute_xhail(inpt)
 
-#		# TEEEEESSSSSTTT
-#		print(raw_output)
-
 		processed_output = self.process_output_revision(raw_output)
 		# decide what to do based on output
-		if processed_output == []: # revision fail
+		# revision fail
+		if processed_output == []:
 			return False
 
-#		# TEEEEESSSSSTTT
-#		print('processed output:')
-#		print(processed_output)
-		
 		new_mod = []
 		updated_base_model = False
 		solutions_for_model_revision = [solution for solution in processed_output if ((solution[0] != []) or (solution[1] != []))]
 		solution_for_ignoring_update = [solution for solution in processed_output if ((solution[0] == []) and (solution[1] == []))]
 
-#		# TEEEEESSSSSTTT
-#		print('solutions for model revision:')
-#		print(solutions_for_model_revision)
-
-		# random choice used to limit # of new models to 1: more than that would blow up experiment design!
+		# random choice used to limit # of new models to 1:
+		# more than that would blow up experiment design!
 		if (solutions_for_model_revision != []):
 			new_mod = [random.choice([self.create_revised_models(cmodel, solution) for solution in solutions_for_model_revision])]
 
-		elif (solution_for_ignoring_update != []): # update of ignoring results (pick one randomly, they're all optimal)
+		# update of ignoring results
+		# (pick one randomly, they're all optimal)
+		elif (solution_for_ignoring_update != []):
 			self.update_base_model(base_model, random.choice(solution_for_ignoring_update))
 			updated_base_model = True
 
@@ -342,7 +339,8 @@ class RevisionModule:
 		base_model.update_covered_results(covered_res)
 
 
-class RevCAddB(RevisionModule): # rev: minimise changes; additional: revise the best
+class RevCAddB(RevisionModule):
+	# rev: minimise changes; additional: revise the best
 	def __init__(self, archive, sfx=""):
 		RevisionModule.__init__(self, archive, sfx=sfx)
 
@@ -361,7 +359,8 @@ class RevCAddB(RevisionModule): # rev: minimise changes; additional: revise the 
 			raise ValueError('produce_additional_models: revised set of ignored results instead of model itself')
 
 
-class RevCAddR(RevisionModule): # rev: minimise changes; additional: random
+class RevCAddR(RevisionModule):
+	# rev: minimise changes; additional: random
 	def __init__(self, archive, sfx=""):
 		RevisionModule.__init__(self, archive, sfx=sfx)
 
@@ -383,7 +382,8 @@ class RevCAddR(RevisionModule): # rev: minimise changes; additional: random
 			raise ValueError('produce_additional_models: revised set of ignored results instead of model itself')
 
 
-class RevCIAddB(RevisionModule): # rev: minimise changes and ignored; additional: revise the best
+class RevCIAddB(RevisionModule):
+	# rev: minimise changes and ignored; additional: revise the best
 	def __init__(self, archive, sfx=""):
 		RevisionModule.__init__(self, archive, sfx=sfx)
 
@@ -404,7 +404,8 @@ class RevCIAddB(RevisionModule): # rev: minimise changes and ignored; additional
 			raise ValueError('produce_additional_models: revised set of ignored results instead of model itself')
 
 
-class RevCIAddR(RevisionModule): # rev: minimise changes and ignored; additional: random
+class RevCIAddR(RevisionModule):
+	# rev: minimise changes and ignored; additional: random
 	def __init__(self, archive, sfx=""):
 		RevisionModule.__init__(self, archive, sfx=sfx)
 

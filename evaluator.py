@@ -43,8 +43,11 @@ class Evaluator:
 
 
 	def test_case_loader_manual(self):
+		# edit to specify what test cases (keys)
+		# and what/how many repetitions (sets)
+		# should be loaded and run
 		cases_and_reps_to_run = {
-			1:set([0]),
+			1:set([0,1,2]),
 			2:set([]),
 			3:set([]),
 			4:set([]),
@@ -77,8 +80,9 @@ class Evaluator:
 		# small: 1, 2, 3, 4, 5, 6
 		# medium: 7, 8, 9, 10, 11
 		# too big: 11+
-		# serwer simulations: staring with the biggest to see RAM consumption and react if problems
-		for case_number in [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]:# 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17
+		# serwer simulations: staring with the biggest
+		# to see RAM consumption and react if problems
+		for case_number in [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]:
 			case_file = 'test_cases/case_%s' % case_number
 			for repetition in range(3):
 				pkl_file = open(case_file, 'rb')
@@ -93,19 +97,21 @@ class Evaluator:
 
 
 	def system_configuration_generator(self, case, first_suffix):
-		for qual in [AllCoveredMinusIgnored]: # NewCoveredMinusIgnored
-			for rev in [RevCIAddR]: # RevCIAddB
+		for qual in [AllCoveredMinusIgnored]:
+			for rev in [RevCIAddR]:
 				for threshold_addit_mods in [6]: #2, 4, 6, 8
-					for stop_threshold in [8]: # just 8 
+					for stop_threshold in [8]: # just 8
 
 						suffix = 'conf%s_%s' % (self.get_suffix((qual, rev, threshold_addit_mods, stop_threshold)), first_suffix)
 
 						archive_ = Archive()
-						archive_.mnm_compartments = self.compartments # added access to all compartments
+						archive_.mnm_compartments = self.compartments
 						archive_.model_of_ref = case['model_of_ref']
 
-						# recording entities with proper IDs: base versions and derived versions
-						# these entities were involved in producing new versions and are handled below, not here
+						# recording entities with proper IDs:
+						# base versions and derived versions.
+						# these entities were involved in producing new versions
+						# and are handled below, not here
 						entities_to_skip = list(case['ents_base_and_derived'].keys())
 						for list_of_ents in case['ents_base_and_derived'].values():
 							entities_to_skip.extend(list_of_ents)
@@ -118,7 +124,8 @@ class Evaluator:
 							archive_.mnm_entities.append(ent)
 
 						for ent in case['ents_base_and_derived'].keys():
-							derv_ents = case['ents_base_and_derived'][ent]# need to copy this now, dictionary stops working after ID change
+							# need to copy this now, dictionary stops working after ID change:
+							derv_ents = case['ents_base_and_derived'][ent]
 							ent.ID = archive_.get_new_ent_id()
 							archive_.mnm_entities.append(ent)
 							for derv_ent in derv_ents:
@@ -133,12 +140,10 @@ class Evaluator:
 							act.ID = archive_.get_new_act_id()
 							archive_.import_activities.append(act)
 
-						#####
+# if you want to print reverible activities:
 #						for act in archive_.mnm_activities + archive_.import_activities:
 #							print(act.reversibility)
 
-						#####
-		
 						archive_.record(InitialModels(case['initial_models']))
 
 						qual_m = qual(archive_)
@@ -152,16 +157,17 @@ class Evaluator:
 						cost_model.calculate_derived_costs(case['all_activities'])
 						cost_model.remove_None_valued_elements()
 
-						exp_m = BasicExpModuleWithCosts(archive_, cost_model, sfx=suffix) # !!!!! switched from no costs
+						exp_m = BasicExpModuleWithCosts(archive_, cost_model, sfx=suffix)
 
 						# SloppyOracle
+						# error_parameter between 0.00 and 1.00
 						oracle_ = SloppyOracle(archive_, case['entities_ref'],
 							case['activities_ref'], case['model_of_ref'],
 							case['all_entities'], self.compartments,
-							case['all_activities'], sfx=suffix, error_parameter=0.60)# , error_parameter=0.60
+							case['all_activities'], sfx=suffix, error_parameter=0.00)
 
-						max_numb_cycles = 10000 # 
-						max_time = 24 # 
+						max_numb_cycles = 10000
+						max_time = 24
 
 						yield OverseerWithModQuality(archive_, rev_m, exp_m,
 							oracle_, threshold_addit_mods, qual_m, max_numb_cycles,
@@ -179,39 +185,13 @@ class Evaluator:
 			(AllCoveredMinusIgnored,RevCIAddR,4,8):'01',
 			(AllCoveredMinusIgnored,RevCIAddR,6,8):'02',
 			(AllCoveredMinusIgnored,RevCIAddR,8,8):'03'
-#			(AllCoveredMinusIgnored,RevCIAddB,2,2):'',
-#			(AllCoveredMinusIgnored,RevCIAddB,2,4):'',
-#			(AllCoveredMinusIgnored,RevCIAddB,2,8):'',
-#			(AllCoveredMinusIgnored,RevCIAddB,4,2):'',
-#			(AllCoveredMinusIgnored,RevCIAddB,4,4):'',
-#			(AllCoveredMinusIgnored,RevCIAddB,4,8):'',
-#			(AllCoveredMinusIgnored,RevCIAddB,8,2):'',
-#			(AllCoveredMinusIgnored,RevCIAddB,8,4):'',
-#			(AllCoveredMinusIgnored,RevCIAddB,8,8):'',
-#			(NewCoveredMinusIgnored,RevCIAddR,2,2):'',
-#			(NewCoveredMinusIgnored,RevCIAddR,2,4):'',
-#			(NewCoveredMinusIgnored,RevCIAddR,2,8):'',
-#			(NewCoveredMinusIgnored,RevCIAddR,4,2):'',
-#			(NewCoveredMinusIgnored,RevCIAddR,4,4):'',
-#			(NewCoveredMinusIgnored,RevCIAddR,4,8):'',
-#			(NewCoveredMinusIgnored,RevCIAddR,8,2):'',
-#			(NewCoveredMinusIgnored,RevCIAddR,8,4):'',
-#			(NewCoveredMinusIgnored,RevCIAddR,8,8):'',
-#			(NewCoveredMinusIgnored,RevCIAddB,2,2):'',
-#			(NewCoveredMinusIgnored,RevCIAddB,2,4):'',
-#			(NewCoveredMinusIgnored,RevCIAddB,2,8):'',
-#			(NewCoveredMinusIgnored,RevCIAddB,4,2):'',
-#			(NewCoveredMinusIgnored,RevCIAddB,4,4):'',
-#			(NewCoveredMinusIgnored,RevCIAddB,4,8):'',
-#			(NewCoveredMinusIgnored,RevCIAddB,8,2):'',
-#			(NewCoveredMinusIgnored,RevCIAddB,8,4):'',
-#			(NewCoveredMinusIgnored,RevCIAddB,8,8):''
+			# modify or create additional configs if needed
 			}
 
 		return suff_dict[tpl]
 
 
-
+# runs evaluation:
 evaluator = Evaluator()
 evaluator.test_all_single_process()
 #evaluator.test_all_multiprocess()
