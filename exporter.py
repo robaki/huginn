@@ -29,7 +29,7 @@ def export_entities(entities):
 				strings.append("\ncatalyses(%s,%s,%s)." % (ent.ID, ent.version, prop.activity.ID))
 			elif isinstance(prop, mnm_repr.Transports):
 				strings.append("\ntransports(%s,%s,%s)." % (ent.ID, ent.version, prop.activity.ID))
-			else:	
+			else:
 				raise TypeError("export_entities: property type not recognised:%s" % type(prop))
 
 	return strings
@@ -114,7 +114,7 @@ def export_required_condition(req, activity, suffix=''):
 	strings = []
 	if isinstance(req, mnm_repr.PresentEntity):
 		strings.append('\nsubstrate(%s,%s,%s,%s%s).' % (req.entity.ID, req.entity.version, req.compartment.ID, activity.ID, suffix))
-	elif isinstance(req, mnm_repr.PresentCatalyst):		
+	elif isinstance(req, mnm_repr.PresentCatalyst):
 		strings.append('\nenz_required(%s%s).' % (activity.ID, suffix))
 		strings.append('\nenz_compartment(%s,%s%s).' % (req.compartment.ID, activity.ID, suffix))
 	elif isinstance(req, mnm_repr.PresentTransporter):
@@ -181,7 +181,7 @@ def export_models(models_results):
 		strings.extend(export_model_specification(model))
 
 	return strings
-	
+
 def export_model_specification(model):
 	strings = []
 	# setup
@@ -198,7 +198,8 @@ def export_termination_conds_revision(base_model):
 	strings = []
 	for cond in base_model.termination_conditions:
 		strings.append('\n#example synthesizable(%s, %s, %s, %s).' % (cond.entity.ID, cond.entity.version, cond.compartment.ID, base_model.ID))
-	# base model shouldn't have inactive activities or more than one version of any entity (would restrict derived models too, so OK)
+	# base model shouldn't have inactive activities
+	# or more than one version of any entity (would restrict derived models too, so OK)
 	strings.append('\n#example not not_clean_model(%s).' % base_model.ID)
 	return strings
 
@@ -216,7 +217,8 @@ def export_termination_conds_consistency(base_model):
 	strings = []
 	for cond in base_model.termination_conditions:
 		strings.append('\n:- not synthesizable(%s, %s, %s, %s).' % (cond.entity.ID, cond.entity.version, cond.compartment.ID, base_model.ID))
-	# base model shouldn't have inactive activities or more than one version of any entity (would restrict derived models too, so OK)
+	# base model shouldn't have inactive activities
+	# or more than one version of any entity (would restrict derived models too, so OK)
 	strings.append('\n:- not_clean_model(%s).' % base_model.ID)
 	return strings
 
@@ -678,7 +680,6 @@ def model_difference_rules():
 
 def export_models_exp_design(models):
 	strings = []
-	# model().
 	joined_models = ';'.join([x.ID for x in models])
 	strings.append(joined_models.join(['\nmodel(', ').']))
 	# specification:
@@ -798,12 +799,12 @@ def export_experiment_specification_elements(cost_model):
 		output['design_entity_det(%s)' % element.ID] = cost_model.design_entity_det[element]
 
 	for element in cost_model.intervention_add.keys():
-#		[print(type(element)) for element in cost_model.intervention_add.keys()]
 		if isinstance(element.condition_or_activity, Condition):
 			tup = (element.condition_or_activity.entity.ID, element.condition_or_activity.entity.version, element.condition_or_activity.compartment.ID)
 			output['add(setup_present(%s, %s, %s))' % tup] = cost_model.intervention_add[element]
 
-		elif isinstance(element.condition_or_activity, Activity): # import activities for metabolites added to medium
+ 		# import activities for metabolites added to medium
+		elif isinstance(element.condition_or_activity, Activity):
 			output['add(%s)' % element.condition_or_activity.ID] = cost_model.intervention_add[element]
 
 		else:
@@ -831,22 +832,29 @@ def design_constraints_basic():
 	'\ndesigned :- designed(experiment(localisation_entity_exp, Entity, Compartment)), entity(Entity, Ver), compartment(Compartment).',
 	'\ndesigned :- designed(experiment(detection_entity_exp, Entity)), entity(Entity, Ver).',
 	'\n',
-	'\n:- not designed.', # design at lest one exp
+	# design at lest one exp
+	'\n:- not designed.',
 	'\n',
-	'\n:- designed(Experiment1), designed(Experiment2), Experiment1 != Experiment2.', # design no more than one exp
+	# design no more than one exp
+	'\n:- designed(Experiment1), designed(Experiment2), Experiment1 != Experiment2.',
 	'\n',
-	'\nhas_true_model :- predicts(Model, Experiment, true), model(Model), designed(Experiment).', # designed exp must make at least
-	'\nhas_false_model :- predicts(Model, Experiment, false), model(Model), designed(Experiment).',# one model false and one true
+	# designed exp must make at least
+	'\nhas_true_model :- predicts(Model, Experiment, true), model(Model), designed(Experiment).',
+	# one model false and one true
+	'\nhas_false_model :- predicts(Model, Experiment, false), model(Model), designed(Experiment).',
 	'\n:- not has_true_model.',
 	'\n:- not has_false_model.',
 	'\n',
 	'\n:- designed(experiment(adam_two_factor_exp, Gene, Metabolite)), add(Whatever).',
-	'\n:- designed(experiment(adam_two_factor_exp, Gene, Metabolite)), remove(Whatever).', # no interventions for adam-style exps
-	'\n:- involved(Entity, Version1, Model), involved(Entity, Version2, Model), Version1 != Version2.', # only one version of entity in model
+	# no interventions for adam-style exps
+	'\n:- designed(experiment(adam_two_factor_exp, Gene, Metabolite)), remove(Whatever).',
+	# only one version of entity in model
+	'\n:- involved(Entity, Version1, Model), involved(Entity, Version2, Model), Version1 != Version2.',
 	'\n',
 	'\nentity_in_model(Entity, Version, Compartment, Model) :- in_model(setup_present(Entity, Version, Compartment), Model).',
 	'\nentity_in_model(Entity, Version, Compartment, Model) :- synthesizable(Entity, Version, Compartment, Model).',
-	'\n:- add(ImportAct), substrate(Ent,Ver,Comp,ImportAct), not add(setup_present(Ent, Ver, Comp)).'] # import restriction: can't add without adding the substance
+	# import restriction: can't add without adding the substance
+	'\n:- add(ImportAct), substrate(Ent,Ver,Comp,ImportAct), not add(setup_present(Ent, Ver, Comp)).']
 
 
 
@@ -907,23 +915,6 @@ def hide_show_statements():
 	'\n#show design_activity_det/1.']
 
 
-
-#def basic_exp_design_rules():  #NOT NEEDED: advanced is more general and covers this one too
-#	return ['\n\nexp_score(0,1,0,0) :- indifferent(Model, Experiment), designed(Experiment), model(Model), nr(0,Model).',
-#	'\nexp_score(0,0,1,0) :- predicts(Model, Experiment, true), designed(Experiment), model(Model), nr(0,Model).',
-#	'\nexp_score(0,0,0,1) :- predicts(Model, Experiment, false), designed(Experiment), model(Model), nr(0,Model).',
-#	'\n',
-#	'\nexp_score(I,Ind+1,Tr,Fa) :- exp_score(I-1, Ind, Tr, Fa), indifferent(Model, Experiment), designed(Experiment), model(Model), nr(I, Model).',
-#	'\nexp_score(I,Ind,Tr+1,Fa) :- exp_score(I-1, Ind, Tr, Fa), predicts(Model, Experiment, true), designed(Experiment), model(Model), nr(I, Model).',
-#	'\nexp_score(I,Ind,Tr,Fa+1) :- exp_score(I-1, Ind, Tr, Fa), predicts(Model, Experiment, false), designed(Experiment), model(Model), nr(I, Model).',
-#	'\n',
-#	'\nexp_score(I) :- exp_score(I,Ind,Tr,Fa).',
-#	'\n',
-#	'\nfinal_score(I,Ind,Tr,Fa) :- exp_score(I,Ind,Tr,Fa), not exp_score(I+1).',
-#	'\n',
-#	'\nfinal_score(|Tr*10-n| + |Fa*10-n| + Ind*10) :- final_score(I,Ind,Tr,Fa).']
-
-
 def advanced_exp_design_rules():
 	return ['\n\nexp_score(0,Prb,0,0) :- indifferent(Model, Experiment), designed(Experiment), model(Model), nr(0,Model), probability(Prb, Model).',
 	'\nexp_score(0,0,Prb,0) :- predicts(Model, Experiment, true), designed(Experiment), model(Model), nr(0,Model), probability(Prb, Model).',
@@ -953,7 +944,3 @@ def export_display_for_oracle(expDescription):
 		return ['\n#hide.', '\n#show predicts/3.']
 	else:
 		raise TypeError("export_display_for_oracle: exp type not recognised: %" % expDescription.experiment_type)
-
-
-#for x in models_rules(5):
-#	print(x)

@@ -10,12 +10,12 @@ class Archive:
 		self.development_history = []
 		self.working_models = set([])
 		self.known_results = [] # container for Experiment type objects not Result type
-		self.chosen_experiment_descriptions = [] # list of expDs
+		self.chosen_experiment_descriptions = []
 		self.new_result = None # stored here before it's accepted
 		self.error_flag = False
 		self.revflag = False
 		self.all_models_equivalent = False
-		self.all_models_equivalent_counter = 0 # counts in row - restarts after succesfull design
+		self.all_models_equivalent_counter = 0 # counts in row; restarts after succesfull design
 		self.mnm_compartments = [] # to keep track of mnm elements; info for exp design
 		self.mnm_entities = [] # to keep track of mnm elements
 		self.mnm_activities = [] # to keep track of mnm elements; info for revision and exp design
@@ -38,26 +38,22 @@ class Archive:
 			self.error_flag = True
 
 		elif isinstance(event, NewResults):
-			self.chosen_experiment_descriptions = [] # clearing 
+			self.chosen_experiment_descriptions = [] # clearing
 			event.experiment.ID = self.get_new_exp_id()
 			for res in event.experiment.results:
 				res.ID = self.get_new_res_id()
 			self.new_result = event.experiment
-#			self.known_results.append(event.experiment)# doubled accepted results
 
 		elif isinstance(event, AcceptedResults):
-			self.new_result = None # clearing 
+			self.new_result = None # clearing
 			self.known_results.append(event.experiment)
 
 		elif isinstance(event, RefutedModels):
 			self.working_models = self.working_models - set(event.refuted_models)
-#			for model in event.refuted_models:
-#				self.working_models.remove(model)
 
 		elif isinstance(event, RevisedModel):
 			for model in event.revised_models:
 				model.ID = self.get_new_model_id()
-# append
 			self.working_models = self.working_models | set(event.revised_models)
 
 		elif isinstance(event, RedundantModel):
@@ -87,7 +83,6 @@ class Archive:
 		elif isinstance(event, AdditionalModels):
 			for model in event.additional_models:
 				model.ID = self.get_new_model_id()
-#				self.working_models.append(model)
 			self.working_models = self.working_models | set(event.additional_models)
 
 		elif isinstance(event, AdditModProdFail):
@@ -100,7 +95,6 @@ class Archive:
 		elif isinstance(event,  InitialModels):
 			for model in event.models:
 				model.ID = self.get_new_model_id()
-#				self.working_models.append(model)
 			self.working_models = self.working_models | set(event.models)
 
 		elif isinstance(event,  InitialResults):
@@ -145,9 +139,10 @@ class Archive:
 
 
 	def get_results_after_model(self, model):
+		# doesn't include initial results
 		event = self.get_model_origin_event(model)
 		events_after = self.get_events_after_event(event)
-		results_sets = [event.experiment.results for event in events_after if isinstance(event, NewResults)]# doesn't include initial results
+		results_sets = [event.experiment.results for event in events_after if isinstance(event, NewResults)]
 		results = []
 		for res_set in results_sets:
 			results.extend(list(res_set))
@@ -212,23 +207,28 @@ class Event:
 	def __init__(self):
 		self.timestamp = None
 
-class InitialModels(Event): # record them after initial results!
+class InitialModels(Event):
+	# recorded them initial results
 	def __init__(self, models):
 		Event.__init__(self)
 		self.models = models
 
 
-class InitialResults(Event): # record them first! # full experiments!
+class InitialResults(Event):
+	# recorded first
+	# full experiments
 	def __init__(self, exps):
 		Event.__init__(self)
 		self.experiments = exps
 
-class ChosenExperiment(Event): # experiment descriptions
+class ChosenExperiment(Event):
+	# experiment descriptions
 	def __init__(self, expDs):
 		Event.__init__(self)
 		self.experiment_descriptions = expDs
 
-class NewResults(Event): # full experiment with results
+class NewResults(Event):
+	# full experiment with results
 	def __init__(self, exp):
 		Event.__init__(self)
 		self.experiment = exp

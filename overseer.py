@@ -22,6 +22,7 @@ class Overseer:
 		self.current_best_models = None
 		self.cycles_counter = 0
 		self.suffix = suffix
+		self.tried_producing_additional_models = 0
 
 	def lower_equivalence_flag(self):
 		self.archive.all_models_equivalent = False
@@ -64,20 +65,23 @@ class Overseer:
 				self.archive.record(CheckPointFail('ignoring'))
 			else:
 				self.archive.record(CheckPointSuccess())
-				self.cycles_counter += 1 # development process enters another cycle
+				# development process enters another cycle
+				self.cycles_counter += 1
 				print('starting cycle: %s' % self.cycles_counter)
 				print('time elapsed: %s h' % ((time() - self.archive.start_time)/3600))
 				stdout.flush()
-			
+
 		else: # no ignoring
-			if len(self.archive.working_models) <= 1: # one model left
+			# one model left
+			if len(self.archive.working_models) <= 1:
 				self.archive.record(CheckPointFail('no ignoring'))
 			else:
 				self.archive.record(CheckPointSuccess())
 				print('starting cycle: %s' % self.cycles_counter)
 				print('time elapsed: %s h' % ((time() - self.archive.start_time)/3600))
 				stdout.flush()
-				self.cycles_counter += 1 # development process enters another cycle
+				# development process enters another cycle
+				self.cycles_counter += 1
 
 
 	def record_result(self):
@@ -97,11 +101,13 @@ class Overseer:
 			raise ValueError("do_transition: no matching transitions available: %s" % transition_name)
 		else:
 			tran_dict[0]['method']() # execute
-			self.current_state = tran_dict[0]['dst']# update state
+			# update state
+			self.current_state = tran_dict[0]['dst']
 
 
 	def available_transitions(self):
-		output = [x for x in self.transition_table if (self.current_state == x['src'])] # whole dict
+		# whole dict
+		output = [x for x in self.transition_table if (self.current_state == x['src'])]
 		return output
 
 
@@ -118,8 +124,10 @@ class Overseer:
 		return False # if nothing found
 
 
-	def did_the_best_model_change_since_last_check(self):# checks set: could be best models
-		dic = {mod:mod.quality for mod in self.archive.working_models} # {x: x**2 for x in (2, 4, 6)}
+	def did_the_best_model_change_since_last_check(self):
+		# checks set: could be best models
+		# {x: x**2 for x in (2, 4, 6)}
+		dic = {mod:mod.quality for mod in self.archive.working_models}
 		max_quality = max(dic.values())
 		best_models = set([mod for mod in dic if (dic[mod] == max_quality)])
 		if self.current_best_models == best_models:
@@ -129,8 +137,6 @@ class Overseer:
 			self.cycles_since_best_model_changed = 0
 			self.current_best_models = best_models
 			return True
-
-
 
 
 
@@ -146,7 +152,7 @@ class OverseerWithModQuality(Overseer):
 		self.threshold_addit_models = threshold_addit_models
 		self.transition_table = [
 			{'name':'start_development', 'src':'start', 'dst':'models_tested_and_revised', 'method':self.start_development},
-			{'name':'get_experiment', 'src':'checkpoint', 'dst':'experiment_ready', 'method':exp_mod.get_experiment},###
+			{'name':'get_experiment', 'src':'checkpoint', 'dst':'experiment_ready', 'method':exp_mod.get_experiment},
 			{'name':'execute_experiment', 'src':'experiment_ready', 'dst':'has_new_result', 'method':oracle.execute_exps},# NewResults
 			{'name':'lower_redundant_models_flag', 'src':'experiment_ready', 'dst':'quality_recalculated', 'method':self.lower_equivalence_flag},
 			{'name':'record_result', 'src':'has_new_result', 'dst':'result_recorded', 'method':self.record_result},# AcceptedResults
@@ -156,7 +162,7 @@ class OverseerWithModQuality(Overseer):
 			{'name':'produce_additional_models', 'src':'quality_recalculated', 'dst':'produced_additional_models', 'method':rev_mod.produce_additional_models},
 			{'name':'recalculate_models_quality', 'src':'models_tested_and_revised', 'dst':'quality_recalculated', 'method':qual_mod.check_and_update_qualities},
 			{'name':'recalculate_models_quality', 'src':'produced_additional_models', 'dst':'quality_recalculated', 'method':qual_mod.check_and_update_qualities},
-			{'name':'stop_development', 'src':'checkpoint', 'dst':'stop', 'method':self.stop_development},###
+			{'name':'stop_development', 'src':'checkpoint', 'dst':'stop', 'method':self.stop_development},
 			{'name':'stop_development', 'src':'experiment_ready', 'dst':'stop', 'method':self.stop_development}]
 
 
@@ -173,6 +179,10 @@ class OverseerWithModQuality(Overseer):
 				elif not self.time_passed_check():
 					self.stop_development()
 					self.current_state = 'stop'
+				elif self.tried_producing_additional_models > 4:
+					print('ERROR: tried producing aditional models too many times: %s' % self.tried_producing_additional_models)
+					self.stop_development()
+					self.current_state = 'stop'
 				# all working models are equivalent
 				elif ((self.current_state == 'experiment_ready') and (self.archive.all_models_equivalent == True)):
 					self.do_transition('lower_redundant_models_flag')
@@ -184,8 +194,10 @@ class OverseerWithModQuality(Overseer):
 					self.do_transition(self.available_transitions()[0]['name'])
 				# if number of working models below threshold, then produce some more
 				elif self.cond_1():
+					self.tried_producing_additional_models += 1
 					self.do_transition('produce_additional_models')
 				elif self.cond_2():
+					self.tried_producing_additional_models = 0
 					self.do_transition('do_check')
 				# if more than one transitions available but one of them is stop_dev
 				elif len([tr for tr in self.available_transitions() if tr['name'] != 'stop_development']) == 1:
@@ -208,7 +220,8 @@ class OverseerWithModQuality(Overseer):
 			return False
 		elif not (len(self.archive.working_models) < self.threshold_addit_models):
 			return False
-		elif not (self.archive.revflag == False):# flag is True if sth went wrong in revision or production of addit models
+		# flag is True if sth went wrong in revision or production of addit models
+		elif not (self.archive.revflag == False):
 			return False
 		else:
 			return True
@@ -217,7 +230,8 @@ class OverseerWithModQuality(Overseer):
 	def cond_2(self):
 		if not (self.current_state == 'quality_recalculated'):
 			return False
-		elif (self.archive.revflag == True):# flag is True if sth went wrong in revision or production of addit models 
+		# flag is True if sth went wrong in revision or production of addit models
+		elif (self.archive.revflag == True):
 			return True
 		elif not (len(self.archive.working_models) >= self.threshold_addit_models):
 			return False
@@ -227,8 +241,10 @@ class OverseerWithModQuality(Overseer):
 
 
 class OverseerNoQuality(Overseer):
+	# not well tested
 	def __init__(self, archive, rev_mod, exp_mod, oracle, threshold_addit_models, max_numb_cycles, max_time, suffix, stop_threshold=None):
-		Overseer.__init__(self, archive, 'no ignoring', stop_threshold, max_numb_cycles, max_time, suffix) # w/o quality module ignoring shouldn't be used
+		# w/o quality module ignoring shouldn't be used
+		Overseer.__init__(self, archive, 'no ignoring', stop_threshold, max_numb_cycles, max_time, suffix)
 		self.threshold_addit_models = threshold_addit_models
 		self.transition_table = [
 			{'name':'start_development', 'src':'start', 'dst':'models_tested_and_revised', 'method':self.start_development},
@@ -279,7 +295,9 @@ class OverseerNoQuality(Overseer):
 		except Exception:
 			self.stop_development()
 			self.current_state = 'stop'
-			raise Exception # raise exception here? or somehow print it and move on with the next test case...!
+			# raise exception here?
+			# or somehow print it and move on with the next test case...?
+			raise Exception
 
 
 

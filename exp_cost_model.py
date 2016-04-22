@@ -17,7 +17,7 @@ class CostModel:
 
 	def generate_all_possible(self, entities, compartments, activities, setup_conds, import_activities):
 		# exp types:
-		self.types = {DetectionEntity:None, AdamTwoFactorExperiment:None, 
+		self.types = {DetectionEntity:None, AdamTwoFactorExperiment:None,
 			ReconstructionActivity:None, ReconstructionEnzReaction:None,
 			ReconstructionTransporterRequired:None, LocalisationEntity:None,
 			DetectionActivity:None}
@@ -28,7 +28,7 @@ class CostModel:
 			'c_18':None, 'c_19':None, 'c_20':None, 'c_21':None, 'c_22':None, 'c_23':None,
 			'c_24':None, 'c_25':None, 'c_26':None, 'c_27':None, 'c_28':None, 'c_29':None,
 			'c_30':None, 'c_31':None, 'c_32':None, 'c_33':None, 'c_34':None}
-		# rest of elements: 
+		# rest of elements:
 		self.design_deletable = {}
 		self.design_available = {}
 		self.design_activity_rec = {}
@@ -42,7 +42,8 @@ class CostModel:
 			self.intervention_add[mnm_repr.Add(act)] = 1
 		#
 		for st in setup_conds:
-			if (isinstance(st.entity, mnm_repr.Gene) or isinstance(st.compartment, Medium)): # all genes can be removed; metabs can only be removed from medium
+			# all genes can be removed; metabs can only be removed from medium
+			if (isinstance(st.entity, mnm_repr.Gene) or isinstance(st.compartment, Medium)):
 				self.intervention_remove[mnm_repr.Remove(st)] = None
 			if isinstance(st.entity, mnm_repr.Gene):
 				self.design_deletable[st.entity] = None
@@ -59,15 +60,13 @@ class CostModel:
 				self.design_entity_loc[ent] = None
 		#
 		for act in activities:
-			if act in import_activities:# don't test these additional import reactions: they're only to help with experiments
+			# don't test these additional import reactions: they're only to help with experiments
+			if act in import_activities:
 				continue
 			elif isinstance(act, mnm_repr.Growth):
 				self.design_activity_det[act] = None
 			else:
 				self.design_activity_rec[act] = None
-
-
-#	def apply_basic_costs_<distribution>_<to_what>(self):
 
 
 	def remove_None_valued_elements(self):
@@ -126,10 +125,12 @@ class CostModel:
 	def calculate_derived_costs(self, activities):
 		# calculating costs for complexes
 		for ent in self.design_available: # loops through entities
-			if isinstance(ent, mnm_repr.Complex): # costs for complexes are derived from costs for their components
-				cplx_form = [a for a in activities if a.check_if_is_product(ent)] # find correcponding complex form. reactions
+			# costs for complexes are derived from costs for their components
+			if isinstance(ent, mnm_repr.Complex):
+				# find correcponding complex form. reactions
+				cplx_form = [a for a in activities if a.check_if_is_product(ent)]
 				# costs for complexes can only be calculated if there is exactly 1 formation reaction
-				if len(cplx_form) == 1: 
+				if len(cplx_form) == 1:
 					components = cplx_form[0].return_substrates()
 					# if all components have 'available' costs, then calculate cost for 'available' complex
 					costs_available = [self.design_available[comp] for comp in components]
@@ -154,7 +155,8 @@ class CostModel:
 			else:
 				pass
 
-		# calculating costs for activities: enzymes and transporters not included here; accounted for in design rules.
+		# calculating costs for activities: enzymes and transporters not included here;
+		# accounted for in design rules.
 		for act in self.design_activity_rec.keys():
 			if isinstance(act, mnm_repr.Growth) or isinstance(act, mnm_repr.Expression):
 				continue
@@ -199,8 +201,8 @@ class CostModel:
 			else:
 				self.design_entity_det[key] = 1
 		for key in self.intervention_add.keys():
-			if self.intervention_add[key] != 0:# additional import activities should have 0... maybe :d
+			# additional import activities should have 0... maybe :d
+			if self.intervention_add[key] != 0:
 				self.intervention_add[key] = 1
 		for key in self.intervention_remove.keys():
 			self.intervention_remove[key] = 1
-

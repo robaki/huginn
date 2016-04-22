@@ -14,8 +14,10 @@ from archive import ExpDesignFail, ChosenExperiment, AllModelsEmpiricallyEquival
 from time import gmtime
 
 class ExperimentModule:
-	# module for experiment design. Method relies on splitting sum of models' probabilities (qualities) in half.
-	# If no model quality modules is used, then model quality = 1 and is constant throught development time.
+	# module for experiment design.
+	# It relies on splitting sum of models' probabilities (qualities) in half.
+	# If no model quality modules is used, then model quality = 1
+	# and is constant throught development time.
 	# In that case the algorithm just splits set of working models in half.
 	def __init__(self, archive, cost_model, use_costs, sfx=""):
 		self.archive = archive
@@ -32,14 +34,9 @@ class ExperimentModule:
 
 
 	def write_and_execute_gringo_clasp(self, exp_input):
-		# TESTING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-#		current_time = gmtime()
-#		time_stamp = '_'.join([str(x) for x in [current_time[0], current_time[1], current_time[2], current_time[3], current_time[4], current_time[5]]])
-#		modified_workfile = '_'.join([self.work_file, time_stamp])
-		# try remove the file
 		with open(self.work_file, 'w') as f:
 			for string in exp_input:
-				read_data = f.write(string)
+				f.write(string)
 		# could suppress there warnig messages later on
 		gringo = subprocess.Popen(['gringo', self.work_file], stdout=subprocess.PIPE)
 		clasp = subprocess.Popen(['clasp', '-n', '0'], stdin=gringo.stdout, stdout=subprocess.PIPE)
@@ -51,38 +48,46 @@ class ExperimentModule:
 
 	def prepare_input_for_exp_design(self):
 		exported = []
-		exported.extend(exporter.hide_show_statements()) # export hide/show stuff
+		# export hide/show stuff
+		exported.extend(exporter.hide_show_statements())
 		exported.extend(exporter.export_compartments(self.archive.mnm_compartments))
 		exported.extend(exporter.export_entities(self.archive.mnm_entities))
 		exported.extend(exporter.export_activities(self.archive.mnm_activities + self.archive.import_activities))
-		exported.extend(exporter.export_models_exp_design(self.archive.working_models)) # export models info
-		exported.extend(exporter.models_nr_and_probabilities(self.archive.working_models)) # + probabilities and numbers
-		exported.append(exporter.modeh_replacement(self.cost_model)) # export design elements (modeh eqiv)
-		exported.extend(exporter.design_constraints_basic()) # export rules forcing and restricting exp design
+		# export models info
+		exported.extend(exporter.export_models_exp_design(self.archive.working_models))
+		# + probabilities and numbers
+		exported.extend(exporter.models_nr_and_probabilities(self.archive.working_models))
+		# export design elements (modeh eqiv)
+		exported.append(exporter.modeh_replacement(self.cost_model))
+		# export rules forcing and restricting exp design
+		exported.extend(exporter.design_constraints_basic())
 		for exp in self.archive.known_results:
 			exp_descriptions = [res.exp_description for res in exp.results]
 			for des in exp_descriptions:
-				exported.extend(exporter.ban_experiment(des)) # export ban experiment(s) (from old exps)
-		exported.append(exporter.constant_for_calculating_score(self.calculate_constant_for_scores())) # calculate constant for scores and export it
-		exported.extend(exporter.advanced_exp_design_rules()) # export scoring rules/optimisation
-		if self.use_costs: # * export cost, and optimisation rule for that
+				# export ban experiment(s) (from old exps)
+				exported.extend(exporter.ban_experiment(des))
+		# calculate constant for scores and export it
+		exported.append(exporter.constant_for_calculating_score(self.calculate_constant_for_scores()))
+		# export scoring rules/optimisation
+		exported.extend(exporter.advanced_exp_design_rules())
+		# * export cost, and optimisation rule for that
+		if self.use_costs:
 			exported.extend(exporter.cost_rules(self.cost_model))
 			exported.extend(exporter.cost_minimisation_rules())
 		else:
 			pass
-		exported.extend(exporter.experiment_design_rules()) # export design rules
+			# export design rules
+		exported.extend(exporter.experiment_design_rules())
 		exported.extend(exporter.interventions_rules())
 		exported.extend(exporter.predictions_rules())
-		exported.extend(exporter.models_rules(len(self.archive.mnm_activities + self.archive.import_activities))) 
+		exported.extend(exporter.models_rules(len(self.archive.mnm_activities + self.archive.import_activities)))
 		return exported
 
 
 	def calculate_constant_for_scores(self):
 		return int((sum([mod.quality for mod in self.archive.working_models])*10)/2)
 
-#
-#
-#
+
 
 	def process_output(self, out):
 		experiments = []
@@ -119,7 +124,8 @@ class ExperimentModule:
 				raise ValueError('process_output: design_type(...) not recognised: %s' % exp_type)
 
 			interventions = self.get_interventions(components)
-			# if not all components of an answer were used: sth went wrong in design phase or processing
+			# if not all components of an answer were used:
+			# sth went wrong in design phase or processing
 			if len(components) > 0:
 				raise ValueError("process_output: not all components used: %s" % components)
 			experiments.append(ExperimentDescription(expT, interventions))
@@ -128,19 +134,23 @@ class ExperimentModule:
 
 	def get_answers(self, strings):
 		answers = []
-		try: # can fail if the solver fails (not enough RAM; bad memory allocation...)
+		# can fail if the solver fails
+		# (not enough RAM; bad memory allocation...)
+		try:
 			optimum = [st.split('Optimization : ')[1] for st in strings if st.startswith('Optimization : ')][0]
 		except IndexError as err:
 			print('experiment_module: solver failed.')
 			print('output as strings: %s' % strings)
 			return False
-			
+
 		for st in strings:
 			if not st.startswith('Answer: '):
 				continue
-			optimization = strings[strings.index(st) + 2].split('Optimization: ')[1] # get two after 'answer'
+			# get two after 'answer'
+			optimization = strings[strings.index(st) + 2].split('Optimization: ')[1]
 			if optimization == optimum:
-				answers.append(strings[strings.index(st) + 1]) # get one after 'answer'
+				# get one after 'answer'
+				answers.append(strings[strings.index(st) + 1])
 			else:
 				pass
 		return answers
@@ -294,5 +304,3 @@ class BasicExpModuleWithCosts(ExperimentModule):
 			self.archive.record(ExpDesignFail())
 		else:
 			self.archive.record(ChosenExperiment([random.choice(exps)]))
-
-

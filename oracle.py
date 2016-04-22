@@ -56,7 +56,7 @@ class Oracle:
 				return Result(None, expD, 'true')
 			else:
 				return Result(None, expD, 'false')
-			
+
 		elif isinstance(expD.experiment_type, ReconstructionEnzReaction):
 			act_ids = [a.ID for a in self.activities]
 			matching_entity = [ent for ent in self.entities if ent.ID == expD.experiment_type.enzyme_id][0]
@@ -64,7 +64,6 @@ class Oracle:
 			if not (expD.experiment_type.reaction_id in act_ids):
 				return Result(None, expD, 'false')
 			elif not (expD.experiment_type.reaction_id in catalysed_by_entity):
-#				print('\n\n no ent \n\n')
 				return Result(None, expD, 'false')
 			else:
 				return Result(None, expD, 'true')
@@ -101,17 +100,16 @@ class Oracle:
 		exported_model = exporter.export_models_exp_design([copied_model])
 		exported_model_rules = exporter.models_rules(len(copied_model.intermediate_activities))
 		exported_display = exporter.export_display_for_oracle(expD)
-		exported_prediction_rules = exporter.predictions_rules() # debug: prediction rules are needed for two-factor experiments
+		exported_prediction_rules = exporter.predictions_rules()
 		inp = [exported_display, exported_ent, exported_comp, exported_act, exported_model, exported_prediction_rules, exported_model_rules]
-		inp = [val for sublist in inp for val in sublist] # flatten
+		inp = [val for sublist in inp for val in sublist]
 		return inp
 
 
 	def write_and_execute(self, inp):
-		# try: remove the file
 		with open(self.work_file, 'w') as f:
 			for string in inp:
-				read_data = f.write(string)
+				f.write(string)
 		# could suppress there warnig messages later on
 		gringo = subprocess.Popen(['gringo', self.work_file], stdout=subprocess.PIPE)
 		clasp = subprocess.Popen(['clasp', '-n', '0'], stdin=gringo.stdout, stdout=subprocess.PIPE)
@@ -127,7 +125,8 @@ class Oracle:
 			answer.remove('')
 		except:
 			pass
-		answer = answer[answer.index([st for st in answer if st.startswith('Answer: ')][0])+1] # gets the string after 'Answer: ' string
+		# gets the string after 'Answer: ' string
+		answer = answer[answer.index([st for st in answer if st.startswith('Answer: ')][0])+1]
 
 		if isinstance(expD.experiment_type, DetectionEntity):
 			if (re.search('synthesizable\(%s,' % expD.experiment_type.entity_id, answer) != None):
@@ -162,7 +161,9 @@ class Oracle:
 			raise TypeError("oracle process_output: experiment type not recognised: %s" % expD.experiment_type)
 
 
-class SloppyOracle(Oracle):# allows to randomly flip the outcome of experiment (simulates experimental errors, etc.)
+class SloppyOracle(Oracle):
+	# allows to randomly flip the outcome of experiment
+	# (simulates experimental errors, etc.)
 	def __init__(self, archive, entities_ref, activities_ref, model_ref, all_ent, all_comp, all_act, sfx="", error_parameter=0.00):
 		Oracle.__init__(self, archive, entities_ref, activities_ref, model_ref, all_ent, all_comp, all_act, sfx)
 		self.error_parameter = error_parameter
@@ -173,7 +174,8 @@ class SloppyOracle(Oracle):# allows to randomly flip the outcome of experiment (
 			result = self.execute_in_vivo(expD)
 		else:
 			result = self.execute_in_vitro_exp(expD)
-		# randomly decide whether to flip the outcome (true->false or vice versa)
+		# randomly decide whether to flip the outcome
+		# (true->false or vice versa)
 		if random.random() < self.error_parameter: # flip
 			if result.outcome == 'true':
 				result.outcome = 'false'
@@ -182,4 +184,3 @@ class SloppyOracle(Oracle):# allows to randomly flip the outcome of experiment (
 			return result
 		else: # don't flip
 			return result
-
